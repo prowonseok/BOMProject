@@ -12,9 +12,15 @@ namespace BOM
 {
     public partial class Form1 : Form
     {
+        DAO.DBConnection dbc = new DAO.DBConnection();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dbc.OpenConn();
         }
     }
 }
