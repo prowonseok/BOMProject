@@ -1,5 +1,4 @@
-﻿using BOM.BUS;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,25 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BOM
+namespace BOM.BUS
 {
-    public partial class Form1 : Form
+    public partial class ChaingePrice : Form
     {
-        public Form1()
+        public ChaingePrice()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void lbl1_Click(object sender, EventArgs e)
         {
 
         }
-        
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ChaingePrice_Load(object sender, EventArgs e)
         {
-            SalesInquiry si = new SalesInquiry();
-            si.Show();
+            
         }
     }
 }
