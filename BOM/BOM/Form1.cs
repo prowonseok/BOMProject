@@ -12,15 +12,21 @@ namespace BOM
 {
     public partial class Form1 : Form
     {
-        DAO.DBConnection dbc = new DAO.DBConnection();
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnBom_Click(object sender, EventArgs e)
         {
-            dbc.OpenConn();
+            FrmBomAdd fba = new FrmBomAdd();
+            fba.ShowDialog();
+        }
+
+        private void btnBomInfo_Click(object sender, EventArgs e)
+        {
+            FrmBomInfo fbi = new FrmBomInfo();
+            fbi.ShowDialog();
         }
     }
 }

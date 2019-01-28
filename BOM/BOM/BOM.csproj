@@ -54,10 +54,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomAdd.Designer.cs">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBomInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomInfo.Designer.cs">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomAdd.resx">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomInfo.resx">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,7 +97,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BUS\" />
