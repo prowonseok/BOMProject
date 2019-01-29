@@ -38,14 +38,16 @@
             this.dgvBom.Location = new System.Drawing.Point(12, 57);
             this.dgvBom.Name = "dgvBom";
             this.dgvBom.RowTemplate.Height = 23;
-            this.dgvBom.Size = new System.Drawing.Size(756, 260);
+            this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBom.Size = new System.Drawing.Size(552, 260);
             this.dgvBom.TabIndex = 0;
+            this.dgvBom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBom_CellContentClick);
             // 
             // FrmBomInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 429);
+            this.ClientSize = new System.Drawing.Size(600, 429);
             this.Controls.Add(this.dgvBom);
             this.Name = "FrmBomInfo";
             this.Text = "FrmBomInfo";

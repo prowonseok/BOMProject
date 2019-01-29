@@ -11,10 +11,14 @@ namespace BOM.DAO
 {
     public class DBConnection
     {
-        SqlConnection conn;
+        private SqlConnection conn;
+        private SqlDataAdapter adapter;
+
+
         internal DBConnection()
         {
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BOM"].ConnectionString);
+            adapter = new SqlDataAdapter();
         }
 
         internal SqlConnection OpenConn()
@@ -24,6 +28,7 @@ namespace BOM.DAO
                 try
                 {
                     conn.Open();
+                    System.Windows.Forms.MessageBox.Show("연결 성공");
                 }
                 catch (SqlException)
                 {
@@ -32,6 +37,30 @@ namespace BOM.DAO
                 }
             }
             return conn;
+        }
+
+        public DataTable ExecuteSelect(string sp, SqlParameter[] sqlParameters) {
+
+            SqlCommand command = new SqlCommand();
+            adapter.SelectCommand = command;
+            adapter.SelectCommand.Connection = OpenConn();
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.CommandText = sp;
+
+            if (sqlParameters != null)
+            {
+                adapter.SelectCommand.Parameters.AddRange(sqlParameters);
+            }
+            DataSet set = new DataSet();
+            try
+            {
+                adapter.Fill(set);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return set.Tables[0];
         }
     }
 }
