@@ -24,11 +24,24 @@ namespace BOM
             this.materials = materials;
             InitializeComponent();
         }
-        
+
+        private void btnPMatSearch_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnMatSearch_Click(object sender, EventArgs e)
         {
-            //level값보다 낮은
+            //모 품번이 없을 때
+            if (string.IsNullOrEmpty(txtParentMatNo.Text))
+            {
+                MessageBox.Show("상위 품목을 먼저 설정해주세요.");
+            }
+            else
+            {//level값보다 낮은
+                FrmBomAllMatInfo fbami = new FrmBomAllMatInfo(materials.Mat_Level);
+                fbami.ShowDialog();
+            }
         }
 
         private void FrmBomAdd_Load(object sender, EventArgs e)
@@ -46,5 +59,7 @@ namespace BOM
             }
 
         }
+
+        
     }
 }

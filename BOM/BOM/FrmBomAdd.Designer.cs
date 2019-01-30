@@ -121,6 +121,7 @@
             this.btnPMatSearch.TabIndex = 10;
             this.btnPMatSearch.Text = "찾기";
             this.btnPMatSearch.UseVisualStyleBackColor = true;
+            this.btnPMatSearch.Click += new System.EventHandler(this.btnPMatSearch_Click);
             // 
             // txtParentMatNo
             // 

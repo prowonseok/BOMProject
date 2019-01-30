@@ -61,6 +61,12 @@
     <Compile Include="FrmBomAdd.Designer.cs">
       <DependentUpon>FrmBomAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomAllMatInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomAllMatInfo.Designer.cs">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBomInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBomAdd.resx">
       <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomAllMatInfo.resx">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBomInfo.resx">
       <DependentUpon>FrmBomInfo.cs</DependentUpon>
