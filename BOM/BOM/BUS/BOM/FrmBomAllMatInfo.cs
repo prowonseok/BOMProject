@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace BOM
 {
-    public partial class Form1 : Form
+    public partial class FrmBomAllMatInfo : Form
     {
-        public Form1()
+        public FrmBomAllMatInfo(int mat_Level)
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        public FrmBomAllMatInfo()
         {
-
+            InitializeComponent();
+        
         }
     }
 }

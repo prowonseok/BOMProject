@@ -32,7 +32,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BOM.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dllPackager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dllStorager\dllPackager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -47,17 +54,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\DBConnection.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="BUS\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BUS\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmManageMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmManageMain.Designer.cs">
+      <DependentUpon>FrmManageMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\BomDAO.cs" />
+    <Compile Include="BUS\BOM\FrmBOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBOM.Designer.cs">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAdd.Designer.cs">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAllMatInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAllMatInfo.Designer.cs">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomInfo.Designer.cs">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\MatDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="VO\Customers_Order.cs" />
+    <Compile Include="VO\Materials.cs" />
+    <Compile Include="VO\Materials_Type.cs" />
+    <EmbeddedResource Include="BUS\BOM\FrmBOM.resx">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomAdd.resx">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomAllMatInfo.resx">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomInfo.resx">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
+      <DependentUpon>FrmManageMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,11 +135,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUS\" />
-    <Folder Include="VO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

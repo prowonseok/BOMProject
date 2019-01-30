@@ -1,6 +1,6 @@
 ﻿namespace BOM
 {
-    partial class Form1
+    partial class FrmBOM
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -28,21 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnBomAdd = new System.Windows.Forms.Button();
+            this.btnBomInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnBomAdd
+            // 
+            this.btnBomAdd.Location = new System.Drawing.Point(265, 150);
+            this.btnBomAdd.Name = "btnBomAdd";
+            this.btnBomAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnBomAdd.TabIndex = 0;
+            this.btnBomAdd.Text = "BOM등록";
+            this.btnBomAdd.UseVisualStyleBackColor = true;
+            this.btnBomAdd.Click += new System.EventHandler(this.btnBom_Click);
+            // 
+            // btnBomInfo
+            // 
+            this.btnBomInfo.Location = new System.Drawing.Point(376, 150);
+            this.btnBomInfo.Name = "btnBomInfo";
+            this.btnBomInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnBomInfo.TabIndex = 1;
+            this.btnBomInfo.Text = "BOM조회";
+            this.btnBomInfo.UseVisualStyleBackColor = true;
+            this.btnBomInfo.Click += new System.EventHandler(this.btnBomInfo_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBomInfo);
+            this.Controls.Add(this.btnBomAdd);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnBomAdd;
+        private System.Windows.Forms.Button btnBomInfo;
     }
 }
 
