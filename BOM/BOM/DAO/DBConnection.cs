@@ -28,17 +28,52 @@ namespace BOM.DAO
                 try
                 {
                     conn.Open();
-                    System.Windows.Forms.MessageBox.Show("연결 성공");
                 }
                 catch (SqlException)
                 {
-
                     throw;
                 }
             }
             return conn;
         }
 
+        public bool ExcuteInsert(string sp, SqlParameter[] sqlParameters) {
+            bool result = false;
+            using (SqlTransaction transaction = OpenConn().BeginTransaction())
+            {
+                SqlCommand com = new SqlCommand();
+                adapter.InsertCommand = com;  
+                adapter.InsertCommand.Connection = OpenConn();
+                adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
+                adapter.InsertCommand.CommandText = sp;
+                adapter.InsertCommand.Transaction = transaction;
+
+                if (sqlParameters != null)
+                {
+                    adapter.InsertCommand.Parameters.AddRange(sqlParameters);
+                }
+                try
+                {
+                    try
+                    {
+                        //FALSE값이 뜨는지(중복 값 입력시)
+                        com.ExecuteScalar().ToString();
+                    }
+                    catch (Exception)
+                    {
+                        result = true;
+                    }
+                    com.ExecuteNonQuery();
+                    transaction.Commit();
+                    
+                }
+                catch (SqlException)
+                {
+                    transaction.Rollback();
+                } 
+            }
+            return result;
+        }
         public DataTable ExecuteSelect(string sp, SqlParameter[] sqlParameters) {
 
             SqlCommand command = new SqlCommand();
@@ -51,6 +86,7 @@ namespace BOM.DAO
             {
                 adapter.SelectCommand.Parameters.AddRange(sqlParameters);
             }
+
             DataSet set = new DataSet();
             try
             {
@@ -61,6 +97,12 @@ namespace BOM.DAO
                 throw;
             }
             return set.Tables[0];
+        }
+        public interface IDBCRUD
+        {
+            void Insert();
+            void Update();
+            void Delete();
         }
     }
 }

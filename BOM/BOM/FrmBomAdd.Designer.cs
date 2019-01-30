@@ -42,6 +42,10 @@
             this.txtParentMatName = new System.Windows.Forms.TextBox();
             this.lblParentMatName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtParentMatLevel = new System.Windows.Forms.TextBox();
+            this.lblPLevel = new System.Windows.Forms.Label();
+            this.txtChildMatLevel = new System.Windows.Forms.TextBox();
+            this.lblChildMatLevel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblChildMatNo
@@ -66,7 +70,7 @@
             this.txtChildMatName.Enabled = false;
             this.txtChildMatName.Location = new System.Drawing.Point(112, 157);
             this.txtChildMatName.Name = "txtChildMatName";
-            this.txtChildMatName.Size = new System.Drawing.Size(253, 21);
+            this.txtChildMatName.Size = new System.Drawing.Size(279, 21);
             this.txtChildMatName.TabIndex = 3;
             // 
             // lblChildMatName
@@ -80,7 +84,7 @@
             // 
             // btnCMatSearch
             // 
-            this.btnCMatSearch.Location = new System.Drawing.Point(397, 110);
+            this.btnCMatSearch.Location = new System.Drawing.Point(411, 110);
             this.btnCMatSearch.Name = "btnCMatSearch";
             this.btnCMatSearch.Size = new System.Drawing.Size(75, 23);
             this.btnCMatSearch.TabIndex = 4;
@@ -106,16 +110,17 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(397, 257);
+            this.btnAdd.Location = new System.Drawing.Point(411, 255);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "등록";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnPMatSearch
             // 
-            this.btnPMatSearch.Location = new System.Drawing.Point(397, 20);
+            this.btnPMatSearch.Location = new System.Drawing.Point(411, 20);
             this.btnPMatSearch.Name = "btnPMatSearch";
             this.btnPMatSearch.Size = new System.Drawing.Size(75, 23);
             this.btnPMatSearch.TabIndex = 10;
@@ -145,7 +150,7 @@
             this.txtParentMatName.Enabled = false;
             this.txtParentMatName.Location = new System.Drawing.Point(112, 67);
             this.txtParentMatName.Name = "txtParentMatName";
-            this.txtParentMatName.Size = new System.Drawing.Size(253, 21);
+            this.txtParentMatName.Size = new System.Drawing.Size(279, 21);
             this.txtParentMatName.TabIndex = 12;
             // 
             // lblParentMatName
@@ -166,11 +171,49 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "개";
             // 
+            // txtParentMatLevel
+            // 
+            this.txtParentMatLevel.Enabled = false;
+            this.txtParentMatLevel.Location = new System.Drawing.Point(291, 22);
+            this.txtParentMatLevel.Name = "txtParentMatLevel";
+            this.txtParentMatLevel.Size = new System.Drawing.Size(100, 21);
+            this.txtParentMatLevel.TabIndex = 15;
+            // 
+            // lblPLevel
+            // 
+            this.lblPLevel.AutoSize = true;
+            this.lblPLevel.Location = new System.Drawing.Point(216, 25);
+            this.lblPLevel.Name = "lblPLevel";
+            this.lblPLevel.Size = new System.Drawing.Size(69, 12);
+            this.lblPLevel.TabIndex = 14;
+            this.lblPLevel.Text = "품목 레벨 : ";
+            // 
+            // txtChildMatLevel
+            // 
+            this.txtChildMatLevel.Enabled = false;
+            this.txtChildMatLevel.Location = new System.Drawing.Point(291, 112);
+            this.txtChildMatLevel.Name = "txtChildMatLevel";
+            this.txtChildMatLevel.Size = new System.Drawing.Size(100, 21);
+            this.txtChildMatLevel.TabIndex = 17;
+            // 
+            // lblChildMatLevel
+            // 
+            this.lblChildMatLevel.AutoSize = true;
+            this.lblChildMatLevel.Location = new System.Drawing.Point(216, 115);
+            this.lblChildMatLevel.Name = "lblChildMatLevel";
+            this.lblChildMatLevel.Size = new System.Drawing.Size(69, 12);
+            this.lblChildMatLevel.TabIndex = 16;
+            this.lblChildMatLevel.Text = "품목 레벨 : ";
+            // 
             // FrmBomAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 312);
+            this.Controls.Add(this.txtChildMatLevel);
+            this.Controls.Add(this.lblChildMatLevel);
+            this.Controls.Add(this.txtParentMatLevel);
+            this.Controls.Add(this.lblPLevel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtParentMatName);
             this.Controls.Add(this.lblParentMatName);
@@ -209,5 +252,9 @@
         private System.Windows.Forms.TextBox txtParentMatName;
         private System.Windows.Forms.Label lblParentMatName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtParentMatLevel;
+        private System.Windows.Forms.Label lblPLevel;
+        private System.Windows.Forms.TextBox txtChildMatLevel;
+        private System.Windows.Forms.Label lblChildMatLevel;
     }
 }
