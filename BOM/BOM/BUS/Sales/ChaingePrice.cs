@@ -49,27 +49,36 @@ namespace BOM.BUS
 
         private void btnChainge_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (CheckPrice(txtChaingePrice.Text))
-            //    {
-            //        new SalesDao().PriceUpdate(); 
-            //    }
-            //    MessageBox.Show("변경 성공");
-            //}
-            //catch (Exception)
-            //{                
-            //    throw;
-            //}
+            try
+            {
+                if (CheckPrice(txtChaingePrice.Text))
+                {
+                    new SalesDao().PriceUpdate();
+                    MessageBox.Show("변경 성공");
+                }                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        //private bool CheckPrice(string text)
-        //{
-        //    bool check = false;
-        //    if (!string.IsNullOrEmpty(text) )
-        //    {
+        private bool CheckPrice(string text)
+        {
+            bool checkResult = false;
 
-        //    }
-        //}
+            int.TryParse(text, out int result);
+            if ( !string.IsNullOrEmpty(text) && result!=0)
+            {                
+                checkResult = true;
+            }
+            else
+            {
+                MessageBox.Show("빈칸이나,숫자이외의 값을 저장할수 없습니다.");
+            }           
+            return checkResult;
+
+          
+        }
     }
 }
