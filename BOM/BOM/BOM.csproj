@@ -67,7 +67,6 @@
       <DependentUpon>FrmManageMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\BomDAO.cs" />
-    <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="BUS\BOM\FrmBOM.cs">
       <SubType>Form</SubType>
     </Compile>
