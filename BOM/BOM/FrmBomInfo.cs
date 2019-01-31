@@ -86,7 +86,18 @@ namespace BOM
             }//BOM 조회 클릭 시
             else if(e.ColumnIndex.ToString()=="4")
             {
-                
+                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString()=="0")
+                {
+
+                    Button button = new Button();
+                    
+                    MessageBox.Show("최하위 자재는 BOM조회를 할 수 없습니다.");
+                }
+                else
+                {
+                    FrmBomDetailInfo fbdi = new FrmBomDetailInfo();
+                    fbdi.ShowDialog();
+                }
             }
         }
     }

@@ -67,6 +67,12 @@
     <Compile Include="FrmBomAllMatInfo.Designer.cs">
       <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomDetailInfo.Designer.cs">
+      <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBomInfo.cs">
       <SubType>Form</SubType>
     </Compile>
