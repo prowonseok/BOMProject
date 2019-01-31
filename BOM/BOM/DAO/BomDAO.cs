@@ -18,6 +18,54 @@ namespace BOM.DAO
         public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
+        public List<Materials> SelectBom4(int mat_No, string procedure) {
+            List<Materials> matLst = new List<Materials>();
+
+            string sp = procedure;
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Mat_No",  mat_No);
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                //재사용성을 위해 NULL값 허용인 값들을 NULL로 설정
+                string mat_Manufactur = null;
+                int cost = 0;
+                int ea = 0;
+                int off_No = 0;
+                if (!string.IsNullOrEmpty(item["Mat_Manufactur"].ToString()))
+                {
+                    mat_Manufactur = item["Mat_Manufactur"].ToString();
+                }
+                if (!string.IsNullOrEmpty(item["Mat_Cost"].ToString()))
+                {
+                    cost = Int32.Parse(item["Mat_Cost"].ToString());
+                }
+                if (!string.IsNullOrEmpty(item["Mat_EA"].ToString()))
+                {
+                    ea = Int32.Parse(item["Mat_EA"].ToString());
+                }
+                if (!string.IsNullOrEmpty(item["Off_No"].ToString()))
+                {
+                    off_No = Int32.Parse(item["Off_No"].ToString());
+                }
+                matLst.Add(new Materials
+                {
+                    Mat_No = Int32.Parse(item["Mat_No"].ToString()),
+                    Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
+                    Mat_Manufactur = mat_Manufactur,
+                    Mat_Name = item["Mat_Name"].ToString(),
+                    Mat_Cost = cost,
+                    Mat_Level = Int32.Parse(item["Mat_Level"].ToString()),
+                    Mat_Ea = ea,
+                    Off_No = off_No
+                }
+                );
+
+            }
+            return matLst;
+        }
         public List<Materials> SelectBom3(int mat_Level, int mat_No) {
             List<Materials> matLst = new List<Materials>();
 
@@ -112,24 +160,6 @@ namespace BOM.DAO
             }
             return matLst;
         }
-        public bool InsertBom(string parentMatNo, string childMatNo, string childMatEA) {
-            string sp = "Bom_Bom_Insert_Procedure";
-            SqlParameter[] sqlParameters = new SqlParameter[3];
-            sqlParameters[0] = new SqlParameter("@BOM_ParentNo",Int32.Parse(parentMatNo));
-            sqlParameters[1] = new SqlParameter("@BOM_ChildNo", Int32.Parse(childMatNo));
-            sqlParameters[2] = new SqlParameter("@BOM_ChildEA", Int32.Parse(childMatEA));
-
-            bool result = false;
-            if (con.ExecuteParameters(sp, sqlParameters) != -1)
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-            return result;
-        }
         public List<Materials> SelectBom() {
             List<Materials> matLst = new List<Materials>();
 
@@ -176,5 +206,25 @@ namespace BOM.DAO
             }
             return matLst;
         }
+        public bool InsertBom(string parentMatNo, string childMatNo, string childMatEA)
+        {
+            string sp = "Bom_Bom_Insert_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@BOM_ParentNo", Int32.Parse(parentMatNo));
+            sqlParameters[1] = new SqlParameter("@BOM_ChildNo", Int32.Parse(childMatNo));
+            sqlParameters[2] = new SqlParameter("@BOM_ChildEA", Int32.Parse(childMatEA));
+
+            bool result = false;
+            if (con.ExecuteParameters(sp, sqlParameters) != -1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
     }
 }

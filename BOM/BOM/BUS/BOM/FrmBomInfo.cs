@@ -86,7 +86,13 @@ namespace BOM
             }//BOM 조회 클릭 시
             else if(e.ColumnIndex.ToString()=="4")
             {
-                
+                FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new Materials
+                {
+                    Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                    Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                    Mat_Level = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
+                });
+                fbdi.ShowDialog();
             }
         }
     }

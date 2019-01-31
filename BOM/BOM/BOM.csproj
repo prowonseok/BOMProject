@@ -67,7 +67,6 @@
       <DependentUpon>FrmManageMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\BomDAO.cs" />
-    <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="BUS\BOM\FrmBOM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +92,18 @@
       <DependentUpon>FrmBomInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\MatDAO.cs" />
+    <Compile Include="BUS\BOM\FrmBomDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomDetailInfo.Designer.cs">
+      <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomSearchMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomSearchMat.Designer.cs">
+      <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\Customers_Order.cs" />
@@ -107,8 +118,14 @@
     <EmbeddedResource Include="BUS\BOM\FrmBomAllMatInfo.resx">
       <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomDetailInfo.resx">
+      <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomInfo.resx">
       <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomSearchMat.resx">
+      <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -140,6 +157,5 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

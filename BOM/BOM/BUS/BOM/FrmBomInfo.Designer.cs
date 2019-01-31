@@ -37,6 +37,7 @@
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBom.Location = new System.Drawing.Point(12, 57);
             this.dgvBom.Name = "dgvBom";
+            this.dgvBom.ReadOnly = true;
             this.dgvBom.RowTemplate.Height = 23;
             this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBom.Size = new System.Drawing.Size(552, 260);
