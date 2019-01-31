@@ -30,6 +30,7 @@
         {
             this.BtnBOM = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnBOM
@@ -44,7 +45,7 @@
             // 
             // btnManage
             // 
-            this.btnManage.Location = new System.Drawing.Point(456, 100);
+            this.btnManage.Location = new System.Drawing.Point(327, 100);
             this.btnManage.Name = "btnManage";
             this.btnManage.Size = new System.Drawing.Size(166, 172);
             this.btnManage.TabIndex = 1;
@@ -52,11 +53,22 @@
             this.btnManage.UseVisualStyleBackColor = true;
             this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
+            // btnSales
+            // 
+            this.btnSales.Location = new System.Drawing.Point(522, 100);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(166, 172);
+            this.btnSales.TabIndex = 2;
+            this.btnSales.Text = "판매관리";
+            this.btnSales.UseVisualStyleBackColor = true;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSales);
             this.Controls.Add(this.btnManage);
             this.Controls.Add(this.BtnBOM);
             this.Name = "FrmMain";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button BtnBOM;
         private System.Windows.Forms.Button btnManage;
+        private System.Windows.Forms.Button btnSales;
     }
 }

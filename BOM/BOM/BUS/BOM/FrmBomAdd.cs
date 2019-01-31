@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.VO;
 
-namespace BOM
+namespace BOM.BUS.BOM
 {
     public partial class FrmBomAdd : Form
     {

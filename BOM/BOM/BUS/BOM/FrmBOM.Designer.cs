@@ -1,4 +1,4 @@
-﻿namespace BOM
+﻿namespace BOM.BUS.BOM
 {
     partial class FrmBOM
     {

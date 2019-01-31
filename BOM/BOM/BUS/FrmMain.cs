@@ -1,5 +1,4 @@
-﻿using BOM.BUS.Managements;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,14 +19,20 @@ namespace BOM.BUS
 
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            FrmBOM fbom = new FrmBOM();
+            BOM.FrmBOM fbom = new BOM.FrmBOM();
             fbom.ShowDialog();
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            FrmManageMain fmanagemain = new FrmManageMain();
+            Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
             fmanagemain.ShowDialog();
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
+            fsalesmain.ShowDialog();
         }
     }
 }

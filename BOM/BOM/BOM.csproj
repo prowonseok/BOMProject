@@ -91,6 +91,43 @@
     <Compile Include="BUS\BOM\FrmBomInfo.Designer.cs">
       <DependentUpon>FrmBomInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Sales\ChaingePrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\ChaingePrice.Designer.cs">
+      <DependentUpon>ChaingePrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\RevenueStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\RevenueStatus.Designer.cs">
+      <DependentUpon>RevenueStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesInquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesInquiry.Designer.cs">
+      <DependentUpon>SalesInquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesStatus.Designer.cs">
+      <DependentUpon>SalesStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesStatusDatails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
+      <DependentUpon>SalesStatusDatails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\SalesDao.cs" />
+    <Compile Include="BUS\Sales\FrmSalesMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\FrmSalesMain.Designer.cs">
+      <DependentUpon>FrmSalesMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\MatDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +151,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
       <DependentUpon>FrmManageMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="VO\ProductsListVO.cs" />
+    <Compile Include="VO\SalesVO.cs" />
+    <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
+      <DependentUpon>ChaingePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\RevenueStatus.resx">
+      <DependentUpon>RevenueStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\SalesInquiry.resx">
+      <DependentUpon>SalesInquiry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\SalesStatus.resx">
+      <DependentUpon>SalesStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\SalesStatusDatails.resx">
+      <DependentUpon>SalesStatusDatails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\FrmSalesMain.resx">
+      <DependentUpon>FrmSalesMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BOM
+namespace BOM.BUS.BOM
 {
     public partial class FrmBOM : Form
     {
