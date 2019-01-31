@@ -49,27 +49,27 @@ namespace BOM.BUS
 
         private void btnChainge_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (CheckPrice(txtChaingePrice.Text))
-                {
-                    new SalesDao().PriceUpdate(); 
-                }
-                MessageBox.Show("변경 성공");
-            }
-            catch (Exception)
-            {                
-                throw;
-            }
+            //try
+            //{
+            //    if (CheckPrice(txtChaingePrice.Text))
+            //    {
+            //        new SalesDao().PriceUpdate(); 
+            //    }
+            //    MessageBox.Show("변경 성공");
+            //}
+            //catch (Exception)
+            //{                
+            //    throw;
+            //}
         }
 
-        private bool CheckPrice(string text)
-        {
-            bool check = false;
-            if (!string.IsNullOrEmpty(text) )
-            {
+        //private bool CheckPrice(string text)
+        //{
+        //    bool check = false;
+        //    if (!string.IsNullOrEmpty(text) )
+        //    {
 
-            }
-        }
+        //    }
+        //}
     }
 }
