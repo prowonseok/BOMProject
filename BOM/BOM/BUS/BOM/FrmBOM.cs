@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BOM
 {
-    public partial class Form1 : Form
+    public partial class FrmBOM : Form
     {
-        public Form1()
+        public FrmBOM()
         {
             InitializeComponent();
         }

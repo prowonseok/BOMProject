@@ -1,6 +1,6 @@
 ﻿namespace BOM
 {
-    partial class Form1
+    partial class FrmBOM
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.

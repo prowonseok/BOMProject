@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BOM.VO;
+using dllPackager;
 
 namespace BOM.DAO
 {
     class BomDAO
     {
-        private DBConnection con;
+        private DBProcessor con;
 
         public BomDAO() {
-            con = new DBConnection();
+            con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
         public List<Materials> SelectBom3(int mat_Level, int mat_No) {
             List<Materials> matLst = new List<Materials>();
@@ -24,7 +26,7 @@ namespace BOM.DAO
             sqlParameters[0] = new SqlParameter("@Mat_Level", mat_Level);
             sqlParameters[1] = new SqlParameter("@Mat_No", mat_No);
 
-            DataTable dt = con.ExecuteSelect(sp, sqlParameters);
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
 
             foreach (DataRow item in dt.Rows)
             {
@@ -70,7 +72,7 @@ namespace BOM.DAO
             string sp = "Bom_Mat_View_Procedure_No_Level_0";
             SqlParameter[] sqlParameters = null;
 
-            DataTable dt = con.ExecuteSelect(sp, sqlParameters);
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
 
             foreach (DataRow item in dt.Rows)
             {
@@ -118,7 +120,7 @@ namespace BOM.DAO
             sqlParameters[2] = new SqlParameter("@BOM_ChildEA", Int32.Parse(childMatEA));
 
             bool result = false;
-            if (con.ExcuteInsert(sp, sqlParameters))
+            if (con.ExecuteParameters(sp, sqlParameters) != -1)
             {
                 result = true;
             }
@@ -134,7 +136,7 @@ namespace BOM.DAO
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
-            DataTable dt = con.ExecuteSelect(sp, sqlParameters);
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
 
             foreach (DataRow item in dt.Rows)
             {
