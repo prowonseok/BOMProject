@@ -38,13 +38,15 @@
             this.txtMember = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdoDate
             // 
             this.rdoDate.AutoSize = true;
-            this.rdoDate.Location = new System.Drawing.Point(44, 47);
+            this.rdoDate.Location = new System.Drawing.Point(16, 25);
             this.rdoDate.Name = "rdoDate";
             this.rdoDate.Size = new System.Drawing.Size(59, 16);
             this.rdoDate.TabIndex = 0;
@@ -56,7 +58,7 @@
             // rdoMember
             // 
             this.rdoMember.AutoSize = true;
-            this.rdoMember.Location = new System.Drawing.Point(44, 74);
+            this.rdoMember.Location = new System.Drawing.Point(16, 52);
             this.rdoMember.Name = "rdoMember";
             this.rdoMember.Size = new System.Drawing.Size(59, 16);
             this.rdoMember.TabIndex = 1;
@@ -68,7 +70,7 @@
             // rdoProduct
             // 
             this.rdoProduct.AutoSize = true;
-            this.rdoProduct.Location = new System.Drawing.Point(44, 100);
+            this.rdoProduct.Location = new System.Drawing.Point(16, 78);
             this.rdoProduct.Name = "rdoProduct";
             this.rdoProduct.Size = new System.Drawing.Size(59, 16);
             this.rdoProduct.TabIndex = 2;
@@ -79,7 +81,7 @@
             // 
             // dtp1
             // 
-            this.dtp1.Location = new System.Drawing.Point(109, 42);
+            this.dtp1.Location = new System.Drawing.Point(81, 20);
             this.dtp1.Name = "dtp1";
             this.dtp1.Size = new System.Drawing.Size(115, 21);
             this.dtp1.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             // dtp2
             // 
-            this.dtp2.Location = new System.Drawing.Point(250, 42);
+            this.dtp2.Location = new System.Drawing.Point(222, 20);
             this.dtp2.Name = "dtp2";
             this.dtp2.Size = new System.Drawing.Size(114, 21);
             this.dtp2.TabIndex = 4;
@@ -96,7 +98,7 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(230, 47);
+            this.lbl1.Location = new System.Drawing.Point(202, 25);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(14, 12);
             this.lbl1.TabIndex = 5;
@@ -105,18 +107,19 @@
             // 
             // comboProduct
             // 
+            this.comboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboProduct.FormattingEnabled = true;
-            this.comboProduct.Location = new System.Drawing.Point(109, 96);
+            this.comboProduct.Location = new System.Drawing.Point(81, 74);
             this.comboProduct.Name = "comboProduct";
-            this.comboProduct.Size = new System.Drawing.Size(121, 20);
+            this.comboProduct.Size = new System.Drawing.Size(135, 20);
             this.comboProduct.TabIndex = 6;
             this.comboProduct.Visible = false;
             // 
             // txtMember
             // 
-            this.txtMember.Location = new System.Drawing.Point(109, 69);
+            this.txtMember.Location = new System.Drawing.Point(81, 47);
             this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(100, 21);
+            this.txtMember.Size = new System.Drawing.Size(135, 21);
             this.txtMember.TabIndex = 7;
             this.txtMember.Visible = false;
             // 
@@ -131,33 +134,47 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(573, 414);
+            this.btnSearch.Location = new System.Drawing.Point(261, 71);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "조회";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtp1);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.rdoDate);
+            this.groupBox1.Controls.Add(this.rdoMember);
+            this.groupBox1.Controls.Add(this.txtMember);
+            this.groupBox1.Controls.Add(this.rdoProduct);
+            this.groupBox1.Controls.Add(this.comboProduct);
+            this.groupBox1.Controls.Add(this.dtp2);
+            this.groupBox1.Controls.Add(this.lbl1);
+            this.groupBox1.Location = new System.Drawing.Point(44, 17);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(358, 115);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "판매 조회";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // SalesInquiry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 449);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtMember);
-            this.Controls.Add(this.comboProduct);
-            this.Controls.Add(this.lbl1);
-            this.Controls.Add(this.dtp2);
-            this.Controls.Add(this.dtp1);
-            this.Controls.Add(this.rdoProduct);
-            this.Controls.Add(this.rdoMember);
-            this.Controls.Add(this.rdoDate);
             this.Name = "SalesInquiry";
             this.Text = "SalesInquiry";
+            this.Load += new System.EventHandler(this.SalesInquiry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -173,5 +190,6 @@
         private System.Windows.Forms.TextBox txtMember;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
