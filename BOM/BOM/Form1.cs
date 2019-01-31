@@ -29,5 +29,11 @@ namespace BOM
             SalesInquiry si = new SalesInquiry();
             si.Show();
         }
+
+        private void btnChingePrice_Click(object sender, EventArgs e)
+        {
+            ChaingePrice cp = new ChaingePrice();
+            cp.Show();
+        }
     }
 }

@@ -42,15 +42,17 @@
             // 
             // comboProduct
             // 
+            this.comboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboProduct.FormattingEnabled = true;
-            this.comboProduct.Location = new System.Drawing.Point(83, 70);
+            this.comboProduct.Location = new System.Drawing.Point(83, 132);
             this.comboProduct.Name = "comboProduct";
             this.comboProduct.Size = new System.Drawing.Size(121, 20);
             this.comboProduct.TabIndex = 0;
+            this.comboProduct.DropDownClosed += new System.EventHandler(this.comboProduct_DropDownClosed);
             // 
             // txtChaingePrice
             // 
-            this.txtChaingePrice.Location = new System.Drawing.Point(83, 132);
+            this.txtChaingePrice.Location = new System.Drawing.Point(83, 194);
             this.txtChaingePrice.Name = "txtChaingePrice";
             this.txtChaingePrice.Size = new System.Drawing.Size(100, 21);
             this.txtChaingePrice.TabIndex = 1;
@@ -58,7 +60,7 @@
             // dtp1
             // 
             this.dtp1.Enabled = false;
-            this.dtp1.Location = new System.Drawing.Point(83, 168);
+            this.dtp1.Location = new System.Drawing.Point(83, 233);
             this.dtp1.Name = "dtp1";
             this.dtp1.Size = new System.Drawing.Size(170, 21);
             this.dtp1.TabIndex = 2;
@@ -66,7 +68,7 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(48, 78);
+            this.lbl1.Location = new System.Drawing.Point(48, 140);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(29, 12);
             this.lbl1.TabIndex = 3;
@@ -76,7 +78,7 @@
             // lbl2
             // 
             this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(20, 141);
+            this.lbl2.Location = new System.Drawing.Point(20, 203);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(57, 12);
             this.lbl2.TabIndex = 4;
@@ -85,7 +87,7 @@
             // lbl3
             // 
             this.lbl3.AutoSize = true;
-            this.lbl3.Location = new System.Drawing.Point(20, 177);
+            this.lbl3.Location = new System.Drawing.Point(20, 239);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(57, 12);
             this.lbl3.TabIndex = 5;
@@ -94,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 107);
+            this.label1.Location = new System.Drawing.Point(19, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 6;
@@ -103,7 +105,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(83, 107);
+            this.lblPrice.Location = new System.Drawing.Point(87, 169);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(0, 12);
             this.lblPrice.TabIndex = 7;
@@ -116,6 +118,7 @@
             this.btnChainge.TabIndex = 8;
             this.btnChainge.Text = "변경";
             this.btnChainge.UseVisualStyleBackColor = true;
+            this.btnChainge.Click += new System.EventHandler(this.btnChainge_Click);
             // 
             // btnExit
             // 
@@ -125,6 +128,7 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "나가기";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ChaingePrice
             // 

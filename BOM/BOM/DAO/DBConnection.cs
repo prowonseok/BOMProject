@@ -40,13 +40,13 @@ namespace BOM.DAO
                 throw;
             }            
         }
-        internal SqlDataReader GetProductList()
+        internal SqlDataReader GetProductList(string sp)
         {
             SqlConnection sqlcon = OpenConn();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = sqlcon;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Bom_JW_ProNameSelect";
+            cmd.CommandText = sp;
             try
             {
                 return cmd.ExecuteReader();                

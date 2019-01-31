@@ -14,6 +14,8 @@ namespace BOM.BUS
 {
     public partial class SalesInquiry : Form
     {
+        List<ProductsListVO> lst2 = new List<ProductsListVO>();
+        List<SalesVO> lst = new List<SalesVO>();
         public SalesInquiry()
         {
             InitializeComponent();
@@ -59,14 +61,17 @@ namespace BOM.BUS
             {
                 comboProduct.Visible = false;
             }
-            comboProduct.DataSource = new SalesDao().ComboProDuctList();
+            string sp2 = "Bom_JW_ProNameSelect2";
+            lst2 = new SalesDao().ComboProDuctList(sp2);
+            foreach (var item in lst2)
+            {
+                comboProduct.Items.Add(item.ProductName);
+            }
         }
 
-        private void SalesInquiry_Load(object sender, EventArgs e)
-        {
-
-        }
-        List<SalesVO> lst = new List<SalesVO>();
+        
+        
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string search = ""; //조회할 데이터 변수
@@ -105,20 +110,12 @@ namespace BOM.BUS
                 dataGridView1.DataSource = lst;
                 
                 MessageBox.Show("Test");
-
             }
 
             catch (Exception ee)
             {
                 MessageBox.Show(ee.ToString());
-            }            
-
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            }   
         }
     }
 }

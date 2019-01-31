@@ -10,6 +10,11 @@ namespace BOM.DAO
 {
     class SalesDao
     {
+        internal void PriceUpdate()
+        {
+
+        }
+
         public List<SalesVO> SalesSelect(string sp, string search, string search2, string parameter1, string parameter2)
         {
             List<SalesVO> salesList = new List<SalesVO>();
@@ -32,19 +37,23 @@ namespace BOM.DAO
             return salesList;
         }
 
-        internal List<ProductcListVO> ComboProDuctList()
+        internal List<ProductsListVO> ComboProDuctList(string sp)
         {
-            List<ProductcListVO> productcList = new List<ProductcListVO>();
-            SqlDataReader sr = new DBConnection().GetProductList();
+            List<ProductsListVO> productcList = new List<ProductsListVO>();
+            SqlDataReader sr = new DBConnection().GetProductList(sp);
+
             while (sr.Read())
             {
-                productcList.Add(new ProductcListVO()
+                productcList.Add(new ProductsListVO()
                 {
-                    ProductsName1 = sr["Pro_name"].ToString()
+                    ProductName = sr["Pro_name"].ToString(),
+                    ProductPrice = sr["Pro_Price"].ToString()
                 });
-            }
+            }            
             
             return productcList;
         }
+
+        
     }
 }
