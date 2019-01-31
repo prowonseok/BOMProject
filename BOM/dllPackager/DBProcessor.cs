@@ -82,11 +82,11 @@ namespace dllPackager
 
         #region 저장 프로시저 수행 메서드
         /// <summary>
-        /// 저장 프로시저를 수행하기 위한 메서드 입니다.
+        /// 저장 프로시저를 수행하고 영향을 받은 행의 수를 반환하기 위한 메서드 입니다.
         /// </summary>
         /// <param name="sp">저장 프로시저명</param>
         /// <param name="sqlParameters">파라미터 배열</param>
-        public void ExecuteParameters(string sp, SqlParameter[] sqlParameters)
+        public int ExecuteParameters(string sp, SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
             command.Connection = OpenConn();
@@ -94,8 +94,10 @@ namespace dllPackager
             command.CommandText = sp;
 
             command.Parameters.AddRange(sqlParameters);
-            command.ExecuteNonQuery();
+            int affectedRows = command.ExecuteNonQuery();
             conn.Close();
+
+            return affectedRows;
         } 
         #endregion
     }

@@ -40,6 +40,7 @@
             this.dgvAllMat.Location = new System.Drawing.Point(12, 12);
             this.dgvAllMat.Name = "dgvAllMat";
             this.dgvAllMat.RowTemplate.Height = 23;
+            this.dgvAllMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllMat.Size = new System.Drawing.Size(739, 370);
             this.dgvAllMat.TabIndex = 0;
             // 
@@ -51,6 +52,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 
@@ -60,6 +62,7 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "등록";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FrmBomAllMatInfo
             // 
@@ -71,6 +74,7 @@
             this.Controls.Add(this.dgvAllMat);
             this.Name = "FrmBomAllMatInfo";
             this.Text = "FrmBomAllMatInfo";
+            this.Load += new System.EventHandler(this.FrmBomAllMatInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMat)).EndInit();
             this.ResumeLayout(false);
 
