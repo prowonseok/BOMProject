@@ -111,7 +111,7 @@ namespace BOM
                 }
                 else
                 {
-                    MessageBox.Show("저장 실패");
+                    MessageBox.Show("저장 실패 : 데이터 중복 여부를 확인해주세요");
                 }
             }
         }
