@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Customer.Properties
+namespace CustomerApp.Properties
 {
 
 

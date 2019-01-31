@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CustomerApp.BUS
+{
+    public partial class FrmLogin : Form
+    {
+        public FrmLogin()
+        {
+            InitializeComponent();
+        }
+
+        private FrmJoin joinForm = new FrmJoin();
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+
+            Text = "Goodee PC 로그인";
+        }
+
+        private void btnJoin_Click(object sender, EventArgs e)
+        {
+            joinForm.ShowDialog();
+        }
+    }
+}

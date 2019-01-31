@@ -1,0 +1,29 @@
+﻿<NewAddressListResponse>
+  <cmmMsgHeader>
+    <requestMsgId/>
+    <responseMsgId/>
+    <responseTime>20190130:225952546</responseTime>
+    <successYN>Y</successYN>
+    <returnCode>00</returnCode>
+    <errMsg/>
+    <totalCount>3</totalCount>
+    <countPerPage>10</countPerPage>
+    <totalPage>1</totalPage>
+    <currentPage/>
+  </cmmMsgHeader>
+  <newAddressListAreaCd>
+    <zipNo>03380</zipNo>
+    <lnmAdres>서울특별시 은평구 녹번로 3 (녹번동)</lnmAdres>
+    <rnAdres>서울특별시 은평구 녹번동 82-24</rnAdres>
+  </newAddressListAreaCd>
+  <newAddressListAreaCd>
+    <zipNo>03380</zipNo>
+    <lnmAdres>서울특별시 은평구 녹번로 3-1 (녹번동)</lnmAdres>
+    <rnAdres>서울특별시 은평구 녹번동 82-23</rnAdres>
+  </newAddressListAreaCd>
+  <newAddressListAreaCd>
+    <zipNo>03380</zipNo>
+    <lnmAdres>서울특별시 은평구 녹번로 3-2 (녹번동)</lnmAdres>
+    <rnAdres>서울특별시 은평구 녹번동 82-22</rnAdres>
+  </newAddressListAreaCd>
+</NewAddressListResponse>
