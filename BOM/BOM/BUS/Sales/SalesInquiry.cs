@@ -87,7 +87,7 @@ namespace BOM.BUS.Sales
                 parameter2 = "@Date2";
 
                 search = dtp1.Value.ToShortDateString();
-                search2 = dtp1.Value.ToShortDateString();
+                search2 = dtp2.Value.ToShortDateString();
             }
             else if(rdoMember.Checked == true)
             {
@@ -115,6 +115,11 @@ namespace BOM.BUS.Sales
             {
                 MessageBox.Show(ee.ToString());
             }   
+        }
+
+        private void SalesInquiry_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

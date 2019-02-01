@@ -17,6 +17,29 @@ namespace BOM.DAO
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["BOM"].ConnectionString);
         }
 
+        internal SqlDataReader PriceUpdate(string sp, int indexNo, int Price)
+        {
+            SqlConnection sqlcon = OpenConn();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = sqlcon;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sp;
+
+            cmd.Parameters.AddWithValue("@no", indexNo);
+            cmd.Parameters.AddWithValue("@Price", indexNo);
+            try
+            {
+                return cmd.ExecuteReader();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
+        }
+
         internal SqlDataReader GetSales(string sp, string search, string search2, string parameter1, string parameter2)
         {
             SqlConnection sqlcon = OpenConn();

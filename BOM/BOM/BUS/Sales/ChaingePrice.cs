@@ -28,33 +28,50 @@ namespace BOM.BUS.Sales
 
         private void ChaingePrice_Load(object sender, EventArgs e)
         {
-            string sp = "Bom_JW_ProNameSelect2";
-            ProductsList = new SalesDao().ComboProDuctList(sp);
+            PriceView();
+        }
 
+        private void PriceView() //Price폼에 상품가격 표시
+        {
+            string sp = "Bom_JW_ProNameSelect2";
+            ProductsList.Clear();
+            ProductsList = new SalesDao().ComboProDuctList(sp);
+            comboProduct.Items.Clear();
             foreach (var item in ProductsList)
             {
                 comboProduct.Items.Add(item.ProductName);
-            }          
+            }
         }
 
-        private void comboProduct_DropDownClosed(object sender, EventArgs e)
-        {
-            lblPrice.Text = ProductsList[comboProduct.SelectedIndex].ProductPrice;
+        private void comboProduct_DropDownClosed(object sender, EventArgs e) // 콤보박스에서 상품선택시 가격표시
+        {            
+            int price = Int32.Parse(ProductsList[comboProduct.SelectedIndex].ProductPrice);
+            lblPrice.Text = String.Format("{0:##,##0}", price) + " 원";// 0>0
+            lblDate.Text = ProductsList[comboProduct.SelectedIndex].ProductDate.ToShortDateString(); 
+
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e) // 단가변경 폼 종료
         {
             this.Close();
         }
 
-        private void btnChainge_Click(object sender, EventArgs e)
+        private void btnChainge_Click(object sender, EventArgs e) // 단가 변경
         {
+            int IndexNo = comboProduct.SelectedIndex+1;
             try
             {
                 if (CheckPrice(txtChaingePrice.Text))
                 {
-                    new SalesDao().PriceUpdate();
-                    MessageBox.Show("변경 성공");
+                    if (new SalesDao().PriceUpdate(IndexNo, Int32.Parse(txtChaingePrice.Text)))
+                    {
+                        MessageBox.Show("변경 성공");
+                        PriceView();
+                    }
+                    else
+                    {
+                        MessageBox.Show("저장 실패");
+                    }                    
                 }                
             }
             catch (Exception)
@@ -63,7 +80,7 @@ namespace BOM.BUS.Sales
             }
         }
 
-        private bool CheckPrice(string text)
+        private bool CheckPrice(string text) //공백이나 숫자 이외의 값 입력 검출
         {
             bool checkResult = false;
 

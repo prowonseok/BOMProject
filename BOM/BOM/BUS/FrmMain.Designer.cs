@@ -31,6 +31,8 @@
             this.BtnBOM = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
+            this.dgvMainSales = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBOM
@@ -63,16 +65,30 @@
             this.btnSales.UseVisualStyleBackColor = true;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
+            // dgvMainSales
+            // 
+            this.dgvMainSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMainSales.Location = new System.Drawing.Point(116, 289);
+            this.dgvMainSales.Name = "dgvMainSales";
+            this.dgvMainSales.RowTemplate.Height = 23;
+            this.dgvMainSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMainSales.Size = new System.Drawing.Size(572, 245);
+            this.dgvMainSales.TabIndex = 3;
+            this.dgvMainSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMainSales_CellClick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 575);
+            this.Controls.Add(this.dgvMainSales);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.btnManage);
             this.Controls.Add(this.BtnBOM);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -82,5 +98,6 @@
         private System.Windows.Forms.Button BtnBOM;
         private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Button btnSales;
+        private System.Windows.Forms.DataGridView dgvMainSales;
     }
 }

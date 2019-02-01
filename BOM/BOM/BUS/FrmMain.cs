@@ -1,7 +1,12 @@
-﻿using System;
+﻿using BOM.BUS.Sales;
+using BOM.VO;
+using dllPackager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +17,13 @@ namespace BOM.BUS
 {
     public partial class FrmMain : Form
     {
+        DBProcessor dbp;
+        List<Cus_OrderVO> salesList;
         public FrmMain()
-        {
+        {            
             InitializeComponent();
+            dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
+            salesList = new List<Cus_OrderVO>();
         }
 
         private void BtnBOM_Click(object sender, EventArgs e)
@@ -33,6 +42,37 @@ namespace BOM.BUS
         {
             Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
             fsalesmain.ShowDialog();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+            Test();
+        }
+
+        private void Test()
+        {
+            DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_MainSelect_Procedure", null);
+            foreach (DataRow item in dataTable.Rows)
+            {
+                salesList.Add(new Cus_OrderVO
+                {
+                    OrderNo = Int32.Parse(item["Cus_Order_OrderNo"].ToString()),
+                    CusID = item["Cus_ID"].ToString(),
+                    OrderContants = item["Pro_Name"].ToString() + ", " + item["Cus_Order_EA"].ToString() + " 개",
+                    OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
+                });
+            }
+            
+            dgvMainSales.DataSource = salesList;
+            dgvMainSales.AutoResizeColumns();
+        }
+
+        private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
+            ssd.Show();
         }
     }
 }

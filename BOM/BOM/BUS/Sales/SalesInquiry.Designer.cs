@@ -159,7 +159,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "판매 조회";
-            
             // 
             // SalesInquiry
             // 
@@ -170,7 +169,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "SalesInquiry";
             this.Text = "SalesInquiry";
-            
+            this.Load += new System.EventHandler(this.SalesInquiry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -38,16 +38,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
+            this.lblOrderNo = new System.Windows.Forms.Label();
+            this.lblOrderPrice = new System.Windows.Forms.Label();
+            this.lblProEA = new System.Windows.Forms.Label();
+            this.lblProName = new System.Windows.Forms.Label();
+            this.lblCusID = new System.Windows.Forms.Label();
+            this.lblEmpName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblDate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 99);
+            this.label1.Location = new System.Drawing.Point(52, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -56,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 130);
+            this.label2.Location = new System.Drawing.Point(52, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 1;
@@ -110,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(80, 160);
+            this.label4.Location = new System.Drawing.Point(63, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 7;
@@ -119,7 +124,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(80, 189);
+            this.label5.Location = new System.Drawing.Point(63, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 8;
@@ -128,47 +133,100 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 72);
+            this.label6.Location = new System.Drawing.Point(39, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 9;
             this.label6.Text = "주문번호 : ";
             // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Location = new System.Drawing.Point(55, 272);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(53, 12);
+            this.lbl.TabIndex = 10;
+            this.lbl.Text = "담당자 : ";
+            // 
+            // lblOrderNo
+            // 
+            this.lblOrderNo.AutoSize = true;
+            this.lblOrderNo.Location = new System.Drawing.Point(110, 72);
+            this.lblOrderNo.Name = "lblOrderNo";
+            this.lblOrderNo.Size = new System.Drawing.Size(0, 12);
+            this.lblOrderNo.TabIndex = 15;
+            // 
+            // lblOrderPrice
+            // 
+            this.lblOrderPrice.AutoSize = true;
+            this.lblOrderPrice.Location = new System.Drawing.Point(110, 189);
+            this.lblOrderPrice.Name = "lblOrderPrice";
+            this.lblOrderPrice.Size = new System.Drawing.Size(0, 12);
+            this.lblOrderPrice.TabIndex = 14;
+            // 
+            // lblProEA
+            // 
+            this.lblProEA.AutoSize = true;
+            this.lblProEA.Location = new System.Drawing.Point(110, 160);
+            this.lblProEA.Name = "lblProEA";
+            this.lblProEA.Size = new System.Drawing.Size(0, 12);
+            this.lblProEA.TabIndex = 13;
+            // 
+            // lblProName
+            // 
+            this.lblProName.AutoSize = true;
+            this.lblProName.Location = new System.Drawing.Point(110, 130);
+            this.lblProName.Name = "lblProName";
+            this.lblProName.Size = new System.Drawing.Size(0, 12);
+            this.lblProName.TabIndex = 12;
+            // 
+            // lblCusID
+            // 
+            this.lblCusID.AutoSize = true;
+            this.lblCusID.Location = new System.Drawing.Point(110, 99);
+            this.lblCusID.Name = "lblCusID";
+            this.lblCusID.Size = new System.Drawing.Size(0, 12);
+            this.lblCusID.TabIndex = 11;
+            // 
+            // lblEmpName
+            // 
+            this.lblEmpName.AutoSize = true;
+            this.lblEmpName.Location = new System.Drawing.Point(111, 272);
+            this.lblEmpName.Name = "lblEmpName";
+            this.lblEmpName.Size = new System.Drawing.Size(0, 12);
+            this.lblEmpName.TabIndex = 16;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(55, 272);
+            this.label7.Location = new System.Drawing.Point(40, 217);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "담당자 : ";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "주문날짜 : ";
             // 
-            // dataGridView1
+            // lblDate
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(436, 173);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(408, 199);
-            this.dataGridView1.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(434, 146);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 12);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "다른폼기능 테스트중";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(111, 218);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 12);
+            this.lblDate.TabIndex = 18;
             // 
             // SalesStatusDatails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 403);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(400, 405);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblEmpName);
+            this.Controls.Add(this.lblOrderNo);
+            this.Controls.Add(this.lblOrderPrice);
+            this.Controls.Add(this.lblProEA);
+            this.Controls.Add(this.lblProName);
+            this.Controls.Add(this.lblCusID);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -181,7 +239,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SalesStatusDatails";
             this.Text = "SalesStatusDatails";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.SalesStatusDatails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,8 +257,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.Label lblOrderNo;
+        private System.Windows.Forms.Label lblOrderPrice;
+        private System.Windows.Forms.Label lblProEA;
+        private System.Windows.Forms.Label lblProName;
+        private System.Windows.Forms.Label lblCusID;
+        private System.Windows.Forms.Label lblEmpName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDate;
     }
 }
