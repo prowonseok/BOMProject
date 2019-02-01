@@ -16,5 +16,10 @@ namespace BOM.BUS.Sales
         {
             InitializeComponent();
         }
+
+        private void SalesStatus_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

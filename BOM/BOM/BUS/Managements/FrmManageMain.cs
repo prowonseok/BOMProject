@@ -28,5 +28,10 @@ namespace BOM.BUS.Managements
 
             md.DeleteMat(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
         }
+
+        private void FrmManageMain_Load(object sender, EventArgs e)
+        {
+            dgvMatList.DataSource = md.SelectMat("Materials_View_List_Select_Procedure");
+        }
     }
 }

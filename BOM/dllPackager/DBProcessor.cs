@@ -31,7 +31,7 @@ namespace dllPackager
         /// SqlConnection 객체를 Open 상태로 전환시킵니다.
         /// </summary>
         /// <returns></returns>
-        public SqlConnection OpenConn()
+        private SqlConnection OpenConn()
         {
             if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
             {

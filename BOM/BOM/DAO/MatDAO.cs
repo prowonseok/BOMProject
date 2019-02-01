@@ -37,5 +37,10 @@ namespace BOM.DAO
 
             con.ExecuteParameters(sp, sqlParameters);
         }
+
+        public DataTable SelectMat(string sp)
+        {
+            return con.ExecuteParametersDT(sp, null);
+        }
     }
 }
