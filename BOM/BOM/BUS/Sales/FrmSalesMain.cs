@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BOM
+namespace BOM.BUS.Sales
 {
-    public partial class Form1 : Form
+    public partial class FrmSalesMain : Form
     {
-        public Form1()
+        public FrmSalesMain()
         {
             InitializeComponent();
         }

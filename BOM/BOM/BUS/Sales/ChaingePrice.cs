@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BOM.BUS
+namespace BOM.BUS.Sales
 {
     public partial class ChaingePrice : Form
     {

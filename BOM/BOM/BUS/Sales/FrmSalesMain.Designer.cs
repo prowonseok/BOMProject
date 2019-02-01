@@ -1,6 +1,6 @@
-﻿namespace BOM
+﻿namespace BOM.BUS.Sales
 {
-    partial class Form1
+    partial class FrmSalesMain
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.

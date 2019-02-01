@@ -32,7 +32,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BOM.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dllPackager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dllStorager\dllPackager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -47,6 +54,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmManageMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmManageMain.Designer.cs">
+      <DependentUpon>FrmManageMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\BomDAO.cs" />
+    <Compile Include="BUS\BOM\FrmBOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBOM.Designer.cs">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAdd.Designer.cs">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAllMatInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomAllMatInfo.Designer.cs">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomInfo.Designer.cs">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Sales\ChaingePrice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,19 +109,12 @@
     <Compile Include="BUS\Sales\SalesInquiry.Designer.cs">
       <DependentUpon>SalesInquiry.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\Sales\SalesStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\Sales\SalesStatus.Designer.cs">
-      <DependentUpon>SalesStatus.cs</DependentUpon>
-    </Compile>
     <Compile Include="BUS\Sales\SalesStatusDatails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\SalesDao.cs" />
     <Compile Include="BUS\Sales\FrmSalesMain.cs">
       <SubType>Form</SubType>
@@ -85,8 +122,31 @@
     <Compile Include="BUS\Sales\FrmSalesMain.Designer.cs">
       <DependentUpon>FrmSalesMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\MatDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VO\Customers_Order.cs" />
+    <Compile Include="VO\Cus_OrderVO.cs" />
+    <Compile Include="VO\Materials.cs" />
+    <Compile Include="VO\Materials_Type.cs" />
+    <EmbeddedResource Include="BUS\BOM\FrmBOM.resx">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomAdd.resx">
+      <DependentUpon>FrmBomAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomAllMatInfo.resx">
+      <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomInfo.resx">
+      <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
+      <DependentUpon>FrmManageMain.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="VO\ProductsListVO.cs" />
     <Compile Include="VO\SalesVO.cs" />
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
@@ -97,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\SalesInquiry.resx">
       <DependentUpon>SalesInquiry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BUS\Sales\SalesStatus.resx">
-      <DependentUpon>SalesStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\SalesStatusDatails.resx">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
@@ -127,10 +184,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="JW_Procedure.sql" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

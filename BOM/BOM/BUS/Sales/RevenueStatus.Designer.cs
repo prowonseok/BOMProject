@@ -1,4 +1,4 @@
-﻿namespace BOM.BUS
+﻿namespace BOM.BUS.Sales
 {
     partial class RevenueStatus
     {

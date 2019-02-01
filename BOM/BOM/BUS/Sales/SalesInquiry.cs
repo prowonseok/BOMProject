@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BOM.DAO;
 using BOM.VO;
 
-namespace BOM.BUS
+namespace BOM.BUS.Sales
 {
     public partial class SalesInquiry : Form
     {
@@ -87,7 +87,7 @@ namespace BOM.BUS
                 parameter2 = "@Date2";
 
                 search = dtp1.Value.ToShortDateString();
-                search2 = dtp1.Value.ToShortDateString();
+                search2 = dtp2.Value.ToShortDateString();
             }
             else if(rdoMember.Checked == true)
             {
@@ -100,7 +100,6 @@ namespace BOM.BUS
                 parameter1 = "@ProductsName";
                 sp = "Bom_JW_ProSelect Procedure";
                 search = comboProduct.Text;
-                
             }
             try
             {
@@ -116,6 +115,11 @@ namespace BOM.BUS
             {
                 MessageBox.Show(ee.ToString());
             }   
+        }
+
+        private void SalesInquiry_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
