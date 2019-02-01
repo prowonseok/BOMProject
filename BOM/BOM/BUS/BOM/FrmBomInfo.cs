@@ -37,11 +37,7 @@ namespace BOM
             btn2.Text = "조회";
             btn2.UseColumnTextForButtonValue = true;
             dgvBom.Columns.Add(btn2);
-
-            //Int형 데이터를 가진 컬럼은 오른쪽 정렬
-            dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvBom.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            
             //필요 없는 컬럼 삭제
             dgvBom.Columns.Remove("Mat_Type_No");
             dgvBom.Columns.Remove("Mat_Manufactur");
@@ -51,7 +47,17 @@ namespace BOM
 
             //컬럼 크기 자동 정렬
             dgvBom.AutoResizeColumns();
+
+            //Int형 데이터를 가진 컬럼은 오른쪽 정렬
+            dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             
+            dgvBom.Columns[1].Width = 278;
+            dgvBom.Columns[0].Width = 80;
+
+            dgvBom.Columns[0].HeaderText = "자재번호";
+            dgvBom.Columns[1].HeaderText = "자재명";
+            dgvBom.Columns[2].HeaderText = "자재 레벨";
 
         }
 
@@ -94,6 +100,24 @@ namespace BOM
                 });
                 fbdi.ShowDialog();
             }
+        }
+
+        private void btnBomAdd_Click(object sender, EventArgs e)
+        {
+            FrmBomAdd fba = new FrmBomAdd();
+            fba.ShowDialog();
+        }
+
+        private void btnBomInfo_Click(object sender, EventArgs e)
+        {
+            FrmBomDetailInfo fbdi = new FrmBomDetailInfo();
+            fbdi.ShowDialog();
+        }
+
+        private void btnMatEstimating_Click(object sender, EventArgs e)
+        {
+            FrmBomMatEstimating fme = new FrmBomMatEstimating();
+            fme.ShowDialog();
         }
     }
 }

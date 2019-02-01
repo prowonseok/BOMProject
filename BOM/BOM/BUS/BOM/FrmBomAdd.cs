@@ -104,14 +104,21 @@ namespace BOM
             }
             else
             {
-                bDao = new DAO.BomDAO();
-                if (bDao.InsertBom(txtParentMatNo.Text, txtChildMatNo.Text, txtChildMatEA.Text))
+                if (!int.TryParse(txtChildMatEA.Text,out int ea))
                 {
-                    MessageBox.Show("저장 성공");
+                    MessageBox.Show("개수는 숫자값만 입력해주세요!");
                 }
                 else
                 {
-                    MessageBox.Show("저장 실패 : 데이터 중복 여부를 확인해주세요");
+                    bDao = new DAO.BomDAO();
+                    if (bDao.InsertBom(txtParentMatNo.Text, txtChildMatNo.Text, txtChildMatEA.Text))
+                    {
+                        MessageBox.Show("저장 성공!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("저장 실패 : 데이터 중복 여부를 확인해주세요");
+                    }
                 }
             }
         }

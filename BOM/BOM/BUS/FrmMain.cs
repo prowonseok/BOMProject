@@ -20,8 +20,8 @@ namespace BOM.BUS
 
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            FrmBOM fbom = new FrmBOM();
-            fbom.ShowDialog();
+            FrmBomInfo fbi = new FrmBomInfo();
+            fbi.ShowDialog();
         }
 
         private void btnManage_Click(object sender, EventArgs e)

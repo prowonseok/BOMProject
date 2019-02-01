@@ -66,12 +66,12 @@
             // dgvBom
             // 
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBom.Location = new System.Drawing.Point(46, 119);
+            this.dgvBom.Location = new System.Drawing.Point(12, 113);
             this.dgvBom.Name = "dgvBom";
             this.dgvBom.ReadOnly = true;
             this.dgvBom.RowTemplate.Height = 23;
             this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBom.Size = new System.Drawing.Size(689, 299);
+            this.dgvBom.Size = new System.Drawing.Size(847, 299);
             this.dgvBom.TabIndex = 4;
             // 
             // lblMatNo
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(919, 450);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtMatName);
             this.Controls.Add(this.txtMatNo);

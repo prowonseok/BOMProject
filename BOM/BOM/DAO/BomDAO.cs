@@ -18,6 +18,10 @@ namespace BOM.DAO
         public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
+        public List<Products> SelectPro() {
+            List<Products> proLst = new List<Products>();
+            
+        }
         public List<Materials> SelectBom4(int mat_No, string procedure) {
             List<Materials> matLst = new List<Materials>();
 

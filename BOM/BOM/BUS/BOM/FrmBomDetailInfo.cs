@@ -23,6 +23,9 @@ namespace BOM
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
 
         private Materials materials;
+        public FrmBomDetailInfo() {
+            InitializeComponent();
+        }
         public FrmBomDetailInfo(Materials materials)
         {
             this.materials = materials;
@@ -33,9 +36,14 @@ namespace BOM
         private void FrmBomDetailInfo_Load(object sender, EventArgs e)
         {
             dgvBom.DataSource = null;
-            this.txtMatNo.Text = materials.Mat_No.ToString();
-            this.txtMatName.Text = materials.Mat_Name;
-            rdoExplosion_CheckedChanged(null, null);
+            if (!string.IsNullOrEmpty(materials.Mat_No.ToString()))//txtMatNo가 비어있으면
+            {
+                this.txtMatNo.Text = materials.Mat_No.ToString();
+                this.txtMatName.Text = materials.Mat_Name;
+                rdoExplosion_CheckedChanged(null, null); 
+            }
+            dgvBom.AutoResizeColumns();
+            
         }
         
 
@@ -68,8 +76,27 @@ namespace BOM
         {
             if (rdoExplosion.Checked) //정전개시 
             {
-                bDao = new DAO.BomDAO();
-                dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
+                if (!string.IsNullOrEmpty(txtMatNo.Text))
+                {
+                    bDao = new DAO.BomDAO();
+                    dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
+                    ColumnsTranslate();
+                }
+            }
+        }
+
+        private void ColumnsTranslate()
+        {
+            if (dgvBom.Columns.Count >= 1)
+            {
+                dgvBom.Columns[0].HeaderText = "자재번호";
+                dgvBom.Columns[1].HeaderText = "타입 번호";
+                dgvBom.Columns[2].HeaderText = "제조사";
+                dgvBom.Columns[3].HeaderText = "자재 이름";
+                dgvBom.Columns[4].HeaderText = "가격";
+                dgvBom.Columns[5].HeaderText = "자재 레벨";
+                dgvBom.Columns[6].HeaderText = "수량";
+                dgvBom.Columns[7].HeaderText = "협력사 번호";
             }
         }
 
@@ -77,8 +104,12 @@ namespace BOM
         {
             if (rdoImplosion.Checked) //역전개시 
             {
-                bDao = new DAO.BomDAO();
-                dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
+                if (!string.IsNullOrEmpty(txtMatNo.Text))
+                {
+                    bDao = new DAO.BomDAO();
+                    dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
+                    ColumnsTranslate();
+                }
             }
         }
     }
