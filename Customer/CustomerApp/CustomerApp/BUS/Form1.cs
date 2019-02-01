@@ -17,9 +17,6 @@ namespace CustomerApp.BUS
             InitializeComponent();
         }
 
-        private FrmLogin loginForm = new FrmLogin(); // 로그인 폼
-        private FrmJoin JoinForm = new FrmJoin(); // 회원가입 폼
-
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen(); // 모니터 중앙
@@ -67,12 +64,12 @@ namespace CustomerApp.BUS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            loginForm.ShowDialog();
+            new FrmLogin().ShowDialog();
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            JoinForm.ShowDialog();
+            new FrmJoin().ShowDialog();
         }
     }
 }

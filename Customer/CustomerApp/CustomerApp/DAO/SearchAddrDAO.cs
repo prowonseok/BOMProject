@@ -11,13 +11,13 @@ using CustomerApp.VO;
 
 namespace CustomerApp.DAO
 {
-    class SearchAddr
+    class SearchAddrDAO
     {
         private string statusCode = string.Empty;
-        private List<SearchAddrResult> result = new List<SearchAddrResult>();
+        private List<SearchAddrVO> result = new List<SearchAddrVO>();
         public string StatusCode { get => statusCode; set => statusCode = value; }
 
-        internal List<SearchAddrResult> Search(string searchType, string searchTxt)
+        internal List<SearchAddrVO> Search(string searchType, string searchTxt)
         {
             string apiKey = ConfigurationManager.AppSettings["apiKey"];
             string apiPath = "http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd?ServiceKey=" + apiKey + "&searchSe=" + searchType + "&srchwrd=" + searchTxt;
@@ -40,7 +40,7 @@ namespace CustomerApp.DAO
 
                 foreach (XmlNode item in root)
                 {
-                    SearchAddrResult addrResult = new SearchAddrResult()
+                    SearchAddrVO addrResult = new SearchAddrVO()
                     {
                         Addr = item.SelectSingleNode("lnmAdres").InnerText,
                         Post = item.SelectSingleNode("zipNo").InnerText

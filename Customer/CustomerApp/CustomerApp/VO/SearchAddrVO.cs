@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerApp.VO
 {
-    internal class SearchAddrResult
+    internal class SearchAddrVO
     {
         private string addr;
 

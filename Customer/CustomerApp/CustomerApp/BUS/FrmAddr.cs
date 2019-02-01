@@ -32,7 +32,7 @@ namespace CustomerApp.BUS
         {
             searchType = getSearchType();
             searchTxt = txtSearch.Text.Trim();
-            SearchAddr searchAddr = new SearchAddr();
+            SearchAddrDAO searchAddr = new SearchAddrDAO();
 
             gViewResult.DataSource = searchAddr.Search(searchType, searchTxt);
 

@@ -17,8 +17,6 @@ namespace CustomerApp.BUS
             InitializeComponent();
         }
 
-        private FrmJoin joinForm = new FrmJoin();
-
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             CenterToScreen();
@@ -28,7 +26,7 @@ namespace CustomerApp.BUS
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            joinForm.ShowDialog();
+            new FrmJoin().ShowDialog();
         }
     }
 }

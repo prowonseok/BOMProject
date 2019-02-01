@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dllPackager">
+      <HintPath>dll\dllPackager.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -77,11 +80,12 @@
     <Compile Include="BUS\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAO\SearchAddr.cs" />
+    <Compile Include="DAO\CustomersDAO.cs" />
+    <Compile Include="DAO\SearchAddrDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VO\Customer.cs" />
-    <Compile Include="VO\SearchAddrResult.cs" />
+    <Compile Include="VO\CustomerVO.cs" />
+    <Compile Include="VO\SearchAddrVO.cs" />
     <EmbeddedResource Include="BUS\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

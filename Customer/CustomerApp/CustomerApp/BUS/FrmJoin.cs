@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomerApp.DAO;
+using CustomerApp.VO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +16,21 @@ namespace CustomerApp.BUS
     public partial class FrmJoin : Form
     {
         private FrmAddr addrForm;
-         
+        CustomersDAO cusDAO = new CustomersDAO();
+        List<string> cusIDList = new List<string>();
+        private string engPattern = "^[0-9A-Za-z]{6,25}$";
         private string pwPattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,12}$";
         private string emailPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]){1,}?";
         private string[] emailSite = new string[] { "naver.com", "daum.net", "nate.com", "gmail.com", "hotmail.com", "yahoo.com", "korea.com", "netian.com", "직접 입력" };
 
-        private bool boolId = true;
+        private bool boolName = false;
+        private bool boolId = false;
         private bool boolPw = false;
         private bool boolChkPw = false;
         private bool boolEmail = false;
         private bool boolPhone = false;
+
+        private bool existID = false;
 
         public FrmJoin()
         {
@@ -37,6 +44,7 @@ namespace CustomerApp.BUS
             Text = "Goodee PC 회원가입";
 
             btnSubmit.Enabled = false;
+            btnChkID.Enabled = false;
 
             txtPW.UseSystemPasswordChar = true;
             txtChkPW.UseSystemPasswordChar = true;
@@ -49,6 +57,7 @@ namespace CustomerApp.BUS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            Dispose();
             Close();
         }
 
@@ -63,7 +72,20 @@ namespace CustomerApp.BUS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            
+            CustomerVO customer = new CustomerVO()
+            {
+                ID = txtID.Text,
+                Name = txtName.Text,
+                Phone = txtPhone.Text,
+                Addr = txtAddr.Text + " " + txtAddrDetail.Text,
+                Pw = txtPW.Text,
+                Email = txtEmailID.Text + lblAt.Text + txtEmailSite.Text
+            };
+            cusDAO.InsertCus(customer);
+            MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Dispose();
+            Close();
         }
 
         private void cbxEmail_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,7 +163,7 @@ namespace CustomerApp.BUS
 
         private void GetSubmitEnable()
         {
-            if (boolId && boolPw && boolChkPw && boolEmail && boolPhone && !string.IsNullOrEmpty(txtAddr.Text)) btnSubmit.Enabled = true;
+            if (boolName && boolId && boolPw && boolChkPw && boolEmail && boolPhone && !string.IsNullOrEmpty(txtAddr.Text)) btnSubmit.Enabled = true;
             else btnSubmit.Enabled = false;
         }
 
@@ -216,9 +238,69 @@ namespace CustomerApp.BUS
             }
         }
 
+        private void GetIDState()
+        {
+            cusIDList.Clear();
+            cusIDList = cusDAO.SelectAllCusID();
+            foreach (var cusID in cusIDList)
+            {
+                if (cusID == txtID.Text)
+                {
+                    existID = true;
+                    break;
+                }
+            }
+
+            if (existID) MessageBox.Show("ID 사용 불가", "ID 중복 검사", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("ID 사용 가능", "ID 중복 검사", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblIDState.ForeColor = Color.Blue;
+                lblIDState.Text = "사용 가능한 ID입니다.";
+                boolId = true;
+            }
+        }
+
         private void txtEmailID_TextChanged(object sender, EventArgs e)
         {
             GetEmailState();
+        }
+
+        private void btnChkID_Click(object sender, EventArgs e)
+        {
+            GetIDState();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtName.Text.Length > 1 && txtName.Text.Length < 11)
+            {
+                boolName = true;
+            }
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(txtID.Text, engPattern))
+            {
+                lblIDState.ForeColor = Color.Red;
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    lblIDState.Text = "사용하실 ID를 입력해주세요.";
+                    btnChkID.Enabled = false;
+                }
+                else
+                {
+                    lblIDState.Text = "올바르지 않은 ID입니다.";
+                    btnChkID.Enabled = false;
+                }
+            }
+            else
+            {
+                lblIDState.ForeColor = Color.Red;
+                lblIDState.Text = "ID 중복 검사를 해주세요.";
+                btnChkID.Enabled = true;
+            }
         }
     }
 }
