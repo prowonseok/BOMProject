@@ -28,5 +28,10 @@ namespace CustomerApp.BUS
         {
             new FrmJoin().ShowDialog();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

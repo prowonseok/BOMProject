@@ -65,6 +65,7 @@
             this.btnLogin.TabIndex = 38;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnFindID
             // 

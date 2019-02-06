@@ -82,7 +82,7 @@ namespace CustomerApp.BUS
                 Email = txtEmailID.Text + lblAt.Text + txtEmailSite.Text
             };
             cusDAO.InsertCus(customer);
-            MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신 걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Dispose();
             Close();
