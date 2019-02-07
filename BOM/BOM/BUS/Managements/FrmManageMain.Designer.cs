@@ -28,75 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnMatAdd = new System.Windows.Forms.Button();
             this.dgvMatList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnMatAdd
             // 
-            this.button1.Location = new System.Drawing.Point(12, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(128, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 2;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.btnMatAdd.Location = new System.Drawing.Point(780, 409);
+            this.btnMatAdd.Name = "btnMatAdd";
+            this.btnMatAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnMatAdd.TabIndex = 0;
+            this.btnMatAdd.Text = "등록";
+            this.btnMatAdd.UseVisualStyleBackColor = true;
+            this.btnMatAdd.Click += new System.EventHandler(this.btnMatAdd_Click);
             // 
             // dgvMatList
             // 
             this.dgvMatList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMatList.Location = new System.Drawing.Point(93, 39);
+            this.dgvMatList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dgvMatList.Location = new System.Drawing.Point(12, 12);
             this.dgvMatList.Name = "dgvMatList";
             this.dgvMatList.RowTemplate.Height = 23;
-            this.dgvMatList.Size = new System.Drawing.Size(611, 326);
+            this.dgvMatList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMatList.Size = new System.Drawing.Size(848, 391);
             this.dgvMatList.TabIndex = 3;
+            this.dgvMatList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvMatList_CellPainting);
+            this.dgvMatList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMatList_MouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "선택";
+            this.Column1.Name = "Column1";
             // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(872, 440);
             this.Controls.Add(this.dgvMatList);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMatAdd);
             this.Name = "FrmManageMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmManageMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnMatAdd;
         private System.Windows.Forms.DataGridView dgvMatList;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
     }
 }

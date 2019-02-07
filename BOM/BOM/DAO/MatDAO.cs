@@ -30,10 +30,10 @@ namespace BOM.DAO
 
         public void DeleteMat(int mat_Type_No1, int mat_Type_No2)
         {
-            string sp = "Materials_Type_Delete_Procedure";
+            string sp = "Materials_Delete_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@mat_Type_No1", mat_Type_No1);
-            sqlParameters[1] = new SqlParameter("@mat_Type_No2", mat_Type_No2);
+            sqlParameters[0] = new SqlParameter("@mat_No1", mat_Type_No1);
+            sqlParameters[1] = new SqlParameter("@mat_No2", mat_Type_No2);
 
             con.ExecuteParameters(sp, sqlParameters);
         }
