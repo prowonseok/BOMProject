@@ -18,7 +18,7 @@ namespace CustomerApp.DAO
 
         public List<string> SelectAllCusID()
         {
-            List<string> cusIDList = new List<string>();
+            var cusIDList = new List<string>();
             string sp = "SelectAllCusID";
             var dataTable = db.ExecuteParametersDT(sp, null);
             foreach (DataRow row in dataTable.Rows)
@@ -29,11 +29,35 @@ namespace CustomerApp.DAO
             return cusIDList;
         }
 
+        public List<CustomerVO> SelectAllCus()
+        {
+            var cusList = new List<CustomerVO>();
+            string sp = "SelectAllCus";
+            var dataTable = db.ExecuteParametersDT(sp, null);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                CustomerVO customer = new CustomerVO()
+                {
+                    No = int.Parse(row["Cus_No"].ToString()),
+                    Id = row["Cus_Id"].ToString(),
+                    Pw = row["Cus_Pw"].ToString(),
+                    Name = row["Cus_Name"].ToString(),
+                    Phone = row["Cus_Phone"].ToString(),
+                    Addr = row["Cus_Addr"].ToString(),
+                    Email = row["Cus_Email"].ToString()
+                };
+
+                cusList.Add(customer);
+            }
+
+            return cusList;
+        }
+
         public void InsertCus(CustomerVO customer)
         {
             string sp = "InsertCus";
             SqlParameter[] cusInfo = new SqlParameter[6];
-            cusInfo[0] = new SqlParameter("id", customer.ID);
+            cusInfo[0] = new SqlParameter("id", customer.Id);
             cusInfo[1] = new SqlParameter("name", customer.Name);
             cusInfo[2] = new SqlParameter("phone", customer.Phone);
             cusInfo[3] = new SqlParameter("addr", customer.Addr);

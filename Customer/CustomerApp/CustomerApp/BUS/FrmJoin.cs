@@ -74,7 +74,7 @@ namespace CustomerApp.BUS
         {
             CustomerVO customer = new CustomerVO()
             {
-                ID = txtID.Text,
+                Id = txtID.Text,
                 Name = txtName.Text,
                 Phone = txtPhone.Text,
                 Addr = txtAddr.Text + " " + txtAddrDetail.Text,
@@ -299,6 +299,7 @@ namespace CustomerApp.BUS
             {
                 lblIDState.ForeColor = Color.Red;
                 lblIDState.Text = "ID 중복 검사를 해주세요.";
+                existID = false;
                 btnChkID.Enabled = true;
             }
         }

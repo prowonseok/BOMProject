@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,11 +81,31 @@
     <Compile Include="BUS\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\FrmMyPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FrmMyPage.Designer.cs">
+      <DependentUpon>FrmMyPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\FrmSearchID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FrmSearchID.Designer.cs">
+      <DependentUpon>FrmSearchID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\FrmSearchPW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FrmSearchPW.Designer.cs">
+      <DependentUpon>FrmSearchPW.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\CustomersDAO.cs" />
+    <Compile Include="DAO\ProductsDAO.cs" />
     <Compile Include="DAO\SearchAddrDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\CustomerVO.cs" />
+    <Compile Include="VO\ProductVO.cs" />
     <Compile Include="VO\SearchAddrVO.cs" />
     <EmbeddedResource Include="BUS\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

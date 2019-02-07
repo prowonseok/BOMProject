@@ -35,7 +35,7 @@
             this.btnBuy = new System.Windows.Forms.Button();
             this.btnAS = new System.Windows.Forms.Button();
             this.panTop = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblLog = new System.Windows.Forms.Label();
             this.panBottom = new System.Windows.Forms.Panel();
             this.lstView = new System.Windows.Forms.ListView();
             this.panTop.SuspendLayout();
@@ -101,7 +101,7 @@
             // 
             // panTop
             // 
-            this.panTop.Controls.Add(this.label1);
+            this.panTop.Controls.Add(this.lblLog);
             this.panTop.Controls.Add(this.lblTitle);
             this.panTop.Controls.Add(this.btnLogin);
             this.panTop.Controls.Add(this.btnJoin);
@@ -111,15 +111,15 @@
             this.panTop.Size = new System.Drawing.Size(1244, 44);
             this.panTop.TabIndex = 3;
             // 
-            // label1
+            // lblLog
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(1140, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "l";
+            this.lblLog.AutoSize = true;
+            this.lblLog.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblLog.Location = new System.Drawing.Point(1140, 13);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(13, 21);
+            this.lblLog.TabIndex = 3;
+            this.lblLog.Text = "l";
             // 
             // panBottom
             // 
@@ -168,7 +168,7 @@
         private System.Windows.Forms.Button btnBuy;
         private System.Windows.Forms.Button btnAS;
         private System.Windows.Forms.Panel panTop;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblLog;
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.ListView lstView;
     }
