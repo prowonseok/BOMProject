@@ -114,6 +114,7 @@ namespace BOM
                     if (bDao.InsertBom(txtParentMatNo.Text, txtChildMatNo.Text, txtChildMatEA.Text))
                     {
                         MessageBox.Show("저장 성공!");
+                        txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
                     }
                     else
                     {

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BOM.VO;
 using dllPackager;
 
@@ -18,9 +19,23 @@ namespace BOM.DAO
         public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
-        public List<Products> SelectPro() {
+        public List<Products> SelectPro()
+        {
             List<Products> proLst = new List<Products>();
-            
+            string sp = "Bom_Pro_View_Procedure";
+            SqlParameter[] sqlParameters = null;
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                proLst.Add(new Products {
+                    Pro_No=Int32.Parse(item["Pro_No"].ToString()),
+                    Pro_Name=item["Pro_Name"].ToString(),
+                    Mat_No=Int32.Parse(item["Mat_No"].ToString())
+                });
+            }
+            return proLst;
+
         }
         public List<Materials> SelectBom4(int mat_No, string procedure) {
             List<Materials> matLst = new List<Materials>();
@@ -70,6 +85,41 @@ namespace BOM.DAO
             }
             return matLst;
         }
+
+        public bool Selectchildnode(string child_Name)
+        {
+            string sp = "BOM_Bom_ChiledNode_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
+
+            if (con.ExecuteParametersDT(sp, sqlParameters).Rows.Count>0) 
+            {
+                return true; //자식의 자식이 있다
+            }
+            else
+            {
+                return false; //없다
+            }
+            
+        }
+        public DataTable SelectTreeview(int pro_No)
+        {
+            string sp = "BOM_Bom_Treeview_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Pro_No", pro_No);
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+            return dt;
+        }
+        public DataTable SelectChildTreeview(string child_Name) {
+            string sp = "BOM_Bom_ChildTreeview_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+            return dt;
+        }
+
         public List<Materials> SelectBom3(int mat_Level, int mat_No) {
             List<Materials> matLst = new List<Materials>();
 

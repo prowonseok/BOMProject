@@ -51,8 +51,8 @@ namespace BOM
             //Int형 데이터를 가진 컬럼은 오른쪽 정렬
             dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            
-            dgvBom.Columns[1].Width = 278;
+
+            dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvBom.Columns[0].Width = 80;
 
             dgvBom.Columns[0].HeaderText = "자재번호";

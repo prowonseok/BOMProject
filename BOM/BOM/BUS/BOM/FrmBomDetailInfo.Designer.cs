@@ -42,7 +42,7 @@
             // rdoExplosion
             // 
             this.rdoExplosion.AutoSize = true;
-            this.rdoExplosion.Location = new System.Drawing.Point(95, 87);
+            this.rdoExplosion.Location = new System.Drawing.Point(14, 87);
             this.rdoExplosion.Name = "rdoExplosion";
             this.rdoExplosion.Size = new System.Drawing.Size(59, 16);
             this.rdoExplosion.TabIndex = 2;
@@ -54,7 +54,7 @@
             // 
             this.rdoImplosion.AutoSize = true;
             this.rdoImplosion.Checked = true;
-            this.rdoImplosion.Location = new System.Drawing.Point(217, 87);
+            this.rdoImplosion.Location = new System.Drawing.Point(136, 87);
             this.rdoImplosion.Name = "rdoImplosion";
             this.rdoImplosion.Size = new System.Drawing.Size(59, 16);
             this.rdoImplosion.TabIndex = 3;
@@ -71,13 +71,13 @@
             this.dgvBom.ReadOnly = true;
             this.dgvBom.RowTemplate.Height = 23;
             this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBom.Size = new System.Drawing.Size(847, 299);
+            this.dgvBom.Size = new System.Drawing.Size(646, 299);
             this.dgvBom.TabIndex = 4;
             // 
             // lblMatNo
             // 
             this.lblMatNo.AutoSize = true;
-            this.lblMatNo.Location = new System.Drawing.Point(93, 51);
+            this.lblMatNo.Location = new System.Drawing.Point(12, 51);
             this.lblMatNo.Name = "lblMatNo";
             this.lblMatNo.Size = new System.Drawing.Size(69, 12);
             this.lblMatNo.TabIndex = 5;
@@ -86,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(351, 51);
+            this.label2.Location = new System.Drawing.Point(274, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 6;
@@ -94,7 +94,7 @@
             // 
             // txtMatNo
             // 
-            this.txtMatNo.Location = new System.Drawing.Point(168, 48);
+            this.txtMatNo.Location = new System.Drawing.Point(87, 48);
             this.txtMatNo.Name = "txtMatNo";
             this.txtMatNo.ReadOnly = true;
             this.txtMatNo.Size = new System.Drawing.Size(100, 21);
@@ -102,7 +102,7 @@
             // 
             // txtMatName
             // 
-            this.txtMatName.Location = new System.Drawing.Point(410, 48);
+            this.txtMatName.Location = new System.Drawing.Point(333, 48);
             this.txtMatName.Name = "txtMatName";
             this.txtMatName.ReadOnly = true;
             this.txtMatName.Size = new System.Drawing.Size(325, 21);
@@ -110,19 +110,19 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(660, 84);
+            this.btnSearch.Location = new System.Drawing.Point(583, 84);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "품목 찾기";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_1);
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // FrmBomDetailInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 450);
+            this.ClientSize = new System.Drawing.Size(685, 450);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtMatName);
             this.Controls.Add(this.txtMatNo);

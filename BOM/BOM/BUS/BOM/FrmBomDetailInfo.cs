@@ -23,43 +23,35 @@ namespace BOM
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
 
         private Materials materials;
+
         public FrmBomDetailInfo() {
             InitializeComponent();
         }
         public FrmBomDetailInfo(Materials materials)
         {
-            this.materials = materials;
+            this.materials =materials;
             InitializeComponent();
-            
         }
 
         private void FrmBomDetailInfo_Load(object sender, EventArgs e)
         {
             dgvBom.DataSource = null;
-            if (!string.IsNullOrEmpty(materials.Mat_No.ToString()))//txtMatNo가 비어있으면
+            try
             {
-                this.txtMatNo.Text = materials.Mat_No.ToString();
-                this.txtMatName.Text = materials.Mat_Name;
-                rdoExplosion_CheckedChanged(null, null); 
+                if (!string.IsNullOrEmpty(materials.Mat_No.ToString()))//materials.Mat_No가 비어있지 않으면
+                {
+                    this.txtMatNo.Text = materials.Mat_No.ToString();
+                    this.txtMatName.Text = materials.Mat_Name;
+                }
+            }
+            catch (NullReferenceException)
+            {
             }
             dgvBom.AutoResizeColumns();
             
         }
-        
 
         private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMatNo.Text))
-            {
-                MessageBox.Show("품목을 선택해주세요");
-            }
-            else
-            {
-
-            }
-        }
-
-        private void btnSearch_Click_1(object sender, EventArgs e)
         {
             FrmBomSearchMat mbsm = new FrmBomSearchMat();
             mbsm.Owner = this;
@@ -90,7 +82,7 @@ namespace BOM
             if (dgvBom.Columns.Count >= 1)
             {
                 dgvBom.Columns[0].HeaderText = "자재번호";
-                dgvBom.Columns[1].HeaderText = "타입 번호";
+                //dgvBom.Columns[1].HeaderText = "타입 번호";
                 dgvBom.Columns[2].HeaderText = "제조사";
                 dgvBom.Columns[3].HeaderText = "자재 이름";
                 dgvBom.Columns[4].HeaderText = "가격";
@@ -98,6 +90,9 @@ namespace BOM
                 dgvBom.Columns[6].HeaderText = "수량";
                 dgvBom.Columns[7].HeaderText = "협력사 번호";
             }
+            dgvBom.Columns.RemoveAt(1);
+            dgvBom.AutoResizeColumns();
+            dgvBom.Columns[2].Width = 174;
         }
 
         private void rdoImplosion_CheckedChanged(object sender, EventArgs e)

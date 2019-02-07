@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPName = new System.Windows.Forms.TextBox();
             this.btnSearchPro = new System.Windows.Forms.Button();
+            this.tvProMat = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // label1
@@ -42,13 +43,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "제품명 : ";
             // 
-            // textBox1
+            // txtPName
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(148, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtPName.Location = new System.Drawing.Point(88, 35);
+            this.txtPName.Name = "txtPName";
+            this.txtPName.ReadOnly = true;
+            this.txtPName.Size = new System.Drawing.Size(148, 21);
+            this.txtPName.TabIndex = 1;
             // 
             // btnSearchPro
             // 
@@ -60,15 +61,23 @@
             this.btnSearchPro.UseVisualStyleBackColor = true;
             this.btnSearchPro.Click += new System.EventHandler(this.btnSearchPro_Click);
             // 
-            // FrmMatEstimating
+            // tvProMat
+            // 
+            this.tvProMat.Location = new System.Drawing.Point(31, 62);
+            this.tvProMat.Name = "tvProMat";
+            this.tvProMat.Size = new System.Drawing.Size(315, 313);
+            this.tvProMat.TabIndex = 3;
+            // 
+            // FrmBomMatEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 398);
+            this.Controls.Add(this.tvProMat);
             this.Controls.Add(this.btnSearchPro);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPName);
             this.Controls.Add(this.label1);
-            this.Name = "FrmMatEstimating";
+            this.Name = "FrmBomMatEstimating";
             this.Text = "FrmMatEstimating";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -78,7 +87,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPName;
         private System.Windows.Forms.Button btnSearchPro;
+        private System.Windows.Forms.TreeView tvProMat;
     }
 }
