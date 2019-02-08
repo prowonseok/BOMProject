@@ -36,6 +36,10 @@
             this.txtEA = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearchTree = new System.Windows.Forms.Button();
+            this.dgvMat = new System.Windows.Forms.DataGridView();
+            this.lblMatName = new System.Windows.Forms.Label();
+            this.lblEA = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,6 +75,7 @@
             this.tvProMat.Name = "tvProMat";
             this.tvProMat.Size = new System.Drawing.Size(315, 313);
             this.tvProMat.TabIndex = 3;
+            this.tvProMat.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvProMat_NodeMouseDoubleClick);
             // 
             // label2
             // 
@@ -108,11 +113,42 @@
             this.btnSearchTree.UseVisualStyleBackColor = true;
             this.btnSearchTree.Click += new System.EventHandler(this.btnSearchTree_Click);
             // 
+            // dgvMat
+            // 
+            this.dgvMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMat.Location = new System.Drawing.Point(365, 33);
+            this.dgvMat.Name = "dgvMat";
+            this.dgvMat.ReadOnly = true;
+            this.dgvMat.RowTemplate.Height = 23;
+            this.dgvMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMat.Size = new System.Drawing.Size(406, 421);
+            this.dgvMat.TabIndex = 8;
+            // 
+            // lblMatName
+            // 
+            this.lblMatName.AutoSize = true;
+            this.lblMatName.Location = new System.Drawing.Point(29, 471);
+            this.lblMatName.Name = "lblMatName";
+            this.lblMatName.Size = new System.Drawing.Size(0, 12);
+            this.lblMatName.TabIndex = 9;
+            // 
+            // lblEA
+            // 
+            this.lblEA.AutoSize = true;
+            this.lblEA.Location = new System.Drawing.Point(213, 471);
+            this.lblEA.Name = "lblEA";
+            this.lblEA.Size = new System.Drawing.Size(12, 12);
+            this.lblEA.TabIndex = 10;
+            this.lblEA.Text = "z";
+            // 
             // FrmBomMatEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 476);
+            this.ClientSize = new System.Drawing.Size(793, 519);
+            this.Controls.Add(this.lblEA);
+            this.Controls.Add(this.lblMatName);
+            this.Controls.Add(this.dgvMat);
             this.Controls.Add(this.btnSearchTree);
             this.Controls.Add(this.txtEA);
             this.Controls.Add(this.label3);
@@ -123,6 +159,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmBomMatEstimating";
             this.Text = "FrmMatEstimating";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +175,8 @@
         private System.Windows.Forms.TextBox txtEA;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearchTree;
+        private System.Windows.Forms.DataGridView dgvMat;
+        private System.Windows.Forms.Label lblMatName;
+        private System.Windows.Forms.Label lblEA;
     }
 }
