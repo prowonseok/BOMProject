@@ -32,6 +32,10 @@
             this.txtPName = new System.Windows.Forms.TextBox();
             this.btnSearchPro = new System.Windows.Forms.Button();
             this.tvProMat = new System.Windows.Forms.TreeView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtEA = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSearchTree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,16 +67,56 @@
             // 
             // tvProMat
             // 
-            this.tvProMat.Location = new System.Drawing.Point(31, 62);
+            this.tvProMat.Location = new System.Drawing.Point(31, 141);
             this.tvProMat.Name = "tvProMat";
             this.tvProMat.Size = new System.Drawing.Size(315, 313);
             this.tvProMat.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(99, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 35);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "소  요  량";
+            // 
+            // txtEA
+            // 
+            this.txtEA.Location = new System.Drawing.Point(88, 69);
+            this.txtEA.Name = "txtEA";
+            this.txtEA.Size = new System.Drawing.Size(148, 21);
+            this.txtEA.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(41, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "개수 : ";
+            // 
+            // btnSearchTree
+            // 
+            this.btnSearchTree.Location = new System.Drawing.Point(271, 67);
+            this.btnSearchTree.Name = "btnSearchTree";
+            this.btnSearchTree.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchTree.TabIndex = 7;
+            this.btnSearchTree.Text = "검색";
+            this.btnSearchTree.UseVisualStyleBackColor = true;
+            this.btnSearchTree.Click += new System.EventHandler(this.btnSearchTree_Click);
             // 
             // FrmBomMatEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 398);
+            this.ClientSize = new System.Drawing.Size(923, 476);
+            this.Controls.Add(this.btnSearchTree);
+            this.Controls.Add(this.txtEA);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tvProMat);
             this.Controls.Add(this.btnSearchPro);
             this.Controls.Add(this.txtPName);
@@ -90,5 +134,9 @@
         private System.Windows.Forms.TextBox txtPName;
         private System.Windows.Forms.Button btnSearchPro;
         private System.Windows.Forms.TreeView tvProMat;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtEA;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearchTree;
     }
 }

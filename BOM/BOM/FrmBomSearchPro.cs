@@ -24,6 +24,21 @@ namespace BOM
         {
             bDao = new DAO.BomDAO();
             dgvProInfo.DataSource = bDao.SelectPro();
+            dgvProInfo.Columns.Remove("Pro_Spec");
+            dgvProInfo.Columns.Remove("Pro_Img_No");
+            dgvProInfo.Columns.Remove("Pro_ChangepriceDate");
+
+            dgvProInfo.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvProInfo.Columns[0].HeaderText = "제품 번호";
+            dgvProInfo.Columns[1].HeaderText = "자재 번호";
+            dgvProInfo.Columns[2].HeaderText = "제품 가격";
+            dgvProInfo.Columns[2].DefaultCellStyle.Format = "###,###,###";
+            dgvProInfo.Columns[3].HeaderText = "제품 명";
+
+            dgvProInfo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProInfo.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

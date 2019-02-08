@@ -41,12 +41,12 @@
             this.dgvProInfo.ReadOnly = true;
             this.dgvProInfo.RowTemplate.Height = 23;
             this.dgvProInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProInfo.Size = new System.Drawing.Size(663, 356);
+            this.dgvProInfo.Size = new System.Drawing.Size(442, 356);
             this.dgvProInfo.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(618, 415);
+            this.btnAdd.Location = new System.Drawing.Point(397, 415);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(494, 450);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvProInfo);
             this.Name = "FrmBomSearchPro";

@@ -72,27 +72,34 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
-                    ColumnsTranslate();
+                    DisplayGridview();
                 }
             }
         }
 
-        private void ColumnsTranslate()
+        private void DisplayGridview()
         {
             if (dgvBom.Columns.Count >= 1)
             {
+                dgvBom.Columns.RemoveAt(1);
+                dgvBom.Columns.RemoveAt(1);
+                dgvBom.Columns.RemoveAt(4);
+                dgvBom.Columns.RemoveAt(4);
                 dgvBom.Columns[0].HeaderText = "자재번호";
-                //dgvBom.Columns[1].HeaderText = "타입 번호";
-                dgvBom.Columns[2].HeaderText = "제조사";
-                dgvBom.Columns[3].HeaderText = "자재 이름";
-                dgvBom.Columns[4].HeaderText = "가격";
-                dgvBom.Columns[5].HeaderText = "자재 레벨";
-                dgvBom.Columns[6].HeaderText = "수량";
-                dgvBom.Columns[7].HeaderText = "협력사 번호";
+                dgvBom.Columns[1].HeaderText = "자재 이름";
+                dgvBom.Columns[2].HeaderText = "가격(원)";
+                dgvBom.Columns[2].DefaultCellStyle.Format = "###,###,###";
+                dgvBom.Columns[3].HeaderText = "자재 레벨";
             }
-            dgvBom.Columns.RemoveAt(1);
+            
             dgvBom.AutoResizeColumns();
-            dgvBom.Columns[2].Width = 174;
+            dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvBom.Columns[3].HeaderText = "자재 레벨";
+
+            dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvBom.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void rdoImplosion_CheckedChanged(object sender, EventArgs e)
@@ -103,7 +110,7 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
-                    ColumnsTranslate();
+                    DisplayGridview();
                 }
             }
         }

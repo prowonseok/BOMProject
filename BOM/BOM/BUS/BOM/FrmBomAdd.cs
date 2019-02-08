@@ -110,15 +110,22 @@ namespace BOM
                 }
                 else
                 {
-                    bDao = new DAO.BomDAO();
-                    if (bDao.InsertBom(txtParentMatNo.Text, txtChildMatNo.Text, txtChildMatEA.Text))
+                    if (txtParentMatNo.Text==txtChildMatNo.Text)
                     {
-                        MessageBox.Show("저장 성공!");
-                        txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
+                        MessageBox.Show("모품목과 자품목이 같은 품목이면 등록될 수 없습니다!");
                     }
                     else
                     {
-                        MessageBox.Show("저장 실패 : 데이터 중복 여부를 확인해주세요");
+                        bDao = new DAO.BomDAO();
+                        if (bDao.InsertBom(txtParentMatNo.Text, txtChildMatNo.Text, txtChildMatEA.Text))
+                        {
+                            MessageBox.Show("저장 성공!");
+                            txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("저장 실패 : 데이터 중복 여부를 확인해주세요");
+                        } 
                     }
                 }
             }

@@ -42,12 +42,12 @@
             this.dgvAllMat.ReadOnly = true;
             this.dgvAllMat.RowTemplate.Height = 23;
             this.dgvAllMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllMat.Size = new System.Drawing.Size(739, 370);
+            this.dgvAllMat.Size = new System.Drawing.Size(498, 370);
             this.dgvAllMat.TabIndex = 0;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(257, 415);
+            this.btnCancel.Location = new System.Drawing.Point(96, 412);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(458, 415);
+            this.btnAdd.Location = new System.Drawing.Point(297, 412);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 476);
+            this.ClientSize = new System.Drawing.Size(531, 476);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvAllMat);

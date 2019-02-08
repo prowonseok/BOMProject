@@ -34,21 +34,41 @@ namespace BOM
                 //모품목은 Level 0값은 뜨지 않도록 설정
                 bDao = new DAO.BomDAO();
                 dgvAllMat.DataSource = bDao.SelectBom2();
+                DisplayGridview();
+
             }
             else //자품목을 찾을 때
             {
                 //자품목은 모품목보다 Level값이 같거나 작은 값만 뜨도록 설정, 같은 품목은 안뜨도록
                 bDao = new DAO.BomDAO();
                 dgvAllMat.DataSource = bDao.SelectBom3(mat_Level, mat_No);
+                DisplayGridview();
             }
+        }
+
+        private void DisplayGridview()
+        {
+            dgvAllMat.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvAllMat.Columns.RemoveAt(7);
+            dgvAllMat.Columns.RemoveAt(6);
+            dgvAllMat.Columns.RemoveAt(4);
+            dgvAllMat.Columns.RemoveAt(2);
+            dgvAllMat.Columns.RemoveAt(1);
+
+            dgvAllMat.Columns[0].HeaderText = "품목 번호";
+            dgvAllMat.Columns[1].HeaderText = "품목 명";
+            dgvAllMat.Columns[2].HeaderText = "품목 레벨";
+
+            dgvAllMat.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvAllMat.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmBomAdd fba = (FrmBomAdd)Owner;
             fba.MatNo = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[0].Value.ToString());      //품목 번호
-            fba.MatName = dgvAllMat.SelectedRows[0].Cells[3].Value.ToString();                 //품목 명
-            fba.MatLevel = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[5].Value.ToString());   //품목 레벨
+            fba.MatName = dgvAllMat.SelectedRows[0].Cells[1].Value.ToString();                 //품목 명
+            fba.MatLevel = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[2].Value.ToString());   //품목 레벨
             fba.CanOrAdd = true;
             this.Close();
         }
