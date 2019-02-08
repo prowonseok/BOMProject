@@ -46,8 +46,9 @@ namespace BOM.BUS
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
-            Test();
+            
+            Test();      
+            
         }
 
         private void Test()
@@ -65,14 +66,21 @@ namespace BOM.BUS
             }
             
             dgvMainSales.DataSource = salesList;
-            dgvMainSales.AutoResizeColumns();
+            //dgvMainSales.AutoResizeColumns();
+            dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMainSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;           
         }
 
         private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
             SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
             ssd.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddreesForm ad = new AddreesForm();
+            ad.Show();
         }
     }
 }
