@@ -14,6 +14,7 @@ namespace BOM
     public partial class FrmBomMatEstimating : Form
     {
         DAO.BomDAO bDao;
+        TreeNode tnode;
         private Products products;
         private bool canOrAdd;
         internal Products Products { get => products; set => products = value; }
@@ -74,8 +75,10 @@ namespace BOM
                 {
                     if (bDao.Selectchildnode(item2["Child_Name"].ToString()))//if 자식노드가 자식노드를 가지고 있을 때
                     {
+                        tnode = cNode;
                         cNode = chNode;
                         CNode(bDao.SelectChildTreeview(item2["Child_Name"].ToString()), cNode);
+                        cNode = tnode;
                     }
                 }
             }
