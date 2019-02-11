@@ -31,6 +31,7 @@
             this.btnMatAdd = new System.Windows.Forms.Button();
             this.dgvMatList = new System.Windows.Forms.DataGridView();
             this.checkCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,10 @@
             this.checkCol.HeaderText = "선택";
             this.checkCol.Name = "checkCol";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -83,5 +88,6 @@
         private System.Windows.Forms.Button btnMatAdd;
         private System.Windows.Forms.DataGridView dgvMatList;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkCol;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

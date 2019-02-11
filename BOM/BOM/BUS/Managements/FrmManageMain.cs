@@ -124,8 +124,45 @@ namespace BOM.BUS.Managements
 
         private void btnMatAdd_Click(object sender, EventArgs e)
         {
-            FrmMatAdd fma = new FrmMatAdd();
+            List<string>[] listArray = new List<string>[2];
+            List<string> matTypeList = new List<string>();
+            List<string> matOffererList = new List<string>();
+            DataTable dtType = md.SelectMat("Materials_Type_Select_Procedure");
+            DataTable dtOfferer = md.SelectMat("Offerer_Select_Procedure");
+            foreach (DataRow item in dtType.Rows)
+            {
+                matTypeList.Add(item["Mat_Type_Category"].ToString());
+            }
+            foreach (DataRow item in dtOfferer.Rows)
+            {
+                matOffererList.Add(item["Off_Name"].ToString());
+            }
+            listArray[0] = matTypeList;
+            listArray[1] = matOffererList;
+            FrmMatAdd fma = new FrmMatAdd(listArray);
             fma.ShowDialog();
+            //string openstrFilename;
+
+            //openFileDialog1.Title = "이미지 읽기";
+            //openFileDialog1.Filter = "Bitmap File(*.bmp)|*.bmp|JPEG File(*.jpg)|*.jpg|Png(*.png)|*.png";
+
+            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    openstrFilename = openFileDialog1.FileName;
+            //    Image image = Image.FromFile(openstrFilename);
+            //    FileStream fs = new FileStream(openFileDialog1.FileNames[0], FileMode.OpenOrCreate, FileAccess.Read);
+
+            //    System.Data.SqlClient.SqlParameter[] sqlParameter = new System.Data.SqlClient.SqlParameter[1];
+            //    byte[] imageArr = new byte[fs.Length];
+            //    fs.Read(imageArr, 0, Convert.ToInt32(fs.Length));
+            //    sqlParameter[0] = new System.Data.SqlClient.SqlParameter("@pro_Img_Image", imageArr);
+
+            //    fs.Close();
+
+            //    dllPackager.DBProcessor dbp = new dllPackager.DBProcessor("Data Source=finalprojectbom.database.windows.net;Initial Catalog=FinalProject;User ID=finalproject;Password=Qwe123!@#");
+            //    dbp.ExecuteParameters("Products_Image_Insert_Procedure", sqlParameter);
+            //    MessageBox.Show("성공");
+            //}
         }
     }
 }
