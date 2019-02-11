@@ -87,11 +87,11 @@
     <Compile Include="BUS\FrmMyPage.Designer.cs">
       <DependentUpon>FrmMyPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\FrmSearchID.cs">
+    <Compile Include="BUS\FrmSearchIDPW.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BUS\FrmSearchID.Designer.cs">
-      <DependentUpon>FrmSearchID.cs</DependentUpon>
+    <Compile Include="BUS\FrmSearchIDPW.Designer.cs">
+      <DependentUpon>FrmSearchIDPW.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\FrmSearchPW.cs">
       <SubType>Form</SubType>
@@ -118,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FrmMyPage.resx">
+      <DependentUpon>FrmMyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FrmSearchIDPW.resx">
+      <DependentUpon>FrmSearchIDPW.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

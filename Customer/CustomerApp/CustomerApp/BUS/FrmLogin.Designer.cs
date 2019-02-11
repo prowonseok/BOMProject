@@ -56,6 +56,7 @@
             this.btnFindPW.TabIndex = 39;
             this.btnFindPW.Text = "패스워드 찾기";
             this.btnFindPW.UseVisualStyleBackColor = true;
+            this.btnFindPW.Click += new System.EventHandler(this.btnFindPW_Click);
             // 
             // btnLogin
             // 
@@ -76,6 +77,7 @@
             this.btnFindID.TabIndex = 37;
             this.btnFindID.Text = "아이디 찾기";
             this.btnFindID.UseVisualStyleBackColor = true;
+            this.btnFindID.Click += new System.EventHandler(this.btnFindID_Click);
             // 
             // txtPW
             // 

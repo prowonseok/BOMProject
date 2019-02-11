@@ -65,5 +65,18 @@ namespace CustomerApp.DAO
             cusInfo[5] = new SqlParameter("email", customer.Email);
             db.ExecuteParameters(sp, cusInfo);
         }
+
+        public void UpdateCus(CustomerVO customer)
+        {
+            string sp = "UpdateCus";
+            SqlParameter[] cusInfo = new SqlParameter[6];
+            cusInfo[0] = new SqlParameter("id", customer.Id);
+            cusInfo[1] = new SqlParameter("name", customer.Name);
+            cusInfo[2] = new SqlParameter("phone", customer.Phone);
+            cusInfo[3] = new SqlParameter("addr", customer.Addr);
+            cusInfo[4] = new SqlParameter("pw", customer.Pw);
+            cusInfo[5] = new SqlParameter("email", customer.Email);
+            db.ExecuteParameters(sp, cusInfo);
+        }
     }
 }

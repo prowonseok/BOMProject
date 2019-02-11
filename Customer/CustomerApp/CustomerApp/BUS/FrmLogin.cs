@@ -15,6 +15,7 @@ namespace CustomerApp.BUS
     public partial class FrmLogin : Form
     {
         DialogResult result;
+        List<CustomerVO> cusList;
 
         private CustomerVO customer;
 
@@ -52,6 +53,9 @@ namespace CustomerApp.BUS
             Text = "Goodee PC 로그인";
 
             txtPW.UseSystemPasswordChar = true;
+
+            var customerDAO = new CustomersDAO();
+            cusList = customerDAO.SelectAllCus();
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
@@ -63,8 +67,7 @@ namespace CustomerApp.BUS
         {
             cusIDExist = false;
             cusPWExist = false;
-            var customerDAO = new CustomersDAO();
-            List<CustomerVO> cusList = customerDAO.SelectAllCus();
+            
             foreach (var customer in cusList)
             {
                 if (customer.Id == txtID.Text)
@@ -116,6 +119,16 @@ namespace CustomerApp.BUS
                 }
                 else btnLogin_Click(null, null);
             }
+        }
+
+        private void btnFindID_Click(object sender, EventArgs e)
+        {
+            new FrmSearchIDPW(cusList, btnFindID.Text).ShowDialog();
+        }
+
+        private void btnFindPW_Click(object sender, EventArgs e)
+        {
+            new FrmSearchIDPW(cusList, btnFindPW.Text).ShowDialog();
         }
     }
 }

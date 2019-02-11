@@ -42,6 +42,10 @@ CREATE TABLE [dbo].[Employees]
 ALTER TABLE Materials ADD CONSTRAINT Mat_Type_No_FK FOREIGN KEY(Mat_Type_No) REFERENCES Materials_Type (Mat_Type_No);
 ALTER TABLE Materials ADD CONSTRAINT Off_No_FK FOREIGN KEY(Off_No) REFERENCES Offerer (Off_No);
 
+-- 고객 핸드폰, 아이디 컬럼 유니크 제약조건 추가
+ALTER TABLE customers ADD CONSTRAINT Cus_Phone_Unique UNIQUE (Cus_Phone);
+ALTER TABLE customers ADD CONSTRAINT Cus_ID_Unique UNIQUE(Cus_ID);
+
 -- 저장 프로시저
 -- 회원 아이디 목록 가져오기 (ID 중복검사를 위한)
 CREATE PROCEDURE [dbo].[SelectAllCusID]

@@ -15,6 +15,8 @@ namespace CustomerApp.BUS
 {
     public partial class Form1 : Form
     {
+        FrmLogin loginForm;
+
         public Form1()
         {
             InitializeComponent();
@@ -90,7 +92,7 @@ namespace CustomerApp.BUS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FrmLogin loginForm = new FrmLogin();
+            loginForm = new FrmLogin();
             loginForm.ShowDialog();
 
             if (loginForm.CusIDExist && loginForm.CusPWExist)
@@ -128,16 +130,14 @@ namespace CustomerApp.BUS
 
         private void BtnLogOut_Click(object sender, EventArgs e)
         {
-            // 리소스 해제 해야함
-            //new Form1().Show();
-            //Close();
-            //Dispose(true);
-            //GC.ReRegisterForFinalize(this);
+            var result = MessageBox.Show("로그아웃 하시면 프로그램이 종료됩니다. \r\n로그아웃 하시겠습니까?", "로그아웃", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result != DialogResult.Cancel) Application.Exit();
+            else return;
         }
 
         private void BtnMyPage_Click(object sender, EventArgs e)
         {
-            new FrmMyPage().ShowDialog();
+            new FrmMyPage(loginForm.Customer).ShowDialog();
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
