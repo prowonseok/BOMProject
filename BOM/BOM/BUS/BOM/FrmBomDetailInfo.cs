@@ -27,10 +27,9 @@ namespace BOM
         public FrmBomDetailInfo() {
             InitializeComponent();
         }
-        public FrmBomDetailInfo(Materials materials)
+        public FrmBomDetailInfo(Materials materials):this()
         {
             this.materials =materials;
-            InitializeComponent();
         }
 
         private void FrmBomDetailInfo_Load(object sender, EventArgs e)

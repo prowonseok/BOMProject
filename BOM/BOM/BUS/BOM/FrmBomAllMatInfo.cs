@@ -16,9 +16,8 @@ namespace BOM
         DAO.BomDAO bDao;
         int mat_Level=9999;//mat_Level의 값이 없을 때
         int mat_No;
-        public FrmBomAllMatInfo(int mat_Level, int mat_No)
+        public FrmBomAllMatInfo(int mat_Level, int mat_No):this()
         {
-            InitializeComponent();
             this.mat_Level = mat_Level;
             this.mat_No = mat_No;
         }

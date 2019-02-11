@@ -30,10 +30,9 @@ namespace BOM
             InitializeComponent();
         }
 
-        public FrmBomAdd(Materials materials)
+        public FrmBomAdd(Materials materials) : this()
         {
             this.materials = materials;
-            InitializeComponent();
         }
 
         private void btnPMatSearch_Click(object sender, EventArgs e)
