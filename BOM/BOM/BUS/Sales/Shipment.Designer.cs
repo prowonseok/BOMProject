@@ -37,8 +37,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblAddr = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,6 +49,10 @@
             this.lblShipDate = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblOrderNo = new System.Windows.Forms.Label();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnPath = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,24 +136,6 @@
             this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 9;
             this.label9.Text = "확인";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(316, 419);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 12);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "label10";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(405, 419);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 12);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "label11";
             // 
             // button1
             // 
@@ -261,11 +245,37 @@
             this.lblOrderNo.TabIndex = 23;
             this.lblOrderNo.Text = "imsi\\";
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(522, 414);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(66, 23);
+            this.btnConfirm.TabIndex = 24;
+            this.btnConfirm.Text = "출하";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnPath
+            // 
+            this.btnPath.Location = new System.Drawing.Point(450, 415);
+            this.btnPath.Name = "btnPath";
+            this.btnPath.Size = new System.Drawing.Size(66, 23);
+            this.btnPath.TabIndex = 25;
+            this.btnPath.Text = "경로 지정";
+            this.btnPath.UseVisualStyleBackColor = true;
+            this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Shipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 450);
+            this.Controls.Add(this.btnPath);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lblOrderNo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblShipDate);
@@ -278,8 +288,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblAddr);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
@@ -309,8 +317,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblAddr;
         private System.Windows.Forms.Button button2;
@@ -323,5 +329,9 @@
         private System.Windows.Forms.Label lblShipDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblOrderNo;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnPath;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

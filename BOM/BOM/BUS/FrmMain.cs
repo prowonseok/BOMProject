@@ -62,7 +62,7 @@ namespace BOM.BUS
                     CusID = item["Cus_ID"].ToString(),
                     OrderContants = item["Pro_Name"].ToString() + ", " + item["Cus_Order_EA"].ToString() + " 개",
                     OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
-                });
+                });                
             }
             
             dgvMainSales.DataSource = salesList;

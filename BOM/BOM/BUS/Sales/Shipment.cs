@@ -1,4 +1,5 @@
-﻿using BOM.VO;
+﻿using BOM.DAO;
+using BOM.VO;
 using dllPackager;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace BOM.BUS.Sales
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         public Label Lbltest { get { return lblAddr; } set { lblAddr = value; } }
         List<ShipmentVO> ProList;
+        
         public Shipment()
         {
 
@@ -29,7 +31,7 @@ namespace BOM.BUS.Sales
         {
             InitializeComponent();
             this.orderNo = orderNo;
-            ProList = new List<ShipmentVO>();
+            ProList = new List<ShipmentVO>();            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,7 +64,8 @@ namespace BOM.BUS.Sales
                     ProEa = Int32.Parse(item["Cus_Order_EA"].ToString()),
                     ProPrice = Int32.Parse(item["Cus_Order_Price"].ToString()),
                     ResidualAmount = Int32.Parse(item["RemainingAmount"].ToString())
-                });                
+                    
+                });                 
             }
             lblShipDate.Text = DateTime.Now.AddDays(2).ToShortDateString();
             dgvProList.DataSource = ProList;
@@ -143,6 +146,37 @@ namespace BOM.BUS.Sales
             this.Close();
         }
 
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (txtconf.Text =="")
+            {
+                MessageBox.Show("확인란에 서명하세요");
+            }
+            else
+            {
+                List<string> OrderInfoList = new List<string>();
+                OrderInfoList.Add(lblOrderNo.Text);
+                OrderInfoList.Add(lblShipDate.Text);
+                OrderInfoList.Add(lblCus.Text);
+                OrderInfoList.Add(lblEmp.Text);
+                OrderInfoList.Add(lblPhone.Text);
+                OrderInfoList.Add(lblAddr.Text);
+                
+                string excelStr = new SalesExcelDao().WriteExcelData(OrderInfoList , ProList, fIlePath);
+                MessageBox.Show(excelStr);
+            }
+        }
+        string fIlePath = null;
+        private void btnPath_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.DefaultExt = ".xlsx";      
+            saveFileDialog1.Filter = "Excel|*.xlsx";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                fIlePath = saveFileDialog1.FileName;
+                MessageBox.Show(fIlePath);
+            }
+        }
     }
     public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
     {
