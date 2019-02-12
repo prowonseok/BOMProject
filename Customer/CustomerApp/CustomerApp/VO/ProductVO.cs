@@ -49,5 +49,12 @@ namespace CustomerApp.VO
             set { image = value; }
         }
 
+        private List<string> matList;
+
+        public List<string> MatList
+        {
+            get { return matList; }
+            set { matList = value; }
+        }
     }
 }

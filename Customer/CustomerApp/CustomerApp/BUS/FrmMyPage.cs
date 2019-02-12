@@ -14,6 +14,7 @@ namespace CustomerApp.BUS
     public partial class FrmMyPage : Form
     {
         CustomerVO customer;
+        FrmJoin joinForm;
 
         public FrmMyPage(CustomerVO customer)
         {
@@ -23,6 +24,8 @@ namespace CustomerApp.BUS
 
         private void FrmMyPage_Load(object sender, EventArgs e)
         {
+            Text = "Goodee PC 마이페이지";
+
             CenterToScreen();
 
             txtAddr.ReadOnly = true;
@@ -45,7 +48,14 @@ namespace CustomerApp.BUS
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            new FrmJoin(customer).ShowDialog();
+            joinForm = new FrmJoin(customer);
+            var result = joinForm.ShowDialog();
+            if (result == DialogResult.Cancel && joinForm.Customer != null)
+            {
+                customer = joinForm.Customer;
+                OnLoad(null);
+            }
+            else return;
         }
     }
 }

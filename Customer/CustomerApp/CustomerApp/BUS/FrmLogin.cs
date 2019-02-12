@@ -55,7 +55,7 @@ namespace CustomerApp.BUS
             txtPW.UseSystemPasswordChar = true;
 
             var customerDAO = new CustomersDAO();
-            cusList = customerDAO.SelectAllCus();
+            cusList = customerDAO.SelectAll();
         }
 
         private void btnJoin_Click(object sender, EventArgs e)

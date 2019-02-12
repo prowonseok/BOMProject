@@ -69,9 +69,29 @@ CREATE PROCEDURE [dbo].[SelectAllCus]
 AS
 	SELECT Cus_No, Cus_ID, Cus_PW, Cus_Name, Cus_Phone, Cus_Addr, Cus_Email FROM Customers;
 
+-- 회원 정보수정
+CREATE PROCEDURE [dbo].[UpdateCus]
+	@no int,
+	@addr nvarchar(200),
+	@pw nvarchar(50),
+	@email nvarchar(max),
+	@phone nvarchar(15)
+AS
+	update Customers set Cus_Addr = @addr, Cus_PW = @pw, Cus_Email = @email, Cus_Phone = @phone
+	where Cus_ID = @id;
+
 -- 모든 상품 정보 가져오기
 CREATE PROCEDURE [dbo].[SelectAllPro]
 AS
 	SELECT p.Pro_No, p.Mat_No, p.Pro_Price, p.Pro_Name, [pi].Pro_Img_Image
 	from Products p inner join Products_Image [pi]
 	on p.Pro_Img_No = [pi].Pro_Img_No;
+
+-- 상품 (1개) 상세 정보(부품) 가져오기
+CREATE PROCEDURE [dbo].[SelectProDetail]
+	@Pro_No int
+AS
+	SELECT [mat].Mat_Name from 
+	Materials mat inner join BOM bo on bo.BOM_ChildNo = mat.Mat_No 
+		      inner join Products pro on pro.Mat_No = bo.BOM_ParentNo
+	where Pro_No = @Pro_No;

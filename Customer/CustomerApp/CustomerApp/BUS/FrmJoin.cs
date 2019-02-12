@@ -2,7 +2,9 @@
 using CustomerApp.VO;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,14 +17,16 @@ namespace CustomerApp.BUS
 {
     public partial class FrmJoin : Form
     {
-        CustomerVO customer;
+        private CustomerVO customer;
         private FrmAddr addrForm;
-        CustomersDAO cusDAO = new CustomersDAO();
-        List<string> cusIDList = new List<string>();
-        private string engPattern = "^[0-9A-Za-z]{6,25}$";
-        private string pwPattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,12}$";
-        private string emailPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]){1,}?";
-        private string[] emailSite = new string[] { "naver.com", "daum.net", "nate.com", "gmail.com", "hotmail.com", "yahoo.com", "korea.com", "netian.com", "직접 입력" };
+        private CustomersDAO cusDAO = new CustomersDAO();
+        private List<CustomerVO> cusList = new List<CustomerVO>();
+
+        private static string engPattern = ConfigurationManager.AppSettings["engPattern"];
+        private static string pwPattern = ConfigurationManager.AppSettings["pwPattern"];
+        private static string emailPattern = ConfigurationManager.AppSettings["emailPattern"];
+        private static string[] emailSite = new string[] 
+        { "naver.com", "daum.net", "nate.com", "gmail.com", "hotmail.com", "yahoo.com", "korea.com", "netian.com", "직접 입력" };
 
         private bool boolName = false;
         private bool boolId = false;
@@ -30,8 +34,13 @@ namespace CustomerApp.BUS
         private bool boolChkPw = false;
         private bool boolEmail = false;
         private bool boolPhone = false;
-
         private bool existID = false;
+
+        public CustomerVO Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
 
         public FrmJoin()
         {
@@ -47,30 +56,34 @@ namespace CustomerApp.BUS
         {
             CenterToScreen();
 
+            cusList.Clear();
+            cusList = cusDAO.SelectAll();
+
             cbxEmail.Items.AddRange(emailSite);
             txtPW.UseSystemPasswordChar = true;
             txtChkPW.UseSystemPasswordChar = true;
             txtAddr.ReadOnly = true;
+            txtAddrDetail.ReadOnly = true;
+            txtEmailSite.ReadOnly = true;
 
             if (customer != null)
             {
                 Text = lblTitle.Text = "Goodee PC 정보수정";
-
                 txtName.Text = customer.Name;
+                txtName.ReadOnly = true;
                 txtPhone.Text = customer.Phone;
                 txtEmailID.Text = customer.Email.Substring(0, customer.Email.IndexOf('@'));
                 txtEmailSite.Text = customer.Email.Remove(0, txtEmailID.Text.Length + 1);
                 txtAddr.Text = customer.Addr;
-                txtAddrDetail.ReadOnly = true;
-                btnSubmit.Text = "수정하기";
                 txtID.Text = customer.Id;
+                txtID.ReadOnly = true;
+                btnSubmit.Text = "수정하기";
             }
             else
             {
                 Text = "Goodee PC 회원가입";
                 btnSubmit.Enabled = false;
                 btnChkID.Enabled = false;
-                txtEmailSite.ReadOnly = true;
             }
         }
 
@@ -86,6 +99,8 @@ namespace CustomerApp.BUS
             addrForm = new FrmAddr();
             addrForm.ShowDialog();
             txtAddr.Text = addrForm.ChoiceAddr;
+            if (addrForm.ChoiceState) txtAddrDetail.ReadOnly = false;
+            else txtAddrDetail.ReadOnly = true;
             txtAddrDetail.Focus();
         }
 
@@ -102,14 +117,14 @@ namespace CustomerApp.BUS
             };
             if (btnSubmit.Text != "수정하기")
             {
-                cusDAO.InsertCus(customer);
+                cusDAO.Insert(customer);
                 MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신 걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             }
             else
             {
-                // cusDAO.update
+                cusDAO.Update(customer);
+                MessageBox.Show("정보수정이 정상적으로 완료되었습니다.", "정보 수정 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
             Dispose();
             Close();
         }
@@ -266,11 +281,10 @@ namespace CustomerApp.BUS
 
         private void GetIDState()
         {
-            cusIDList.Clear();
-            cusIDList = cusDAO.SelectAllCusID();
-            foreach (var cusID in cusIDList)
+            
+            foreach (var customer in cusList)
             {
-                if (cusID == txtID.Text)
+                if (customer.Id == txtID.Text)
                 {
                     existID = true;
                     break;
