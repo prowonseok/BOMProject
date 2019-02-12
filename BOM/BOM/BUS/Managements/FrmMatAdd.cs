@@ -46,11 +46,6 @@ namespace BOM.BUS.Managements
 
         }
 
-        private void cbManufac_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tbMatNo_TextChanged(object sender, EventArgs e)
         {
             try
@@ -63,10 +58,49 @@ namespace BOM.BUS.Managements
             }
             catch (Exception)
             {
-
-                MessageBox.Show("자재 번호에는 정수만 입력 가능합니다.");
+                MessageBox.Show("자재 번호는 정수만 입력 가능합니다.");
                 tbMatNo.Clear();
                 return;
+            }
+        }
+
+        private void tbCost_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 188)
+            {
+                MessageBox.Show("단가는 정수만 입력 가능합니다.");
+                tbCost.Clear();
+            }
+        }
+
+        private void tbCost_TextChanged(object sender, EventArgs e)
+        {
+            string[] sp = tbCost.Text.Split(',');
+            if (sp[sp.Length - 1].Length >= 4)
+            {
+                tbCost.Text = tbCost.Text.Insert(tbCost.Text.Length - 1, ",");
+                tbCost.Select(tbCost.Text.Length, 0);
+            }
+            string tb = tbCost.Text.Replace(",", "");
+            try
+            {
+                if (string.IsNullOrEmpty(tb))
+                {
+                    return;
+                }
+                else
+                {
+                    uint.Parse(tb);
+                }
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("입력 범위를 초과하였습니다.");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("단가는 정수만 입력 가능합니다.");
+                tbCost.Clear();
             }
         }
     }

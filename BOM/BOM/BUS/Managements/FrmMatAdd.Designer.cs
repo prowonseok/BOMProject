@@ -123,6 +123,8 @@
             this.tbCost.Name = "tbCost";
             this.tbCost.Size = new System.Drawing.Size(121, 21);
             this.tbCost.TabIndex = 10;
+            this.tbCost.TextChanged += new System.EventHandler(this.tbCost_TextChanged);
+            this.tbCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCost_KeyDown);
             // 
             // tbMatLvl
             // 

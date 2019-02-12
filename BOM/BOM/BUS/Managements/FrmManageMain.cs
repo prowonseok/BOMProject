@@ -141,6 +141,8 @@ namespace BOM.BUS.Managements
             listArray[1] = matOffererList;
             FrmMatAdd fma = new FrmMatAdd(listArray);
             fma.ShowDialog();
+
+
             //string openstrFilename;
 
             //openFileDialog1.Title = "이미지 읽기";
