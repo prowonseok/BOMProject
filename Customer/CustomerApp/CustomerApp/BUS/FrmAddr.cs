@@ -8,13 +8,11 @@ namespace CustomerApp.BUS
     {
         private string searchType = string.Empty;
         private string searchTxt = string.Empty;
-        private string choiceAddr;
+        private string choiceAddr = string.Empty;
+        private bool choiceState = false;
 
-        public string ChoiceAddr
-        {
-            get { return choiceAddr; }
-            set { choiceAddr = value; }
-        }
+        public bool ChoiceState { get { return choiceState; } }
+        public string ChoiceAddr { get { return choiceAddr; } }
 
         public FrmAddr()
         {
@@ -57,6 +55,7 @@ namespace CustomerApp.BUS
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             choiceAddr = gViewResult.SelectedRows[0].Cells[0].Value.ToString();
+            choiceState = true;
             Close();
         }
 

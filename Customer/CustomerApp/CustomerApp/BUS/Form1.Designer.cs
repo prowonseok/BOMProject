@@ -35,11 +35,17 @@
             this.btnBuy = new System.Windows.Forms.Button();
             this.btnAS = new System.Windows.Forms.Button();
             this.panTop = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblLog = new System.Windows.Forms.Label();
             this.panBottom = new System.Windows.Forms.Panel();
+            this.spCont = new System.Windows.Forms.SplitContainer();
             this.lstView = new System.Windows.Forms.ListView();
+            this.lblTest = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             this.panBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spCont)).BeginInit();
+            this.spCont.Panel1.SuspendLayout();
+            this.spCont.Panel2.SuspendLayout();
+            this.spCont.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -80,6 +86,7 @@
             this.btnProducts.TabIndex = 0;
             this.btnProducts.Text = "상품보기";
             this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // btnBuy
             // 
@@ -89,6 +96,7 @@
             this.btnBuy.TabIndex = 1;
             this.btnBuy.Text = "구매하기";
             this.btnBuy.UseVisualStyleBackColor = true;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
             // 
             // btnAS
             // 
@@ -98,10 +106,11 @@
             this.btnAS.TabIndex = 2;
             this.btnAS.Text = "A/S 문의";
             this.btnAS.UseVisualStyleBackColor = true;
+            this.btnAS.Click += new System.EventHandler(this.btnAS_Click);
             // 
             // panTop
             // 
-            this.panTop.Controls.Add(this.label1);
+            this.panTop.Controls.Add(this.lblLog);
             this.panTop.Controls.Add(this.lblTitle);
             this.panTop.Controls.Add(this.btnLogin);
             this.panTop.Controls.Add(this.btnJoin);
@@ -111,33 +120,61 @@
             this.panTop.Size = new System.Drawing.Size(1244, 44);
             this.panTop.TabIndex = 3;
             // 
-            // label1
+            // lblLog
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(1140, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "l";
+            this.lblLog.AutoSize = true;
+            this.lblLog.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblLog.Location = new System.Drawing.Point(1140, 13);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(13, 21);
+            this.lblLog.TabIndex = 3;
+            this.lblLog.Text = "l";
             // 
             // panBottom
             // 
-            this.panBottom.Controls.Add(this.lstView);
+            this.panBottom.Controls.Add(this.spCont);
             this.panBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panBottom.Location = new System.Drawing.Point(0, 129);
             this.panBottom.Name = "panBottom";
             this.panBottom.Size = new System.Drawing.Size(1244, 569);
             this.panBottom.TabIndex = 4;
             // 
+            // spCont
+            // 
+            this.spCont.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spCont.IsSplitterFixed = true;
+            this.spCont.Location = new System.Drawing.Point(0, 0);
+            this.spCont.Name = "spCont";
+            // 
+            // spCont.Panel1
+            // 
+            this.spCont.Panel1.Controls.Add(this.lstView);
+            // 
+            // spCont.Panel2
+            // 
+            this.spCont.Panel2.Controls.Add(this.lblTest);
+            this.spCont.Size = new System.Drawing.Size(1244, 569);
+            this.spCont.SplitterDistance = 875;
+            this.spCont.TabIndex = 0;
+            // 
             // lstView
             // 
             this.lstView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstView.Location = new System.Drawing.Point(0, 0);
             this.lstView.Name = "lstView";
-            this.lstView.Size = new System.Drawing.Size(1244, 569);
+            this.lstView.Size = new System.Drawing.Size(875, 569);
             this.lstView.TabIndex = 0;
             this.lstView.UseCompatibleStateImageBehavior = false;
+            this.lstView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstView_MouseClick);
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(55, 47);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(38, 12);
+            this.lblTest.TabIndex = 0;
+            this.lblTest.Text = "label1";
             // 
             // Form1
             // 
@@ -155,6 +192,11 @@
             this.panTop.ResumeLayout(false);
             this.panTop.PerformLayout();
             this.panBottom.ResumeLayout(false);
+            this.spCont.Panel1.ResumeLayout(false);
+            this.spCont.Panel2.ResumeLayout(false);
+            this.spCont.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spCont)).EndInit();
+            this.spCont.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -168,9 +210,11 @@
         private System.Windows.Forms.Button btnBuy;
         private System.Windows.Forms.Button btnAS;
         private System.Windows.Forms.Panel panTop;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblLog;
         private System.Windows.Forms.Panel panBottom;
+        private System.Windows.Forms.SplitContainer spCont;
         private System.Windows.Forms.ListView lstView;
+        private System.Windows.Forms.Label lblTest;
     }
 }
 

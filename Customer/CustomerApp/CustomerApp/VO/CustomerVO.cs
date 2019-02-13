@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerApp.VO
 {
-    class CustomerVO
+    public class CustomerVO
     {
         private int no;
 
@@ -18,7 +18,7 @@ namespace CustomerApp.VO
 
         private string id;
 
-        public string ID
+        public string Id
         {
             get { return id; }
             set { id = value; }

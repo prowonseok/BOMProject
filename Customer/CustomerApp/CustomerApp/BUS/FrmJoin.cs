@@ -2,7 +2,9 @@
 using CustomerApp.VO;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,13 +17,16 @@ namespace CustomerApp.BUS
 {
     public partial class FrmJoin : Form
     {
+        private CustomerVO customer;
         private FrmAddr addrForm;
-        CustomersDAO cusDAO = new CustomersDAO();
-        List<string> cusIDList = new List<string>();
-        private string engPattern = "^[0-9A-Za-z]{6,25}$";
-        private string pwPattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,12}$";
-        private string emailPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]){1,}?";
-        private string[] emailSite = new string[] { "naver.com", "daum.net", "nate.com", "gmail.com", "hotmail.com", "yahoo.com", "korea.com", "netian.com", "직접 입력" };
+        private CustomersDAO cusDAO = new CustomersDAO();
+        private List<CustomerVO> cusList = new List<CustomerVO>();
+
+        private static string engPattern = ConfigurationManager.AppSettings["engPattern"];
+        private static string pwPattern = ConfigurationManager.AppSettings["pwPattern"];
+        private static string emailPattern = ConfigurationManager.AppSettings["emailPattern"];
+        private static string[] emailSite = new string[] 
+        { "naver.com", "daum.net", "nate.com", "gmail.com", "hotmail.com", "yahoo.com", "korea.com", "netian.com", "직접 입력" };
 
         private bool boolName = false;
         private bool boolId = false;
@@ -29,30 +34,57 @@ namespace CustomerApp.BUS
         private bool boolChkPw = false;
         private bool boolEmail = false;
         private bool boolPhone = false;
-
         private bool existID = false;
+
+        public CustomerVO Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
 
         public FrmJoin()
         {
             InitializeComponent();
         }
 
+        public FrmJoin(CustomerVO customer) : this()
+        {
+            this.customer = customer;
+        }
+
         private void FrmJoin_Load(object sender, EventArgs e)
         {
             CenterToScreen();
 
-            Text = "Goodee PC 회원가입";
-
-            btnSubmit.Enabled = false;
-            btnChkID.Enabled = false;
-
-            txtPW.UseSystemPasswordChar = true;
-            txtChkPW.UseSystemPasswordChar = true;
-
-            txtAddr.ReadOnly = true;
-            txtEmailSite.ReadOnly = true;
+            cusList.Clear();
+            cusList = cusDAO.SelectAll();
 
             cbxEmail.Items.AddRange(emailSite);
+            txtPW.UseSystemPasswordChar = true;
+            txtChkPW.UseSystemPasswordChar = true;
+            txtAddr.ReadOnly = true;
+            txtAddrDetail.ReadOnly = true;
+            txtEmailSite.ReadOnly = true;
+
+            if (customer != null)
+            {
+                Text = lblTitle.Text = "Goodee PC 정보수정";
+                txtName.Text = customer.Name;
+                txtName.ReadOnly = true;
+                txtPhone.Text = customer.Phone;
+                txtEmailID.Text = customer.Email.Substring(0, customer.Email.IndexOf('@'));
+                txtEmailSite.Text = customer.Email.Remove(0, txtEmailID.Text.Length + 1);
+                txtAddr.Text = customer.Addr;
+                txtID.Text = customer.Id;
+                txtID.ReadOnly = true;
+                btnSubmit.Text = "수정하기";
+            }
+            else
+            {
+                Text = "Goodee PC 회원가입";
+                btnSubmit.Enabled = false;
+                btnChkID.Enabled = false;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -67,23 +99,32 @@ namespace CustomerApp.BUS
             addrForm = new FrmAddr();
             addrForm.ShowDialog();
             txtAddr.Text = addrForm.ChoiceAddr;
+            if (addrForm.ChoiceState) txtAddrDetail.ReadOnly = false;
+            else txtAddrDetail.ReadOnly = true;
             txtAddrDetail.Focus();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            CustomerVO customer = new CustomerVO()
+            customer = new CustomerVO()
             {
-                ID = txtID.Text,
+                Id = txtID.Text,
                 Name = txtName.Text,
                 Phone = txtPhone.Text,
                 Addr = txtAddr.Text + " " + txtAddrDetail.Text,
                 Pw = txtPW.Text,
                 Email = txtEmailID.Text + lblAt.Text + txtEmailSite.Text
             };
-            cusDAO.InsertCus(customer);
-            MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신 걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            if (btnSubmit.Text != "수정하기")
+            {
+                cusDAO.Insert(customer);
+                MessageBox.Show("회원가입이 정상적으로 완료되었습니다.\r\nGoodee PC 회원이 되신 걸 축하합니다!", "회원 가입 성공", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+            else
+            {
+                cusDAO.Update(customer);
+                MessageBox.Show("정보수정이 정상적으로 완료되었습니다.", "정보 수정 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             Dispose();
             Close();
         }
@@ -240,11 +281,10 @@ namespace CustomerApp.BUS
 
         private void GetIDState()
         {
-            cusIDList.Clear();
-            cusIDList = cusDAO.SelectAllCusID();
-            foreach (var cusID in cusIDList)
+            
+            foreach (var customer in cusList)
             {
-                if (cusID == txtID.Text)
+                if (customer.Id == txtID.Text)
                 {
                     existID = true;
                     break;
@@ -281,25 +321,36 @@ namespace CustomerApp.BUS
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(txtID.Text, engPattern))
+            if (customer == null)
             {
-                lblIDState.ForeColor = Color.Red;
-                if (string.IsNullOrEmpty(txtID.Text))
+                if (!Regex.IsMatch(txtID.Text, engPattern))
                 {
-                    lblIDState.Text = "사용하실 ID를 입력해주세요.";
-                    btnChkID.Enabled = false;
+                    lblIDState.ForeColor = Color.Red;
+                    if (string.IsNullOrEmpty(txtID.Text))
+                    {
+                        lblIDState.Text = "사용하실 ID를 입력해주세요.";
+                        btnChkID.Enabled = false;
+                    }
+                    else
+                    {
+                        lblIDState.Text = "올바르지 않은 ID입니다.";
+                        btnChkID.Enabled = false;
+                    }
                 }
                 else
                 {
-                    lblIDState.Text = "올바르지 않은 ID입니다.";
-                    btnChkID.Enabled = false;
-                }
+                    lblIDState.ForeColor = Color.Red;
+                    lblIDState.Text = "ID 중복 검사를 해주세요.";
+                    existID = false;
+                    btnChkID.Enabled = true;
+                } 
             }
             else
             {
-                lblIDState.ForeColor = Color.Red;
-                lblIDState.Text = "ID 중복 검사를 해주세요.";
-                btnChkID.Enabled = true;
+                lblIDState.Text = string.Empty;
+                btnChkID.Enabled = false;
+                boolId = true;
+                customer = null;
             }
         }
     }

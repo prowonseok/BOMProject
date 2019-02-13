@@ -56,6 +56,7 @@
             this.btnFindPW.TabIndex = 39;
             this.btnFindPW.Text = "패스워드 찾기";
             this.btnFindPW.UseVisualStyleBackColor = true;
+            this.btnFindPW.Click += new System.EventHandler(this.btnFindPW_Click);
             // 
             // btnLogin
             // 
@@ -63,6 +64,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 48);
             this.btnLogin.TabIndex = 38;
+            this.btnLogin.TabStop = false;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -75,6 +77,7 @@
             this.btnFindID.TabIndex = 37;
             this.btnFindID.Text = "아이디 찾기";
             this.btnFindID.UseVisualStyleBackColor = true;
+            this.btnFindID.Click += new System.EventHandler(this.btnFindID_Click);
             // 
             // txtPW
             // 
@@ -82,6 +85,7 @@
             this.txtPW.Name = "txtPW";
             this.txtPW.Size = new System.Drawing.Size(142, 21);
             this.txtPW.TabIndex = 36;
+            this.txtPW.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPW_KeyUp);
             // 
             // txtID
             // 
@@ -89,6 +93,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(142, 21);
             this.txtID.TabIndex = 35;
+            this.txtID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtID_KeyUp);
             // 
             // lblPW
             // 
