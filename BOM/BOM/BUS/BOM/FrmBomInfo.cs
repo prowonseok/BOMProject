@@ -75,7 +75,7 @@ namespace BOM.BUS.BOM
                 }
                 else 
                 {
-                    FrmBomAdd fba = new FrmBomAdd(new Materials {
+                    FrmBomAdd fba = new FrmBomAdd(new MaterialsVO {
                         Mat_No =Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
                         Mat_Name =dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
                         Mat_Level =Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())

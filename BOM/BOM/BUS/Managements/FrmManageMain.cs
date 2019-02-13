@@ -1,4 +1,5 @@
 ﻿using BOM.DAO;
+using BOM.VO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,14 +125,14 @@ namespace BOM.BUS.Managements
 
         private void btnMatAdd_Click(object sender, EventArgs e)
         {
-            List<string>[] listArray = new List<string>[2];
-            List<string> matTypeList = new List<string>();
+            object[] listArray = new object[2];
+            List<Materials_TypeVO> matTypeList = new List<Materials_TypeVO>();
             List<string> matOffererList = new List<string>();
             DataTable dtType = md.SelectMat("Materials_Type_Select_Procedure");
             DataTable dtOfferer = md.SelectMat("Offerer_Select_Procedure");
             foreach (DataRow item in dtType.Rows)
             {
-                matTypeList.Add(item["Mat_Type_Category"].ToString());
+                matTypeList.Add(new Materials_TypeVO(int.Parse(item["Mat_Type_No"].ToString()), item["Mat_Type_Category"].ToString()));
             }
             foreach (DataRow item in dtOfferer.Rows)
             {
@@ -139,7 +140,7 @@ namespace BOM.BUS.Managements
             }
             listArray[0] = matTypeList;
             listArray[1] = matOffererList;
-            FrmMatAdd fma = new FrmMatAdd(listArray);
+            FrmMatAdd fma = new FrmMatAdd(md, listArray);
             fma.ShowDialog();
 
 

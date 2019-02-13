@@ -18,8 +18,8 @@ namespace BOM.DAO
         public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
-        public List<Materials> SelectBom3(int mat_Level, int mat_No) {
-            List<Materials> matLst = new List<Materials>();
+        public List<MaterialsVO> SelectBom3(int mat_Level, int mat_No) {
+            List<MaterialsVO> matLst = new List<MaterialsVO>();
 
             string sp = "Bom_Mat_View_Procedure_PLevel";
             SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -51,7 +51,7 @@ namespace BOM.DAO
                 {
                     off_No = Int32.Parse(item["Off_No"].ToString());
                 }
-                matLst.Add(new Materials
+                matLst.Add(new MaterialsVO
                 {
                     Mat_No = Int32.Parse(item["Mat_No"].ToString()),
                     Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
@@ -66,8 +66,8 @@ namespace BOM.DAO
             }
             return matLst;
         }
-        public List<Materials> SelectBom2() {
-            List<Materials> matLst = new List<Materials>();
+        public List<MaterialsVO> SelectBom2() {
+            List<MaterialsVO> matLst = new List<MaterialsVO>();
 
             string sp = "Bom_Mat_View_Procedure_No_Level_0";
             SqlParameter[] sqlParameters = null;
@@ -97,7 +97,7 @@ namespace BOM.DAO
                 {
                     off_No = Int32.Parse(item["Off_No"].ToString());
                 }
-                matLst.Add(new Materials
+                matLst.Add(new MaterialsVO
                 {
                     Mat_No = Int32.Parse(item["Mat_No"].ToString()),
                     Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
@@ -130,8 +130,8 @@ namespace BOM.DAO
             }
             return result;
         }
-        public List<Materials> SelectBom() {
-            List<Materials> matLst = new List<Materials>();
+        public List<MaterialsVO> SelectBom() {
+            List<MaterialsVO> matLst = new List<MaterialsVO>();
 
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
@@ -161,7 +161,7 @@ namespace BOM.DAO
                 {
                     off_No = Int32.Parse(item["Off_No"].ToString());
                 }
-                matLst.Add(new Materials
+                matLst.Add(new MaterialsVO
                 {
                     Mat_No=Int32.Parse(item["Mat_No"].ToString()),
                     Mat_Type_No=Int32.Parse(item["Mat_Type_No"].ToString()),

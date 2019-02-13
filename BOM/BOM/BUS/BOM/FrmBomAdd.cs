@@ -18,7 +18,7 @@ namespace BOM.BUS.BOM
         private int matLevel;
         private string matName;
         private bool canOrAdd; //Cancel인지 Add인지
-        private Materials materials;
+        private MaterialsVO materials;
 
         public int MatNo { get => matNo; set => matNo = value; }
         public int MatLevel { get => matLevel; set => matLevel = value; }
@@ -30,7 +30,7 @@ namespace BOM.BUS.BOM
             InitializeComponent();
         }
 
-        public FrmBomAdd(Materials materials)
+        public FrmBomAdd(MaterialsVO materials)
         {
             this.materials = materials;
             InitializeComponent();

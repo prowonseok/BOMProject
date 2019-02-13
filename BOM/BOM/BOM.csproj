@@ -133,8 +133,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\Customers_Order.cs" />
     <Compile Include="VO\Cus_OrderVO.cs" />
-    <Compile Include="VO\Materials.cs" />
-    <Compile Include="VO\Materials_Type.cs" />
+    <Compile Include="VO\MaterialsVO.cs" />
+    <Compile Include="VO\Materials_TypeVO.cs" />
     <EmbeddedResource Include="BUS\BOM\FrmBOM.resx">
       <DependentUpon>FrmBOM.cs</DependentUpon>
     </EmbeddedResource>
