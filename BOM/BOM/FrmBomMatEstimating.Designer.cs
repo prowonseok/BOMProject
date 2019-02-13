@@ -93,6 +93,7 @@
             this.txtEA.Name = "txtEA";
             this.txtEA.Size = new System.Drawing.Size(148, 21);
             this.txtEA.TabIndex = 6;
+            this.txtEA.Text = "1";
             // 
             // label3
             // 
@@ -117,6 +118,7 @@
             // 
             this.dgvMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMat.Location = new System.Drawing.Point(365, 33);
+            this.dgvMat.MultiSelect = false;
             this.dgvMat.Name = "dgvMat";
             this.dgvMat.ReadOnly = true;
             this.dgvMat.RowTemplate.Height = 23;

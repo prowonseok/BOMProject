@@ -14,6 +14,7 @@ namespace BOM
     public partial class FrmBomInfo : Form
     {
         DAO.BomDAO bDao;
+        bool isFirst = true;//검색 시 최초 검색인지 여부 판단
 
         public FrmBomInfo()
         {
@@ -22,7 +23,7 @@ namespace BOM
 
         private void FrmBomInfo_Load(object sender, EventArgs e)
         {
-            Display(); 
+            Display();
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
@@ -37,7 +38,7 @@ namespace BOM
             btn2.Text = "조회";
             btn2.UseColumnTextForButtonValue = true;
             dgvBom.Columns.Add(btn2);
-            
+
             //필요 없는 컬럼 삭제
             dgvBom.Columns.Remove("Mat_Type_No");
             dgvBom.Columns.Remove("Mat_Manufactur");
@@ -55,10 +56,10 @@ namespace BOM
             dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvBom.Columns[0].Width = 80;
 
-            dgvBom.Columns[0].HeaderText = "자재번호";
+            dgvBom.Columns[0].HeaderText = "자재 번호";
             dgvBom.Columns[1].HeaderText = "자재명";
             dgvBom.Columns[2].HeaderText = "자재 레벨";
-
+            
         }
 
         private void Display()
@@ -72,25 +73,26 @@ namespace BOM
         {
             //e.RowIndex + 1 = 제품 번호, e.ColumnIndex = 컬럼 번호
             //BOM 등록일 클릭 시 
-            if (e.ColumnIndex.ToString()=="3")
+            if (e.ColumnIndex.ToString() == "3")
             {
                 //Level의 값이 0일 경우
-                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString()=="0")
+                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString() == "0")
                 {
                     MessageBox.Show("최하위 자재는 BOM등록을 할 수 없습니다.");
                 }
-                else 
+                else
                 {
-                    FrmBomAdd fba = new FrmBomAdd(new Materials {
-                        Mat_No =Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
-                        Mat_Name =dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                        Mat_Level =Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    FrmBomAdd fba = new FrmBomAdd(new Materials
+                    {
+                        Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                        Mat_Level = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
                     });
                     fba.ShowDialog();
                 }
-                
+
             }//BOM 조회 클릭 시
-            else if(e.ColumnIndex.ToString()=="4")
+            else if (e.ColumnIndex.ToString() == "4")
             {
                 FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new Materials
                 {
@@ -118,6 +120,61 @@ namespace BOM
         {
             FrmBomMatEstimating fme = new FrmBomMatEstimating();
             fme.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cbbType.Text))
+            {
+                MessageBox.Show("검색 타입을 지정해주세요");
+            }
+            else
+            {
+                int searchType=0;
+                if (cbbType.Text == "자재명")
+                {
+                    searchType = 1;
+                }
+                else if(cbbType.Text =="자재 번호")
+                {
+                    searchType = 0;
+                }
+                else if(cbbType.Text =="자재 타입")
+                {
+                    searchType = 2;
+                }
+                isFirst = true;
+                foreach (DataGridViewRow item in dgvBom.Rows)
+                {
+                    if (item.Cells[searchType].Value.ToString().Contains(txtSearch.Text))
+                    {
+                        if (isFirst)
+                        {
+                            SearchMat(item);
+                            isFirst = false;
+                        }
+                        else
+                        {
+                            var result = MessageBox.Show("계속 검색하시겠습니까?","",MessageBoxButtons.YesNo);
+                            if (result==DialogResult.Yes)
+                            {
+                                SearchMat(item);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void SearchMat(DataGridViewRow item)
+        {
+            dgvBom.FirstDisplayedScrollingRowIndex = item.Index;
+            item.Selected = true;
         }
     }
 }
