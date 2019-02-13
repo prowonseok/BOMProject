@@ -23,28 +23,34 @@ namespace CustomerApp.DAO
         List<ProductVO> proList = new List<ProductVO>();
 
         public List<ProductVO> SelectAll()
-        {
+        { 
             proList.Clear();
 
             string sp = "SelectAllPro";
-            var proDataTable = db.ExecuteParametersDT(sp, null);
-
-            foreach (DataRow row in proDataTable.Rows)
+            try
             {
-                int proNo = int.Parse(row["Pro_No"].ToString());
-                List<string> matList = new List<string>();
-                ProductVO product = new ProductVO()
+                var proDataTable = db.ExecuteParametersDT(sp, null);
+                foreach (DataRow row in proDataTable.Rows)
                 {
-                    No = proNo,
-                    Name = row["Pro_Name"].ToString(),
-                    MatNo = int.Parse(row["Mat_No"].ToString()),
-                    Price = int.Parse(row["Pro_Price"].ToString()),
-                    Image = (Image)im.ConvertFrom(row["Pro_Img_Image"]),
-                    MatList = GetMatList(proNo, matList)
-                };
-                proList.Add(product);
+                    int proNo = int.Parse(row["Pro_No"].ToString());
+                    List<string> matList = new List<string>();
+                    ProductVO product = new ProductVO()
+                    {
+                        No = proNo,
+                        Name = row["Pro_Name"].ToString(),
+                        MatNo = int.Parse(row["Mat_No"].ToString()),
+                        Price = int.Parse(row["Pro_Price"].ToString()),
+                        Image = (Image)im.ConvertFrom(row["Pro_Img_Image"]),
+                        MatList = GetMatList(proNo, matList)
+                    };
+                    proList.Add(product);
+                }
+                return proList;
             }
-            return proList;
+            catch (SqlException)
+            {
+                throw;
+            }
         }
 
         private List<string> GetMatList(int proNo, List<string> matList)
@@ -56,6 +62,7 @@ namespace CustomerApp.DAO
 
             foreach (DataRow row in matDataTable.Rows)
             {
+                matList.Add(row["Mat_Type_Category"].ToString());
                 matList.Add(row["Mat_Name"].ToString());
             }
             return matList;

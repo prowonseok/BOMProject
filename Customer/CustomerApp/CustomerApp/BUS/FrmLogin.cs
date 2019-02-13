@@ -8,10 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomerApp.DAO;
-<<<<<<< HEAD
-=======
 using CustomerApp.VO;
->>>>>>> 5cfa920a30980b30f795aaeae15d843b716b03b8
+
 
 namespace CustomerApp.BUS
 {

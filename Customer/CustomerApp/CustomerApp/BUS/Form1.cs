@@ -194,44 +194,46 @@ namespace CustomerApp.BUS
         {
             if (loginState) // 로그인 된 상태
             {
-                lstView.Visible = false;
+                spCont.Visible = false;
                 SetBtnColor(btnBuy, btnProducts, btnAS);
+                var buyPan = new Panel();
+                buyPan.Size = spCont.Size;
+                buyPan.Location = spCont.Location;
             }
-            else
-            {
-                MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
         }
 
         private void btnAS_Click(object sender, EventArgs e)
         {
             if (loginState) // 로그인 된 상태
             {
-                lstView.Visible = false;
+                spCont.Visible = false;
                 SetBtnColor(btnAS, btnProducts, btnBuy);
             }
-            else
-            {
-                MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
         }
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
             SetBtnColor(btnProducts, btnBuy, btnAS);
-            lstView.Visible = true;
+            spCont.Visible = true;
             OnLoad(null);
         }
 
         private void lstView_MouseClick(object sender, MouseEventArgs e)
         {
+            
+            ListViewItem selectItem = lstView.GetItemAt(e.X, e.Y); // 마우스 위치에서 아이템 클릭하면 해당 아이템 가져오기
             if (e.Button == MouseButtons.Left)
             {
-                lblTest.Text = string.Empty;
-                ListViewItem selectItem = lstView.GetItemAt(e.X, e.Y); // 마우스 위치에서 아이템 클릭하면 해당 아이템 가져오기
+                lblSpecTitle.Visible = true;
+                lblSpec.Text = string.Empty;
                 for (int i = 1; i < selectItem.SubItems.Count; i++)
                 {
-                    lblTest.Text += selectItem.SubItems[i].Text + "\r\n";
+                    if (i % 2 != 0) lblSpec.Text += "* " + selectItem.SubItems[i].Text + " : ";
+                    else lblSpec.Text += selectItem.SubItems[i].Text + "\r\n\r\n";
                 }
             }
         }

@@ -63,6 +63,12 @@
     <Compile Include="BUS\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\FrmAddr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,12 +99,6 @@
     <Compile Include="BUS\FrmSearchIDPW.Designer.cs">
       <DependentUpon>FrmSearchIDPW.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\FrmSearchPW.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\FrmSearchPW.Designer.cs">
-      <DependentUpon>FrmSearchPW.cs</DependentUpon>
-    </Compile>
     <Compile Include="DAO\CustomersDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
     <Compile Include="DAO\SearchAddrDAO.cs" />
@@ -109,6 +109,9 @@
     <Compile Include="VO\SearchAddrVO.cs" />
     <EmbeddedResource Include="BUS\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmAddr.resx">
       <DependentUpon>FrmAddr.cs</DependentUpon>

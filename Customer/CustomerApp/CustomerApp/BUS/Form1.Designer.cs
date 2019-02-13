@@ -39,7 +39,9 @@
             this.panBottom = new System.Windows.Forms.Panel();
             this.spCont = new System.Windows.Forms.SplitContainer();
             this.lstView = new System.Windows.Forms.ListView();
-            this.lblTest = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblSpecTitle = new System.Windows.Forms.Label();
+            this.lblSpec = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             this.panBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCont)).BeginInit();
@@ -71,10 +73,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("휴먼편지체", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(121, 28);
+            this.lblTitle.Size = new System.Drawing.Size(140, 29);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Goodee PC";
             // 
@@ -152,7 +154,9 @@
             // 
             // spCont.Panel2
             // 
-            this.spCont.Panel2.Controls.Add(this.lblTest);
+            this.spCont.Panel2.Controls.Add(this.lblSpecTitle);
+            this.spCont.Panel2.Controls.Add(this.lblSpec);
+            this.spCont.Panel2.Controls.Add(this.richTextBox1);
             this.spCont.Size = new System.Drawing.Size(1244, 569);
             this.spCont.SplitterDistance = 875;
             this.spCont.TabIndex = 0;
@@ -167,14 +171,34 @@
             this.lstView.UseCompatibleStateImageBehavior = false;
             this.lstView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstView_MouseClick);
             // 
-            // lblTest
+            // richTextBox1
             // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(55, 47);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(38, 12);
-            this.lblTest.TabIndex = 0;
-            this.lblTest.Text = "label1";
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(365, 569);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // lblSpecTitle
+            // 
+            this.lblSpecTitle.AutoSize = true;
+            this.lblSpecTitle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSpecTitle.Location = new System.Drawing.Point(20, 39);
+            this.lblSpecTitle.Name = "lblSpecTitle";
+            this.lblSpecTitle.Size = new System.Drawing.Size(89, 21);
+            this.lblSpecTitle.TabIndex = 3;
+            this.lblSpecTitle.Text = "PC 스펙";
+            this.lblSpecTitle.Visible = false;
+            // 
+            // lblSpec
+            // 
+            this.lblSpec.AutoSize = true;
+            this.lblSpec.Location = new System.Drawing.Point(22, 108);
+            this.lblSpec.Name = "lblSpec";
+            this.lblSpec.Size = new System.Drawing.Size(33, 12);
+            this.lblSpec.TabIndex = 2;
+            this.lblSpec.Text = "spec";
             // 
             // Form1
             // 
@@ -214,7 +238,9 @@
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.SplitContainer spCont;
         private System.Windows.Forms.ListView lstView;
-        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Label lblSpecTitle;
+        private System.Windows.Forms.Label lblSpec;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

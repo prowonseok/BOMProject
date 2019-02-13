@@ -87,11 +87,13 @@ AS
 	from Products p inner join Products_Image [pi]
 	on p.Pro_Img_No = [pi].Pro_Img_No;
 
--- 상품 (1개) 상세 정보(부품) 가져오기
+-- 상품 (1개) 상세 정보(부품) 및 부품 분류이름 가져오기
 CREATE PROCEDURE [dbo].[SelectProDetail]
 	@Pro_No int
 AS
-	SELECT [mat].Mat_Name from 
-	Materials mat inner join BOM bo on bo.BOM_ChildNo = mat.Mat_No 
-		      inner join Products pro on pro.Mat_No = bo.BOM_ParentNo
+	SELECT matT.Mat_Type_Category, mat.Mat_Name from 
+	Materials mat inner join BOM bo
+	on bo.BOM_ChildNo = mat.Mat_No 
+	inner join Products pro on pro.Mat_No = bo.BOM_ParentNo
+	inner join Materials_Type matT on mat.Mat_Type_No = matT.Mat_Type_No
 	where Pro_No = @Pro_No;

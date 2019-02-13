@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CustomerApp.BUS
 {
-    public partial class FrmSearchPW : Form
+    public partial class Form2 : Form
     {
-        public FrmSearchPW()
+        public Form2()
         {
             InitializeComponent();
         }
