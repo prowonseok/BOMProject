@@ -170,7 +170,6 @@ namespace BOM
 
             }
         }
-
         private void SearchMat(DataGridViewRow item)
         {
             dgvBom.FirstDisplayedScrollingRowIndex = item.Index;

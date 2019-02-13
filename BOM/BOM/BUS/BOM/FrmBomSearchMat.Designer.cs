@@ -31,18 +31,21 @@
             this.dgvInfo = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.cbbType = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvInfo
             // 
             this.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInfo.Location = new System.Drawing.Point(21, 24);
+            this.dgvInfo.Location = new System.Drawing.Point(21, 53);
             this.dgvInfo.Name = "dgvInfo";
             this.dgvInfo.ReadOnly = true;
             this.dgvInfo.RowTemplate.Height = 23;
             this.dgvInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInfo.Size = new System.Drawing.Size(734, 371);
+            this.dgvInfo.Size = new System.Drawing.Size(734, 341);
             this.dgvInfo.TabIndex = 0;
             // 
             // btnCancel
@@ -65,11 +68,44 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // cbbType
+            // 
+            this.cbbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbType.FormattingEnabled = true;
+            this.cbbType.Items.AddRange(new object[] {
+            "자재명",
+            "자재 번호",
+            "자재 타입"});
+            this.cbbType.Location = new System.Drawing.Point(363, 24);
+            this.cbbType.Name = "cbbType";
+            this.cbbType.Size = new System.Drawing.Size(121, 20);
+            this.cbbType.TabIndex = 11;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(680, 24);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.Text = "검색";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(503, 26);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(171, 21);
+            this.txtSearch.TabIndex = 9;
+            // 
             // FrmBomSearchMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 450);
+            this.Controls.Add(this.cbbType);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvInfo);
@@ -78,6 +114,7 @@
             this.Load += new System.EventHandler(this.FrmBomSearchMat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -86,5 +123,8 @@
         private System.Windows.Forms.DataGridView dgvInfo;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox cbbType;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

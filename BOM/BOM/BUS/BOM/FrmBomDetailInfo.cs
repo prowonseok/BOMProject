@@ -58,7 +58,7 @@ namespace BOM
             if (canOrAdd)
             {
                 this.txtMatNo.Text = matNo.ToString();
-                this.txtMatName.Text = matName;
+                this.txtMatName.Text = matName.ToString();
             }
             dgvBom.DataSource = null;
         }
