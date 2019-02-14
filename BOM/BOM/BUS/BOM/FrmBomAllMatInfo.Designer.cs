@@ -76,7 +76,8 @@
             this.cbbType.Items.AddRange(new object[] {
             "자재명",
             "자재 번호",
-            "자재 타입"});
+            "자재 타입",
+            "제조사"});
             this.cbbType.Location = new System.Drawing.Point(118, 17);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(121, 20);

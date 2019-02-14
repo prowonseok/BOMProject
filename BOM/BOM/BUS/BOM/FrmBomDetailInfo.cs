@@ -105,7 +105,7 @@ namespace BOM
                     dgvBom.Columns[2].HeaderText = "가격(원)";
                     dgvBom.Columns[2].DefaultCellStyle.Format = "###,###,###";
                     dgvBom.Columns[3].HeaderText = "자재 레벨";
-                    dgvBom.Columns[4].HeaderText = "필요 자재 개수";
+                    dgvBom.Columns[4].HeaderText = "자재 개수";
 
                     dgvBom.AutoResizeColumns();
 
@@ -147,8 +147,9 @@ namespace BOM
             try
             {
                 dgvBom.SelectedRows[0].Cells[1].Value.ToString();
-                FrmBomUpdate fbu = new FrmBomUpdate(Int32.Parse(txtMatNo.Text), new Materials {
-                    Mat_No = Int32.Parse( dgvBom.SelectedRows[0].Cells[0].Value.ToString()),
+                FrmBomUpdate fbu = new FrmBomUpdate(Int32.Parse(txtMatNo.Text), 
+                    new Materials {
+                    Mat_No = Int32.Parse(dgvBom.SelectedRows[0].Cells[0].Value.ToString()),
                     Mat_Name= dgvBom.SelectedRows[0].Cells[1].Value.ToString()
                 }, Int32.Parse(dgvBom.SelectedRows[0].Cells[4].Value.ToString()));
                 fbu.Owner = this;
@@ -160,24 +161,31 @@ namespace BOM
             {
                 MessageBox.Show("수정 할 데이터가 지정되지 않았습니다.");
             }
-            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("정말 삭제하시겠습니까? ","",MessageBoxButtons.YesNo);
-            if (result==DialogResult.Yes)
+            try
             {
-                bDao = new DAO.BomDAO();
-                if (bDao.DeleteBom(Int32.Parse(txtMatNo.Text), Int32.Parse(dgvBom.SelectedRows[0].Cells[0].Value.ToString())))
+                dgvBom.SelectedRows[0].Cells[1].Value.ToString();
+                var result = MessageBox.Show("정말 삭제하시겠습니까? ", "", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("삭제되었습니다.");
-                    rdoExplosion_CheckedChanged(null, null);
+                    bDao = new DAO.BomDAO();
+                    if (bDao.DeleteBom(Int32.Parse(txtMatNo.Text), Int32.Parse(dgvBom.SelectedRows[0].Cells[0].Value.ToString())))
+                    {
+                        MessageBox.Show("삭제되었습니다.");
+                        rdoExplosion_CheckedChanged(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("삭제 실패 하였습니다.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("삭제 실패 하였습니다.");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("삭제할 데이터가 지정되지 않았습니다.");
             }
 
         }

@@ -128,18 +128,21 @@ namespace BOM
             {
                 MessageBox.Show("검색 타입을 지정해주세요");
             }
+            else if (string.IsNullOrEmpty(txtSearch.Text)) {
+                MessageBox.Show("검색어를 입력해주세요");
+            }
             else
             {
-                int searchType=0;
+                int searchType = 0;
                 if (cbbType.Text == "자재명")
                 {
                     searchType = 1;
                 }
-                else if(cbbType.Text =="자재 번호")
+                else if (cbbType.Text == "자재 번호")
                 {
                     searchType = 0;
                 }
-                else if(cbbType.Text =="자재 타입")
+                else if (cbbType.Text == "자재 타입")
                 {
                     searchType = 2;
                 }
@@ -155,8 +158,8 @@ namespace BOM
                         }
                         else
                         {
-                            var result = MessageBox.Show("계속 검색하시겠습니까?","",MessageBoxButtons.YesNo);
-                            if (result==DialogResult.Yes)
+                            var result = MessageBox.Show("계속 검색하시겠습니까?", "", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
                             {
                                 SearchMat(item);
                             }

@@ -120,6 +120,7 @@ namespace BOM
                         {
                             MessageBox.Show("저장 성공!");
                             txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
+                            Close();
                         }
                         else
                         {
