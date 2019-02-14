@@ -97,3 +97,20 @@ AS
 	inner join Products pro on pro.Mat_No = bo.BOM_ParentNo
 	inner join Materials_Type matT on mat.Mat_Type_No = matT.Mat_Type_No
 	where Pro_No = @Pro_No;
+
+-- 주문 insert
+CREATE PROCEDURE [dbo].[InsertOrder]
+	@Cus_Order_OrderNo int,
+	@Cus_ID int,
+	@Pro_No int,
+	@Cus_Order_Date datetime,
+	@Cus_Order_EA int,
+	@Cus_Order_Price int
+AS
+	insert into Customers_Order values(@Cus_ID, 1, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, 1, @Cus_Order_Price, @Cus_Order_EA);
+
+-- 주문 해당 회원 select 
+CREATE PROCEDURE [dbo].[SelectOrderByCusID]
+	@cusNo int
+AS
+	SELECT Cus_Order_No, Cus_Order_OrderNo, Cus_ID, Pro_No, Cus_Order_Date, Cus_Order_EA, Cus_Order_Price from Customers_Order where Cus_ID = @cusNo;

@@ -25,9 +25,9 @@ namespace CustomerApp.VO
         }
 
 
-        private string orderCusId;
+        private int orderCusId;
 
-        public string OrderCusId
+        public int OrderCusId
         {
             get { return orderCusId; }
             set { orderCusId = value; }
@@ -63,6 +63,14 @@ namespace CustomerApp.VO
         {
             get { return orderEa; }
             set { orderEa = value; }
+        }
+
+        private int empNo;
+
+        public int EmpNo
+        {
+            get { return empNo; }
+            set { empNo = value; }
         }
 
     }

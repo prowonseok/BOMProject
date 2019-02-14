@@ -61,11 +61,6 @@ namespace CustomerApp.BUS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            btnSubmit.Text = "다시발송";
-            lblState.Text = "인증번호 6자리가 메일로 발송되었습니다.";
-            timer.Enabled = true;
-            timer.Start();
-            txtCertiNum.ReadOnly = false;
             SendEmail();
         }
 
@@ -82,10 +77,21 @@ namespace CustomerApp.BUS
             MailAddress fromAddr = new MailAddress("indichi@naver.com", "Goodee PC", Encoding.UTF8);
             MailAddress toAddr = null;
             customer = GetCus();
-            if (customer != null) toAddr = new MailAddress(customer.Email, customer.Name, Encoding.UTF8); 
+            if (customer != null)
+            {
+                toAddr = new MailAddress(customer.Email, customer.Name, Encoding.UTF8);
+                timer.Enabled = true;
+                timer.Start();
+                btnSubmit.Text = "다시발송";
+                lblState.Text = "인증번호 6자리가 메일로 발송되었습니다.";
+                txtCertiNum.ReadOnly = false;
+            }
             else
             {
                 MessageBox.Show("등록되지 않은 회원입니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Text = string.Empty;
+                txtPhone.Text = string.Empty;
+                txtName.Focus();
                 return;
             }
 

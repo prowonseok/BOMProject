@@ -19,6 +19,7 @@ namespace CustomerApp.BUS
         
         public static bool loginState = false;
         ProductsDAO productsDAO = new ProductsDAO();
+        OrderDAO orderDAO = new OrderDAO();
         List<ProductVO> proList; // 실시간 특성상 로드 이벤트에 두는게 좋을 것 같음
         FrmLogin loginForm;
         ListViewItem selectItem;
@@ -220,6 +221,7 @@ namespace CustomerApp.BUS
                 gbxBuy.Dock = DockStyle.Fill;
                 CtrlVisiTrue(spCont, gbxBuy);
 
+                nuProAmount.Value = 0;
                 lblSpec.Text = string.Empty;
                 txtTotalPrice.Text = string.Empty;
 
@@ -345,6 +347,29 @@ namespace CustomerApp.BUS
                 CtrlVisiTrue(gbxBuyRecord);
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnBuyNow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OrderVO orderVO = new OrderVO()
+                {
+                    Order_OrderNo = 1,
+                    OrderCusId = loginForm.Customer.No,
+                    OrderDate = DateTime.Now,
+                    OrderEa = int.Parse(nuProAmount.Value.ToString()),
+                    OrderProNo = proList[cbxBuyCusPro.SelectedIndex].No,
+                    OrderPrice = proList[cbxBuyCusPro.SelectedIndex].Price * int.Parse(nuProAmount.Value.ToString()),
+                };
+                orderDAO.Insert(orderVO);
+                MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnBuy_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
