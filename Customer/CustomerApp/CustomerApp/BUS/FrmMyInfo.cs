@@ -11,12 +11,12 @@ using CustomerApp.VO;
 
 namespace CustomerApp.BUS
 {
-    public partial class FrmMyPage : Form
+    public partial class FrmMyInfo : Form
     {
         CustomerVO customer;
         FrmJoin joinForm;
 
-        public FrmMyPage(CustomerVO customer)
+        public FrmMyInfo(CustomerVO customer)
         {
             InitializeComponent();
             this.customer = customer;
@@ -24,7 +24,7 @@ namespace CustomerApp.BUS
 
         private void FrmMyPage_Load(object sender, EventArgs e)
         {
-            Text = "Goodee PC 마이페이지";
+            Text = "Goodee PC 내 정보";
 
             CenterToScreen();
 

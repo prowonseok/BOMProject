@@ -1,6 +1,6 @@
 ﻿namespace CustomerApp.BUS
 {
-    partial class FrmMyPage
+    partial class FrmMyInfo
     {
         /// <summary>
         /// Required designer variable.
