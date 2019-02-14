@@ -36,16 +36,20 @@
             this.txtMatNo = new System.Windows.Forms.TextBox();
             this.txtMatName = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
             this.SuspendLayout();
             // 
             // rdoExplosion
             // 
             this.rdoExplosion.AutoSize = true;
+            this.rdoExplosion.Checked = true;
             this.rdoExplosion.Location = new System.Drawing.Point(14, 87);
             this.rdoExplosion.Name = "rdoExplosion";
             this.rdoExplosion.Size = new System.Drawing.Size(59, 16);
             this.rdoExplosion.TabIndex = 2;
+            this.rdoExplosion.TabStop = true;
             this.rdoExplosion.Text = "정전개";
             this.rdoExplosion.UseVisualStyleBackColor = true;
             this.rdoExplosion.CheckedChanged += new System.EventHandler(this.rdoExplosion_CheckedChanged);
@@ -53,20 +57,20 @@
             // rdoImplosion
             // 
             this.rdoImplosion.AutoSize = true;
-            this.rdoImplosion.Checked = true;
             this.rdoImplosion.Location = new System.Drawing.Point(136, 87);
             this.rdoImplosion.Name = "rdoImplosion";
             this.rdoImplosion.Size = new System.Drawing.Size(59, 16);
             this.rdoImplosion.TabIndex = 3;
-            this.rdoImplosion.TabStop = true;
             this.rdoImplosion.Text = "역전개";
             this.rdoImplosion.UseVisualStyleBackColor = true;
             this.rdoImplosion.CheckedChanged += new System.EventHandler(this.rdoImplosion_CheckedChanged);
             // 
             // dgvBom
             // 
+            this.dgvBom.AllowUserToAddRows = false;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBom.Location = new System.Drawing.Point(12, 113);
+            this.dgvBom.MultiSelect = false;
             this.dgvBom.Name = "dgvBom";
             this.dgvBom.ReadOnly = true;
             this.dgvBom.RowTemplate.Height = 23;
@@ -110,7 +114,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(583, 84);
+            this.btnSearch.Location = new System.Drawing.Point(582, 84);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 10;
@@ -118,11 +122,33 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(370, 84);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.Text = "수정";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(476, 84);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // FrmBomDetailInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(685, 450);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtMatName);
             this.Controls.Add(this.txtMatNo);
@@ -150,5 +176,7 @@
         private System.Windows.Forms.TextBox txtMatNo;
         private System.Windows.Forms.TextBox txtMatName;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

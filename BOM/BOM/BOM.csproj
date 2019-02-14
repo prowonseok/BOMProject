@@ -110,6 +110,12 @@
     <Compile Include="FrmBomSearchPro.Designer.cs">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomUpdate.Designer.cs">
+      <DependentUpon>FrmBomUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\Customers_Order.cs" />
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBomSearchPro.resx">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomUpdate.resx">
+      <DependentUpon>FrmBomUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

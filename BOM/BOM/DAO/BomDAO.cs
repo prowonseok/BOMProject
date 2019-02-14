@@ -37,7 +37,7 @@ namespace BOM.DAO
             return proLst;
 
         }
-        public List<Materials> SelectBom4(int mat_No, string procedure) {
+        public DataTable SelectBom4(int mat_No, string procedure) {
             List<Materials> matLst = new List<Materials>();
 
             string sp = procedure;
@@ -45,47 +45,9 @@ namespace BOM.DAO
             sqlParameters[0] = new SqlParameter("@Mat_No",  mat_No);
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-
-            foreach (DataRow item in dt.Rows)
-            {
-                //재사용성을 위해 NULL값 허용인 값들을 NULL로 설정
-                string mat_Manufactur = null;
-                int cost = 0;
-                int ea = 0;
-                int off_No = 0;
-                if (!string.IsNullOrEmpty(item["Mat_Manufactur"].ToString()))
-                {
-                    mat_Manufactur = item["Mat_Manufactur"].ToString();
-                }
-                if (!string.IsNullOrEmpty(item["Mat_Cost"].ToString()))
-                {
-                    cost = Int32.Parse(item["Mat_Cost"].ToString());
-                }
-                if (!string.IsNullOrEmpty(item["Mat_EA"].ToString()))
-                {
-                    ea = Int32.Parse(item["Mat_EA"].ToString());
-                }
-                if (!string.IsNullOrEmpty(item["Off_No"].ToString()))
-                {
-                    off_No = Int32.Parse(item["Off_No"].ToString());
-                }
-                matLst.Add(new Materials
-                {
-                    Mat_No = Int32.Parse(item["Mat_No"].ToString()),
-                    Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
-                    Mat_Manufactur = mat_Manufactur,
-                    Mat_Name = item["Mat_Name"].ToString(),
-                    Mat_Cost = cost,
-                    Mat_Level = Int32.Parse(item["Mat_Level"].ToString()),
-                    Mat_Ea = ea,
-                    Off_No = off_No
-                }
-                );
-
-            }
-            return matLst;
+            
+            return dt;
         }
-
         public bool Selectchildnode(string child_Name)
         {
             string sp = "BOM_Bom_ChiledNode_Procedure";
@@ -119,7 +81,6 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
             return dt;
         }
-
         public List<Materials> SelectBom3(int mat_Level, int mat_No) {
             List<Materials> matLst = new List<Materials>();
 
@@ -279,6 +240,39 @@ namespace BOM.DAO
             }
             return result;
         }
+        public bool UpdateBom(int pNo, int cNo, int ea) {
+            string sp = "BOM_Bom_Update_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@BOM_ParentNo", pNo);
+            sqlParameters[1] = new SqlParameter("@BOM_ChildNo", cNo);
+            sqlParameters[2] = new SqlParameter("@BOM_ChildEA", ea);
+            bool result = false;
+            if (con.ExecuteParameters(sp,sqlParameters) !=-1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+        public bool DeleteBom(int pNo, int cNo) {
+            string sp = "BOM_Bom_Delete_Procedure";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@BOM_ParentNo", pNo);
+            sqlParameters[1] = new SqlParameter("@BOM_ChildNo", cNo);
 
+            bool result = false;
+            if (con.ExecuteParameters(sp, sqlParameters) !=-1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }
