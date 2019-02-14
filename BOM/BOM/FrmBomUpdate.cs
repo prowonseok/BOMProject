@@ -22,6 +22,7 @@ namespace BOM
             this.pNo = pNo;
             this.ea = ea;
             this.materials = materials;
+
             InitializeComponent();
         }
 
@@ -54,6 +55,11 @@ namespace BOM
                 MessageBox.Show("숫자를 입력해주세요");
                 txtEa.Focus();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

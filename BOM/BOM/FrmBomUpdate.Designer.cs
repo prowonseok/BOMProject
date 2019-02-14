@@ -28,24 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtMatName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMatNo = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtMatNo = new System.Windows.Forms.TextBox();
+            this.txtMatName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txtMatName
-            // 
-            this.txtMatName.Location = new System.Drawing.Point(113, 67);
-            this.txtMatName.Name = "txtMatName";
-            this.txtMatName.ReadOnly = true;
-            this.txtMatName.Size = new System.Drawing.Size(185, 21);
-            this.txtMatName.TabIndex = 1;
             // 
             // label1
             // 
@@ -72,14 +64,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "개";
             // 
-            // txtMatNo
-            // 
-            this.txtMatNo.Location = new System.Drawing.Point(113, 12);
-            this.txtMatNo.Name = "txtMatNo";
-            this.txtMatNo.ReadOnly = true;
-            this.txtMatNo.Size = new System.Drawing.Size(109, 21);
-            this.txtMatNo.TabIndex = 0;
-            // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(53, 174);
@@ -88,6 +72,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -117,11 +102,29 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "자재명 : ";
             // 
+            // txtMatNo
+            // 
+            this.txtMatNo.Location = new System.Drawing.Point(113, 12);
+            this.txtMatNo.Name = "txtMatNo";
+            this.txtMatNo.ReadOnly = true;
+            this.txtMatNo.Size = new System.Drawing.Size(120, 21);
+            this.txtMatNo.TabIndex = 9;
+            // 
+            // txtMatName
+            // 
+            this.txtMatName.Location = new System.Drawing.Point(113, 64);
+            this.txtMatName.Name = "txtMatName";
+            this.txtMatName.ReadOnly = true;
+            this.txtMatName.Size = new System.Drawing.Size(185, 21);
+            this.txtMatName.TabIndex = 10;
+            // 
             // FrmBomUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 224);
+            this.Controls.Add(this.txtMatName);
+            this.Controls.Add(this.txtMatNo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnUpdate);
@@ -129,8 +132,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtEa);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMatName);
-            this.Controls.Add(this.txtMatNo);
             this.Name = "FrmBomUpdate";
             this.Text = "FrmBomUpdate";
             this.Load += new System.EventHandler(this.FrmBomUpdate_Load);
@@ -140,15 +141,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtMatName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMatNo;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMatNo;
+        private System.Windows.Forms.TextBox txtMatName;
     }
 }
