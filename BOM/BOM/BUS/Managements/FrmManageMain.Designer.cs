@@ -32,12 +32,13 @@
             this.dgvMatList = new System.Windows.Forms.DataGridView();
             this.checkCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMatAdd
             // 
-            this.btnMatAdd.Location = new System.Drawing.Point(780, 409);
+            this.btnMatAdd.Location = new System.Drawing.Point(785, 66);
             this.btnMatAdd.Name = "btnMatAdd";
             this.btnMatAdd.Size = new System.Drawing.Size(75, 23);
             this.btnMatAdd.TabIndex = 0;
@@ -50,7 +51,7 @@
             this.dgvMatList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMatList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkCol});
-            this.dgvMatList.Location = new System.Drawing.Point(12, 12);
+            this.dgvMatList.Location = new System.Drawing.Point(12, 95);
             this.dgvMatList.MultiSelect = false;
             this.dgvMatList.Name = "dgvMatList";
             this.dgvMatList.RowTemplate.Height = 23;
@@ -68,11 +69,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnOrder
+            // 
+            this.btnOrder.Location = new System.Drawing.Point(12, 66);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnOrder.TabIndex = 4;
+            this.btnOrder.Text = "발주";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 440);
+            this.ClientSize = new System.Drawing.Size(872, 498);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
             this.Name = "FrmManageMain";
@@ -89,5 +101,6 @@
         private System.Windows.Forms.DataGridView dgvMatList;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkCol;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnOrder;
     }
 }

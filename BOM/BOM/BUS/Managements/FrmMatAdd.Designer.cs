@@ -37,7 +37,6 @@
             this.tbMatNo = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbCost = new System.Windows.Forms.TextBox();
-            this.tbMatLvl = new System.Windows.Forms.TextBox();
             this.tbMatEa = new System.Windows.Forms.TextBox();
             this.lblMatEa = new System.Windows.Forms.Label();
             this.lblOfferer = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.cbOfferer = new System.Windows.Forms.ComboBox();
             this.tbManufac = new System.Windows.Forms.TextBox();
+            this.cbMatLvl = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblMatNo
@@ -108,7 +108,7 @@
             this.tbMatNo.Name = "tbMatNo";
             this.tbMatNo.Size = new System.Drawing.Size(121, 21);
             this.tbMatNo.TabIndex = 6;
-            this.tbMatNo.TextChanged += new System.EventHandler(this.tbMatNo_TextChanged);
+            this.tbMatNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMatNo_KeyPress);
             // 
             // tbName
             // 
@@ -123,15 +123,7 @@
             this.tbCost.Name = "tbCost";
             this.tbCost.Size = new System.Drawing.Size(121, 21);
             this.tbCost.TabIndex = 10;
-            this.tbCost.TextChanged += new System.EventHandler(this.tbCost_TextChanged);
-            this.tbCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCost_KeyDown);
-            // 
-            // tbMatLvl
-            // 
-            this.tbMatLvl.Location = new System.Drawing.Point(340, 60);
-            this.tbMatLvl.Name = "tbMatLvl";
-            this.tbMatLvl.Size = new System.Drawing.Size(121, 21);
-            this.tbMatLvl.TabIndex = 11;
+            this.tbCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCost_KeyPress);
             // 
             // tbMatEa
             // 
@@ -139,6 +131,7 @@
             this.tbMatEa.Name = "tbMatEa";
             this.tbMatEa.Size = new System.Drawing.Size(121, 21);
             this.tbMatEa.TabIndex = 12;
+            this.tbMatEa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMatEa_KeyPress);
             // 
             // lblMatEa
             // 
@@ -160,6 +153,7 @@
             // 
             // cbMatType
             // 
+            this.cbMatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMatType.FormattingEnabled = true;
             this.cbMatType.Location = new System.Drawing.Point(113, 60);
             this.cbMatType.Name = "cbMatType";
@@ -188,6 +182,7 @@
             // 
             // cbOfferer
             // 
+            this.cbOfferer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOfferer.FormattingEnabled = true;
             this.cbOfferer.Location = new System.Drawing.Point(340, 134);
             this.cbOfferer.Name = "cbOfferer";
@@ -201,11 +196,26 @@
             this.tbManufac.Size = new System.Drawing.Size(121, 21);
             this.tbManufac.TabIndex = 22;
             // 
+            // cbMatLvl
+            // 
+            this.cbMatLvl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMatLvl.FormattingEnabled = true;
+            this.cbMatLvl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cbMatLvl.Items.AddRange(new object[] {
+            "원재료",
+            "반제품",
+            "완제품"});
+            this.cbMatLvl.Location = new System.Drawing.Point(340, 60);
+            this.cbMatLvl.Name = "cbMatLvl";
+            this.cbMatLvl.Size = new System.Drawing.Size(121, 20);
+            this.cbMatLvl.TabIndex = 23;
+            // 
             // FrmMatAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 222);
+            this.Controls.Add(this.cbMatLvl);
             this.Controls.Add(this.tbManufac);
             this.Controls.Add(this.cbOfferer);
             this.Controls.Add(this.btnCancel);
@@ -214,7 +224,6 @@
             this.Controls.Add(this.lblOfferer);
             this.Controls.Add(this.lblMatEa);
             this.Controls.Add(this.tbMatEa);
-            this.Controls.Add(this.tbMatLvl);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbMatNo);
@@ -243,7 +252,6 @@
         private System.Windows.Forms.TextBox tbMatNo;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbCost;
-        private System.Windows.Forms.TextBox tbMatLvl;
         private System.Windows.Forms.TextBox tbMatEa;
         private System.Windows.Forms.Label lblMatEa;
         private System.Windows.Forms.Label lblOfferer;
@@ -252,5 +260,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ComboBox cbOfferer;
         private System.Windows.Forms.TextBox tbManufac;
+        private System.Windows.Forms.ComboBox cbMatLvl;
     }
 }

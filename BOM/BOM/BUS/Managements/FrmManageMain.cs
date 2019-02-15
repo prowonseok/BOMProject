@@ -127,7 +127,7 @@ namespace BOM.BUS.Managements
         {
             object[] listArray = new object[2];
             List<Materials_TypeVO> matTypeList = new List<Materials_TypeVO>();
-            List<string> matOffererList = new List<string>();
+            List<OffererVO> matOffererList = new List<OffererVO>();
             DataTable dtType = md.SelectMat("Materials_Type_Select_Procedure");
             DataTable dtOfferer = md.SelectMat("Offerer_Select_Procedure");
             foreach (DataRow item in dtType.Rows)
@@ -136,7 +136,7 @@ namespace BOM.BUS.Managements
             }
             foreach (DataRow item in dtOfferer.Rows)
             {
-                matOffererList.Add(item["Off_Name"].ToString());
+                matOffererList.Add(new OffererVO(int.Parse(item["Off_No"].ToString()), item["Off_Name"].ToString()));
             }
             listArray[0] = matTypeList;
             listArray[1] = matOffererList;
@@ -166,6 +166,12 @@ namespace BOM.BUS.Managements
             //    dbp.ExecuteParameters("Products_Image_Insert_Procedure", sqlParameter);
             //    MessageBox.Show("성공");
             //}
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            FrmOrderMain fom = new FrmOrderMain();
+            fom.ShowDialog();
         }
     }
 }

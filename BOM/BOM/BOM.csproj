@@ -72,6 +72,12 @@
     <Compile Include="BUS\Managements\FrmMatAdd.Designer.cs">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmOrderMain.Designer.cs">
+      <DependentUpon>FrmOrderMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="BUS\BOM\FrmBOM.cs">
       <SubType>Form</SubType>
@@ -121,6 +127,7 @@
     <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
+    <Compile Include="VO\OffererVO.cs" />
     <Compile Include="DAO\SalesDao.cs" />
     <Compile Include="BUS\Sales\FrmSalesMain.cs">
       <SubType>Form</SubType>
@@ -157,6 +164,9 @@
     <Compile Include="VO\SalesVO.cs" />
     <EmbeddedResource Include="BUS\Managements\FrmMatAdd.resx">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmOrderMain.resx">
+      <DependentUpon>FrmOrderMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
       <DependentUpon>ChaingePrice.cs</DependentUpon>

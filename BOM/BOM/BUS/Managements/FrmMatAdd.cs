@@ -29,13 +29,13 @@ namespace BOM.BUS.Managements
 
         private void FrmMatAdd_Load(object sender, EventArgs e)
         {
-            foreach (string item in listArray[0])
+            foreach (VO.Materials_TypeVO item in (List<VO.Materials_TypeVO>)listArray[0])
             {
-                cbMatType.Items.Add(item);
+                cbMatType.Items.Add(item.Mat_Type_Category);
             }
-            foreach (string item in listArray[1])
+            foreach (VO.OffererVO item in (List<VO.OffererVO>)listArray[1])
             {
-                cbOfferer.Items.Add(item);
+                cbOfferer.Items.Add(item.OffName);
             }
         }
 
@@ -46,9 +46,11 @@ namespace BOM.BUS.Managements
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbMatNo.Text) && !string.IsNullOrEmpty(tbMatLvl.Text) && !string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text))
+            if (!string.IsNullOrEmpty(tbMatNo.Text) && !string.IsNullOrEmpty(cbMatLvl.Text) && !string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text))
             {
-                //md.InsertMat(tbMatNo.Text, cbMatType., );
+                md.InsertMat(int.Parse(tbMatNo.Text), int.Parse(((List<VO.Materials_TypeVO>)listArray[0])[cbMatType.SelectedIndex].Mat_Type_No.ToString()), tbManufac.Text, tbName.Text, int.Parse(tbCost.Text.Replace(",", "")), cbMatLvl.SelectedIndex, int.Parse(tbMatEa.Text), int.Parse(((List<VO.OffererVO>)listArray[1])[cbOfferer.SelectedIndex].OffNo.ToString()));
+                MessageBox.Show("성공적으로 등록하였습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Close();
             }
             else
             {
@@ -71,15 +73,6 @@ namespace BOM.BUS.Managements
                 MessageBox.Show("자재 번호는 정수만 입력 가능합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbMatNo.Clear();
                 return;
-            }
-        }
-
-        private void tbCost_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 188)
-            {
-                MessageBox.Show("단가는 정수만 입력 가능합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbCost.Clear();
             }
         }
 
@@ -111,6 +104,39 @@ namespace BOM.BUS.Managements
             {
                 MessageBox.Show("단가는 정수만 입력 가능합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tbCost.Clear();
+            }
+        }
+
+        private void tbMatEa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                string[] sp = tbCost.Text.Split(',');
+                if (sp[sp.Length - 1].Length >= 4)
+                {
+                    tbCost.Text = tbCost.Text.Insert(tbCost.Text.Length - 1, ",");
+                    tbCost.Select(tbCost.Text.Length, 0);
+                }
+            }
+        }
+
+        private void tbMatNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
             }
         }
     }
