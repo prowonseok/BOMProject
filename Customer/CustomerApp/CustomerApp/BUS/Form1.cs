@@ -16,11 +16,19 @@ namespace CustomerApp.BUS
     public partial class Form1 : Form
     {
         private static string path = string.Empty;
-        
+
         public static bool loginState = false;
+
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
+
+        OrderVO orderVO;
+        CustomerVO customer;
+
         List<ProductVO> proList; // 실시간 특성상 로드 이벤트에 두는게 좋을 것 같음
+        List<OrderVO> Cart = new List<OrderVO>();
+        List<OrderVO> cartOrders = new List<OrderVO>();
+
         FrmLogin loginForm;
         ListViewItem selectItem;
 
@@ -61,6 +69,7 @@ namespace CustomerApp.BUS
             PanBottomCtrlVisiFalse();
             CtrlVisiTrue(spCont);
 
+            SetGviewCart();
             SetListView();
         }
 
@@ -132,7 +141,7 @@ namespace CustomerApp.BUS
             btn[0].BackColor = Color.LightGray;
             for (int i = 1; i < btn.Length; i++)
             {
-                btn[i].BackColor = Color.White; 
+                btn[i].BackColor = Color.White;
             }
         }
 
@@ -165,7 +174,7 @@ namespace CustomerApp.BUS
                 imgList.Images.Add(proName, proList[i].Image);
                 var li = new ListViewItem(proName + "\r\n " + string.Format("{0:c}", proList[i].Price));
                 li.ImageKey = proName;
-                
+
                 lstView.Items.Add(li);
             }
         }
@@ -189,9 +198,10 @@ namespace CustomerApp.BUS
                 Label lblCusName = new Label();
                 lblCusName.Width = 500;
                 lblCusName.Text = loginForm.Customer.Name + "님 환영합니다.";
-                lblCusName.Location = new Point(btnLogin.Location.X - (lblCusName.Text.Length + 150), 17);                
+                lblCusName.Location = new Point(btnLogin.Location.X - (lblCusName.Text.Length + 150), 17);
                 panTop.Controls.Add(lblCusName);
 
+                customer = loginForm.Customer;
                 loginState = true;
             }
         }
@@ -205,7 +215,7 @@ namespace CustomerApp.BUS
 
         private void BtnMyPage_Click(object sender, EventArgs e)
         {
-            new FrmMyInfo(loginForm.Customer).ShowDialog();
+            new FrmMyInfo(customer).ShowDialog();
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
@@ -236,8 +246,8 @@ namespace CustomerApp.BUS
                 txtBuySpec.BackColor = Color.White;
 
                 SetBtnColor(btnBuy, btnProducts, btnAS, btnCart, btnBuyRecord);
-                SetBtnDesign(btnAdd, btnBuyNow);
-                SetBtnImage(btnAdd, "cart.png");
+                SetBtnDesign(btnAddCart, btnBuyNow);
+                SetBtnImage(btnAddCart, "cart.png");
                 SetBtnImage(btnBuyNow, "buyNow.png");
 
                 cbxBuyCusPro.Items.Clear();
@@ -247,7 +257,7 @@ namespace CustomerApp.BUS
                     cbxBuyCusPro.Items.Add(product.Name);
                 }
             }
-            else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);    
+            else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnAS_Click(object sender, EventArgs e)
@@ -287,7 +297,7 @@ namespace CustomerApp.BUS
                 lblSpecTitle.Text = "PC 구성\r\n\r\n     " + proList[selectItem.Index].Name;
             }
 
-            if (cbxBuyCusPro.Items.Count != 0) cbxBuyCusPro.SelectedItem = cbxBuyCusPro.Items[selectItem.Index];            
+            if (cbxBuyCusPro.Items.Count != 0) cbxBuyCusPro.SelectedItem = cbxBuyCusPro.Items[selectItem.Index];
         }
 
         private void GetSpecLabel()
@@ -311,16 +321,19 @@ namespace CustomerApp.BUS
         private void nuProAmount_ValueChanged(object sender, EventArgs e)
         {
             if (nuProAmount.Value <= 0)
-            { 
-                btnAdd.Enabled = false;
+            {
+                btnAddCart.Enabled = false;
                 btnBuyNow.Enabled = false;
                 txtTotalPrice.Text = string.Empty;
             }
             else
             {
-                btnAdd.Enabled = true;
+                btnAddCart.Enabled = true;
                 btnBuyNow.Enabled = true;
-                txtTotalPrice.Text = string.Format("{0:c}", proList[selectItem.Index].Price * nuProAmount.Value);
+                if (selectItem != null)
+                {
+                    txtTotalPrice.Text = string.Format("{0:c}", proList[selectItem.Index].Price * nuProAmount.Value); 
+                }
             }
         }
 
@@ -330,10 +343,33 @@ namespace CustomerApp.BUS
             {
                 SetBtnColor(btnCart, btnProducts, btnBuy, btnAS, btnBuyRecord);
                 PanBottomCtrlVisiFalse();
-                gbxCart.Dock = DockStyle.Fill;
                 CtrlVisiTrue(gbxCart);
+                gviewCart.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                if (Cart.Count != 0)
+                {
+                    gviewCart.Columns[0].Visible = true;
+                    gviewCart.DataSource = null;
+                    gviewCart.DataSource = Cart;
+                }
+                else
+                {
+                    gviewCart.DataSource = null;
+                    gviewCart.Columns[0].Visible = false;
+                    MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void SetGviewCart()
+        {
+            gbxCart.Dock = DockStyle.Fill;
+            gviewCart.BackgroundColor = Color.White;
+            gviewCart.MultiSelect = false;
+            DataGridViewCheckBoxColumn cbxCol = new DataGridViewCheckBoxColumn();
+            cbxCol.Name = "cbx";
+            cbxCol.HeaderText = "목록 선택";
+            gviewCart.Columns.Add(cbxCol);
         }
 
         private void btnBuyRecord_Click(object sender, EventArgs e)
@@ -345,6 +381,7 @@ namespace CustomerApp.BUS
                 gbxBuyRecord.Dock = DockStyle.Bottom;
                 gViewBuy.Height = panBottom.Height - 100;
                 CtrlVisiTrue(gbxBuyRecord);
+                gViewBuy.DataSource = orderDAO.SelectOrderByCusID(customer.No, 1);
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -353,16 +390,9 @@ namespace CustomerApp.BUS
         {
             try
             {
-                OrderVO orderVO = new OrderVO()
-                {
-                    Order_OrderNo = 1,
-                    OrderCusId = loginForm.Customer.No,
-                    OrderDate = DateTime.Now,
-                    OrderEa = int.Parse(nuProAmount.Value.ToString()),
-                    OrderProNo = proList[cbxBuyCusPro.SelectedIndex].No,
-                    OrderPrice = proList[cbxBuyCusPro.SelectedIndex].Price * int.Parse(nuProAmount.Value.ToString()),
-                };
-                orderDAO.Insert(orderVO);
+                orderVO = GetOrderVo();
+                orderVO.Order_OrderNo = 1;
+                orderDAO.InsertSingleOrder(orderVO, customer.No);
                 MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnBuy_Click(null, null);
             }
@@ -370,6 +400,98 @@ namespace CustomerApp.BUS
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnAddCart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cart.Add(GetOrderVo());
+                gviewCart.DataSource = Cart;
+                MessageBox.Show("장바구니에 저장되었습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private OrderVO GetOrderVo()
+        {
+            OrderVO order = new OrderVO()
+            {
+                CusNo = customer.No,
+                OrderDate = DateTime.Now,
+                EA = int.Parse(nuProAmount.Value.ToString()),
+                ProNo = proList[cbxBuyCusPro.SelectedIndex].No,
+                Price = proList[cbxBuyCusPro.SelectedIndex].Price * int.Parse(nuProAmount.Value.ToString()),
+            };
+
+            return order;
+        }
+
+        private void btnCartBuy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cartOrders.Clear();
+                foreach (DataGridViewRow row in gviewCart.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["cbx"].Value))
+                    {
+                        OrderVO order = new OrderVO()
+                        {
+                            CusNo = int.Parse(row.Cells[9].Value.ToString()),
+                            ProNo = int.Parse(row.Cells[10].Value.ToString()),
+                            OrderDate = DateTime.Parse(row.Cells[4].Value.ToString()),
+                            Price = int.Parse(row.Cells[5].Value.ToString()),
+                            EA = int.Parse(row.Cells[6].Value.ToString()),
+                            EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음 /*int.Parse(row.Cells[8].Value.ToString())*/
+                        };
+                        cartOrders.Add(order);
+                    }
+                }
+                orderDAO.InsertCartOrder(cartOrders, customer.No);
+                MessageBox.Show("구매 신청 완료!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int indexNum = 0;
+                indexNum = RemoveCart(indexNum);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private int RemoveCart(int indexNum)
+        {
+            foreach (DataGridViewRow checkRow in gviewCart.Rows)
+            {
+                if (Convert.ToBoolean(checkRow.Cells["cbx"].Value))
+                {
+                    Cart.RemoveAt(checkRow.Index - indexNum);
+                    indexNum++;
+                }
+            }
+            if (Cart.Count != 0)
+            {
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = Cart;
+            }
+            else
+            {
+                gviewCart.DataSource = null;
+                gviewCart.Columns[0].Visible = false;
+                MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return indexNum;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int indexNum = 0;
+            indexNum = RemoveCart(indexNum);
         }
     }
 }

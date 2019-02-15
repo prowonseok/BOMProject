@@ -24,21 +24,12 @@ namespace CustomerApp.VO
             set { order_OrderNo = value; }
         }
 
+        private string proName; 
 
-        private int orderCusId;
-
-        public int OrderCusId
+        public string ProName
         {
-            get { return orderCusId; }
-            set { orderCusId = value; }
-        }
-
-        private int orderProNo; 
-
-        public int OrderProNo
-        {
-            get { return orderProNo; }
-            set { orderProNo = value; }
+            get { return proName; }
+            set { proName = value; }
         }
 
         private DateTime orderDate;
@@ -49,20 +40,28 @@ namespace CustomerApp.VO
             set { orderDate = value; }
         }
 
-        private int orderPrice;
+        private int price;
 
-        public int OrderPrice
+        public int Price
         {
-            get { return orderPrice; }
-            set { orderPrice = value; }
+            get { return price; }
+            set { price = value; }
         }
 
-        private int orderEa;
+        private int ea;
 
-        public int OrderEa
+        public int EA
         {
-            get { return orderEa; }
-            set { orderEa = value; }
+            get { return ea; }
+            set { ea = value; }
+        }
+
+        private string empName;
+
+        public string EmpName
+        {
+            get { return empName; }
+            set { empName = value; }
         }
 
         private int empNo;
@@ -71,6 +70,23 @@ namespace CustomerApp.VO
         {
             get { return empNo; }
             set { empNo = value; }
+        }
+
+
+        private int cusNo;
+
+        public int CusNo
+        {
+            get { return cusNo; }
+            set { cusNo = value; }
+        }
+
+        private int proNo;
+
+        public int ProNo
+        {
+            get { return proNo; }
+            set { proNo = value; }
         }
 
     }

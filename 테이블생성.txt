@@ -1,3 +1,18 @@
+-- 장바구니 테이블 생성 쿼리
+CREATE TABLE [dbo].[Customers_Cart]
+(
+	[Cus_Cart_No] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Cus_No] INT NOT NULL, 
+	[Cus_Cart_Cus_SaveNo] INT NOT NULL, 
+    [Pro_No] INT NOT NULL, 
+    [Cus_Cart_Save_EA] INT NOT NULL, 
+    [Cus_Cart_Date] DATETIME NOT NULL
+)
+
+-- 장바구니 테이블 제약조건 추가
+ALTER TABLE Customers_Cart ADD CONSTRAINT Cus_No_FK FOREIGN KEY (Cus_No) REFERENCES Customers(Cus_No);
+ALTER TABLE Customers_Cart ADD CONSTRAINT Pro_No_FK FOREIGN KEY (Pro_No) REFERENCES Products(Pro_No);
+
 -- 자재 테이블 생성 쿼리
 CREATE TABLE [dbo].[Materials]
 (
@@ -99,18 +114,36 @@ AS
 	where Pro_No = @Pro_No;
 
 -- 주문 insert
-CREATE PROCEDURE [dbo].[InsertOrder]
+CREATE PROCEDURE [dbo].[InsertSingleOrder]
 	@Cus_Order_OrderNo int,
-	@Cus_ID int,
+	@Cus_No int,
 	@Pro_No int,
 	@Cus_Order_Date datetime,
 	@Cus_Order_EA int,
 	@Cus_Order_Price int
 AS
-	insert into Customers_Order values(@Cus_ID, 1, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, 1, @Cus_Order_Price, @Cus_Order_EA);
+	insert into Customers_Order values(@Cus_No, 1, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, 1, @Cus_Order_Price, @Cus_Order_EA);
 
 -- 주문 해당 회원 select 
 CREATE PROCEDURE [dbo].[SelectOrderByCusID]
-	@cusNo int
+	@Cus_No int,
+	@Emp_No int
 AS
-	SELECT Cus_Order_No, Cus_Order_OrderNo, Cus_ID, Pro_No, Cus_Order_Date, Cus_Order_EA, Cus_Order_Price from Customers_Order where Cus_ID = @cusNo;
+	SELECT [Cus_or].Cus_Order_No, [Cus_or].Cus_Order_OrderNo, [Cus].Cus_Name, [Pro].Pro_Name, [Cus_or].Cus_Order_Date, [Cus_or].Cus_Order_EA, [Cus_or].Cus_Order_Price, [Emp].Emp_Name from Customers_Order [Cus_or] 
+	inner join Customers [Cus] on [Cus].Cus_No = @Cus_No
+	inner join Products [Pro] on [Pro].Pro_No = [Cus_or].Pro_No
+	inner join Employees [Emp] on [Emp].Emp_No = @Emp_No
+	where [Cus_or].Cus_No = @Cus_No;
+
+-- 장바구니 목록 선택 주문 insert
+CREATE PROCEDURE [dbo].[InsertCartOrder]
+	@Cus_No int,
+	@Pro_No int,
+	@Cus_Order_OrderNo int,
+	@Cus_Order_Date datetime,
+	@Cus_Order_Price int,
+	@Cus_Order_EA int,
+	@Emp_No int
+AS
+	INSERT INTO Customers_Order (Cus_No, Emp_No, Pro_No, Cus_Order_OrderNo, Cus_Order_Date, Cus_Order_Price, Cus_Order_EA, Cus_OrderComplete)
+	values (@Cus_No, @Emp_No, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, @Cus_Order_Price, @Cus_Order_EA, 1);
