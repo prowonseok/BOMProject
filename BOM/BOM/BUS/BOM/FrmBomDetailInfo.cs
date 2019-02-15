@@ -14,6 +14,7 @@ namespace BOM
     public partial class FrmBomDetailInfo : Form
     {
         DAO.BomDAO bDao;
+        #region Property
         private int updateNum;
         private int matNo;
         private string matName;
@@ -22,23 +23,38 @@ namespace BOM
         public int MatNo { get => matNo; set => matNo = value; }
         public string MatName { get => matName; set => matName = value; }
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
-        public int UpdateNum { get => updateNum; set => updateNum = value; }
+        public int UpdateNum { get => updateNum; set => updateNum = value; } 
+        #endregion
 
         private Materials materials;
 
+        /// <summary>
+        /// 메인화면에서 매개변수 없이 BOM조회 버튼 클릭 시
+        /// </summary>
         public FrmBomDetailInfo() {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 그리드뷰에서 BOM조회 버튼 클릭 시
+        /// </summary>
+        /// <param name="materials"></param>
         public FrmBomDetailInfo(Materials materials):this()
         {
-            this.materials =materials;
+            this.materials = materials;
         }
 
+        /// <summary>
+        /// Form이 Load될 때 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmBomDetailInfo_Load(object sender, EventArgs e)
         {
             dgvBom.DataSource = null;
             try
             {
+                //BOM조회 버튼을 클릭 했을 때 매개변수가 있었을 경우 BOM조회 페이지 화면에 매개변수로 받은 값들 출력
                 if (!string.IsNullOrEmpty(materials.Mat_No.ToString()))//materials.Mat_No가 비어있지 않으면
                 {
                     this.txtMatNo.Text = materials.Mat_No.ToString();
@@ -49,14 +65,20 @@ namespace BOM
             {
             }
             dgvBom.AutoResizeColumns();
-            
+
         }
 
+        /// <summary>
+        ///품목 찾기 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             FrmBomSearchMat mbsm = new FrmBomSearchMat();
-            mbsm.Owner = this;
+            mbsm.Owner = this; //FrmBomAllMatInfo Form에서 값을 받아오기 위해 Owner를 지정
             mbsm.ShowDialog();
+            //FrmBomSearchMat Form에서 등록인지 취소인지 판단
             if (canOrAdd)
             {
                 this.txtMatNo.Text = matNo.ToString();
@@ -65,35 +87,55 @@ namespace BOM
             dgvBom.DataSource = null;
         }
 
+        /// <summary>
+        /// RadioButton이 정전개시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdoExplosion_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoExplosion.Checked) //정전개시 
+            if (rdoExplosion.Checked) 
             {
+                //수정 버튼과 삭제 버튼 활성화
                 btnUpdate.Visible = true;
                 btnDelete.Visible = true;
+                //자재 번호의 값이 있을 경우
                 if (!string.IsNullOrEmpty(txtMatNo.Text))
                 {
                     bDao = new DAO.BomDAO();
+                    //정전개시 자재 번호와 정전개 프로시저를 매개변수로 전송
                     dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
-                    DisplayGridview(true);
+                    DisplayGridview(true); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }
         }
 
+        /// <summary>
+        /// RadioButton이 역전개시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdoImplosion_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoImplosion.Checked) //역전개시 
+            if (rdoImplosion.Checked) 
             {
+                //수정 버튼과 삭제 버튼 비활성화
                 btnUpdate.Visible = false;
                 btnDelete.Visible = false;
                 if (!string.IsNullOrEmpty(txtMatNo.Text))
                 {
                     bDao = new DAO.BomDAO();
+                    //역전개시 자재 번호와 역전개 프로시저를 매개변수로 전송
                     dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
-                    DisplayGridview(false);
+                    DisplayGridview(false); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }
         }
+
+        /// <summary>
+        /// 그리드뷰에 대한 설정하는 메서드
+        /// </summary>
+        /// <param name="type"></param>
         private void DisplayGridview(bool type)
         {
             if (type)
@@ -142,6 +184,12 @@ namespace BOM
                 }
             }
         }
+
+        /// <summary>
+        /// 수정 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try

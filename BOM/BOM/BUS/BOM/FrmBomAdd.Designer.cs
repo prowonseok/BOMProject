@@ -46,6 +46,7 @@
             this.lblPLevel = new System.Windows.Forms.Label();
             this.txtChildMatLevel = new System.Windows.Forms.TextBox();
             this.lblChildMatLevel = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblChildMatNo
@@ -205,11 +206,22 @@
             this.lblChildMatLevel.TabIndex = 16;
             this.lblChildMatLevel.Text = "품목 레벨 : ";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(291, 255);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 18;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // FrmBomAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 312);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtChildMatLevel);
             this.Controls.Add(this.lblChildMatLevel);
             this.Controls.Add(this.txtParentMatLevel);
@@ -256,5 +268,6 @@
         private System.Windows.Forms.Label lblPLevel;
         private System.Windows.Forms.TextBox txtChildMatLevel;
         private System.Windows.Forms.Label lblChildMatLevel;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
