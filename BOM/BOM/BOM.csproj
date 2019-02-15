@@ -79,12 +79,6 @@
       <DependentUpon>FrmOrderMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\BomDAO.cs" />
-    <Compile Include="BUS\BOM\FrmBOM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\BOM\FrmBOM.Designer.cs">
-      <DependentUpon>FrmBOM.cs</DependentUpon>
-    </Compile>
     <Compile Include="BUS\BOM\FrmBomAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,23 +130,57 @@
       <DependentUpon>FrmSalesMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\MatDAO.cs" />
+    <Compile Include="BUS\BOM\FrmBomDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomDetailInfo.Designer.cs">
+      <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomSearchMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\BOM\FrmBomSearchMat.Designer.cs">
+      <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBomMatEstimating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomMatEstimating.Designer.cs">
+      <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBomSearchPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomSearchPro.Designer.cs">
+      <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBomUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomUpdate.Designer.cs">
+      <DependentUpon>FrmBomUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\Customers_Order.cs" />
     <Compile Include="VO\Cus_OrderVO.cs" />
     <Compile Include="VO\MaterialsVO.cs" />
     <Compile Include="VO\Materials_TypeVO.cs" />
-    <EmbeddedResource Include="BUS\BOM\FrmBOM.resx">
-      <DependentUpon>FrmBOM.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="VO\Products.cs" />
     <EmbeddedResource Include="BUS\BOM\FrmBomAdd.resx">
       <DependentUpon>FrmBomAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomAllMatInfo.resx">
       <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomDetailInfo.resx">
+      <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomInfo.resx">
       <DependentUpon>FrmBomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\BOM\FrmBomSearchMat.resx">
+      <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -183,6 +211,15 @@
     <EmbeddedResource Include="BUS\Sales\FrmSalesMain.resx">
       <DependentUpon>FrmSalesMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomMatEstimating.resx">
+      <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomSearchPro.resx">
+      <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomUpdate.resx">
+      <DependentUpon>FrmBomUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -207,6 +244,5 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

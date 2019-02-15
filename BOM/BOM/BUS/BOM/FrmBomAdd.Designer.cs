@@ -46,6 +46,7 @@
             this.lblPLevel = new System.Windows.Forms.Label();
             this.txtChildMatLevel = new System.Windows.Forms.TextBox();
             this.lblChildMatLevel = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblChildMatNo
@@ -59,17 +60,17 @@
             // 
             // txtChildMatNo
             // 
-            this.txtChildMatNo.Enabled = false;
             this.txtChildMatNo.Location = new System.Drawing.Point(112, 112);
             this.txtChildMatNo.Name = "txtChildMatNo";
+            this.txtChildMatNo.ReadOnly = true;
             this.txtChildMatNo.Size = new System.Drawing.Size(100, 21);
             this.txtChildMatNo.TabIndex = 1;
             // 
             // txtChildMatName
             // 
-            this.txtChildMatName.Enabled = false;
             this.txtChildMatName.Location = new System.Drawing.Point(112, 157);
             this.txtChildMatName.Name = "txtChildMatName";
+            this.txtChildMatName.ReadOnly = true;
             this.txtChildMatName.Size = new System.Drawing.Size(279, 21);
             this.txtChildMatName.TabIndex = 3;
             // 
@@ -102,11 +103,11 @@
             // lblChildMatEA
             // 
             this.lblChildMatEA.AutoSize = true;
-            this.lblChildMatEA.Location = new System.Drawing.Point(49, 205);
+            this.lblChildMatEA.Location = new System.Drawing.Point(65, 205);
             this.lblChildMatEA.Name = "lblChildMatEA";
-            this.lblChildMatEA.Size = new System.Drawing.Size(57, 12);
+            this.lblChildMatEA.Size = new System.Drawing.Size(41, 12);
             this.lblChildMatEA.TabIndex = 5;
-            this.lblChildMatEA.Text = "수량 명 : ";
+            this.lblChildMatEA.Text = "수량 : ";
             // 
             // btnAdd
             // 
@@ -130,9 +131,9 @@
             // 
             // txtParentMatNo
             // 
-            this.txtParentMatNo.Enabled = false;
             this.txtParentMatNo.Location = new System.Drawing.Point(112, 22);
             this.txtParentMatNo.Name = "txtParentMatNo";
+            this.txtParentMatNo.ReadOnly = true;
             this.txtParentMatNo.Size = new System.Drawing.Size(100, 21);
             this.txtParentMatNo.TabIndex = 9;
             // 
@@ -147,9 +148,9 @@
             // 
             // txtParentMatName
             // 
-            this.txtParentMatName.Enabled = false;
             this.txtParentMatName.Location = new System.Drawing.Point(112, 67);
             this.txtParentMatName.Name = "txtParentMatName";
+            this.txtParentMatName.ReadOnly = true;
             this.txtParentMatName.Size = new System.Drawing.Size(279, 21);
             this.txtParentMatName.TabIndex = 12;
             // 
@@ -173,9 +174,9 @@
             // 
             // txtParentMatLevel
             // 
-            this.txtParentMatLevel.Enabled = false;
             this.txtParentMatLevel.Location = new System.Drawing.Point(291, 22);
             this.txtParentMatLevel.Name = "txtParentMatLevel";
+            this.txtParentMatLevel.ReadOnly = true;
             this.txtParentMatLevel.Size = new System.Drawing.Size(100, 21);
             this.txtParentMatLevel.TabIndex = 15;
             // 
@@ -190,9 +191,9 @@
             // 
             // txtChildMatLevel
             // 
-            this.txtChildMatLevel.Enabled = false;
             this.txtChildMatLevel.Location = new System.Drawing.Point(291, 112);
             this.txtChildMatLevel.Name = "txtChildMatLevel";
+            this.txtChildMatLevel.ReadOnly = true;
             this.txtChildMatLevel.Size = new System.Drawing.Size(100, 21);
             this.txtChildMatLevel.TabIndex = 17;
             // 
@@ -205,11 +206,22 @@
             this.lblChildMatLevel.TabIndex = 16;
             this.lblChildMatLevel.Text = "품목 레벨 : ";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(291, 255);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 18;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // FrmBomAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 312);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtChildMatLevel);
             this.Controls.Add(this.lblChildMatLevel);
             this.Controls.Add(this.txtParentMatLevel);
@@ -256,5 +268,6 @@
         private System.Windows.Forms.Label lblPLevel;
         private System.Windows.Forms.TextBox txtChildMatLevel;
         private System.Windows.Forms.Label lblChildMatLevel;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

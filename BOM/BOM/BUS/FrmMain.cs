@@ -1,4 +1,5 @@
-﻿using BOM.BUS.Sales;
+﻿using BOM.BUS.BOM;
+using BOM.BUS.Sales;
 using BOM.VO;
 using dllPackager;
 using System;
@@ -28,8 +29,8 @@ namespace BOM.BUS
 
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            BOM.FrmBOM fbom = new BOM.FrmBOM();
-            fbom.ShowDialog();
+            FrmBomInfo fbi = new FrmBomInfo();
+            fbi.ShowDialog();
         }
 
         private void btnManage_Click(object sender, EventArgs e)

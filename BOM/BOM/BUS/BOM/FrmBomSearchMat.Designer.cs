@@ -1,6 +1,6 @@
-﻿namespace BOM.BUS.BOM
+﻿namespace BOM
 {
-    partial class FrmBomAllMatInfo
+    partial class FrmBomSearchMat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvAllMat = new System.Windows.Forms.DataGridView();
+            this.dgvInfo = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbbType = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllMat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvAllMat
+            // dgvInfo
             // 
-            this.dgvAllMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllMat.Location = new System.Drawing.Point(12, 46);
-            this.dgvAllMat.MultiSelect = false;
-            this.dgvAllMat.Name = "dgvAllMat";
-            this.dgvAllMat.ReadOnly = true;
-            this.dgvAllMat.RowTemplate.Height = 23;
-            this.dgvAllMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllMat.Size = new System.Drawing.Size(498, 336);
-            this.dgvAllMat.TabIndex = 0;
+            this.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInfo.Location = new System.Drawing.Point(21, 53);
+            this.dgvInfo.Name = "dgvInfo";
+            this.dgvInfo.ReadOnly = true;
+            this.dgvInfo.RowTemplate.Height = 23;
+            this.dgvInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInfo.Size = new System.Drawing.Size(734, 341);
+            this.dgvInfo.TabIndex = 0;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(96, 412);
+            this.btnCancel.Location = new System.Drawing.Point(232, 415);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -61,7 +60,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(297, 412);
+            this.btnAdd.Location = new System.Drawing.Point(443, 415);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -76,16 +75,15 @@
             this.cbbType.Items.AddRange(new object[] {
             "자재명",
             "자재 번호",
-            "자재 타입",
-            "제조사"});
-            this.cbbType.Location = new System.Drawing.Point(118, 17);
+            "자재 타입"});
+            this.cbbType.Location = new System.Drawing.Point(363, 24);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(121, 20);
             this.cbbType.TabIndex = 11;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(435, 17);
+            this.btnSearch.Location = new System.Drawing.Point(680, 24);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 10;
@@ -95,26 +93,26 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(258, 19);
+            this.txtSearch.Location = new System.Drawing.Point(503, 26);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(171, 21);
             this.txtSearch.TabIndex = 9;
             // 
-            // FrmBomAllMatInfo
+            // FrmBomSearchMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 476);
+            this.ClientSize = new System.Drawing.Size(785, 450);
             this.Controls.Add(this.cbbType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.dgvAllMat);
-            this.Name = "FrmBomAllMatInfo";
-            this.Text = "FrmBomAllMatInfo";
-            this.Load += new System.EventHandler(this.FrmBomAllMatInfo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllMat)).EndInit();
+            this.Controls.Add(this.dgvInfo);
+            this.Name = "FrmBomSearchMat";
+            this.Text = "FrmBomSearchMat";
+            this.Load += new System.EventHandler(this.FrmBomSearchMat_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +120,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvAllMat;
+        private System.Windows.Forms.DataGridView dgvInfo;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cbbType;
