@@ -211,6 +211,11 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 삭제 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try

@@ -212,7 +212,7 @@ namespace BOM
         }
 
         /// <summary>
-        ///검색 시 선택 항목을 최상단으로 올려주는 메서드
+        /// 검색 시 선택 항목을 최상단으로 올려주는 메서드
         /// </summary>
         /// <param name="item">그리드뷰의 선택 항목</param>
         private void SearchMat(DataGridViewRow item)
