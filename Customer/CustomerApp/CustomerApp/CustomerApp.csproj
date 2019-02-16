@@ -101,12 +101,14 @@
     <Compile Include="BUS\FrmSearchIDPW.Designer.cs">
       <DependentUpon>FrmSearchIDPW.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\CartDAO.cs" />
     <Compile Include="DAO\CustomersDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
     <Compile Include="DAO\SearchAddrDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VO\CartVO.cs" />
     <Compile Include="VO\CustomerVO.cs" />
     <Compile Include="VO\OrderVO.cs" />
     <Compile Include="VO\ProductVO.cs" />

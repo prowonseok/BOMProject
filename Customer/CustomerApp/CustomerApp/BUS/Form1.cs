@@ -21,12 +21,13 @@ namespace CustomerApp.BUS
 
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
+        CartDAO cartDAO = new CartDAO();
 
         OrderVO orderVO;
         CustomerVO customer;
 
         List<ProductVO> proList; // 실시간 특성상 로드 이벤트에 두는게 좋을 것 같음
-        List<OrderVO> Cart = new List<OrderVO>();
+        List<OrderVO> cartList = new List<OrderVO>();
         List<OrderVO> cartOrders = new List<OrderVO>();
 
         FrmLogin loginForm;
@@ -345,11 +346,11 @@ namespace CustomerApp.BUS
                 PanBottomCtrlVisiFalse();
                 CtrlVisiTrue(gbxCart);
                 gviewCart.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                if (Cart.Count != 0)
+                if (cartList.Count != 0)
                 {
                     gviewCart.Columns[0].Visible = true;
                     gviewCart.DataSource = null;
-                    gviewCart.DataSource = Cart;
+                    gviewCart.DataSource = cartList;
                 }
                 else
                 {
@@ -406,9 +407,17 @@ namespace CustomerApp.BUS
         {
             try
             {
-                Cart.Add(GetOrderVo());
-                gviewCart.DataSource = Cart;
+                cartList.Add(GetOrderVo());
+                gviewCart.DataSource = cartList;
                 MessageBox.Show("장바구니에 저장되었습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CartVO cartVO = new CartVO()
+                {
+                    CusNo = customer.No,
+                    // SaveNo = ;
+                };
+                // cartDAO.Insert()
+
+
             }
             catch (Exception ex)
             {
@@ -469,14 +478,14 @@ namespace CustomerApp.BUS
             {
                 if (Convert.ToBoolean(checkRow.Cells["cbx"].Value))
                 {
-                    Cart.RemoveAt(checkRow.Index - indexNum);
+                    cartList.RemoveAt(checkRow.Index - indexNum);
                     indexNum++;
                 }
             }
-            if (Cart.Count != 0)
+            if (cartList.Count != 0)
             {
                 gviewCart.DataSource = null;
-                gviewCart.DataSource = Cart;
+                gviewCart.DataSource = cartList;
             }
             else
             {
