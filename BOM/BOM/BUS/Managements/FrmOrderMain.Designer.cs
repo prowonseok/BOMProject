@@ -28,46 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.dgv = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.dgvOrderList = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnOrder
             // 
-            this.button1.Location = new System.Drawing.Point(642, 397);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOrder.Location = new System.Drawing.Point(642, 397);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnOrder.TabIndex = 0;
+            this.btnOrder.Text = "발주신청";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // dgv
+            // dgvOrderList
             // 
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(12, 12);
-            this.dgv.Name = "dgv";
-            this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(705, 367);
-            this.dgv.TabIndex = 1;
+            this.dgvOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderList.Location = new System.Drawing.Point(12, 12);
+            this.dgvOrderList.Name = "dgvOrderList";
+            this.dgvOrderList.RowTemplate.Height = 23;
+            this.dgvOrderList.Size = new System.Drawing.Size(705, 367);
+            this.dgvOrderList.TabIndex = 1;
             // 
             // FrmOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 432);
-            this.Controls.Add(this.dgv);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgvOrderList);
+            this.Controls.Add(this.btnOrder);
             this.Name = "FrmOrderMain";
             this.Text = "FrmOrderMain";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.Load += new System.EventHandler(this.FrmOrderMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.DataGridView dgvOrderList;
     }
 }

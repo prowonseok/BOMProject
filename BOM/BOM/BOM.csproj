@@ -121,6 +121,7 @@
     <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\OfferOrderDAO.cs" />
     <Compile Include="VO\OffererVO.cs" />
     <Compile Include="DAO\SalesDao.cs" />
     <Compile Include="BUS\Sales\FrmSalesMain.cs">
