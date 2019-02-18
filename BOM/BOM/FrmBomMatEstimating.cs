@@ -15,20 +15,31 @@ namespace BOM
     {
         int haveNum=0; //가지고 있는 재고의 개수
         int makeNum=0; //만들고자 하는 재고의 개수
+
         List<int> numLst;
         DAO.BomDAO bDao;
-        TreeNode tnode;
-        TreeNode oNode; //CNode메서드를 통해 받은 부모노드
+        TreeNode tnode; //부모 노드로 돌아가기 위해 만드는 치환 노드
+
+        #region Property
         private Products products;
         private bool canOrAdd;
         internal Products Products { get => products; set => products = value; }
-        public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
+        public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; } 
+        #endregion
 
+        /// <summary>
+        /// 생성자
+        /// </summary>
         public FrmBomMatEstimating()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 제품 찾기 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchPro_Click(object sender, EventArgs e)
         {
             FrmBomSearchPro fbsp = new FrmBomSearchPro();
@@ -41,9 +52,9 @@ namespace BOM
             }
         }
 
+
         private void CNode(DataTable dt2, TreeNode cNode, int num)
         {
-            oNode = cNode;
             foreach (DataRow item2 in dt2.Rows)
             {
                 //자식노드(DataTable의 DataRow)의 이름과 개수를 자식노드로 저장
@@ -66,6 +77,11 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 검색 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchTree_Click(object sender, EventArgs e)
         {
             tvProMat.Nodes.Clear();
@@ -81,18 +97,20 @@ namespace BOM
 
                     foreach (DataRow item in dt.Rows)
                     {
+                        //1. 최초 제품명을 부모 노드로 설정
                         pNode = new TreeNode(item["Mat_Name"].ToString());
                         tvProMat.Nodes.Add(pNode);
                         break;
                     }
                     foreach (DataRow item in dt.Rows)
                     {
-                        //1. 최초 제품명을 부모 노드로 설정
+                        //2. DataTable에서 부모의 Child_Name과 Child_EA를 자식 노드로 저장
                         TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()) * num + "개");
                         pNode.Nodes.Add(cNode);
-                        //2. 부모 자재명을 입력받아서 BOM테이블과 JOIN 후 해당 자재를 부모로 가지고 있는 자식들의 자재명과 필요 개수를 DataTable에 저장
+                        //3. 부모 자재명(바로 위의 자식 자재)을 입력받아서 BOM테이블과 JOIN 후 해당 자재를 부모로 가지고 있는 자식들의 자재명과 필요 개수를 DataTable에 저장
                         DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
-                        //3. 부모노드와 자식노드 DataTable과 만들고자 하는 개수를 매개변수로 지정
+                        //4. 부모노드와 자식노드 DataTable과 만들고자 하는 개수를 매개변수로 지정
+                        //dt2 : 위의 자식노드를 부모로 하는 DataTable, cNode : 부모노드(위의 자식노드), num : 만들고자 하는 개수
                         CNode(dt2, cNode, num);
                     }
 
@@ -110,6 +128,9 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 그리드뷰 설정 메서드
+        /// </summary>
         private void DisplayGridview()
         {
             dgvMat.Columns.RemoveAt(7);
@@ -123,6 +144,11 @@ namespace BOM
             dgvMat.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        /// <summary>
+        /// 자재별 소요량 예측을 위한 더블 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">소요량 예측을 위해 더블클릭한 노드</param>
         private void tvProMat_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             numLst = new List<int>();

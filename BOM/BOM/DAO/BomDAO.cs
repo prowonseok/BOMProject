@@ -100,6 +100,12 @@ namespace BOM.DAO
             }
             
         }
+
+        /// <summary>
+        /// 상품 번호를 입력받아서 해당 상품번호가 BOM Table의 부모 자재일때의 부모 자재명, 자식 자재명, 자식 자재 필요 개수 
+        /// </summary>
+        /// <param name="pro_No">상품 번호</param>
+        /// <returns></returns>
         public DataTable SelectTreeview(int pro_No)
         {
             string sp = "BOM_Bom_Treeview_Procedure";
@@ -109,6 +115,8 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
             return dt;
         }
+
+
         public DataTable SelectChildTreeview(string child_Name) {
             string sp = "BOM_Bom_ChildTreeview_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];

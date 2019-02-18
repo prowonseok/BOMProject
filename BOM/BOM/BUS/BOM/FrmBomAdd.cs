@@ -60,7 +60,9 @@ namespace BOM
             {
                 this.txtParentMatNo.Text = matNo.ToString();
                 this.txtParentMatLevel.Text = matLevel.ToString();
-                this.txtParentMatName.Text = matName; 
+                this.txtParentMatName.Text = matName;
+
+                ViewTreeview();
             }
         }
 
@@ -106,6 +108,7 @@ namespace BOM
                 txtParentMatNo.Text = materials.Mat_No.ToString();
                 txtParentMatName.Text = materials.Mat_Name;
                 txtParentMatLevel.Text = materials.Mat_Level.ToString();
+                ViewTreeview();
             }
             catch (Exception)
             {
@@ -113,6 +116,25 @@ namespace BOM
                 
             }
 
+        }
+
+        /// <summary>
+        /// 부모 자재에 대한 자식 자재들을 트리뷰로 출력
+        /// </summary>
+        private void ViewTreeview()
+        {
+            trvMat.Nodes.Clear();
+            bDao = new DAO.BomDAO();
+            TreeNode tNode = new TreeNode(txtParentMatName.Text);
+            trvMat.Nodes.Add(tNode);
+            //부모 자재명을 보내서 자식 자재와 필요 자재 개수를 출력
+            DataTable dt = bDao.SelectChildTreeview(txtParentMatName.Text);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()));
+                tNode.Nodes.Add(cNode);
+            }
         }
 
         /// <summary>
@@ -158,7 +180,7 @@ namespace BOM
                         {
                             MessageBox.Show("저장 성공!");
                             txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
-                            Close();
+                            ViewTreeview();
                         }
                         else
                         {
