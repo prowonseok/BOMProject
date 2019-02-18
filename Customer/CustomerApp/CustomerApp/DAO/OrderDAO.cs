@@ -103,7 +103,7 @@ namespace CustomerApp.DAO
                 SqlParameter[] cusInfo = new SqlParameter[1];
                 cusInfo[0] = new SqlParameter("Cus_No", cusNo);
                 var dataTable = db.ExecuteParametersDT(sp, cusInfo);
-                DataRow row = dataTable.Rows[0]; 
+                DataRow row = dataTable.Rows[0];
                 if (dataTable.Rows[0]["Max_Order_OrderNo"].ToString() == string.Empty) order_OrderNo = 1;
                 else order_OrderNo = int.Parse(row["Max_Order_OrderNo"].ToString()) + 1;
                 return order_OrderNo;

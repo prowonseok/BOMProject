@@ -49,6 +49,14 @@ namespace CustomerApp.VO
             set { saveEA = value; }
         }
 
+        private int totalPrice;
+
+        public int TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; }
+        }
+
         private DateTime cartDate;
 
         public DateTime CartDate
@@ -57,5 +65,20 @@ namespace CustomerApp.VO
             set { cartDate = value; }
         }
 
+        private string cusName;
+
+        public string CusName
+        {
+            get { return cusName; }
+            set { cusName = value; }
+        }
+
+        private string proName;
+
+        public string ProName
+        {
+            get { return proName; }
+            set { proName = value; }
+        }
     }
 }

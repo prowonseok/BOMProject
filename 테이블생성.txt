@@ -13,6 +13,9 @@ CREATE TABLE [dbo].[Customers_Cart]
 ALTER TABLE Customers_Cart ADD CONSTRAINT Cus_No_FK FOREIGN KEY (Cus_No) REFERENCES Customers(Cus_No);
 ALTER TABLE Customers_Cart ADD CONSTRAINT Pro_No_FK FOREIGN KEY (Pro_No) REFERENCES Products(Pro_No);
 
+-- 장바구니 테이블 컬럼 추가
+alter table customers_cart add Cus_Cart_TotalPrice int NOT NULL DEFAULT 0
+
 -- 자재 테이블 생성 쿼리
 CREATE TABLE [dbo].[Materials]
 (
@@ -147,3 +150,32 @@ CREATE PROCEDURE [dbo].[InsertCartOrder]
 AS
 	INSERT INTO Customers_Order (Cus_No, Emp_No, Pro_No, Cus_Order_OrderNo, Cus_Order_Date, Cus_Order_Price, Cus_Order_EA, Cus_OrderComplete)
 	values (@Cus_No, @Emp_No, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, @Cus_Order_Price, @Cus_Order_EA, 1);
+
+-- 장바구니 목록 insert
+CREATE PROCEDURE [dbo].[InsertCart]
+	@cusNo int,
+	@saveNo int,
+	@proNo int,
+	@saveEA int,
+	@cartDate datetime,
+	@totalPrice int
+AS
+	INSERT INTO Customers_Cart values (@cusNo, @saveNo, @proNo, @saveEA, @cartDate, @totalPrice);
+
+-- 회원별 장바구니 목록 select
+CREATE PROCEDURE [dbo].[SelectCart]
+	@Cus_No int
+AS
+	SELECT [cart].Cus_Cart_Cus_SaveNo, [cus].Cus_Name, [pro].Pro_Name, [cart].Cus_Cart_Save_EA, [cart].Cus_Cart_TotalPrice, [cart].Cus_Cart_Date, [cart].Pro_No
+	FROM Customers_Cart [cart] inner join Customers [cus]
+	on [cart].Cus_No = [cus].Cus_No
+	inner join Products [pro]	
+	on [cart].Pro_No = [pro].Pro_No
+	where [cart].Cus_No = @Cus_No;
+
+-- 회원별 장바구니 목록 delete
+CREATE PROCEDURE [dbo].[DeleteCart]
+	@Cus_No int,
+	@SaveNo int
+AS
+	DELETE FROM Customers_Cart where Cus_No = @Cus_No and Cus_Cart_Cus_SaveNo = @SaveNo;
