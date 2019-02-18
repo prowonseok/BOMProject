@@ -18,14 +18,14 @@ namespace CustomerApp.DAO
 
         List<OrderVO> orderList = new List<OrderVO>();
 
-        public List<OrderVO> SelectOrderByCusID(int cusNo, int EmpNo)
+        public List<OrderVO> SelectOrderByCusID(int cusNo)
         {
             string sp = "SelectOrderByCusID";
             try
             {
                 SqlParameter[] cusInfo = new SqlParameter[2];
                 cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                cusInfo[1] = new SqlParameter("Emp_No", EmpNo);
+                cusInfo[1] = new SqlParameter("Emp_No", 1);
                 var dataTable = db.ExecuteParametersDT(sp, cusInfo);
                 foreach (DataRow row in dataTable.Rows)
                 {
@@ -37,7 +37,8 @@ namespace CustomerApp.DAO
                         OrderDate = DateTime.Parse(row["Cus_Order_Date"].ToString()),
                         EA = int.Parse(row["Cus_Order_EA"].ToString()),
                         Price = int.Parse(row["Cus_Order_Price"].ToString()),
-                        EmpName = row["Emp_Name"].ToString()
+                        EmpName = row["Emp_Name"].ToString(),
+                        OrderCom = row["Com_Type"].ToString()
                     };
                     orderList.Add(order);
                 }

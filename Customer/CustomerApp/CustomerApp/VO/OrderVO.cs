@@ -89,5 +89,14 @@ namespace CustomerApp.VO
             set { proNo = value; }
         }
 
+        private string orderCom;
+
+        public string OrderCom
+        {
+            get { return orderCom; }
+            set { orderCom = value; }
+        }
+
+
     }
 }

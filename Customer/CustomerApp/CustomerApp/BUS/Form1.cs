@@ -29,6 +29,7 @@ namespace CustomerApp.BUS
         List<ProductVO> proList; // 실시간 특성상 로드 이벤트에 두는게 좋을 것 같음
         List<CartVO> cartList = new List<CartVO>();
         List<OrderVO> cartOrders = new List<OrderVO>();
+        List<OrderVO> orderRecords = new List<OrderVO>();
 
         FrmLogin loginForm;
         ListViewItem selectItem;
@@ -336,6 +337,32 @@ namespace CustomerApp.BUS
             indexNum = RemoveCart(indexNum);
         }
 
+        private void GviewBuyRecordSet()
+        {
+            gViewBuy.BackgroundColor = Color.White;
+            gViewBuy.DataSource = orderDAO.SelectOrderByCusID(customer.No);
+            // 오더네임 컬럼이름 찾을 수 없음으로 에러 남
+
+            gViewBuy.Columns.Remove("OrderNo");
+            gViewBuy.Columns.Remove("EmpNo");
+            gViewBuy.Columns.Remove("CusNo");
+            gViewBuy.Columns.Remove("ProNo");
+
+            gViewBuy.Columns["EA"].DisplayIndex = 2;
+
+            gViewBuy.Columns["Order_OrderNo"].HeaderText = "주문번호";
+            gViewBuy.Columns["ProName"].HeaderText = "상품명";
+            gViewBuy.Columns["EA"].HeaderText = "상품수량";
+            gViewBuy.Columns["Price"].HeaderText = "총 가격";
+            gViewBuy.Columns["OrderDate"].HeaderText = "주문날짜";
+            gViewBuy.Columns["OrderCom"].HeaderText = "거래현황";
+            gViewBuy.Columns["EmpName"].HeaderText = "담당자";
+
+            gViewBuy.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewBuy.Columns["OrderDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewBuy.Columns["OrderCom"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             loginForm = new FrmLogin();
@@ -513,10 +540,10 @@ namespace CustomerApp.BUS
             {
                 SetBtnColor(btnBuyRecord, btnProducts, btnBuy, btnAS, btnCart);
                 PanBottomCtrlVisiFalse();
-                gbxBuyRecord.Dock = DockStyle.Bottom;
+                gbxBuyRecord.Dock = DockStyle.Top;
                 gViewBuy.Height = panBottom.Height - 100;
                 CtrlVisiTrue(gbxBuyRecord);
-                gViewBuy.DataSource = orderDAO.SelectOrderByCusID(customer.No, 1);
+                GviewBuyRecordSet();
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -561,6 +588,7 @@ namespace CustomerApp.BUS
 
         private void btnCartBuy_Click(object sender, EventArgs e)
         {
+            bool chkExist = false;
             try
             {
                 cartOrders.Clear();
@@ -568,6 +596,7 @@ namespace CustomerApp.BUS
                 {
                     if (Convert.ToBoolean(row.Cells["cbx"].Value))
                     {
+                        chkExist = true;
                         OrderVO order = new OrderVO()
                         {
                             CusNo = cartList[row.Index].CusNo,
@@ -582,12 +611,14 @@ namespace CustomerApp.BUS
                 }
 
                 var result = MessageBox.Show("선택하신 물품을 구매하시겠습니까 ? ", "장바구니", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+                if (result == DialogResult.OK && chkExist)
                 {
                     orderDAO.InsertCartOrder(cartOrders, customer.No);
                     MessageBox.Show("구매 신청 완료!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DeleteCart();
+                    GviewBuyRecordSet();
                 }
+                else MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -602,6 +633,17 @@ namespace CustomerApp.BUS
             {
                 DeleteCart();
             }
+            else return;
+        }
+
+        private void btnBuyCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
