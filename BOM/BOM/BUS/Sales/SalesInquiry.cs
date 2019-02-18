@@ -23,7 +23,7 @@ namespace BOM.BUS.Sales
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e) //날짜별로 판매내역 조회
-        {
+        {            
             txtMember.Visible = false;
             comboProduct.Visible = false;
             lblMsg.Visible = false;
@@ -78,6 +78,7 @@ namespace BOM.BUS.Sales
                 
             }
         }
+
         private void rdoSales_CheckedChanged(object sender, EventArgs e) //판매중인 내역 조회
         {
             lblMsg.Visible = true;
@@ -86,8 +87,9 @@ namespace BOM.BUS.Sales
             dtp1.Visible = dtp2.Visible = lbl1.Visible = false;
             comboProduct.Visible = false;   
         }
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
+
+        private void btnSearch_Click(object sender, EventArgs e)//클릭시 선택한 라디오버튼에 대한 정보를 출력하는 메서드
+        {            
             string search = ""; //조회할 데이터 변수
             string search2 = ""; //조회할 데이터 변수
             string sp = ""; //사용할 저장 프로시저 변수
@@ -98,8 +100,7 @@ namespace BOM.BUS.Sales
             {
                 sp = "Bom_JW_DateSelect Procedure";
                 parameter1 = "@Date1";
-                parameter2 = "@Date2";
-
+                parameter2 = "@Date2";                
                 search = dtp1.Value.ToShortDateString();
                 search2 = dtp2.Value.ToShortDateString();
             }
@@ -122,11 +123,18 @@ namespace BOM.BUS.Sales
             try
             {
                 lst.Clear();
-                lst = new SalesDao().SalesSelect(sp, search, search2, parameter1, parameter2);
-
-                dataGridView1.DataSource = lst;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;                
+                
+                if ((lst = new SalesDao().SalesSelect(sp, search, search2, parameter1, parameter2)).Count != 0)
+                {
+                    dataGridView1.DataSource = lst;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                }
+                else
+                {
+                    dataGridView1.DataSource = lst;
+                    MessageBox.Show("조건에 맞는 데이터가 없습니다");
+                }                
             }
 
             catch (Exception ee)
@@ -144,16 +152,10 @@ namespace BOM.BUS.Sales
             dataGridView1.Columns[6].HeaderText = "개수";
             dataGridView1.Columns[7].HeaderText = "주문날짜";
             dataGridView1.Columns[8].HeaderText = "주문상태";
-            
 
-        }        
+        }                 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e) //라디오버튼 판매중일때 그리드뷰 셀체크한 목록 출하지시서로 정보 넘겨주면서 폼띄워주는 메서드
         {
             int count = 0; // 체크목록 없을경우 예외처리에 필요한 변수
             int checkRowIndex = 0;// 체크된 로우의 인덱스 값
@@ -180,13 +182,7 @@ namespace BOM.BUS.Sales
             }
             count = 0;
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        }   
 
         private void SalesInquiry_Load(object sender, EventArgs e)
         {
@@ -194,7 +190,5 @@ namespace BOM.BUS.Sales
             dataGridView1.Columns.Add(chk);
             btnSearch_Click(null, null);
         }
-
-           
     }
 }

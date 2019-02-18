@@ -17,60 +17,91 @@ namespace BOM.BUS.Sales
     public partial class AddreesForm : Form
     {
        
-        List<Address> addrList; 
+        List<Address> addrList;
+        string selectAddr = ""; //선택한주소 출하지시서 폼으로 
+
+        int totalCount = 0; //페이징 > 전체 데이터 갯수
+        int totalPage; // 페이징 > 전체 페이지
+        int page = 1; // > 페이징 > 페이지
+
         public AddreesForm()
         {
             InitializeComponent();
 
             addrList = new List<Address>();
-        }
-        int totalCount = 0;
-        int totalPage;
-        int page = 1;
-        //int startPage = 0;
-        //int endPage = 0;
-        //int pagecount=10;
-        private void button1_Click(object sender, EventArgs e)
+        }        
+
+        private void button1_Click(object sender, EventArgs e) //주소 검색 클릭
         {
-            addrList.Clear();
-            dgvAddr.DataSource = null;
-            XmlDocument doc = xmldocument();
+            if (txtSearchAddr.Text == "")
+            {
+                MessageBox.Show("주소입력 하세요");
+            }
+            else
+            {
+                addrList.Clear();
+                dgvAddr.DataSource = null;
+                XmlDocument doc = xmldocument();
 
-            //주소 검색
-            SearchAddr(doc);
-            //페이징 구현
-            Paging(doc);            
+                //주소 검색
+                SearchAddr(doc);
+                //페이징 구현
+                Paging(doc);
+            }
         }
 
-        private void AddrView()
+        private void AddrView() //검색결과를 한번더 그리드뷰에 출력하는 메서드
         {            
             dgvAddr.DataSource = addrList;
             dgvAddr.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvAddr.AutoResizeColumns();
             dgvAddr.AutoResizeRows();
             dgvAddr.DataSource = addrList;
+            dgvAddr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAddr.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgvAddr.Columns[0].Width = 55;
+            dgvAddr.Columns[0].HeaderText = "지번";
+            dgvAddr.Columns[1].HeaderText = "지명";
         }
 
-        private void Paging(XmlDocument doc)
+        private void Paging(XmlDocument doc) // 페이징 메서드
         {            
             XmlNodeList xmltotalCount = doc.DocumentElement.SelectNodes("/NewAddressListResponse/cmmMsgHeader");
             foreach (XmlNode item in xmltotalCount)
             {
-                totalCount = Int32.Parse(item.SelectSingleNode("totalCount").InnerText);
+                try
+                {
+                    if (item.SelectSingleNode("totalCount").InnerText == "")
+                    {
+                        MessageBox.Show("검색된 주소결과가 없습니다");
+                        return;
+                    }
+                    else
+                    {
+                        totalCount = Int32.Parse(item.SelectSingleNode("totalCount").InnerText);
+                        totalPage = totalCount / 10;
+                        if (totalCount % 10 > 0)
+                        {
+                            totalPage++;
+                        }
+                        lblTest.Text = page + " ~ " + totalPage;
+                        AddrView();
 
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("검색된 주소결과가 없습니다");
+                    lblTest.Text = "";
+                    return;
+                    
+                }
+                
             }
-            totalPage = totalCount / 10;
-            if (totalCount % 10 > 0)
-            {
-                totalPage++;
-            }
-            lblTest.Text = page + " ~ " + totalPage;
-            AddrView();            
-            //startPage = ((page - 1) / pagecount) * pagecount + 1;
-            //endPage = startPage + pagecount - 1;
+            
         }
 
-        private XmlDocument xmldocument()
+        private XmlDocument xmldocument() // API를 이용하여 데이터를 XML형식으로 가져오는 메서드
         {
             string serverUrl = "http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdSearchAllService/retrieveNewAdressAreaCdSearchAllService/getNewAddressListAreaCdSearchAll?ServiceKey=jwwy5dPFIMUMXJHkr2SEzG4v%2BH9OQHKzRCHg0B9cy%2B1ycgHLgWGpQU7HFCCCvp78YqiGeLpyLv5p6N8KCWkHVg%3D%3D&countPerPage=10&currentPage=" + page + "&srchwrd=" + txtSearchAddr.Text;
 
@@ -92,41 +123,49 @@ namespace BOM.BUS.Sales
 
         private void SearchAddr(XmlDocument doc) // 그리드뷰에 검색한 주소 표현
         {
-            
+            addrList.Clear();
             XmlNodeList xmlAddrList = doc.DocumentElement.SelectNodes("/NewAddressListResponse/newAddressListAreaCdSearchAll");
             foreach (XmlNode item in xmlAddrList)
             {
-                addrList.Add(new Address
+                try
                 {
-                    ZipNo = Int32.Parse(item.SelectSingleNode("zipNo").InnerText),
-                    NameAddr = "구주소: " + item.SelectSingleNode("rnAdres").InnerText + "\r도로명: " + item.SelectSingleNode("lnmAdres").InnerText
-                });
+                    addrList.Add(new Address
+                    {
+                        ZipNo = Int32.Parse(item.SelectSingleNode("zipNo").InnerText),
+                        NameAddr = "도로명: " + item.SelectSingleNode("lnmAdres").InnerText + "\r구주소: " + item.SelectSingleNode("rnAdres").InnerText
+                    });
+                }
+                catch (NullReferenceException e)
+                {
+                    return;
+                    //MessageBox.Show(e.Message);
+                }
             }
             AddrView();
+        }      
 
-        }
-
-        private void AddreesForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtSearchAddr_KeyUp(object sender, KeyEventArgs e)
+        private void txtSearchAddr_KeyUp(object sender, KeyEventArgs e) // 엔터누를시 검색메서드로 이동
         {
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(null,null);
             }
         }
-        string  selectAddr = "";
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Shipment ship = (Shipment)Owner;
-            ship.Lbltest.Text = selectAddr;
-            this.Close();
-        }
-
         
+        private void button1_Click_1(object sender, EventArgs e) // 출하지시서 폼으로 선택된 주소 전달
+        {
+            if (selectAddr != "")
+            {
+                Shipment ship = (Shipment)Owner;
+                ship.Lbltest.Text = selectAddr;
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
+            
+        }        
 
         private void btnNext_Click(object sender, EventArgs e) // 다음페이지
         {
@@ -161,10 +200,14 @@ namespace BOM.BUS.Sales
             }
         }
         
-        private void dgvAddr_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAddr_CellClick(object sender, DataGridViewCellEventArgs e) //셀 클릭하여 클릭한 주소 값 저장
         {
-            selectAddr = dgvAddr.Rows[e.RowIndex].Cells[1].Value.ToString();
-         
+            selectAddr = dgvAddr.Rows[e.RowIndex].Cells[1].Value.ToString();         
+        }
+
+        private void AddreesForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

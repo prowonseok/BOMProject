@@ -37,12 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddr)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearchAddr
             // 
-            this.txtSearchAddr.Location = new System.Drawing.Point(29, 30);
+            this.txtSearchAddr.Location = new System.Drawing.Point(29, 75);
             this.txtSearchAddr.Name = "txtSearchAddr";
             this.txtSearchAddr.Size = new System.Drawing.Size(217, 21);
             this.txtSearchAddr.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(252, 30);
+            this.btnSearch.Location = new System.Drawing.Point(252, 75);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
@@ -61,7 +62,7 @@
             // dgvAddr
             // 
             this.dgvAddr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAddr.Location = new System.Drawing.Point(29, 70);
+            this.dgvAddr.Location = new System.Drawing.Point(29, 115);
             this.dgvAddr.Name = "dgvAddr";
             this.dgvAddr.RowTemplate.Height = 23;
             this.dgvAddr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -71,7 +72,7 @@
             // 
             // btnPre
             // 
-            this.btnPre.Location = new System.Drawing.Point(335, 370);
+            this.btnPre.Location = new System.Drawing.Point(335, 415);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(33, 23);
             this.btnPre.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(429, 370);
+            this.btnNext.Location = new System.Drawing.Point(429, 415);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(33, 23);
             this.btnNext.TabIndex = 4;
@@ -92,7 +93,7 @@
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(374, 376);
+            this.lblTest.Location = new System.Drawing.Point(374, 421);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(0, 12);
             this.lblTest.TabIndex = 5;
@@ -100,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(333, 41);
+            this.label2.Location = new System.Drawing.Point(333, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 12);
             this.label2.TabIndex = 6;
@@ -110,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(333, 26);
+            this.label3.Location = new System.Drawing.Point(333, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(171, 12);
             this.label3.TabIndex = 7;
@@ -118,7 +119,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(469, 370);
+            this.button1.Location = new System.Drawing.Point(469, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -126,11 +127,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(25, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 21);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "주소검색";
+            // 
             // AddreesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 417);
+            this.ClientSize = new System.Drawing.Size(571, 451);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -160,5 +172,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
     }
 }

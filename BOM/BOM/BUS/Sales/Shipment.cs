@@ -3,14 +3,10 @@ using BOM.VO;
 using dllPackager;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
@@ -20,6 +16,7 @@ namespace BOM.BUS.Sales
     {
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         public Label Lbltest { get { return lblAddr; } set { lblAddr = value; } }
+        string fIlePath = null; //파일 지정경로
         List<ShipmentVO> ProList;
         
         public Shipment()
@@ -34,14 +31,14 @@ namespace BOM.BUS.Sales
             ProList = new List<ShipmentVO>();            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //주소변경시 주소변경 폼을 띄워줌
         {
             AddreesForm ad = new AddreesForm();
             ad.Owner = this;
             ad.Show();
         }
 
-        private void Shipment_Load(object sender, EventArgs e)
+        private void Shipment_Load(object sender, EventArgs e) //넘겨받은 준문정보로 출하지시서 폼의 내용을 표시
         {
             string sp = "Bom_JW_Shipment_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -62,7 +59,7 @@ namespace BOM.BUS.Sales
                 {
                     ProName = item["Pro_Name"].ToString(),
                     ProEa = Int32.Parse(item["Cus_Order_EA"].ToString()),
-                    ProPrice = Int32.Parse(item["Cus_Order_Price"].ToString()),
+                    ProPrice = String.Format("{0:##,##0}", item["Cus_Order_Price"]) + " 원",
                     ResidualAmount = Int32.Parse(item["RemainingAmount"].ToString())
                     
                 });                 
@@ -72,6 +69,10 @@ namespace BOM.BUS.Sales
             dgvProList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
+            dgvProList.Columns[0].Width = 200;
+            dgvProList.Columns[1].Width = 40;
+            dgvProList.Columns[2].Width = 90;
+            dgvProList.Columns[3].Width = 90;
             dgvProList.Columns[0].HeaderText = "제품명";
             dgvProList.Columns[1].HeaderText = "개수";
             dgvProList.Columns[2].HeaderText = "가격";
@@ -92,7 +93,7 @@ namespace BOM.BUS.Sales
                     "발주신청";
             }
             
-            dgvProList.CurrentCellDirtyStateChanged += DgvProList_CurrentCellDirtyStateChanged;
+            //dgvProList.CurrentCellDirtyStateChanged += DgvProList_CurrentCellDirtyStateChanged;
             dgvProList.CellClick += DgvProList_CellClick;
             
 
@@ -102,51 +103,52 @@ namespace BOM.BUS.Sales
                 
                 if (Int32.Parse(dgvProList.Rows[i].Cells["ProEa"].Value.ToString()) < Int32.Parse(dgvProList.Rows[i].Cells["residualAmount"].Value.ToString()))
                 {
-                    DataGridViewDisableButtonCell buttonCell = (DataGridViewDisableButtonCell)dgvProList.Rows[i].Cells["발주"];
-
-                    //DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)dgvProList.Rows[e.RowIndex].Cells["CheckBoxes"];
+                    DataGridViewDisableButtonCell buttonCell = (DataGridViewDisableButtonCell)dgvProList.Rows[i].Cells["발주"];                   
                     buttonCell.Enabled = false;
-
                     dgvProList.Invalidate();
                 }
             }
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
 
-        private void DgvProList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvProList_CellClick(object sender, DataGridViewCellEventArgs e) // 제품 보유량이 부족시 발주버튼이 활성화되고 발주가 가능
         {
-            if (dgvProList.Columns[e.ColumnIndex].Name == "발주")
-            {                
-                DataGridViewDisableButtonCell buttonCell =
-                    (DataGridViewDisableButtonCell)dgvProList.
-                    Rows[e.RowIndex].Cells["발주"];
+            if (e.RowIndex == -1)
+            {
 
-                if (buttonCell.Enabled)
+            }
+            else
+            {
+                if (dgvProList.Columns[e.ColumnIndex].Name == "발주")
                 {
-                    MessageBox.Show("물품 구매신청 폼으로 데이터주고 구매폼 띄움");
+                    DataGridViewDisableButtonCell buttonCell =
+                        (DataGridViewDisableButtonCell)dgvProList.
+                        Rows[e.RowIndex].Cells["발주"];
+
+                    if (buttonCell.Enabled)
+                    {
+                        MessageBox.Show("물품 구매신청 폼으로 데이터주고 구매폼 띄움");
+                    }
                 }
             }
         }
 
-        private void DgvProList_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void DgvProList_CurrentCellDirtyStateChanged(object sender, EventArgs e) // 셀내용 변경시(셀체크 변경시) 발생하는 이벤트
         {
+            
             if (dgvProList.IsCurrentCellDirty)
             {
                 dgvProList.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-        }
+        }        
 
-        
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //판매조회폼을 띄워줌
         {
             SalesInquiry sI = new SalesInquiry();
             sI.Show();
             this.Close();
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e) // 클릭시 출하지시서 내용을 엑셀로 저장
         {
             if (txtconf.Text =="")
             {
@@ -160,13 +162,21 @@ namespace BOM.BUS.Sales
                 OrderInfoList.Add(lblCus.Text);
                 OrderInfoList.Add(lblEmp.Text);
                 OrderInfoList.Add(lblPhone.Text);
-                OrderInfoList.Add(lblAddr.Text);
+                if (lblAddr.Text.IndexOf("구주소") ==-1)
+                {
+                    OrderInfoList.Add(lblAddr.Text);                    
+                }
+                else
+                {
+                    OrderInfoList.Add(lblAddr.Text.Substring(0, lblAddr.Text.IndexOf("구주소")));
+                }               
                 
                 string excelStr = new SalesExcelDao().WriteExcelData(OrderInfoList , ProList, fIlePath);
                 MessageBox.Show(excelStr);
+                
             }
-        }
-        string fIlePath = null;
+        }        
+
         private void btnPath_Click(object sender, EventArgs e)
         {
             saveFileDialog1.DefaultExt = ".xlsx";      
@@ -184,7 +194,7 @@ namespace BOM.BUS.Sales
         {
             this.CellTemplate = new DataGridViewDisableButtonCell();
         }
-    }
+    } //그리드뷰 버튼 
 
     public class DataGridViewDisableButtonCell : DataGridViewButtonCell
     {
@@ -277,5 +287,5 @@ namespace BOM.BUS.Sales
                     cellStyle, advancedBorderStyle, paintParts);
             }
         }
-    }
+    } //그리드뷰 버튼 영역, 모양 설정
 }

@@ -35,5 +35,17 @@ namespace BOM.BUS.Sales
             ChaingePrice cp = new ChaingePrice();
             cp.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            TraderSet ts = new TraderSet();
+            ts.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RevenueStatus rs = new RevenueStatus();
+            rs.Show();
+        }
     }
 }

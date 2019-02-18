@@ -10,12 +10,12 @@ namespace BOM.VO
     {
         private string proName;
         private int proEa;
-        private int proPrice;
+        private string proPrice;
         private int residualAmount;
 
         public string ProName { get => proName; set => proName = value; }
         public int ProEa { get => proEa; set => proEa = value; }
-        public int ProPrice { get => proPrice; set => proPrice = value; }
+        public string ProPrice { get => proPrice; set => proPrice = value; }
         public int ResidualAmount { get => residualAmount; set => residualAmount = value; }
     }
 }

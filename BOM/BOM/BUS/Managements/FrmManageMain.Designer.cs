@@ -62,7 +62,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // FrmMain
+            // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,8 +70,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "FrmMain";
+            this.Name = "FrmManageMain";
             this.Text = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmManageMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

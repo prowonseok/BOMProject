@@ -51,12 +51,13 @@
             this.lblPhone = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 79);
+            this.label1.Location = new System.Drawing.Point(53, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 0;
@@ -65,17 +66,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 110);
+            this.label2.Location = new System.Drawing.Point(53, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "상품명 : ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblProductCount
             // 
             this.lblProductCount.AutoSize = true;
-            this.lblProductCount.Location = new System.Drawing.Point(111, 355);
+            this.lblProductCount.Location = new System.Drawing.Point(111, 368);
             this.lblProductCount.Name = "lblProductCount";
             this.lblProductCount.Size = new System.Drawing.Size(38, 12);
             this.lblProductCount.TabIndex = 2;
@@ -84,7 +84,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 355);
+            this.label3.Location = new System.Drawing.Point(67, 368);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 3;
@@ -92,7 +92,8 @@
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(232, 291);
+            this.btn1.Enabled = false;
+            this.btn1.Location = new System.Drawing.Point(232, 304);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(118, 23);
             this.btn1.TabIndex = 4;
@@ -101,7 +102,7 @@
             // 
             // btn2
             // 
-            this.btn2.Location = new System.Drawing.Point(232, 320);
+            this.btn2.Location = new System.Drawing.Point(232, 333);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(75, 23);
             this.btn2.TabIndex = 5;
@@ -111,7 +112,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(232, 349);
+            this.button3.Location = new System.Drawing.Point(232, 362);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -121,7 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 139);
+            this.label4.Location = new System.Drawing.Point(65, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 7;
@@ -130,7 +131,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 227);
+            this.label5.Location = new System.Drawing.Point(65, 240);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 8;
@@ -139,7 +140,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 52);
+            this.label6.Location = new System.Drawing.Point(41, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 12);
             this.label6.TabIndex = 9;
@@ -148,7 +149,7 @@
             // lbl
             // 
             this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(55, 331);
+            this.lbl.Location = new System.Drawing.Point(55, 344);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(53, 12);
             this.lbl.TabIndex = 10;
@@ -157,7 +158,7 @@
             // lblOrderNo
             // 
             this.lblOrderNo.AutoSize = true;
-            this.lblOrderNo.Location = new System.Drawing.Point(116, 52);
+            this.lblOrderNo.Location = new System.Drawing.Point(116, 65);
             this.lblOrderNo.Name = "lblOrderNo";
             this.lblOrderNo.Size = new System.Drawing.Size(0, 12);
             this.lblOrderNo.TabIndex = 15;
@@ -165,7 +166,7 @@
             // lblOrderPrice
             // 
             this.lblOrderPrice.AutoSize = true;
-            this.lblOrderPrice.Location = new System.Drawing.Point(116, 228);
+            this.lblOrderPrice.Location = new System.Drawing.Point(116, 241);
             this.lblOrderPrice.Name = "lblOrderPrice";
             this.lblOrderPrice.Size = new System.Drawing.Size(0, 12);
             this.lblOrderPrice.TabIndex = 14;
@@ -173,7 +174,7 @@
             // lblProEA
             // 
             this.lblProEA.AutoSize = true;
-            this.lblProEA.Location = new System.Drawing.Point(116, 139);
+            this.lblProEA.Location = new System.Drawing.Point(116, 152);
             this.lblProEA.Name = "lblProEA";
             this.lblProEA.Size = new System.Drawing.Size(0, 12);
             this.lblProEA.TabIndex = 13;
@@ -181,7 +182,7 @@
             // lblProName
             // 
             this.lblProName.AutoSize = true;
-            this.lblProName.Location = new System.Drawing.Point(116, 110);
+            this.lblProName.Location = new System.Drawing.Point(116, 123);
             this.lblProName.Name = "lblProName";
             this.lblProName.Size = new System.Drawing.Size(0, 12);
             this.lblProName.TabIndex = 12;
@@ -189,7 +190,7 @@
             // lblCusID
             // 
             this.lblCusID.AutoSize = true;
-            this.lblCusID.Location = new System.Drawing.Point(116, 79);
+            this.lblCusID.Location = new System.Drawing.Point(116, 92);
             this.lblCusID.Name = "lblCusID";
             this.lblCusID.Size = new System.Drawing.Size(0, 12);
             this.lblCusID.TabIndex = 11;
@@ -197,7 +198,7 @@
             // lblEmpName
             // 
             this.lblEmpName.AutoSize = true;
-            this.lblEmpName.Location = new System.Drawing.Point(111, 331);
+            this.lblEmpName.Location = new System.Drawing.Point(111, 344);
             this.lblEmpName.Name = "lblEmpName";
             this.lblEmpName.Size = new System.Drawing.Size(0, 12);
             this.lblEmpName.TabIndex = 16;
@@ -205,7 +206,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(42, 254);
+            this.label7.Location = new System.Drawing.Point(42, 267);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 17;
@@ -214,7 +215,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(117, 254);
+            this.lblDate.Location = new System.Drawing.Point(117, 267);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(0, 12);
             this.lblDate.TabIndex = 18;
@@ -222,7 +223,7 @@
             // lblAddr
             // 
             this.lblAddr.AutoSize = true;
-            this.lblAddr.Location = new System.Drawing.Point(114, 200);
+            this.lblAddr.Location = new System.Drawing.Point(114, 213);
             this.lblAddr.Name = "lblAddr";
             this.lblAddr.Size = new System.Drawing.Size(0, 12);
             this.lblAddr.TabIndex = 22;
@@ -230,7 +231,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(115, 170);
+            this.lblPhone.Location = new System.Drawing.Point(115, 183);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(0, 12);
             this.lblPhone.TabIndex = 21;
@@ -238,7 +239,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(66, 199);
+            this.label10.Location = new System.Drawing.Point(66, 212);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 20;
@@ -247,17 +248,28 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(41, 170);
+            this.label11.Location = new System.Drawing.Point(41, 183);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
             this.label11.TabIndex = 19;
             this.label11.Text = "전화번호 : ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(40, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(150, 21);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "주문 상세정보";
             // 
             // SalesStatusDatails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 405);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblAddr);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.label10);
@@ -314,5 +326,6 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
     }
 }

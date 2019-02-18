@@ -21,17 +21,12 @@ namespace BOM.BUS.Sales
             InitializeComponent();
         }
 
-        private void lbl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChaingePrice_Load(object sender, EventArgs e)
+        private void ChaingePrice_Load(object sender, EventArgs e) //
         {
             PriceView();
         }
 
-        private void PriceView() //Price폼에 상품가격 표시
+        private void PriceView() //Price폼에 상품 목록 불러오는 메서드
         {
             string sp = "Bom_JW_ProNameSelect2";
             ProductsList.Clear();
@@ -43,7 +38,7 @@ namespace BOM.BUS.Sales
             }
         }
 
-        private void comboProduct_DropDownClosed(object sender, EventArgs e) // 콤보박스에서 상품선택시 가격표시
+        private void comboProduct_DropDownClosed(object sender, EventArgs e) // 콤보박스에서 상품 선택시 가격, 정보 표시하는 메서드
         {            
             int price = Int32.Parse(ProductsList[comboProduct.SelectedIndex].ProductPrice);
             lblPrice.Text = String.Format("{0:##,##0}", price) + " 원";// 0>0
@@ -56,7 +51,7 @@ namespace BOM.BUS.Sales
             this.Close();
         }
 
-        private void btnChainge_Click(object sender, EventArgs e) // 단가 변경
+        private void btnChainge_Click(object sender, EventArgs e) // 단가 변경하는 메서드
         {
             int IndexNo = comboProduct.SelectedIndex+1;
             try
@@ -80,12 +75,12 @@ namespace BOM.BUS.Sales
             }
         }
 
-        private bool CheckPrice(string text) //공백이나 숫자 이외의 값 입력 검출
+        private bool CheckPrice(string text) //공백이나 숫자 이외의 값 입력 검출하는 메서드
         {
             bool checkResult = false;
 
             int.TryParse(text, out int result);
-            if ( !string.IsNullOrEmpty(text) && result!=0)
+            if ( !string.IsNullOrEmpty(text) )
             {                
                 checkResult = true;
             }
@@ -96,6 +91,37 @@ namespace BOM.BUS.Sales
             return checkResult;
 
           
+        }
+
+        SalesExcelDao se;
+        private void txtChaingePrice_TextChanged(object sender, EventArgs e)
+        {
+            if (txtChaingePrice.Text.Length > 9)
+            {
+                return;
+            }
+            else
+            {
+                if (txtChaingePrice.Text == "")
+                {
+                    label4.Text = "";
+
+                }
+                else
+                {
+                    if (CheckPrice(txtChaingePrice.Text))
+                    {
+                        se = new SalesExcelDao();
+                        label4.Text = se.NumToString(Int32.Parse(txtChaingePrice.Text));
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+            
+            
         }
     }
 }

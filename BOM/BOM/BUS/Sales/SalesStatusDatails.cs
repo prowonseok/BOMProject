@@ -27,14 +27,23 @@ namespace BOM.BUS.Sales
 
         private void SalesStatusDatails_Load(object sender, EventArgs e)
         {
-            SalesInfo();           
-            if (Int32.Parse(lblProEA.Text.Replace(" 개","")) > Int32.Parse(lblProductCount.Text.Replace(" 개", "")))
+            if (thisContantsIndex == -1)
             {
-                btn1.Enabled = true;                
-            }           
+
+            }
+            else
+            {
+                SalesInfo();
+                
+                if (Int32.Parse(lblProEA.Text.Replace(" 개", "")) > Int32.Parse(lblProductCount.Text.Replace(" 개", "")))
+                {
+                    btn1.Enabled = true;
+                }
+            }
+                       
         }
 
-        private void SalesInfo()
+        private void SalesInfo()// 주문내역을 상세하게 보여주는 메서드
         {
             DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_ProSelect2_Procedure", null);
 
@@ -55,11 +64,6 @@ namespace BOM.BUS.Sales
         {
             Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text)); //출하지시시 주문번호를 넘겨줌
             s.Show();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
