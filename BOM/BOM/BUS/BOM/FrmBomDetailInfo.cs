@@ -104,7 +104,7 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     //정전개시 자재 번호와 정전개 프로시저를 매개변수로 전송
-                    dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
+                    dgvBom.DataSource = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
                     DisplayGridview(true); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }
@@ -126,7 +126,7 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     //역전개시 자재 번호와 역전개 프로시저를 매개변수로 전송
-                    dgvBom.DataSource = bDao.SelectBom4(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
+                    dgvBom.DataSource = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
                     DisplayGridview(false); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }

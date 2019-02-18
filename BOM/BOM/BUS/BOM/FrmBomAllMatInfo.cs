@@ -50,7 +50,7 @@ namespace BOM
             {
                 //부모 자재는 Mat_Level의 값이 0이 아닌 값만 뜨도록 설정
                 bDao = new DAO.BomDAO();
-                dgvAllMat.DataSource = bDao.SelectBom2();
+                dgvAllMat.DataSource = bDao.SelectBom(true);
                 DisplayGridview();
 
             }
@@ -58,7 +58,7 @@ namespace BOM
             {
                 //자식 자재는 부모 자재보다 Level값이 같거나 작은 값만 뜨며, 자신은 안뜨도록 설정
                 bDao = new DAO.BomDAO();
-                dgvAllMat.DataSource = bDao.SelectBom3(mat_Level, mat_No);
+                dgvAllMat.DataSource = bDao.SelectBom(mat_Level, mat_No);
                 DisplayGridview();
             }
         }
