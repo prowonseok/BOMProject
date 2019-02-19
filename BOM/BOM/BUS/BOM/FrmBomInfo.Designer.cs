@@ -80,6 +80,7 @@
             this.btnProEstimating.TabIndex = 5;
             this.btnProEstimating.Text = "생산 예측";
             this.btnProEstimating.UseVisualStyleBackColor = true;
+            this.btnProEstimating.Click += new System.EventHandler(this.btnProEstimating_Click);
             // 
             // btnMatEstimating
             // 

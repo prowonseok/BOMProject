@@ -63,7 +63,7 @@ namespace BOM.DAO
                 );
             }
         }
-
+        
         /// <summary>
         /// 모든 상품 출력 프로시져
         /// </summary>
@@ -186,6 +186,12 @@ namespace BOM.DAO
             return result;
         }
 
+        /// <summary>
+        /// BOM Table에서 부모 자재 번호와 자식 자재 번호를 매개변수 값과 비교하여 둘다 같은 경우 해당 데이터 DELETE
+        /// </summary>
+        /// <param name="pNo">부모 자재 번호</param>
+        /// <param name="cNo">자식 자재 번호</param>
+        /// <returns></returns>
         public bool DeleteBom(int pNo, int cNo) {
             string sp = "BOM_Bom_Delete_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -274,7 +280,32 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
 
             return dt;
-        } 
+        }
         #endregion
+
+        /// <summary>
+        /// Customers_Order Table에서 판매 완료된 제품들을 Products Table과 조인하여 판매량을 가져옴
+        /// </summary>
+        /// <returns></returns>
+        public DataTable SelectOrder() {
+            string sp = "BOM_Bom_ProStatistics";
+            SqlParameter[] sqlParameters = null;
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+            return dt;
+        }
+
+        /// <summary>
+        /// Customers_Order Table에서 판매 완료된 제품들을 Products Table과 조인하여 제품별로 월별 판매량을 가져옴
+        /// </summary>
+        /// <returns></returns>
+        internal DataTable SelectDateOrder()
+        {
+            string sp = "BOM_Bom_ProDateStatistics";
+            SqlParameter[] sqlParameters = null;
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+            return dt;
+        }
     }
 }

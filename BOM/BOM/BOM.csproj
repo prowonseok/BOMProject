@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,6 +105,12 @@
     <Compile Include="FrmBomMatEstimating.Designer.cs">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomProEstimating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBomProEstimating.Designer.cs">
+      <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBomSearchPro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBomMatEstimating.resx">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomProEstimating.resx">
+      <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBomSearchPro.resx">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>

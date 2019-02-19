@@ -220,5 +220,16 @@ namespace BOM
             dgvBom.FirstDisplayedScrollingRowIndex = item.Index;
             item.Selected = true;
         }
+
+        /// <summary>
+        /// 생산 예측 페이지로 이동
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnProEstimating_Click(object sender, EventArgs e)
+        {
+            FrmBomProEstimating fbpe = new FrmBomProEstimating();
+            fbpe.ShowDialog();
+        }
     }
 }
