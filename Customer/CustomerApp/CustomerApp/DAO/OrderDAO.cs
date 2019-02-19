@@ -20,9 +20,10 @@ namespace CustomerApp.DAO
 
         public List<OrderVO> SelectOrderByCusID(int cusNo)
         {
-            string sp = "SelectOrderByCusID";
             try
             {
+                orderList.Clear();
+                string sp = "SelectOrderByCusID";
                 SqlParameter[] cusInfo = new SqlParameter[2];
                 cusInfo[0] = new SqlParameter("Cus_No", cusNo);
                 cusInfo[1] = new SqlParameter("Emp_No", 1);

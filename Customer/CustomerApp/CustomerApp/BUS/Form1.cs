@@ -15,9 +15,9 @@ namespace CustomerApp.BUS
 {
     public partial class Form1 : Form
     {
-        private static string path = string.Empty;
-
         public static bool loginState = false;
+        private static string path = string.Empty;
+        private bool chkExist = false;
 
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
@@ -70,8 +70,6 @@ namespace CustomerApp.BUS
 
             PanBottomCtrlVisiFalse();
             CtrlVisiTrue(spCont);
-
-            SetGviewCart();
             SetListView();
         }
 
@@ -235,17 +233,13 @@ namespace CustomerApp.BUS
         }
 
         /// <summary>
-        /// 장바구니 데이터 그리드 뷰에 콤보박스 컬럼 추가 및 기본 세팅 Method
+        /// 장바구니 데이터 그리드 뷰에 기본 세팅 Method
         /// </summary>
         private void SetGviewCart()
         {
             gbxCart.Dock = DockStyle.Fill;
             gviewCart.BackgroundColor = Color.White;
             gviewCart.MultiSelect = false;
-            DataGridViewCheckBoxColumn cbxCol = new DataGridViewCheckBoxColumn();
-            cbxCol.Name = "cbx";
-            cbxCol.HeaderText = "목록 선택";
-            gviewCart.Columns.Add(cbxCol);
         }
 
         /// <summary>
@@ -281,17 +275,7 @@ namespace CustomerApp.BUS
                     indexNum++;
                 }
             }
-            if (cartList.Count != 0)
-            {
-                gviewCart.DataSource = null;
-                GviewCartDataSource();
-            }
-            else
-            {
-                gviewCart.DataSource = null;
-                gviewCart.Columns[0].Visible = false;
-                MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            GviewCartDataSource();
 
             return indexNum;
         }
@@ -301,24 +285,38 @@ namespace CustomerApp.BUS
         /// </summary>
         private void GviewCartDataSource()
         {
+            SetGviewCart();
             cartList = cartDAO.Select(customer.No);
-            gviewCart.DataSource = cartList;
-            gviewCart.Columns.Remove("CusNo");
-            gviewCart.Columns.Remove("ProNo");
-            gviewCart.Columns.Remove("CartNo");
+            if (cartList.Count != 0)
+            {
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = cartList;
 
-            gviewCart.Columns["CusName"].DisplayIndex = 2;
-            gviewCart.Columns["ProName"].DisplayIndex = 3;
+                if (gviewCart.Columns.Count == 9) GetCbxCol(gviewCart, "cbx", "목록 선택");
+                
+                gviewCart.Columns.Remove("CusNo");
+                gviewCart.Columns.Remove("ProNo");
+                gviewCart.Columns.Remove("CartNo");
 
-            gviewCart.Columns["CusName"].HeaderText = "고객명";
-            gviewCart.Columns["ProName"].HeaderText = "상품명";
-            gviewCart.Columns["SaveNo"].HeaderText = "저장번호";
-            gviewCart.Columns["SaveEA"].HeaderText = "상품수량";
-            gviewCart.Columns["TotalPrice"].HeaderText = "총 가격";
-            gviewCart.Columns["CartDate"].HeaderText = "저장날짜";
+                gviewCart.Columns["CusName"].DisplayIndex = 2;
+                gviewCart.Columns["ProName"].DisplayIndex = 3;
 
-            gviewCart.Columns["CartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gviewCart.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gviewCart.Columns["CusName"].HeaderText = "고객명";
+                gviewCart.Columns["ProName"].HeaderText = "상품명";
+                gviewCart.Columns["SaveNo"].HeaderText = "저장번호";
+                gviewCart.Columns["SaveEA"].HeaderText = "상품수량";
+                gviewCart.Columns["TotalPrice"].HeaderText = "총 가격";
+                gviewCart.Columns["CartDate"].HeaderText = "저장날짜";
+
+                gviewCart.Columns["CartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gviewCart.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            else
+            {
+                gviewCart.DataSource = null;
+                if (gviewCart.Columns.Count != 0) gviewCart.Columns.Remove("cbx"); 
+                MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
@@ -337,30 +335,60 @@ namespace CustomerApp.BUS
             indexNum = RemoveCart(indexNum);
         }
 
+        /// <summary>
+        /// 구매 내역 row 설정 Method
+        /// </summary>
         private void GviewBuyRecordSet()
         {
+            orderRecords = orderDAO.SelectOrderByCusID(customer.No);
             gViewBuy.BackgroundColor = Color.White;
-            gViewBuy.DataSource = orderDAO.SelectOrderByCusID(customer.No);
-            // 오더네임 컬럼이름 찾을 수 없음으로 에러 남
+            if (orderRecords.Count != 0)
+            {
+                gViewBuy.DataSource = null;
+                gViewBuy.DataSource = orderRecords;
 
-            gViewBuy.Columns.Remove("OrderNo");
-            gViewBuy.Columns.Remove("EmpNo");
-            gViewBuy.Columns.Remove("CusNo");
-            gViewBuy.Columns.Remove("ProNo");
+                gViewBuy.Columns.Remove("OrderNo");
+                gViewBuy.Columns.Remove("EmpNo");
+                gViewBuy.Columns.Remove("CusNo");
+                gViewBuy.Columns.Remove("ProNo");
 
-            gViewBuy.Columns["EA"].DisplayIndex = 2;
+                if (gViewBuy.Columns.Count == 7) GetCbxCol(gViewBuy, "cbx", "목록 선택");
 
-            gViewBuy.Columns["Order_OrderNo"].HeaderText = "주문번호";
-            gViewBuy.Columns["ProName"].HeaderText = "상품명";
-            gViewBuy.Columns["EA"].HeaderText = "상품수량";
-            gViewBuy.Columns["Price"].HeaderText = "총 가격";
-            gViewBuy.Columns["OrderDate"].HeaderText = "주문날짜";
-            gViewBuy.Columns["OrderCom"].HeaderText = "거래현황";
-            gViewBuy.Columns["EmpName"].HeaderText = "담당자";
+                gViewBuy.Columns["EA"].DisplayIndex = 2;
 
-            gViewBuy.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gViewBuy.Columns["OrderDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gViewBuy.Columns["OrderCom"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gViewBuy.Columns["Order_OrderNo"].HeaderText = "주문번호";
+                gViewBuy.Columns["ProName"].HeaderText = "상품명";
+                gViewBuy.Columns["EA"].HeaderText = "상품수량";
+                gViewBuy.Columns["Price"].HeaderText = "총 가격";
+                gViewBuy.Columns["OrderDate"].HeaderText = "주문날짜";
+                gViewBuy.Columns["OrderCom"].HeaderText = "거래현황";
+                gViewBuy.Columns["EmpName"].HeaderText = "담당자";
+
+                gViewBuy.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gViewBuy.Columns["OrderDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gViewBuy.Columns["OrderCom"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            else
+            {
+                gViewBuy.DataSource = null;
+                if (gViewBuy.Columns.Count != 0) gViewBuy.Columns.Remove("cbx");
+                MessageBox.Show("구매내역이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// gView에 체크박스 컬럼 추가
+        /// </summary>
+        /// <param name="gView">그리드 뷰</param>
+        /// <param name="name">컬럼명</param>
+        /// <param name="headerTxt">컬럼 헤더텍스트</param>
+        private void GetCbxCol(DataGridView gView, string name, string headerTxt)
+        {
+            DataGridViewCheckBoxColumn cbxCol = new DataGridViewCheckBoxColumn();
+            cbxCol.Name = name;
+            cbxCol.HeaderText = headerTxt;
+            gView.Columns.Add(cbxCol);
+            gView.Columns[name].DisplayIndex = 0;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -518,18 +546,7 @@ namespace CustomerApp.BUS
                 PanBottomCtrlVisiFalse();
                 CtrlVisiTrue(gbxCart);
                 gviewCart.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                if (cartList.Count != 0)
-                {
-                    gviewCart.Columns[0].Visible = true;
-                    gviewCart.DataSource = null;
-                    GviewCartDataSource();
-                }
-                else
-                {
-                    gviewCart.DataSource = null;
-                    gviewCart.Columns[0].Visible = false;
-                    MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                GviewCartDataSource();
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -544,6 +561,13 @@ namespace CustomerApp.BUS
                 gViewBuy.Height = panBottom.Height - 100;
                 CtrlVisiTrue(gbxBuyRecord);
                 GviewBuyRecordSet();
+                for (int i = 0; i < gViewBuy.Rows.Count; i++)
+                {
+                    if (gViewBuy.Rows[i].Cells["OrderCom"].Value.ToString() == "거래 완료" || gViewBuy.Rows[i].Cells["OrderCom"].Value.ToString() == "거래 취소")
+                    {
+                        gViewBuy.Rows[i].Cells["cbx"].ReadOnly = true;
+                    }
+                }
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -588,7 +612,6 @@ namespace CustomerApp.BUS
 
         private void btnCartBuy_Click(object sender, EventArgs e)
         {
-            bool chkExist = false;
             try
             {
                 cartOrders.Clear();
@@ -604,7 +627,7 @@ namespace CustomerApp.BUS
                             OrderDate = DateTime.Now,
                             Price = cartList[row.Index].TotalPrice,
                             EA = cartList[row.Index].SaveEA,
-                            EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음 /*int.Parse(row.Cells[8].Value.ToString())*/
+                            EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음
                         };
                         cartOrders.Add(order);
                     }
@@ -618,6 +641,7 @@ namespace CustomerApp.BUS
                     DeleteCart();
                     GviewBuyRecordSet();
                 }
+                else if (result == DialogResult.Cancel) return;
                 else MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)

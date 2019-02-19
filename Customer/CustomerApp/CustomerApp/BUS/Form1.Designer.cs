@@ -56,11 +56,13 @@
             this.lblSpec = new System.Windows.Forms.Label();
             this.txtProSpec = new System.Windows.Forms.RichTextBox();
             this.gbxBuyRecord = new System.Windows.Forms.GroupBox();
+            this.btnBuyCancel = new System.Windows.Forms.Button();
+            this.btnBill = new System.Windows.Forms.Button();
             this.gViewBuy = new System.Windows.Forms.DataGridView();
             this.gbxCart = new System.Windows.Forms.GroupBox();
             this.btnCartBuy = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.gviewCart = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.gbxBuy = new System.Windows.Forms.GroupBox();
             this.lblBuyProSpec = new System.Windows.Forms.Label();
             this.txtBuySpec = new System.Windows.Forms.TextBox();
@@ -74,8 +76,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnBuyRecord = new System.Windows.Forms.Button();
-            this.btnBuyCancel = new System.Windows.Forms.Button();
-            this.btnBill = new System.Windows.Forms.Button();
             this.panTop.SuspendLayout();
             this.panBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCont)).BeginInit();
@@ -192,6 +192,7 @@
             // 
             // spCont.Panel1
             // 
+            this.spCont.Panel1.Controls.Add(this.gbxCart);
             this.spCont.Panel1.Controls.Add(this.lstView);
             this.spCont.Panel1.Controls.Add(this.gbxAS);
             // 
@@ -354,9 +355,8 @@
             this.lblSpec.AutoSize = true;
             this.lblSpec.Location = new System.Drawing.Point(15, 111);
             this.lblSpec.Name = "lblSpec";
-            this.lblSpec.Size = new System.Drawing.Size(33, 12);
+            this.lblSpec.Size = new System.Drawing.Size(0, 12);
             this.lblSpec.TabIndex = 2;
-            this.lblSpec.Text = "spec";
             // 
             // txtProSpec
             // 
@@ -372,29 +372,52 @@
             this.gbxBuyRecord.Controls.Add(this.btnBuyCancel);
             this.gbxBuyRecord.Controls.Add(this.btnBill);
             this.gbxBuyRecord.Controls.Add(this.gViewBuy);
-            this.gbxBuyRecord.Location = new System.Drawing.Point(3, 94);
+            this.gbxBuyRecord.Location = new System.Drawing.Point(0, 361);
             this.gbxBuyRecord.Name = "gbxBuyRecord";
             this.gbxBuyRecord.Size = new System.Drawing.Size(1241, 597);
             this.gbxBuyRecord.TabIndex = 16;
             this.gbxBuyRecord.TabStop = false;
+            // 
+            // btnBuyCancel
+            // 
+            this.btnBuyCancel.Location = new System.Drawing.Point(1042, 497);
+            this.btnBuyCancel.Name = "btnBuyCancel";
+            this.btnBuyCancel.Size = new System.Drawing.Size(95, 23);
+            this.btnBuyCancel.TabIndex = 4;
+            this.btnBuyCancel.Text = "구매취소 요청";
+            this.btnBuyCancel.UseVisualStyleBackColor = true;
+            this.btnBuyCancel.Click += new System.EventHandler(this.btnBuyCancel_Click);
+            // 
+            // btnBill
+            // 
+            this.btnBill.Location = new System.Drawing.Point(1143, 498);
+            this.btnBill.Name = "btnBill";
+            this.btnBill.Size = new System.Drawing.Size(95, 23);
+            this.btnBill.TabIndex = 3;
+            this.btnBill.Text = "영수증 다운";
+            this.btnBill.UseVisualStyleBackColor = true;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
             // gViewBuy
             // 
             this.gViewBuy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gViewBuy.Dock = System.Windows.Forms.DockStyle.Top;
             this.gViewBuy.Location = new System.Drawing.Point(3, 17);
+            this.gViewBuy.MultiSelect = false;
             this.gViewBuy.Name = "gViewBuy";
             this.gViewBuy.RowTemplate.Height = 23;
             this.gViewBuy.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gViewBuy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gViewBuy.Size = new System.Drawing.Size(1235, 393);
             this.gViewBuy.TabIndex = 0;
             // 
             // gbxCart
             // 
+            this.gbxCart.Controls.Add(this.gbxBuyRecord);
             this.gbxCart.Controls.Add(this.btnCartBuy);
             this.gbxCart.Controls.Add(this.gviewCart);
             this.gbxCart.Controls.Add(this.btnDelete);
-            this.gbxCart.Location = new System.Drawing.Point(0, 119);
+            this.gbxCart.Location = new System.Drawing.Point(3, 388);
             this.gbxCart.Name = "gbxCart";
             this.gbxCart.Size = new System.Drawing.Size(1241, 525);
             this.gbxCart.TabIndex = 16;
@@ -410,16 +433,6 @@
             this.btnCartBuy.UseVisualStyleBackColor = true;
             this.btnCartBuy.Click += new System.EventHandler(this.btnCartBuy_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(1143, 416);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 23);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "선택품목 삭제";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // gviewCart
             // 
             this.gviewCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -431,6 +444,16 @@
             this.gviewCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gviewCart.Size = new System.Drawing.Size(1235, 393);
             this.gviewCart.TabIndex = 0;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(1143, 416);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(95, 23);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "선택품목 삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gbxBuy
             // 
@@ -558,33 +581,11 @@
             this.btnBuyRecord.UseVisualStyleBackColor = true;
             this.btnBuyRecord.Click += new System.EventHandler(this.btnBuyRecord_Click);
             // 
-            // btnBuyCancel
-            // 
-            this.btnBuyCancel.Location = new System.Drawing.Point(1042, 497);
-            this.btnBuyCancel.Name = "btnBuyCancel";
-            this.btnBuyCancel.Size = new System.Drawing.Size(95, 23);
-            this.btnBuyCancel.TabIndex = 4;
-            this.btnBuyCancel.Text = "구매취소 요청";
-            this.btnBuyCancel.UseVisualStyleBackColor = true;
-            this.btnBuyCancel.Click += new System.EventHandler(this.btnBuyCancel_Click);
-            // 
-            // btnBill
-            // 
-            this.btnBill.Location = new System.Drawing.Point(1143, 498);
-            this.btnBill.Name = "btnBill";
-            this.btnBill.Size = new System.Drawing.Size(95, 23);
-            this.btnBill.TabIndex = 3;
-            this.btnBill.Text = "영수증 다운";
-            this.btnBill.UseVisualStyleBackColor = true;
-            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 698);
-            this.Controls.Add(this.gbxBuyRecord);
-            this.Controls.Add(this.gbxCart);
             this.Controls.Add(this.gbxBuy);
             this.Controls.Add(this.btnBuyRecord);
             this.Controls.Add(this.btnCart);
