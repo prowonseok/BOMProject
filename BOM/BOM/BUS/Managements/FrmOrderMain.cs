@@ -14,6 +14,7 @@ namespace BOM.BUS.Managements
     public partial class FrmOrderMain : Form
     {
         OfferOrderDAO ood = new OfferOrderDAO();
+        int orderNo;
         public FrmOrderMain()
         {
             InitializeComponent();
@@ -21,12 +22,22 @@ namespace BOM.BUS.Managements
 
         private void FrmOrderMain_Load(object sender, EventArgs e)
         {
-            dgvOrderList.DataSource = ood.SelectOrder();
+            DataTable dt = ood.SelectOrderList();
+            dgvMain.DataSource = dt;
+            try
+            {
+                orderNo = int.Parse(dt.Rows[dt.Rows.Count - 1]["주문번호"].ToString());
+            }
+            catch (Exception)
+            {
+                orderNo = 0;
+            }
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            
+            FrmOrder fod = new FrmOrder(orderNo);
+            fod.ShowDialog();
         }
     }
 }

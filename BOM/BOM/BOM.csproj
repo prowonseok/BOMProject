@@ -72,12 +72,25 @@
     <Compile Include="BUS\Managements\FrmMatAdd.Designer.cs">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmOrder.Designer.cs">
+      <DependentUpon>FrmOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmOrderMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BUS\Managements\FrmOrderMain.Designer.cs">
       <DependentUpon>FrmOrderMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmProducts.Designer.cs">
+      <DependentUpon>FrmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\OrderInfo.cs" />
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="BUS\BOM\FrmBomAdd.cs">
       <SubType>Form</SubType>
@@ -122,6 +135,9 @@
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\OfferOrderDAO.cs" />
+    <Compile Include="DAO\ProductsDAO.cs" />
+    <Compile Include="VO\OffererOrderViewVO.cs" />
+    <Compile Include="VO\OffererOrderVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
     <Compile Include="DAO\SalesDao.cs" />
     <Compile Include="BUS\Sales\FrmSalesMain.cs">
@@ -190,12 +206,19 @@
       <DependentUpon>FrmManageMain.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="VO\ProductsListVO.cs" />
+    <Compile Include="VO\ProductsVO.cs" />
     <Compile Include="VO\SalesVO.cs" />
     <EmbeddedResource Include="BUS\Managements\FrmMatAdd.resx">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmOrder.resx">
+      <DependentUpon>FrmOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmOrderMain.resx">
       <DependentUpon>FrmOrderMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmProducts.resx">
+      <DependentUpon>FrmProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
       <DependentUpon>ChaingePrice.cs</DependentUpon>
