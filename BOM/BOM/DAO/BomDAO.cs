@@ -25,7 +25,7 @@ namespace BOM.DAO
         /// </summary>
         /// <param name="matLst"></param>
         /// <param name="dt"></param>
-        private static void DataTableValidation(List<Materials> matLst, DataTable dt)
+        internal static void DataTableValidation(List<Materials> matLst, DataTable dt)
         {
             foreach (DataRow item in dt.Rows)
             {
@@ -63,12 +63,12 @@ namespace BOM.DAO
                 );
             }
         }
-        
+
         /// <summary>
         /// 모든 상품 출력 프로시져
         /// </summary>
         /// <returns></returns>
-        public List<Products> SelectPro()
+        internal List<Products> SelectPro()
         {
             List<Products> proLst = new List<Products>();
             string sp = "Bom_Pro_View_Procedure";
@@ -87,7 +87,7 @@ namespace BOM.DAO
 
         }
 
-        
+
         //public bool Selectchildnode(string child_Name)
         //{
         //    string sp = "BOM_Bom_ChiledNode_Procedure";
@@ -102,7 +102,7 @@ namespace BOM.DAO
         //    {
         //        return false; //없다
         //    }
-            
+
         //}
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace BOM.DAO
         /// </summary>
         /// <param name="pro_No">상품 번호</param>
         /// <returns></returns>
-        public DataTable SelectTreeview(int pro_No)
+        internal DataTable SelectTreeview(int pro_No)
         {
             string sp = "BOM_Bom_Treeview_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -125,7 +125,7 @@ namespace BOM.DAO
         /// </summary>
         /// <param name="child_Name">부모 자재명</param>
         /// <returns></returns>
-        public DataTable SelectChildTreeview(string child_Name) {
+        internal DataTable SelectChildTreeview(string child_Name) {
             string sp = "BOM_Bom_ChildTreeview_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
@@ -133,7 +133,7 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
             return dt;
         }
-        
+
         /// <summary>
         /// BOM등록 하는 메서드
         /// </summary>
@@ -141,7 +141,7 @@ namespace BOM.DAO
         /// <param name="childMatNo">자식 자재의 자재 번호</param>
         /// <param name="childMatEA">필요 자식 자재 개수</param>
         /// <returns>등록이 성공인지 실패인지 여부를 반환</returns>
-        public bool InsertBom(string parentMatNo, string childMatNo, string childMatEA)
+        internal bool InsertBom(string parentMatNo, string childMatNo, string childMatEA)
         {
             string sp = "Bom_Bom_Insert_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[3];
@@ -168,7 +168,7 @@ namespace BOM.DAO
         /// <param name="cNo">자식 자재 번호</param>
         /// <param name="ea">필요 자재 개수</param>
         /// <returns></returns>
-        public bool UpdateBom(int pNo, int cNo, int ea) {
+        internal bool UpdateBom(int pNo, int cNo, int ea) {
             string sp = "BOM_Bom_Update_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[3];
             sqlParameters[0] = new SqlParameter("@BOM_ParentNo", pNo);
@@ -186,13 +186,23 @@ namespace BOM.DAO
             return result;
         }
 
+        internal DataTable SelectProYear(int month)
+        {
+            string sp = "BOM_Bom_GroupYear_Select";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Cus_Order_Date_Month",month);
+
+            DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
+            return dt;
+        }
+
         /// <summary>
         /// BOM Table에서 부모 자재 번호와 자식 자재 번호를 매개변수 값과 비교하여 둘다 같은 경우 해당 데이터 DELETE
         /// </summary>
         /// <param name="pNo">부모 자재 번호</param>
         /// <param name="cNo">자식 자재 번호</param>
         /// <returns></returns>
-        public bool DeleteBom(int pNo, int cNo) {
+        internal bool DeleteBom(int pNo, int cNo) {
             string sp = "BOM_Bom_Delete_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@BOM_ParentNo", pNo);
@@ -287,7 +297,7 @@ namespace BOM.DAO
         /// Customers_Order Table에서 판매 완료된 제품들을 Products Table과 조인하여 판매량을 가져옴
         /// </summary>
         /// <returns></returns>
-        public DataTable SelectOrder() {
+        internal DataTable SelectOrder() {
             string sp = "BOM_Bom_ProStatistics";
             SqlParameter[] sqlParameters = null;
 

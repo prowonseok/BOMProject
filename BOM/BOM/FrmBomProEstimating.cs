@@ -16,10 +16,10 @@ namespace BOM
         DAO.BomDAO bDao;
         DataTable dt;
         List<string> proLst;
+
         public FrmBomProEstimating()
         {
             InitializeComponent();
-            
         }
 
         private void FrmBomProEstimating_Load(object sender, EventArgs e)
@@ -30,10 +30,13 @@ namespace BOM
             dt = bDao.SelectOrder();
             proLst = new List<string>();
 
+            cbbProducts.Items.Add("전체");
+
             foreach (DataRow item in dt.Rows)
             {
                 chartPro.Series["s1"].Points.AddXY(item["Pro_Name"].ToString(), item["판매량"].ToString());
                 proLst.Add(item["Pro_Name"].ToString());
+                cbbProducts.Items.Add(item["Pro_Name"].ToString());
             }
             #endregion
 
@@ -43,9 +46,10 @@ namespace BOM
             {
                 cbbYear.Items.Add(i);
             }
+            cbbProducts.Text = "전체";
             cbbYear.Text = "2019";
 
-
+            btnPro_Click(null,null);
         }
 
         Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
@@ -77,8 +81,7 @@ namespace BOM
         {
             chartDate.Series.Clear();
             foreach (var item in proLst)
-            {
-                //PC들을 Series에 추가
+            {   //PC들을 Series에 추가
                 chartDate.Series.Add(item);
             }
             foreach (DataRow item in dt.Rows)
@@ -90,6 +93,11 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 날짜별 Chart 위에서 마우스로 그래프를 가리키면 툴팁을 발생시키는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">현재 마우스의 위치</param>
         private void chartDate_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location;
@@ -109,6 +117,80 @@ namespace BOM
                 //myToolTip.Show(xValue + "판매량 : " + yValue+"개",chartDate,new Point(position.X+10,position.Y));
                 myToolTip.Show("판매량 : " + yValue+"개",chartDate,new Point(position.X+10,position.Y));
             }
+        }
+
+        private void cbbProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chartDate.Series.Clear();
+            if (cbbProducts.Text=="전체")
+            {
+                foreach (var item in proLst)
+                {   
+                    chartDate.Series.Add(item);
+                }
+            }
+            else
+            {
+                chartDate.Series.Add(cbbProducts.Text);
+            }
+
+            foreach (DataRow item in dt.Rows)
+            {
+                if (item["YEAR"].ToString()==cbbYear.Text)
+                {
+                    if (cbbProducts.Text=="전체")
+                    {
+                        chartDate.Series[item["Pro_Name"].ToString()].Points.AddXY(item["MONTH"].ToString(), Int32.Parse(item["COUNT"].ToString()));
+                    }
+                    else
+                    {
+                        if (item["Pro_Name"].ToString() == cbbProducts.Text)
+                        {
+                            chartDate.Series[item["Pro_Name"].ToString()].Points.AddXY(item["MONTH"].ToString(), Int32.Parse(item["COUNT"].ToString()));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnPro_Click(object sender, EventArgs e)
+        {
+            chartPro.Visible = true;
+            chartDate.Visible = false;
+            cbbProducts.Visible = false;
+            cbbYear.Visible = false;
+            dgvEst.Visible = false;
+        }
+
+        private void btnYear_Click(object sender, EventArgs e)
+        {
+            chartPro.Visible = false;
+            chartDate.Visible = true;
+            cbbProducts.Visible = true;
+            cbbYear.Visible = true;
+            dgvEst.Visible = false;
+        }
+
+        private void btnEstimating_Click(object sender, EventArgs e)
+        {
+            dgvEst.Visible = true;
+            chartPro.Visible = false;
+            chartDate.Visible = false;
+            cbbProducts.Visible = false;
+            cbbYear.Visible = false;
+            //MessageBox.Show(DateTime.Now.Month.ToString());
+            DataTable dt2 = bDao.SelectProYear(DateTime.Now.Month);
+
+            //foreach (DataRow item in dt2.Rows)
+            //{
+            //    if (item["MONTH"].ToString()!=DateTime.Now.Month.ToString())
+            //    {
+            //        item.Delete();
+            //    }
+            //}
+            dgvEst.DataSource = dt2;
+
+
         }
     }
 }
