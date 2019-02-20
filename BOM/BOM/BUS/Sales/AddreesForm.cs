@@ -23,9 +23,10 @@ namespace BOM.BUS.Sales
         int totalCount = 0; //페이징 > 전체 데이터 갯수
         int totalPage; // 페이징 > 전체 페이지
         int page = 1; // > 페이징 > 페이지
-
-        public AddreesForm()
+        int distinction = 0; //호출된 메서드 구분
+        public AddreesForm(int distinction)
         {
+            this.distinction = distinction;
             InitializeComponent();
 
             addrList = new List<Address>();
@@ -153,12 +154,24 @@ namespace BOM.BUS.Sales
         }
         
         private void button1_Click_1(object sender, EventArgs e) // 출하지시서 폼으로 선택된 주소 전달
-        {
+        {           
             if (selectAddr != "")
             {
-                Shipment ship = (Shipment)Owner;
-                ship.Lbltest.Text = selectAddr;
-                this.Close();
+                if (distinction ==1)
+                {
+                    Shipment ship = (Shipment)Owner;
+                    ship.Lbltest.Text = "";
+                    ship.Lbltest.Text = selectAddr;
+                    this.Close();
+                }
+                else
+                {
+                    TraderSet ts = (TraderSet)Owner;
+                    ts.TextBoxText.Text = "";
+                    ts.TextBoxText.Text = selectAddr.Substring(0, selectAddr.IndexOf("구주소"));
+                    this.Close();
+                }
+                
             }
             else
             {

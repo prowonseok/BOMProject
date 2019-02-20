@@ -14,7 +14,8 @@ namespace BOM.BUS.Sales
 {
     public partial class ChaingePrice : Form
     {
-        List<ProductsListVO> ProductsList = new List<ProductsListVO>();
+        List<ProductsListVO> productsList = new List<ProductsListVO>();
+
           
         public ChaingePrice()
         {
@@ -29,10 +30,10 @@ namespace BOM.BUS.Sales
         private void PriceView() //Price폼에 상품 목록 불러오는 메서드
         {
             string sp = "Bom_JW_ProNameSelect2";
-            ProductsList.Clear();
-            ProductsList = new SalesDao().ComboProDuctList(sp);
+            productsList.Clear();
+            productsList = new SalesDao().ComboProDuctList(sp);
             comboProduct.Items.Clear();
-            foreach (var item in ProductsList)
+            foreach (var item in productsList)
             {
                 comboProduct.Items.Add(item.ProductName);
             }
@@ -40,9 +41,9 @@ namespace BOM.BUS.Sales
 
         private void comboProduct_DropDownClosed(object sender, EventArgs e) // 콤보박스에서 상품 선택시 가격, 정보 표시하는 메서드
         {            
-            int price = Int32.Parse(ProductsList[comboProduct.SelectedIndex].ProductPrice);
+            int price = Int32.Parse(productsList[comboProduct.SelectedIndex].ProductPrice);
             lblPrice.Text = String.Format("{0:##,##0}", price) + " 원";// 0>0
-            lblDate.Text = ProductsList[comboProduct.SelectedIndex].ProductDate.ToShortDateString(); 
+            lblDate.Text = productsList[comboProduct.SelectedIndex].ProductDate.ToShortDateString(); 
 
         }
 
@@ -123,5 +124,7 @@ namespace BOM.BUS.Sales
             
             
         }
+
+        
     }
 }

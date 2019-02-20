@@ -17,7 +17,14 @@ namespace BOM.BUS.Sales
     public partial class TraderSet : Form
     {
         
-        TraderSetDao tsd;
+        TraderSetDao tsd;       
+
+        public TextBox TextBoxText
+        {
+            get { return txtOffAddr; }
+            set { txtOffAddr = value; }
+        }
+
         public TraderSet()
         {
             InitializeComponent();            
@@ -65,7 +72,7 @@ namespace BOM.BUS.Sales
             offNo = Int32.Parse(offLst.Rows[OffIndexNo]["Off_No"].ToString());
             typeNo= Int32.Parse(proTypeLst.Rows[typeindexNo]["Mat_Type_No"].ToString());
 
-            MessageBox.Show(tsd.MatInsert(typeNo, txtManufactur.Text, txtMatName.Text, Int32.Parse(txtMatPrice.Text), txtMatLevel.Text, Int32.Parse(txtMatEa.Text), offNo));
+            MessageBox.Show(tsd.MatInsert(typeNo, txtManufactur.Text, txtMatName.Text, Int32.Parse(txtMatPrice.Text), comboMatLevel.Text, Int32.Parse(txtMatEa.Text), offNo));
         }
 
         int OffIndexNo;
@@ -77,6 +84,34 @@ namespace BOM.BUS.Sales
         private void comboProTypeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             typeindexNo = Int32.Parse(comboProTypeList.SelectedIndex.ToString());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddreesForm ad = new AddreesForm(2);
+            ad.Owner = this;
+            ad.Show();
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {           
+            if (e.TabPageIndex == 0)
+            {
+                this.Size = new Size(513, 462);
+            }
+            else if(e.TabPageIndex == 1)
+            {
+                this.Size = new Size(343, 464);
+            }
+            else
+            {
+                this.Size = new Size(343, 464);
+            }
         }
     }
 }

@@ -98,7 +98,8 @@ namespace BOM.BUS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddreesForm ad = new AddreesForm();
+            AddreesForm ad = new AddreesForm(2);
+            ad.Owner = this;
             ad.Show();
         }
 

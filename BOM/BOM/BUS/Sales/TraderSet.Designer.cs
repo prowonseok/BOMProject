@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -49,9 +50,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.rdoDelete = new System.Windows.Forms.RadioButton();
-            this.rdoUpdate = new System.Windows.Forms.RadioButton();
-            this.rdoInsert = new System.Windows.Forms.RadioButton();
+            this.button7 = new System.Windows.Forms.Button();
+            this.comboMatLevel = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.txtMatEa = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -66,22 +70,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.comboOffList = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.txtOff = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtMatLevel = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -96,11 +100,13 @@
             this.tabControl1.Location = new System.Drawing.Point(-2, 55);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(428, 361);
+            this.tabControl1.Size = new System.Drawing.Size(504, 402);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.label20);
@@ -122,16 +128,26 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(421, 335);
+            this.tabPage1.Size = new System.Drawing.Size(496, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "거래처 등록";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(125, 180);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(77, 25);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "주소검색";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(231, 228);
+            this.label22.Location = new System.Drawing.Point(267, 267);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 12);
             this.label22.TabIndex = 18;
@@ -142,7 +158,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(231, 193);
+            this.label21.Location = new System.Drawing.Point(267, 232);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(53, 12);
             this.label21.TabIndex = 17;
@@ -153,7 +169,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(231, 160);
+            this.label20.Location = new System.Drawing.Point(208, 191);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(53, 12);
             this.label20.TabIndex = 16;
@@ -164,7 +180,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(231, 88);
+            this.label19.Location = new System.Drawing.Point(267, 86);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(53, 12);
             this.label19.TabIndex = 15;
@@ -175,7 +191,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(229, 49);
+            this.label18.Location = new System.Drawing.Point(267, 47);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(53, 12);
             this.label18.TabIndex = 14;
@@ -184,7 +200,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(316, 284);
+            this.button4.Location = new System.Drawing.Point(403, 293);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(58, 25);
             this.button4.TabIndex = 13;
@@ -194,50 +210,50 @@
             // 
             // txtManagerMobile
             // 
-            this.txtManagerMobile.Location = new System.Drawing.Point(125, 219);
+            this.txtManagerMobile.Location = new System.Drawing.Point(125, 260);
             this.txtManagerMobile.Name = "txtManagerMobile";
-            this.txtManagerMobile.Size = new System.Drawing.Size(100, 21);
+            this.txtManagerMobile.Size = new System.Drawing.Size(136, 21);
             this.txtManagerMobile.TabIndex = 11;
             // 
             // txtManager
             // 
-            this.txtManager.Location = new System.Drawing.Point(123, 184);
+            this.txtManager.Location = new System.Drawing.Point(123, 225);
             this.txtManager.Name = "txtManager";
-            this.txtManager.Size = new System.Drawing.Size(100, 21);
+            this.txtManager.Size = new System.Drawing.Size(138, 21);
             this.txtManager.TabIndex = 10;
             // 
             // txtOffAddr
             // 
-            this.txtOffAddr.Location = new System.Drawing.Point(123, 151);
+            this.txtOffAddr.Location = new System.Drawing.Point(123, 153);
             this.txtOffAddr.Name = "txtOffAddr";
-            this.txtOffAddr.Size = new System.Drawing.Size(100, 21);
+            this.txtOffAddr.Size = new System.Drawing.Size(338, 21);
             this.txtOffAddr.TabIndex = 9;
             // 
             // txtOffMobile
             // 
             this.txtOffMobile.Location = new System.Drawing.Point(123, 116);
             this.txtOffMobile.Name = "txtOffMobile";
-            this.txtOffMobile.Size = new System.Drawing.Size(100, 21);
+            this.txtOffMobile.Size = new System.Drawing.Size(138, 21);
             this.txtOffMobile.TabIndex = 8;
             // 
             // txtOwnerName
             // 
             this.txtOwnerName.Location = new System.Drawing.Point(123, 79);
             this.txtOwnerName.Name = "txtOwnerName";
-            this.txtOwnerName.Size = new System.Drawing.Size(100, 21);
+            this.txtOwnerName.Size = new System.Drawing.Size(138, 21);
             this.txtOwnerName.TabIndex = 7;
             // 
             // txtOffName
             // 
             this.txtOffName.Location = new System.Drawing.Point(123, 40);
             this.txtOffName.Name = "txtOffName";
-            this.txtOffName.Size = new System.Drawing.Size(100, 21);
+            this.txtOffName.Size = new System.Drawing.Size(138, 21);
             this.txtOffName.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(50, 228);
+            this.label8.Location = new System.Drawing.Point(50, 269);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 12);
             this.label8.TabIndex = 5;
@@ -246,7 +262,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 193);
+            this.label7.Location = new System.Drawing.Point(50, 234);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 4;
@@ -255,7 +271,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 160);
+            this.label6.Location = new System.Drawing.Point(50, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 3;
@@ -290,14 +306,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.comboMatLevel);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label25);
-            this.tabPage3.Controls.Add(this.txtMatLevel);
             this.tabPage3.Controls.Add(this.label24);
             this.tabPage3.Controls.Add(this.label23);
-            this.tabPage3.Controls.Add(this.rdoDelete);
-            this.tabPage3.Controls.Add(this.rdoUpdate);
-            this.tabPage3.Controls.Add(this.rdoInsert);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.txtMatEa);
             this.tabPage3.Controls.Add(this.label15);
@@ -313,46 +327,73 @@
             this.tabPage3.Controls.Add(this.comboOffList);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(420, 335);
+            this.tabPage3.Size = new System.Drawing.Size(496, 376);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "거래처 제품관리";
+            this.tabPage3.Text = "거래처 제품등록";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
-            // rdoDelete
+            // button7
             // 
-            this.rdoDelete.AutoSize = true;
-            this.rdoDelete.Location = new System.Drawing.Point(326, 48);
-            this.rdoDelete.Name = "rdoDelete";
-            this.rdoDelete.Size = new System.Drawing.Size(47, 16);
-            this.rdoDelete.TabIndex = 15;
-            this.rdoDelete.Text = "삭제";
-            this.rdoDelete.UseVisualStyleBackColor = true;
+            this.button7.Location = new System.Drawing.Point(143, 304);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(58, 25);
+            this.button7.TabIndex = 43;
+            this.button7.Text = "종료";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // rdoUpdate
+            // comboMatLevel
             // 
-            this.rdoUpdate.AutoSize = true;
-            this.rdoUpdate.Location = new System.Drawing.Point(273, 81);
-            this.rdoUpdate.Name = "rdoUpdate";
-            this.rdoUpdate.Size = new System.Drawing.Size(47, 16);
-            this.rdoUpdate.TabIndex = 14;
-            this.rdoUpdate.Text = "수정";
-            this.rdoUpdate.UseVisualStyleBackColor = true;
+            this.comboMatLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMatLevel.FormattingEnabled = true;
+            this.comboMatLevel.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2"});
+            this.comboMatLevel.Location = new System.Drawing.Point(113, 265);
+            this.comboMatLevel.Name = "comboMatLevel";
+            this.comboMatLevel.Size = new System.Drawing.Size(121, 20);
+            this.comboMatLevel.TabIndex = 21;
             // 
-            // rdoInsert
+            // label26
             // 
-            this.rdoInsert.AutoSize = true;
-            this.rdoInsert.Checked = true;
-            this.rdoInsert.Location = new System.Drawing.Point(273, 48);
-            this.rdoInsert.Name = "rdoInsert";
-            this.rdoInsert.Size = new System.Drawing.Size(47, 16);
-            this.rdoInsert.TabIndex = 13;
-            this.rdoInsert.TabStop = true;
-            this.rdoInsert.Text = "등록";
-            this.rdoInsert.UseVisualStyleBackColor = true;
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(240, 236);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(25, 12);
+            this.label26.TabIndex = 20;
+            this.label26.Text = "null";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(240, 200);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(25, 12);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "null";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(55, 268);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 12);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "제품레벨";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(240, 129);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(25, 12);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "null";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(316, 284);
+            this.button3.Location = new System.Drawing.Point(207, 304);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(58, 25);
             this.button3.TabIndex = 12;
@@ -464,109 +505,159 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.comboBox4);
-            this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.lblName);
-            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.button6);
+            this.tabPage2.Controls.Add(this.txtOff);
+            this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label28);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.label27);
+            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(421, 335);
+            this.tabPage2.Size = new System.Drawing.Size(496, 376);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "거래처 제품설정";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label17
+            // button6
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(47, 94);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 12);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "제품";
+            this.button6.Location = new System.Drawing.Point(88, 281);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(58, 25);
+            this.button6.TabIndex = 42;
+            this.button6.Text = "종료";
+            this.button6.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // txtOff
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(82, 91);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 20);
-            this.comboBox4.TabIndex = 9;
+            this.txtOff.Location = new System.Drawing.Point(113, 49);
+            this.txtOff.Name = "txtOff";
+            this.txtOff.Size = new System.Drawing.Size(138, 21);
+            this.txtOff.TabIndex = 41;
             // 
-            // label16
+            // comboBox1
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(35, 61);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 12);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "거래처";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(82, 56);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 20);
-            this.comboBox3.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(94, 230);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 6;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(94, 204);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(37, 12);
-            this.lblName.TabIndex = 5;
-            this.lblName.Text = "asd\\";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 239);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "단가 : ";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2"});
+            this.comboBox1.Location = new System.Drawing.Point(113, 228);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(138, 20);
+            this.comboBox1.TabIndex = 40;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(333, 288);
+            this.button2.Location = new System.Drawing.Point(216, 281);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(58, 25);
             this.button2.TabIndex = 2;
             this.button2.Text = "변경";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "제품레벨";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(269, 288);
+            this.button1.Location = new System.Drawing.Point(152, 281);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 25);
             this.button1.TabIndex = 1;
             this.button1.Text = "삭제";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // textBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 204);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "품명 : ";
+            this.textBox1.Location = new System.Drawing.Point(113, 191);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(138, 21);
+            this.textBox1.TabIndex = 38;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(78, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "단가";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(66, 53);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(41, 12);
+            this.label28.TabIndex = 30;
+            this.label28.Text = "거래처";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(113, 155);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(138, 21);
+            this.textBox2.TabIndex = 36;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(113, 84);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(138, 20);
+            this.comboBox2.TabIndex = 31;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(54, 160);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "제품이름";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(54, 88);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.TabIndex = 32;
+            this.label27.Text = "제품타입";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(113, 120);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(138, 21);
+            this.textBox3.TabIndex = 34;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(66, 123);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "제조사";
             // 
             // label11
             // 
@@ -578,54 +669,12 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "거래처 관리";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(240, 129);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(25, 12);
-            this.label23.TabIndex = 16;
-            this.label23.Text = "null";
-            // 
-            // txtMatLevel
-            // 
-            this.txtMatLevel.Location = new System.Drawing.Point(113, 263);
-            this.txtMatLevel.Name = "txtMatLevel";
-            this.txtMatLevel.Size = new System.Drawing.Size(121, 21);
-            this.txtMatLevel.TabIndex = 18;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(55, 268);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(53, 12);
-            this.label24.TabIndex = 17;
-            this.label24.Text = "제품레벨";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(240, 200);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(25, 12);
-            this.label25.TabIndex = 19;
-            this.label25.Text = "null";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(240, 236);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(25, 12);
-            this.label26.TabIndex = 20;
-            this.label26.Text = "null";
-            // 
             // TraderSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 412);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(497, 423);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tabControl1);
             this.Name = "TraderSet";
@@ -661,12 +710,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboOffList;
@@ -682,13 +727,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RadioButton rdoDelete;
-        private System.Windows.Forms.RadioButton rdoUpdate;
-        private System.Windows.Forms.RadioButton rdoInsert;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
@@ -696,8 +734,23 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtMatLevel;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox comboMatLevel;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox txtOff;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label17;
     }
 }

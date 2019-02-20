@@ -33,7 +33,8 @@ namespace BOM.BUS.Sales
 
         private void button1_Click(object sender, EventArgs e) //주소변경시 주소변경 폼을 띄워줌
         {
-            AddreesForm ad = new AddreesForm();
+            
+            AddreesForm ad = new AddreesForm(1);
             ad.Owner = this;
             ad.Show();
         }

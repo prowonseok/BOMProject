@@ -1,4 +1,5 @@
-﻿using dllPackager;
+﻿using BOM.VO;
+using dllPackager;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,17 +16,30 @@ namespace BOM.DAO
     {
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         DataTable dt = new DataTable();
+        List<RevenueVO> RevenueList1 = new List<RevenueVO>();
 
-        internal DataTable Revenue(string startDate, string endDate)
+        internal List<RevenueVO> Revenue(string startDate, string endDate)
         {
+            RevenueList1.Clear();
             string sp = "Bom_JW_Revenue";
             SqlParameter[] sqlParameter = new SqlParameter[2];
             sqlParameter[0] = new SqlParameter("@startDate", startDate);
             sqlParameter[1] = new SqlParameter("@endDate", endDate);
 
-            dt = dbp.ExecuteParametersDT(sp, sqlParameter);            
-            return dt;
+            dt = dbp.ExecuteParametersDT(sp, sqlParameter);
 
+            foreach (DataRow item in dt.Rows)
+            {
+                RevenueList1.Add(new RevenueVO
+                {
+                    OrderNo = Int32.Parse(item["Cus_Order_No"].ToString()),
+                    OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString()),
+                    OrderPrice = String.Format("{0:##,##0}", Int32.Parse(item["Cus_Order_Price"].ToString())) + " 원"
+            });
+            }
+            return RevenueList1;
         }
+
+
     }
 }
