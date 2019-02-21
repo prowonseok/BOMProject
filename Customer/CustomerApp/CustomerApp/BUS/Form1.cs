@@ -332,8 +332,8 @@ namespace CustomerApp.BUS
                 if (Convert.ToBoolean(checkRow.Cells["cbx"].Value))
                 {
                     chkExist = true;
-                    cartDAO.Delete(customer.No, cartList[checkRow.Index].SaveNo, cartList[checkRow.Index].CartNo);
-                    cartDAO.SetSaveNo(customer.No, cartList[checkRow.Index].SaveNo);
+                    cartDAO.SetSaveNo(customer.No, cartList[checkRow.Index].CartNo);
+                    cartDAO.Delete(customer.No, cartList[checkRow.Index].CartNo);
                 }
             }
             if (!chkExist) MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);

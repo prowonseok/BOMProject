@@ -181,10 +181,9 @@ AS
 -- 회원별 장바구니 목록 delete
 CREATE PROCEDURE [dbo].[DeleteCart]
 	@Cus_No int,
-	@SaveNo int,
 	@cartNo int
 AS
-	DELETE FROM Customers_Cart where Cus_No = @Cus_No and Cus_Cart_Cus_SaveNo = @SaveNo;
+	DELETE FROM Customers_Cart where Cus_No = @Cus_No and Cus_Cart_No = @cartNo;
 
 -- 상품 남아있는 재고 가져오기
 CREATE PROCEDURE [dbo].[SelectProCount]
@@ -202,7 +201,9 @@ AS
 -- 장바구니 저장순서 세팅
 CREATE PROCEDURE [dbo].[SetSaveNo]
 	@cusNo int,
-	@saveNo int
+	@cartNo int
 AS
-	UPDATE Customers_Cart SET Cus_Cart_Cus_SaveNo = Cus_Cart_Cus_SaveNo - 1 
-	WHERE Cus_No = @cusNo and Cus_Cart_Cus_SaveNo > @SaveNo;
+With temp AS
+(select Cus_Cart_No, LEAD(Cus_Cart_No, 1) OVER (order by Cus_Cart_No) AS NextCartNo from Customers_Cart)
+	UPDATE Customers_Cart SET Cus_Cart_Cus_SaveNo = Cus_Cart_Cus_SaveNo - 1 WHERE Cus_No = @cusNo and Cus_Cart_No >=
+	(select NextCartNo from temp where Cus_Cart_No = @cartNo)

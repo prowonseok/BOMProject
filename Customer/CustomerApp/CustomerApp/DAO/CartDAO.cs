@@ -69,15 +69,14 @@ namespace CustomerApp.DAO
             }
         }
 
-        public void Delete(int cusNo, int saveNo, int cartNo)
+        public void Delete(int cusNo, int cartNo)
         {
             try
             {
                 string sp = "DeleteCart";
-                SqlParameter[] cartInfo = new SqlParameter[3];
+                SqlParameter[] cartInfo = new SqlParameter[2];
                 cartInfo[0] = new SqlParameter("Cus_No", cusNo);
-                cartInfo[1] = new SqlParameter("SaveNo", saveNo);
-                cartInfo[2] = new SqlParameter("CartNo", cartNo);
+                cartInfo[1] = new SqlParameter("CartNo", cartNo);
                 db.ExecuteParameters(sp, cartInfo);
             }
             catch (SqlException)
@@ -110,14 +109,14 @@ namespace CustomerApp.DAO
             }
         }
 
-        public void SetSaveNo(int cusNo, int saveNo)
+        public void SetSaveNo(int cusNo, int cartNo)
         {
             try
             {
                 string sp = "SetSaveNo";
                 SqlParameter[] cartInfo = new SqlParameter[2];
                 cartInfo[0] = new SqlParameter("cusNo", cusNo);
-                cartInfo[1] = new SqlParameter("saveNo", saveNo);
+                cartInfo[1] = new SqlParameter("cartNo", cartNo);
                 db.ExecuteParameters(sp, cartInfo);
             }
             catch (SqlException)
