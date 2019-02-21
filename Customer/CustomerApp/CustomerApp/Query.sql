@@ -171,16 +171,38 @@ AS
 CREATE PROCEDURE [dbo].[SelectCart]
 	@Cus_No int
 AS
-	SELECT [cart].Cus_Cart_Cus_SaveNo, [cus].Cus_Name, [pro].Pro_Name, [cart].Cus_Cart_Save_EA, [cart].Cus_Cart_TotalPrice, [cart].Cus_Cart_Date, [cart].Pro_No
+	SELECT [cart].Cus_Cart_No, [cart].Cus_Cart_Cus_SaveNo, [cus].Cus_Name, [pro].Pro_Name, [cart].Cus_Cart_Save_EA, [cart].Cus_Cart_TotalPrice, [cart].Cus_Cart_Date, [cart].Pro_No
 	FROM Customers_Cart [cart] inner join Customers [cus]
 	on [cart].Cus_No = [cus].Cus_No
-	inner join Products [pro]	
+	inner join Products [pro]
 	on [cart].Pro_No = [pro].Pro_No
 	where [cart].Cus_No = @Cus_No;
 
 -- 회원별 장바구니 목록 delete
 CREATE PROCEDURE [dbo].[DeleteCart]
 	@Cus_No int,
-	@SaveNo int
+	@SaveNo int,
+	@cartNo int
 AS
 	DELETE FROM Customers_Cart where Cus_No = @Cus_No and Cus_Cart_Cus_SaveNo = @SaveNo;
+
+-- 상품 남아있는 재고 가져오기
+CREATE PROCEDURE [dbo].[SelectProCount]
+	@Pro_No int
+AS
+	SELECT [Mat].Mat_EA from Materials [Mat] inner join Products [Pro]
+	on [Mat].Mat_No = [Pro].Mat_No where [Pro].Pro_No = @Pro_No
+
+-- 고객 주문 취소
+CREATE PROCEDURE [dbo].[CancelOrder]
+	@Order_No int
+AS
+	update Customers_Order set Cus_OrderComplete = 3 where Cus_Order_No = @Order_No;
+
+-- 장바구니 저장순서 세팅
+CREATE PROCEDURE [dbo].[SetSaveNo]
+	@cusNo int,
+	@saveNo int
+AS
+	UPDATE Customers_Cart SET Cus_Cart_Cus_SaveNo = Cus_Cart_Cus_SaveNo - 1 
+	WHERE Cus_No = @cusNo and Cus_Cart_Cus_SaveNo > @SaveNo;

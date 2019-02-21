@@ -56,9 +56,9 @@ namespace CustomerApp.DAO
         private List<string> GetMatList(int proNo, List<string> matList)
         {
             string sp = "SelectProDetail";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("Pro_No", proNo);
-            var matDataTable = db.ExecuteParametersDT(sp, sqlParameters);
+            SqlParameter[] proInfo = new SqlParameter[1];
+            proInfo[0] = new SqlParameter("Pro_No", proNo);
+            var matDataTable = db.ExecuteParametersDT(sp, proInfo);
 
             foreach (DataRow row in matDataTable.Rows)
             {
@@ -66,6 +66,27 @@ namespace CustomerApp.DAO
                 matList.Add(row["Mat_Name"].ToString());
             }
             return matList;
+        }
+
+        public int GetProCount(int proNo)
+        {
+            try
+            {
+                int proCount;
+
+                string sp = "SelectProCount";
+                SqlParameter[] proInfo = new SqlParameter[1];
+                proInfo[0] = new SqlParameter("Pro_No", proNo);
+                var dataTable = db.ExecuteParametersDT(sp, proInfo);
+
+                proCount = int.Parse(dataTable.Rows[0]["Mat_EA"].ToString());
+
+                return proCount;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
         }
     }
 }

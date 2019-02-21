@@ -22,14 +22,14 @@ namespace CustomerApp.DAO
             try
             {
                 string sp = "InsertCart";
-                SqlParameter[] cusInfo = new SqlParameter[6];
-                cusInfo[0] = new SqlParameter("cusNo", cart.CusNo);
-                cusInfo[1] = new SqlParameter("saveNo", cart.SaveNo);
-                cusInfo[2] = new SqlParameter("proNo", cart.ProNo);
-                cusInfo[3] = new SqlParameter("saveEA", cart.SaveEA);
-                cusInfo[4] = new SqlParameter("totalPrice", cart.TotalPrice);
-                cusInfo[5] = new SqlParameter("cartDate", cart.CartDate);
-                db.ExecuteParameters(sp, cusInfo);
+                SqlParameter[] cartInfo = new SqlParameter[6];
+                cartInfo[0] = new SqlParameter("cusNo", cart.CusNo);
+                cartInfo[1] = new SqlParameter("saveNo", cart.SaveNo);
+                cartInfo[2] = new SqlParameter("proNo", cart.ProNo);
+                cartInfo[3] = new SqlParameter("saveEA", cart.SaveEA);
+                cartInfo[4] = new SqlParameter("totalPrice", cart.TotalPrice);
+                cartInfo[5] = new SqlParameter("cartDate", cart.CartDate);
+                db.ExecuteParameters(sp, cartInfo);
             }
             catch (SqlException)
             {
@@ -43,13 +43,14 @@ namespace CustomerApp.DAO
             {
                 cartList.Clear();
                 string sp = "SelectCart";
-                SqlParameter[] cusInfo = new SqlParameter[1];
-                cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                var dataTable = db.ExecuteParametersDT(sp, cusInfo);
+                SqlParameter[] cartInfo = new SqlParameter[1];
+                cartInfo[0] = new SqlParameter("Cus_No", cusNo);
+                var dataTable = db.ExecuteParametersDT(sp, cartInfo);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     CartVO cart = new CartVO()
                     {
+                        CartNo = int.Parse(row["Cus_Cart_No"].ToString()),
                         SaveNo = int.Parse(row["Cus_Cart_Cus_SaveNo"].ToString()),
                         CusName = row["Cus_Name"].ToString(),
                         ProName = row["Pro_Name"].ToString(),
@@ -68,15 +69,16 @@ namespace CustomerApp.DAO
             }
         }
 
-        public void Delete(int cusNo, int saveNo)
+        public void Delete(int cusNo, int saveNo, int cartNo)
         {
             try
             {
                 string sp = "DeleteCart";
-                SqlParameter[] cusInfo = new SqlParameter[2];
-                cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                cusInfo[1] = new SqlParameter("SaveNo", saveNo);
-                db.ExecuteParameters(sp, cusInfo);
+                SqlParameter[] cartInfo = new SqlParameter[3];
+                cartInfo[0] = new SqlParameter("Cus_No", cusNo);
+                cartInfo[1] = new SqlParameter("SaveNo", saveNo);
+                cartInfo[2] = new SqlParameter("CartNo", cartNo);
+                db.ExecuteParameters(sp, cartInfo);
             }
             catch (SqlException)
             {
@@ -101,6 +103,22 @@ namespace CustomerApp.DAO
 
                     return saveNo;
                 }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
+        public void SetSaveNo(int cusNo, int saveNo)
+        {
+            try
+            {
+                string sp = "SetSaveNo";
+                SqlParameter[] cartInfo = new SqlParameter[2];
+                cartInfo[0] = new SqlParameter("cusNo", cusNo);
+                cartInfo[1] = new SqlParameter("saveNo", saveNo);
+                db.ExecuteParameters(sp, cartInfo);
             }
             catch (SqlException)
             {

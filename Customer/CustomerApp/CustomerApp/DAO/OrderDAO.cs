@@ -16,7 +16,7 @@ namespace CustomerApp.DAO
         private static string conStr = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
         private DBProcessor db = new DBProcessor(conStr);
 
-        List<OrderVO> orderList = new List<OrderVO>();
+        private List<OrderVO> orderList = new List<OrderVO>();
 
         public List<OrderVO> SelectOrderByCusID(int cusNo)
         {
@@ -24,10 +24,10 @@ namespace CustomerApp.DAO
             {
                 orderList.Clear();
                 string sp = "SelectOrderByCusID";
-                SqlParameter[] cusInfo = new SqlParameter[2];
-                cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                cusInfo[1] = new SqlParameter("Emp_No", 1);
-                var dataTable = db.ExecuteParametersDT(sp, cusInfo);
+                SqlParameter[] orderorderInfo = new SqlParameter[2];
+                orderorderInfo[0] = new SqlParameter("Cus_No", cusNo);
+                orderorderInfo[1] = new SqlParameter("Emp_No", 1);
+                var dataTable = db.ExecuteParametersDT(sp, orderorderInfo);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     OrderVO order = new OrderVO()
@@ -54,16 +54,16 @@ namespace CustomerApp.DAO
         public void InsertSingleOrder(OrderVO order, int cusNo)
         {
             string sp = "InsertSingleOrder";
-            SqlParameter[] cusInfo = new SqlParameter[6];
-            cusInfo[0] = new SqlParameter("Cus_No", order.CusNo);
-            cusInfo[1] = new SqlParameter("Pro_No", order.ProNo);
-            cusInfo[2] = new SqlParameter("Cus_Order_OrderNo", GetOrder_OrderNo(cusNo));
-            cusInfo[3] = new SqlParameter("Cus_Order_Date", order.OrderDate);
-            cusInfo[4] = new SqlParameter("Cus_Order_Price", order.Price);
-            cusInfo[5] = new SqlParameter("Cus_Order_EA", order.EA);
+            SqlParameter[] orderInfo = new SqlParameter[6];
+            orderInfo[0] = new SqlParameter("Cus_No", order.CusNo);
+            orderInfo[1] = new SqlParameter("Pro_No", order.ProNo);
+            orderInfo[2] = new SqlParameter("Cus_Order_OrderNo", GetOrder_OrderNo(cusNo));
+            orderInfo[3] = new SqlParameter("Cus_Order_Date", order.OrderDate);
+            orderInfo[4] = new SqlParameter("Cus_Order_Price", order.Price);
+            orderInfo[5] = new SqlParameter("Cus_Order_EA", order.EA);
             try
             {
-                db.ExecuteParameters(sp, cusInfo);
+                db.ExecuteParameters(sp, orderInfo);
             }
             catch (SqlException)
             {
@@ -79,15 +79,15 @@ namespace CustomerApp.DAO
                 int order_OrderNo = GetOrder_OrderNo(cusNo);
                 for (int i = 0; i < cart.Count; i++)
                 {
-                    SqlParameter[] cusInfo = new SqlParameter[7];
-                    cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                    cusInfo[1] = new SqlParameter("Pro_No", cart[i].ProNo);
-                    cusInfo[2] = new SqlParameter("Cus_Order_OrderNo", order_OrderNo);
-                    cusInfo[3] = new SqlParameter("Cus_Order_Date", cart[i].OrderDate);
-                    cusInfo[4] = new SqlParameter("Cus_Order_Price", cart[i].Price);
-                    cusInfo[5] = new SqlParameter("Cus_Order_EA", cart[i].EA);
-                    cusInfo[6] = new SqlParameter("Emp_No", cart[i].EmpNo);
-                    db.ExecuteParameters(sp, cusInfo);
+                    SqlParameter[] orderInfo = new SqlParameter[7];
+                    orderInfo[0] = new SqlParameter("Cus_No", cusNo);
+                    orderInfo[1] = new SqlParameter("Pro_No", cart[i].ProNo);
+                    orderInfo[2] = new SqlParameter("Cus_Order_OrderNo", order_OrderNo);
+                    orderInfo[3] = new SqlParameter("Cus_Order_Date", cart[i].OrderDate);
+                    orderInfo[4] = new SqlParameter("Cus_Order_Price", cart[i].Price);
+                    orderInfo[5] = new SqlParameter("Cus_Order_EA", cart[i].EA);
+                    orderInfo[6] = new SqlParameter("Emp_No", cart[i].EmpNo);
+                    db.ExecuteParameters(sp, orderInfo);
                 }
             }
             catch (SqlException)
@@ -98,17 +98,32 @@ namespace CustomerApp.DAO
 
         public int GetOrder_OrderNo(int cusNo)
         {
-            string sp = "GetOrder_OrderNo_ByCus";
             try
             {
+                string sp = "GetOrder_OrderNo_ByCus";
                 int order_OrderNo;
-                SqlParameter[] cusInfo = new SqlParameter[1];
-                cusInfo[0] = new SqlParameter("Cus_No", cusNo);
-                var dataTable = db.ExecuteParametersDT(sp, cusInfo);
+                SqlParameter[] orderInfo = new SqlParameter[1];
+                orderInfo[0] = new SqlParameter("Cus_No", cusNo);
+                var dataTable = db.ExecuteParametersDT(sp, orderInfo);
                 DataRow row = dataTable.Rows[0];
                 if (dataTable.Rows[0]["Max_Order_OrderNo"].ToString() == string.Empty) order_OrderNo = 1;
                 else order_OrderNo = int.Parse(row["Max_Order_OrderNo"].ToString()) + 1;
                 return order_OrderNo;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
+        public void CancelOrder(int orderNo)
+        {
+            try
+            {
+                string sp = "CancelOrder";
+                SqlParameter[] orderInfo = new SqlParameter[1];
+                orderInfo[0] = new SqlParameter("Order_No", orderNo);
+                db.ExecuteParameters(sp, orderInfo);
             }
             catch (SqlException)
             {

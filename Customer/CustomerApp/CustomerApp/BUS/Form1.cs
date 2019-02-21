@@ -17,7 +17,6 @@ namespace CustomerApp.BUS
     {
         public static bool loginState = false;
         private static string path = string.Empty;
-        private bool chkExist = false;
 
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
@@ -255,6 +254,7 @@ namespace CustomerApp.BUS
                 EA = int.Parse(nuProAmount.Value.ToString()),
                 ProNo = proList[cbxBuyCusPro.SelectedIndex].No,
                 Price = proList[cbxBuyCusPro.SelectedIndex].Price * int.Parse(nuProAmount.Value.ToString()),
+                ProName = proList[cbxBuyCusPro.SelectedIndex].Name
             };
 
             return order;
@@ -265,7 +265,7 @@ namespace CustomerApp.BUS
         /// </summary>
         /// <param name="indexNum"></param>
         /// <returns>삭제 row index</returns>
-        private int RemoveCart(int indexNum)
+        private void RemoveCart(int indexNum)
         {
             foreach (DataGridViewRow checkRow in gviewCart.Rows)
             {
@@ -275,9 +275,6 @@ namespace CustomerApp.BUS
                     indexNum++;
                 }
             }
-            GviewCartDataSource();
-
-            return indexNum;
         }
 
         /// <summary>
@@ -285,6 +282,7 @@ namespace CustomerApp.BUS
         /// </summary>
         private void GviewCartDataSource()
         {
+            cartList.Clear();
             SetGviewCart();
             cartList = cartDAO.Select(customer.No);
             if (cartList.Count != 0)
@@ -293,7 +291,7 @@ namespace CustomerApp.BUS
                 gviewCart.DataSource = cartList;
 
                 if (gviewCart.Columns.Count == 9) GetCbxCol(gviewCart, "cbx", "목록 선택");
-                
+
                 gviewCart.Columns.Remove("CusNo");
                 gviewCart.Columns.Remove("ProNo");
                 gviewCart.Columns.Remove("CartNo");
@@ -308,13 +306,17 @@ namespace CustomerApp.BUS
                 gviewCart.Columns["TotalPrice"].HeaderText = "총 가격";
                 gviewCart.Columns["CartDate"].HeaderText = "저장날짜";
 
+                gviewCart.Columns["TotalPrice"].DefaultCellStyle.Format = "c";
+                gviewCart.Columns["SaveEA"].DefaultCellStyle.Format = "### 개";
+                gviewCart.Columns["CartDate"].DefaultCellStyle.Format = "d";
+
                 gviewCart.Columns["CartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 gviewCart.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
             {
                 gviewCart.DataSource = null;
-                if (gviewCart.Columns.Count != 0) gviewCart.Columns.Remove("cbx"); 
+                if (gviewCart.Columns.Count != 0) gviewCart.Columns.Remove("cbx");
                 MessageBox.Show("장바구니에 상품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -324,15 +326,22 @@ namespace CustomerApp.BUS
         /// </summary>
         private void DeleteCart()
         {
+            bool chkExist = false;
             foreach (DataGridViewRow checkRow in gviewCart.Rows)
             {
                 if (Convert.ToBoolean(checkRow.Cells["cbx"].Value))
                 {
-                    cartDAO.Delete(customer.No, cartList[checkRow.Index].SaveNo);
+                    chkExist = true;
+                    cartDAO.Delete(customer.No, cartList[checkRow.Index].SaveNo, cartList[checkRow.Index].CartNo);
+                    cartDAO.SetSaveNo(customer.No, cartList[checkRow.Index].SaveNo);
                 }
             }
-            int indexNum = 0;
-            indexNum = RemoveCart(indexNum);
+            if (!chkExist) MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                RemoveCart(0);
+                GviewCartDataSource();
+            }
         }
 
         /// <summary>
@@ -340,6 +349,7 @@ namespace CustomerApp.BUS
         /// </summary>
         private void GviewBuyRecordSet()
         {
+            orderRecords.Clear();
             orderRecords = orderDAO.SelectOrderByCusID(customer.No);
             gViewBuy.BackgroundColor = Color.White;
             if (orderRecords.Count != 0)
@@ -363,6 +373,10 @@ namespace CustomerApp.BUS
                 gViewBuy.Columns["OrderDate"].HeaderText = "주문날짜";
                 gViewBuy.Columns["OrderCom"].HeaderText = "거래현황";
                 gViewBuy.Columns["EmpName"].HeaderText = "담당자";
+
+                gViewBuy.Columns["Price"].DefaultCellStyle.Format = "c";
+                gViewBuy.Columns["EA"].DefaultCellStyle.Format = "### 개";
+                gViewBuy.Columns["OrderDate"].DefaultCellStyle.Format = "d";
 
                 gViewBuy.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 gViewBuy.Columns["OrderDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -532,7 +546,7 @@ namespace CustomerApp.BUS
                 btnBuyNow.Enabled = true;
                 if (selectItem != null)
                 {
-                    txtTotalPrice.Text = string.Format("{0:c}", proList[selectItem.Index].Price * nuProAmount.Value); 
+                    txtTotalPrice.Text = string.Format("{0:c}", proList[selectItem.Index].Price * nuProAmount.Value);
                 }
             }
         }
@@ -577,10 +591,16 @@ namespace CustomerApp.BUS
             try
             {
                 orderVO = GetOrderVo();
-                orderVO.Order_OrderNo = 1;
-                orderDAO.InsertSingleOrder(orderVO, customer.No);
-                MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnBuy_Click(null, null);
+                if (orderVO.EA <= productsDAO.GetProCount(orderVO.ProNo))
+                {
+                    orderDAO.InsertSingleOrder(orderVO, customer.No);
+                    MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnBuy_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show(orderVO.ProName + "의 재고가 부족합니다.", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -614,35 +634,49 @@ namespace CustomerApp.BUS
         {
             try
             {
+                bool chkExist = false;
+                string enPro = string.Empty;
                 cartOrders.Clear();
                 foreach (DataGridViewRow row in gviewCart.Rows)
                 {
                     if (Convert.ToBoolean(row.Cells["cbx"].Value))
                     {
-                        chkExist = true;
-                        OrderVO order = new OrderVO()
+                        if (cartList[row.Index].SaveEA <= productsDAO.GetProCount(cartList[row.Index].ProNo))
                         {
-                            CusNo = cartList[row.Index].CusNo,
-                            ProNo = cartList[row.Index].ProNo,
-                            OrderDate = DateTime.Now,
-                            Price = cartList[row.Index].TotalPrice,
-                            EA = cartList[row.Index].SaveEA,
-                            EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음
-                        };
-                        cartOrders.Add(order);
+                            chkExist = true;
+                            OrderVO order = new OrderVO()
+                            {
+                                CusNo = cartList[row.Index].CusNo,
+                                ProNo = cartList[row.Index].ProNo,
+                                OrderDate = DateTime.Now,
+                                Price = cartList[row.Index].TotalPrice,
+                                EA = cartList[row.Index].SaveEA,
+                                EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음
+                            };
+                            cartOrders.Add(order);
+                        }
+                        else if (cartList[row.Index].SaveEA > productsDAO.GetProCount(cartList[row.Index].ProNo))
+                        {
+                            enPro += cartList[row.Index].ProName + ", ";
+                        }
                     }
                 }
-
-                var result = MessageBox.Show("선택하신 물품을 구매하시겠습니까 ? ", "장바구니", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK && chkExist)
+                if (!string.IsNullOrEmpty(enPro))
                 {
-                    orderDAO.InsertCartOrder(cartOrders, customer.No);
-                    MessageBox.Show("구매 신청 완료!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DeleteCart();
-                    GviewBuyRecordSet();
+                    MessageBox.Show(enPro.Substring(0, enPro.Length - 2) + "의 재고가 부족합니다.", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (result == DialogResult.Cancel) return;
-                else MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    var result = MessageBox.Show("선택하신 물품을 구매하시겠습니까 ? ", "장바구니", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK && chkExist)
+                    {
+                        orderDAO.InsertCartOrder(cartOrders, customer.No);
+                        MessageBox.Show("구매 신청 완료!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DeleteCart();
+                    }
+                    else if (result == DialogResult.Cancel) return;
+                    else MessageBox.Show("선택 된 물품이 없습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -662,7 +696,21 @@ namespace CustomerApp.BUS
 
         private void btnBuyCancel_Click(object sender, EventArgs e)
         {
-
+            bool chkExist = false;
+            foreach (DataGridViewRow row in gViewBuy.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["cbx"].Value))
+                {
+                    chkExist = true;
+                    orderDAO.CancelOrder(orderRecords[row.Index].OrderNo);
+                }
+            }
+            if (!chkExist) MessageBox.Show("선택 된 물품이 없습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("구매 취소 완료!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GviewBuyRecordSet();
+            }
         }
 
         private void btnBill_Click(object sender, EventArgs e)
