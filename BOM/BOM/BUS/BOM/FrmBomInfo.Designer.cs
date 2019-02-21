@@ -78,7 +78,7 @@
             this.btnProEstimating.Name = "btnProEstimating";
             this.btnProEstimating.Size = new System.Drawing.Size(75, 23);
             this.btnProEstimating.TabIndex = 5;
-            this.btnProEstimating.Text = "생산 예측";
+            this.btnProEstimating.Text = "판매 예측";
             this.btnProEstimating.UseVisualStyleBackColor = true;
             this.btnProEstimating.Click += new System.EventHandler(this.btnProEstimating_Click);
             // 

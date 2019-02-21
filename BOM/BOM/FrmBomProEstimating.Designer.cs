@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartPro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartDate = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbbYear = new System.Windows.Forms.ComboBox();
@@ -42,24 +42,28 @@
             this.btnYear = new System.Windows.Forms.Button();
             this.btnEstimating = new System.Windows.Forms.Button();
             this.dgvEst = new System.Windows.Forms.DataGridView();
+            this.dgvEst2 = new System.Windows.Forms.DataGridView();
+            this.lblFirstMonth = new System.Windows.Forms.Label();
+            this.lblSecondMonth = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartPro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEst)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEst2)).BeginInit();
             this.SuspendLayout();
             // 
             // chartPro
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartPro.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartPro.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartPro.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartPro.Legends.Add(legend1);
             this.chartPro.Location = new System.Drawing.Point(12, 51);
             this.chartPro.Name = "chartPro";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "s1";
-            this.chartPro.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            this.chartPro.Series.Add(series1);
             this.chartPro.Size = new System.Drawing.Size(591, 448);
             this.chartPro.TabIndex = 0;
             this.chartPro.Text = "chart1";
@@ -67,17 +71,17 @@
             // 
             // chartDate
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartDate.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartDate.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartDate.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartDate.Legends.Add(legend2);
             this.chartDate.Location = new System.Drawing.Point(12, 78);
             this.chartDate.Name = "chartDate";
             this.chartDate.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartDate.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartDate.Series.Add(series2);
             this.chartDate.Size = new System.Drawing.Size(591, 421);
             this.chartDate.TabIndex = 1;
             this.chartDate.Text = "chart1";
@@ -129,7 +133,7 @@
             this.btnEstimating.Name = "btnEstimating";
             this.btnEstimating.Size = new System.Drawing.Size(126, 23);
             this.btnEstimating.TabIndex = 6;
-            this.btnEstimating.Text = "생산 예측";
+            this.btnEstimating.Text = "판매 예측";
             this.btnEstimating.UseVisualStyleBackColor = true;
             this.btnEstimating.Click += new System.EventHandler(this.btnEstimating_Click);
             // 
@@ -137,17 +141,48 @@
             // 
             this.dgvEst.AllowUserToAddRows = false;
             this.dgvEst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEst.Location = new System.Drawing.Point(12, 87);
+            this.dgvEst.Location = new System.Drawing.Point(12, 102);
             this.dgvEst.Name = "dgvEst";
+            this.dgvEst.ReadOnly = true;
             this.dgvEst.RowTemplate.Height = 23;
-            this.dgvEst.Size = new System.Drawing.Size(591, 412);
+            this.dgvEst.Size = new System.Drawing.Size(591, 212);
             this.dgvEst.TabIndex = 7;
+            // 
+            // dgvEst2
+            // 
+            this.dgvEst2.AllowUserToAddRows = false;
+            this.dgvEst2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEst2.Location = new System.Drawing.Point(12, 337);
+            this.dgvEst2.Name = "dgvEst2";
+            this.dgvEst2.ReadOnly = true;
+            this.dgvEst2.RowTemplate.Height = 23;
+            this.dgvEst2.Size = new System.Drawing.Size(591, 212);
+            this.dgvEst2.TabIndex = 8;
+            // 
+            // lblFirstMonth
+            // 
+            this.lblFirstMonth.AutoSize = true;
+            this.lblFirstMonth.Location = new System.Drawing.Point(516, 85);
+            this.lblFirstMonth.Name = "lblFirstMonth";
+            this.lblFirstMonth.Size = new System.Drawing.Size(0, 12);
+            this.lblFirstMonth.TabIndex = 9;
+            // 
+            // lblSecondMonth
+            // 
+            this.lblSecondMonth.AutoSize = true;
+            this.lblSecondMonth.Location = new System.Drawing.Point(516, 321);
+            this.lblSecondMonth.Name = "lblSecondMonth";
+            this.lblSecondMonth.Size = new System.Drawing.Size(0, 12);
+            this.lblSecondMonth.TabIndex = 10;
             // 
             // FrmBomProEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 587);
+            this.Controls.Add(this.lblSecondMonth);
+            this.Controls.Add(this.lblFirstMonth);
+            this.Controls.Add(this.dgvEst2);
             this.Controls.Add(this.dgvEst);
             this.Controls.Add(this.btnEstimating);
             this.Controls.Add(this.btnYear);
@@ -162,7 +197,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEst)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEst2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,5 +213,8 @@
         private System.Windows.Forms.Button btnYear;
         private System.Windows.Forms.Button btnEstimating;
         private System.Windows.Forms.DataGridView dgvEst;
+        private System.Windows.Forms.DataGridView dgvEst2;
+        private System.Windows.Forms.Label lblFirstMonth;
+        private System.Windows.Forms.Label lblSecondMonth;
     }
 }

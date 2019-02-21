@@ -160,6 +160,9 @@ namespace BOM
             cbbProducts.Visible = false;
             cbbYear.Visible = false;
             dgvEst.Visible = false;
+            dgvEst2.Visible = false;
+            lblFirstMonth.Visible = false;
+            lblSecondMonth.Visible = false;
         }
 
         private void btnYear_Click(object sender, EventArgs e)
@@ -169,28 +172,84 @@ namespace BOM
             cbbProducts.Visible = true;
             cbbYear.Visible = true;
             dgvEst.Visible = false;
+            dgvEst2.Visible = false;
+            lblFirstMonth.Visible = false;
+            lblSecondMonth.Visible = false;
         }
 
         private void btnEstimating_Click(object sender, EventArgs e)
         {
             dgvEst.Visible = true;
+            dgvEst2.Visible = true;
             chartPro.Visible = false;
             chartDate.Visible = false;
             cbbProducts.Visible = false;
             cbbYear.Visible = false;
-            //MessageBox.Show(DateTime.Now.Month.ToString());
-            DataTable dt2 = bDao.SelectProYear(DateTime.Now.Month);
+            lblFirstMonth.Visible = true;
+            lblSecondMonth.Visible = true;
 
-            //foreach (DataRow item in dt2.Rows)
-            //{
-            //    if (item["MONTH"].ToString()!=DateTime.Now.Month.ToString())
-            //    {
-            //        item.Delete();
-            //    }
-            //}
+            int firstMonth = DateTime.Now.Month;
+            int secondMonth = 0;
+            //12월 일 경우 다음 달이 1월로 지정
+            if (firstMonth == 12)
+            {
+                secondMonth = 1;
+            }
+            else
+            {
+                secondMonth = firstMonth + 1;
+            }
+
+            DataTable dt2 = bDao.SelectProYear(firstMonth);
+            DataTable dt3 = bDao.SelectProYear(secondMonth);
+            GridviewCompute(dt2);
+            GridviewCompute(dt3);
+
             dgvEst.DataSource = dt2;
+            dgvEst2.DataSource = dt3;
 
+            DisplayGridview(dgvEst);
+            DisplayGridview(dgvEst2);
+            lblFirstMonth.Text = DateTime.Now.Month + "월 판매 정보";
+            lblSecondMonth.Text = DateTime.Now.Month + 1 + "월 판매 정보";
+        }
+        /// <summary>
+        /// Gridview를 입력받아 Columns들에 대한 연산을 실행
+        /// </summary>
+        /// <param name="dt">연산을 실행 할 Gridview</param>
+        private void GridviewCompute(DataTable dt)
+        {
+            dt.Columns.Add("평균 판매량");
+            dt.Columns.Add("필요 안전재고량");
 
+            foreach (DataRow item in dt.Rows)
+            {
+                item["평균 판매량"] = Int32.Parse(item["SALES"].ToString()) / Int32.Parse(item["YEAR"].ToString());
+                if (Int32.Parse(item["평균 판매량"].ToString()) >= Int32.Parse(item["EA"].ToString()))
+                {
+                    item["필요 안전재고량"] = Int32.Parse(item["평균 판매량"].ToString()) - Int32.Parse(item["EA"].ToString());
+                }
+                else
+                {
+                    item["필요 안전재고량"] = 0;
+                }
+            }
+            
+        }
+
+        /// <summary>
+        /// Gridview를 입력받아 출력정보를 수정
+        /// </summary>
+        /// <param name="gridView">출력정보를 수정할 Gridview</param>
+        private void DisplayGridview(DataGridView gridView)
+        {
+            gridView.Columns.RemoveAt(2);
+            gridView.Columns.RemoveAt(1);
+
+            gridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            gridView.Columns[0].HeaderText = "제품명";
+            gridView.Columns[1].HeaderText = "현재 재고";
         }
     }
 }
