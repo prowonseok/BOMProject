@@ -42,23 +42,39 @@ namespace BOM.DAO
             }
         }
 
-        public void InsertMatType(int mat_Type_No, string mat_Type_Category)
+        public void InsertMatType(string mat_Type_No, string mat_Type_Category)
         {
-            string sp = "Materials_Type_Insert_Procedure";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@mat_Type_No", mat_Type_No);
-            sqlParameters[1] = new SqlParameter("@mat_Type_Category", mat_Type_Category);
-            dp.ExecuteParameters(sp, sqlParameters);
+            try
+            {
+                string sp = "Materials_Type_Insert_Procedure";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@mat_Type_No", mat_Type_No);
+                sqlParameters[1] = new SqlParameter("@mat_Type_Category", mat_Type_Category);
+                dp.ExecuteParameters(sp, sqlParameters);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void DeleteMat(int mat_Type_No1, int mat_Type_No2)
         {
-            string sp = "Materials_Delete_Procedure";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@mat_No1", mat_Type_No1);
-            sqlParameters[1] = new SqlParameter("@mat_No2", mat_Type_No2);
+            try
+            {
+                string sp = "Materials_Delete_Procedure";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@mat_No1", mat_Type_No1);
+                sqlParameters[1] = new SqlParameter("@mat_No2", mat_Type_No2);
 
-            dp.ExecuteParameters(sp, sqlParameters);
+                dp.ExecuteParameters(sp, sqlParameters);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public DataTable SelectMat(string sp)

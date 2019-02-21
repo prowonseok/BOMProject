@@ -132,11 +132,11 @@ namespace BOM.BUS.Managements
             DataTable dtOfferer = md.SelectMat("Offerer_Select_Procedure");
             foreach (DataRow item in dtType.Rows)
             {
-                matTypeList.Add(new Materials_TypeVO(int.Parse(item["Mat_Type_No"].ToString()), item["Mat_Type_Category"].ToString()));
+                matTypeList.Add(new Materials_TypeVO(item["Mat_Type_No"].ToString(), item["Mat_Type_Category"].ToString()));
             }
             foreach (DataRow item in dtOfferer.Rows)
             {
-                matOffererList.Add(new OffererVO(int.Parse(item["Off_No"].ToString()), item["Off_Name"].ToString()));
+                matOffererList.Add(new OffererVO(item["Off_No"].ToString(), item["Off_Name"].ToString()));
             }
             listArray[0] = matTypeList;
             listArray[1] = matOffererList;
@@ -172,6 +172,12 @@ namespace BOM.BUS.Managements
         {
             FrmOrderMain fom = new FrmOrderMain();
             fom.ShowDialog();
+        }
+
+        private void btnTypeAdd_Click(object sender, EventArgs e)
+        {
+            FrmTypeAdd fta = new FrmTypeAdd();
+            fta.ShowDialog();
         }
     }
 }

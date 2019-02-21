@@ -33,6 +33,7 @@
             this.checkCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnOrder = new System.Windows.Forms.Button();
+            this.btnTypeAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,11 +80,22 @@
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
+            // btnTypeAdd
+            // 
+            this.btnTypeAdd.Location = new System.Drawing.Point(414, 66);
+            this.btnTypeAdd.Name = "btnTypeAdd";
+            this.btnTypeAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnTypeAdd.TabIndex = 5;
+            this.btnTypeAdd.Text = "타입 추가";
+            this.btnTypeAdd.UseVisualStyleBackColor = true;
+            this.btnTypeAdd.Click += new System.EventHandler(this.btnTypeAdd_Click);
+            // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 498);
+            this.Controls.Add(this.btnTypeAdd);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
@@ -102,5 +114,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkCol;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnTypeAdd;
     }
 }

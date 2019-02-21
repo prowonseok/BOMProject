@@ -8,9 +8,9 @@ namespace BOM.VO
 {
     class OffererVO
     {
-        private int offNo;
+        private string offNo;
 
-        public int OffNo
+        public string OffNo
         {
             get { return offNo; }
             set { offNo = value; }
@@ -64,13 +64,13 @@ namespace BOM.VO
             set { offMgrPhone = value; }
         }
 
-        public OffererVO(int offNo, string offName)
+        public OffererVO(string offNo, string offName)
         {
             OffNo = offNo;
             OffName = offName;
         }
 
-        public OffererVO(int offNo, string offName, string offOwnerName, string offOwnerPhone, string offAddr, string offMgrName, string offMgrPhone) : this(offNo, offName)
+        public OffererVO(string offNo, string offName, string offOwnerName, string offOwnerPhone, string offAddr, string offMgrName, string offMgrPhone) : this(offNo, offName)
         {
             OffOwnerName = OffOwnerName;
             OffOwnerPhone = OffOwnerPhone;

@@ -90,6 +90,12 @@
     <Compile Include="BUS\Managements\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmTypeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmTypeAdd.Designer.cs">
+      <DependentUpon>FrmTypeAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\OrderInfo.cs" />
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="BUS\BOM\FrmBomAdd.cs">
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmTypeAdd.resx">
+      <DependentUpon>FrmTypeAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
       <DependentUpon>ChaingePrice.cs</DependentUpon>
