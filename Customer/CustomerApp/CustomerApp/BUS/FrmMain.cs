@@ -13,7 +13,7 @@ using CustomerApp.DAO;
 
 namespace CustomerApp.BUS
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
         public static bool loginState = false;
         private static string path = string.Empty;
@@ -21,6 +21,7 @@ namespace CustomerApp.BUS
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
         CartDAO cartDAO = new CartDAO();
+        AsDAO asDAO = new AsDAO();
 
         OrderVO orderVO;
         CustomerVO customer;
@@ -29,11 +30,13 @@ namespace CustomerApp.BUS
         List<CartVO> cartList = new List<CartVO>();
         List<OrderVO> cartOrders = new List<OrderVO>();
         List<OrderVO> orderRecords = new List<OrderVO>();
+        List<OrderVO> asOrderList = new List<OrderVO>();
+        List<AsVO> asList = new List<AsVO>();
 
         FrmLogin loginForm;
         ListViewItem selectItem;
 
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
             proList = productsDAO.SelectAll();
@@ -490,18 +493,35 @@ namespace CustomerApp.BUS
         {
             if (loginState) // 로그인 된 상태
             {
+                asOrderList.Clear();
+                asOrderList = asDAO.SelectBuyPro(customer.No);
                 PanBottomCtrlVisiFalse();
                 gbxAS.Dock = DockStyle.Fill;
                 CtrlVisiTrue(gbxAS);
+                txtASContent.MaxLength = 300;
+                lblContentSize.Text = "글자제한\r\n(" + txtASContent.TextLength + " / 300)";
+                btnSubmit.Enabled = false;
 
                 SetBtnColor(btnAS, btnProducts, btnBuy, btnCart, btnBuyRecord);
 
                 txtCusID.ReadOnly = true;
-                txtCusProDate.ReadOnly = true;
 
                 txtCusID.Text = loginForm.Customer.Id;
                 gViewAS.Width = panBottom.Width;
                 gViewAS.BackgroundColor = Color.White;
+
+                txtCusID.Text = customer.Id;
+                cbxASCusPro.Items.Clear();
+                foreach (OrderVO item in asOrderList)
+                {
+                    cbxASCusPro.Items.Add(item.ProName);
+                }
+                if (cbxASCusPro.Items.Count != 0) cbxASCusPro.Text = "선택하세요";
+                else cbxASCusPro.Text = "구매내역 없음";
+                cbxOrderNo.Enabled = false;
+
+                SetGviewAS();
+                
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -715,7 +735,99 @@ namespace CustomerApp.BUS
 
         private void btnBill_Click(object sender, EventArgs e)
         {
+            // 영수증 기능 (Excel)
+        }
 
+        private void txtASContent_TextChanged(object sender, EventArgs e)
+        {
+            lblContentSize.Text = "글자제한\r\n(" + txtASContent.TextLength + " / 300자)";
+            BtnSubmitEnable();
+        }
+
+        private void cbxASCusPro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxASCusPro.Items.Count != 0)
+            {
+                cbxOrderNo.Items.Clear();
+                foreach (int item in asDAO.SelectBuyOrderNo(customer.No, asOrderList[cbxASCusPro.SelectedIndex].ProNo))
+                {
+                    cbxOrderNo.Items.Add(item + " 번");
+                }
+                cbxOrderNo.Enabled = true;
+            }
+            else cbxOrderNo.Enabled = false;
+            BtnSubmitEnable();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            int orderNo = int.Parse(cbxOrderNo.SelectedItem.ToString().Substring(0, cbxOrderNo.SelectedItem.ToString().IndexOf(' ')));
+            AsVO asVO = new AsVO()
+            {
+                CusNo = customer.No,
+                OrderNo = orderNo,
+                ProNo = asOrderList[cbxASCusPro.SelectedIndex].ProNo,
+                AsContent = txtASContent.Text,
+                AsStartDate = DateTime.Now,
+                EmpNo = 1,
+            };
+            asDAO.Insert(asVO);
+            MessageBox.Show("A/S 신청이 완료되었습니다.", "A/S", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SetGviewAS();
+        }
+
+        private void SetGviewAS()
+        {
+            gViewAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gViewAS.ScrollBars = ScrollBars.Vertical;
+
+            asList.Clear();
+            asList = asDAO.SelectAllAS(customer.No);
+            gViewAS.DataSource = null;
+            gViewAS.DataSource = asList;
+
+            gViewAS.Columns["CusNo"].Visible = false;
+            gViewAS.Columns["ASNo"].Visible = false;
+            gViewAS.Columns["EmpNo"].Visible = false;
+            gViewAS.Columns["ProNo"].Visible = false;
+
+            gViewAS.Columns["OrderNo"].HeaderText = "주문번호";
+            gViewAS.Columns["ASContent"].HeaderText = "고장내용";
+            gViewAS.Columns["AsPrice"].HeaderText = "A/S 가격";
+            gViewAS.Columns["AsStartDate"].HeaderText = "A/S 시작날짜";
+            gViewAS.Columns["AsEndDate"].HeaderText = "A/S 종료날짜";
+            gViewAS.Columns["ProName"].HeaderText = "상품이름";
+            gViewAS.Columns["CusName"].HeaderText = "고객이름";
+            gViewAS.Columns["EmpName"].HeaderText = "담당자";
+
+            gViewAS.Columns["AsStartDate"].DefaultCellStyle.Format = "d";
+            gViewAS.Columns["AsEndDate"].DefaultCellStyle.Format = "d";
+            gViewAS.Columns["AsPrice"].DefaultCellStyle.Format = "c";
+
+            gViewAS.Columns["CusName"].DisplayIndex = 0;
+            gViewAS.Columns["ProName"].DisplayIndex = 2;
+
+            gViewAS.Columns["AsStartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["AsEndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["ASContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void BtnSubmitEnable()
+        {
+            if (!string.IsNullOrEmpty(txtCusID.Text) && cbxASCusPro.SelectedItem != null && cbxOrderNo.SelectedItem != null && txtASContent.TextLength > 9) btnSubmit.Enabled = true;
+            else btnSubmit.Enabled = false;
+            
+        }
+
+        private void cbxOrderNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BtnSubmitEnable();
+        }
+
+        private void txtCusID_TextChanged(object sender, EventArgs e)
+        {
+            BtnSubmitEnable();
         }
     }
 }

@@ -207,3 +207,30 @@ With temp AS
 (select Cus_Cart_No, LEAD(Cus_Cart_No, 1) OVER (order by Cus_Cart_No) AS NextCartNo from Customers_Cart)
 	UPDATE Customers_Cart SET Cus_Cart_Cus_SaveNo = Cus_Cart_Cus_SaveNo - 1 WHERE Cus_No = @cusNo and Cus_Cart_No >=
 	(select NextCartNo from temp where Cus_Cart_No = @cartNo)
+
+-- 고객이 주문한 상품 이름 가져오기
+CREATE PROCEDURE [dbo].[SelectBuyPro]
+	@Cus_No int
+AS
+	SELECT DISTINCT [pro].Pro_Name, [order].Pro_No FROM Products [pro] inner join Customers_Order [order]
+	on [pro].Pro_No = [order].Pro_No
+	where [order].Cus_No = @Cus_No
+
+-- 고객이 주문한 상품 번호들의 주문 번호 가져오기
+CREATE PROCEDURE [dbo].[SelectBuyOrderNo]
+	@Pro_No int,
+	@Cus_No int
+AS
+	SELECT Cus_Order_No FROM Customers_Order
+	where Cus_No = @Cus_No and Pro_No = @Pro_No
+
+-- A/S 신청 (Insert)
+CREATE PROCEDURE [dbo].[InsertAS]
+	@Cus_ID int,
+	@Cus_Order_No int,
+	@Pro_No int,
+	@AS_Content nvarchar(max),
+	@AS_StartDate datetime,
+	@Emp_No int
+AS
+	INSERT INTO [A/S] (Cus_ID, Cus_Order_No, Pro_No, AS_Content, AS_StartDate, Emp_No) values (@Cus_ID, @Cus_Order_No, @Pro_No, @AS_Content, @AS_StartDate, @Emp_No);

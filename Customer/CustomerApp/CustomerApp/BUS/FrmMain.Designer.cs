@@ -1,6 +1,6 @@
 ﻿namespace CustomerApp.BUS
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -47,22 +47,6 @@
             this.gviewCart = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lstView = new System.Windows.Forms.ListView();
-            this.gbxAS = new System.Windows.Forms.GroupBox();
-            this.lblASApply = new System.Windows.Forms.Label();
-            this.lblASRecord = new System.Windows.Forms.Label();
-            this.txtCusProDate = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gViewAS = new System.Windows.Forms.DataGridView();
-            this.txtASContent = new System.Windows.Forms.TextBox();
-            this.cbxASCusPro = new System.Windows.Forms.ComboBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.lblCusPro = new System.Windows.Forms.Label();
-            this.txtCusID = new System.Windows.Forms.TextBox();
-            this.lblASContent = new System.Windows.Forms.Label();
-            this.lblCusID = new System.Windows.Forms.Label();
-            this.lblSpecTitle = new System.Windows.Forms.Label();
-            this.lblSpec = new System.Windows.Forms.Label();
-            this.txtProSpec = new System.Windows.Forms.RichTextBox();
             this.gbxBuy = new System.Windows.Forms.GroupBox();
             this.lblBuyProSpec = new System.Windows.Forms.Label();
             this.txtBuySpec = new System.Windows.Forms.TextBox();
@@ -74,8 +58,26 @@
             this.cbxBuyCusPro = new System.Windows.Forms.ComboBox();
             this.btnBuyNow = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblSpecTitle = new System.Windows.Forms.Label();
+            this.lblSpec = new System.Windows.Forms.Label();
+            this.txtProSpec = new System.Windows.Forms.RichTextBox();
+            this.gbxAS = new System.Windows.Forms.GroupBox();
+            this.cbxOrderNo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblContentSize = new System.Windows.Forms.Label();
+            this.lblASApply = new System.Windows.Forms.Label();
+            this.lblASRecord = new System.Windows.Forms.Label();
+            this.gViewAS = new System.Windows.Forms.DataGridView();
+            this.txtASContent = new System.Windows.Forms.TextBox();
+            this.cbxASCusPro = new System.Windows.Forms.ComboBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblCusPro = new System.Windows.Forms.Label();
+            this.txtCusID = new System.Windows.Forms.TextBox();
+            this.lblASContent = new System.Windows.Forms.Label();
+            this.lblCusID = new System.Windows.Forms.Label();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnBuyRecord = new System.Windows.Forms.Button();
+            this.lblCondition = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             this.panBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCont)).BeginInit();
@@ -86,10 +88,10 @@
             this.gbxBuyRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gViewBuy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gviewCart)).BeginInit();
-            this.gbxAS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).BeginInit();
             this.gbxBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).BeginInit();
+            this.gbxAS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -194,10 +196,10 @@
             // 
             this.spCont.Panel1.Controls.Add(this.gbxCart);
             this.spCont.Panel1.Controls.Add(this.lstView);
-            this.spCont.Panel1.Controls.Add(this.gbxAS);
             // 
             // spCont.Panel2
             // 
+            this.spCont.Panel2.Controls.Add(this.gbxBuy);
             this.spCont.Panel2.Controls.Add(this.lblSpecTitle);
             this.spCont.Panel2.Controls.Add(this.lblSpec);
             this.spCont.Panel2.Controls.Add(this.txtProSpec);
@@ -304,157 +306,6 @@
             this.lstView.UseCompatibleStateImageBehavior = false;
             this.lstView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstView_MouseClick);
             // 
-            // gbxAS
-            // 
-            this.gbxAS.Controls.Add(this.lblASApply);
-            this.gbxAS.Controls.Add(this.lblASRecord);
-            this.gbxAS.Controls.Add(this.txtCusProDate);
-            this.gbxAS.Controls.Add(this.label1);
-            this.gbxAS.Controls.Add(this.gViewAS);
-            this.gbxAS.Controls.Add(this.txtASContent);
-            this.gbxAS.Controls.Add(this.cbxASCusPro);
-            this.gbxAS.Controls.Add(this.btnSubmit);
-            this.gbxAS.Controls.Add(this.lblCusPro);
-            this.gbxAS.Controls.Add(this.txtCusID);
-            this.gbxAS.Controls.Add(this.lblASContent);
-            this.gbxAS.Controls.Add(this.lblCusID);
-            this.gbxAS.Location = new System.Drawing.Point(25, 60);
-            this.gbxAS.Name = "gbxAS";
-            this.gbxAS.Size = new System.Drawing.Size(1219, 526);
-            this.gbxAS.TabIndex = 9;
-            this.gbxAS.TabStop = false;
-            // 
-            // lblASApply
-            // 
-            this.lblASApply.AutoSize = true;
-            this.lblASApply.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblASApply.Location = new System.Drawing.Point(6, 366);
-            this.lblASApply.Name = "lblASApply";
-            this.lblASApply.Size = new System.Drawing.Size(99, 21);
-            this.lblASApply.TabIndex = 12;
-            this.lblASApply.Text = "A/S 신청";
-            // 
-            // lblASRecord
-            // 
-            this.lblASRecord.AutoSize = true;
-            this.lblASRecord.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblASRecord.Location = new System.Drawing.Point(6, 14);
-            this.lblASRecord.Name = "lblASRecord";
-            this.lblASRecord.Size = new System.Drawing.Size(151, 21);
-            this.lblASRecord.TabIndex = 11;
-            this.lblASRecord.Text = "A/S 신청 이력";
-            // 
-            // txtCusProDate
-            // 
-            this.txtCusProDate.Location = new System.Drawing.Point(80, 487);
-            this.txtCusProDate.Name = "txtCusProDate";
-            this.txtCusProDate.Size = new System.Drawing.Size(121, 21);
-            this.txtCusProDate.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 490);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "구매날짜";
-            // 
-            // gViewAS
-            // 
-            this.gViewAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gViewAS.Location = new System.Drawing.Point(0, 42);
-            this.gViewAS.Name = "gViewAS";
-            this.gViewAS.RowTemplate.Height = 23;
-            this.gViewAS.Size = new System.Drawing.Size(981, 298);
-            this.gViewAS.TabIndex = 8;
-            // 
-            // txtASContent
-            // 
-            this.txtASContent.Location = new System.Drawing.Point(270, 414);
-            this.txtASContent.Multiline = true;
-            this.txtASContent.Name = "txtASContent";
-            this.txtASContent.Size = new System.Drawing.Size(550, 94);
-            this.txtASContent.TabIndex = 3;
-            // 
-            // cbxASCusPro
-            // 
-            this.cbxASCusPro.FormattingEnabled = true;
-            this.cbxASCusPro.Location = new System.Drawing.Point(80, 451);
-            this.cbxASCusPro.Name = "cbxASCusPro";
-            this.cbxASCusPro.Size = new System.Drawing.Size(121, 20);
-            this.cbxASCusPro.TabIndex = 0;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(835, 485);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 6;
-            this.btnSubmit.Text = "A/S 신청";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            // 
-            // lblCusPro
-            // 
-            this.lblCusPro.AutoSize = true;
-            this.lblCusPro.Location = new System.Drawing.Point(21, 454);
-            this.lblCusPro.Name = "lblCusPro";
-            this.lblCusPro.Size = new System.Drawing.Size(50, 12);
-            this.lblCusPro.TabIndex = 1;
-            this.lblCusPro.Text = "구매 PC";
-            // 
-            // txtCusID
-            // 
-            this.txtCusID.Location = new System.Drawing.Point(80, 414);
-            this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(121, 21);
-            this.txtCusID.TabIndex = 5;
-            // 
-            // lblASContent
-            // 
-            this.lblASContent.AutoSize = true;
-            this.lblASContent.Location = new System.Drawing.Point(207, 418);
-            this.lblASContent.Name = "lblASContent";
-            this.lblASContent.Size = new System.Drawing.Size(57, 12);
-            this.lblASContent.TabIndex = 2;
-            this.lblASContent.Text = "고장 증상";
-            // 
-            // lblCusID
-            // 
-            this.lblCusID.AutoSize = true;
-            this.lblCusID.Location = new System.Drawing.Point(27, 418);
-            this.lblCusID.Name = "lblCusID";
-            this.lblCusID.Size = new System.Drawing.Size(44, 12);
-            this.lblCusID.TabIndex = 4;
-            this.lblCusID.Text = "회원 ID";
-            // 
-            // lblSpecTitle
-            // 
-            this.lblSpecTitle.AutoSize = true;
-            this.lblSpecTitle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSpecTitle.Location = new System.Drawing.Point(13, 20);
-            this.lblSpecTitle.Name = "lblSpecTitle";
-            this.lblSpecTitle.Size = new System.Drawing.Size(89, 21);
-            this.lblSpecTitle.TabIndex = 3;
-            this.lblSpecTitle.Text = "PC 구성";
-            // 
-            // lblSpec
-            // 
-            this.lblSpec.AutoSize = true;
-            this.lblSpec.Location = new System.Drawing.Point(15, 111);
-            this.lblSpec.Name = "lblSpec";
-            this.lblSpec.Size = new System.Drawing.Size(0, 12);
-            this.lblSpec.TabIndex = 2;
-            // 
-            // txtProSpec
-            // 
-            this.txtProSpec.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtProSpec.Location = new System.Drawing.Point(0, 0);
-            this.txtProSpec.Name = "txtProSpec";
-            this.txtProSpec.Size = new System.Drawing.Size(365, 569);
-            this.txtProSpec.TabIndex = 0;
-            this.txtProSpec.Text = "";
-            // 
             // gbxBuy
             // 
             this.gbxBuy.Controls.Add(this.lblBuyProSpec);
@@ -467,7 +318,7 @@
             this.gbxBuy.Controls.Add(this.cbxBuyCusPro);
             this.gbxBuy.Controls.Add(this.btnBuyNow);
             this.gbxBuy.Controls.Add(this.label3);
-            this.gbxBuy.Location = new System.Drawing.Point(384, 99);
+            this.gbxBuy.Location = new System.Drawing.Point(62, 502);
             this.gbxBuy.Name = "gbxBuy";
             this.gbxBuy.Size = new System.Drawing.Size(354, 556);
             this.gbxBuy.TabIndex = 13;
@@ -566,6 +417,173 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "제품선택";
             // 
+            // lblSpecTitle
+            // 
+            this.lblSpecTitle.AutoSize = true;
+            this.lblSpecTitle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSpecTitle.Location = new System.Drawing.Point(13, 20);
+            this.lblSpecTitle.Name = "lblSpecTitle";
+            this.lblSpecTitle.Size = new System.Drawing.Size(89, 21);
+            this.lblSpecTitle.TabIndex = 3;
+            this.lblSpecTitle.Text = "PC 구성";
+            // 
+            // lblSpec
+            // 
+            this.lblSpec.AutoSize = true;
+            this.lblSpec.Location = new System.Drawing.Point(15, 111);
+            this.lblSpec.Name = "lblSpec";
+            this.lblSpec.Size = new System.Drawing.Size(0, 12);
+            this.lblSpec.TabIndex = 2;
+            // 
+            // txtProSpec
+            // 
+            this.txtProSpec.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtProSpec.Location = new System.Drawing.Point(0, 0);
+            this.txtProSpec.Name = "txtProSpec";
+            this.txtProSpec.Size = new System.Drawing.Size(365, 569);
+            this.txtProSpec.TabIndex = 0;
+            this.txtProSpec.Text = "";
+            // 
+            // gbxAS
+            // 
+            this.gbxAS.Controls.Add(this.lblCondition);
+            this.gbxAS.Controls.Add(this.cbxOrderNo);
+            this.gbxAS.Controls.Add(this.label1);
+            this.gbxAS.Controls.Add(this.lblContentSize);
+            this.gbxAS.Controls.Add(this.lblASApply);
+            this.gbxAS.Controls.Add(this.lblASRecord);
+            this.gbxAS.Controls.Add(this.gViewAS);
+            this.gbxAS.Controls.Add(this.txtASContent);
+            this.gbxAS.Controls.Add(this.cbxASCusPro);
+            this.gbxAS.Controls.Add(this.btnSubmit);
+            this.gbxAS.Controls.Add(this.lblCusPro);
+            this.gbxAS.Controls.Add(this.txtCusID);
+            this.gbxAS.Controls.Add(this.lblASContent);
+            this.gbxAS.Controls.Add(this.lblCusID);
+            this.gbxAS.Location = new System.Drawing.Point(19, 99);
+            this.gbxAS.Name = "gbxAS";
+            this.gbxAS.Size = new System.Drawing.Size(1219, 526);
+            this.gbxAS.TabIndex = 9;
+            this.gbxAS.TabStop = false;
+            // 
+            // cbxOrderNo
+            // 
+            this.cbxOrderNo.FormattingEnabled = true;
+            this.cbxOrderNo.Location = new System.Drawing.Point(80, 483);
+            this.cbxOrderNo.Name = "cbxOrderNo";
+            this.cbxOrderNo.Size = new System.Drawing.Size(121, 20);
+            this.cbxOrderNo.TabIndex = 14;
+            this.cbxOrderNo.SelectedIndexChanged += new System.EventHandler(this.cbxOrderNo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 486);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "주문번호";
+            // 
+            // lblContentSize
+            // 
+            this.lblContentSize.AutoSize = true;
+            this.lblContentSize.Location = new System.Drawing.Point(910, 437);
+            this.lblContentSize.Name = "lblContentSize";
+            this.lblContentSize.Size = new System.Drawing.Size(0, 12);
+            this.lblContentSize.TabIndex = 13;
+            // 
+            // lblASApply
+            // 
+            this.lblASApply.AutoSize = true;
+            this.lblASApply.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblASApply.Location = new System.Drawing.Point(6, 366);
+            this.lblASApply.Name = "lblASApply";
+            this.lblASApply.Size = new System.Drawing.Size(99, 21);
+            this.lblASApply.TabIndex = 12;
+            this.lblASApply.Text = "A/S 신청";
+            // 
+            // lblASRecord
+            // 
+            this.lblASRecord.AutoSize = true;
+            this.lblASRecord.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblASRecord.Location = new System.Drawing.Point(6, 14);
+            this.lblASRecord.Name = "lblASRecord";
+            this.lblASRecord.Size = new System.Drawing.Size(151, 21);
+            this.lblASRecord.TabIndex = 11;
+            this.lblASRecord.Text = "A/S 신청 이력";
+            // 
+            // gViewAS
+            // 
+            this.gViewAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gViewAS.Location = new System.Drawing.Point(0, 42);
+            this.gViewAS.Name = "gViewAS";
+            this.gViewAS.RowTemplate.Height = 23;
+            this.gViewAS.Size = new System.Drawing.Size(981, 298);
+            this.gViewAS.TabIndex = 8;
+            // 
+            // txtASContent
+            // 
+            this.txtASContent.Location = new System.Drawing.Point(270, 415);
+            this.txtASContent.Multiline = true;
+            this.txtASContent.Name = "txtASContent";
+            this.txtASContent.Size = new System.Drawing.Size(631, 83);
+            this.txtASContent.TabIndex = 3;
+            this.txtASContent.TextChanged += new System.EventHandler(this.txtASContent_TextChanged);
+            // 
+            // cbxASCusPro
+            // 
+            this.cbxASCusPro.FormattingEnabled = true;
+            this.cbxASCusPro.Location = new System.Drawing.Point(80, 449);
+            this.cbxASCusPro.Name = "cbxASCusPro";
+            this.cbxASCusPro.Size = new System.Drawing.Size(121, 20);
+            this.cbxASCusPro.TabIndex = 0;
+            this.cbxASCusPro.SelectedIndexChanged += new System.EventHandler(this.cbxASCusPro_SelectedIndexChanged);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(906, 475);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 6;
+            this.btnSubmit.Text = "A/S 신청";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // lblCusPro
+            // 
+            this.lblCusPro.AutoSize = true;
+            this.lblCusPro.Location = new System.Drawing.Point(21, 452);
+            this.lblCusPro.Name = "lblCusPro";
+            this.lblCusPro.Size = new System.Drawing.Size(50, 12);
+            this.lblCusPro.TabIndex = 1;
+            this.lblCusPro.Text = "구매 PC";
+            // 
+            // txtCusID
+            // 
+            this.txtCusID.Location = new System.Drawing.Point(80, 414);
+            this.txtCusID.Name = "txtCusID";
+            this.txtCusID.Size = new System.Drawing.Size(121, 21);
+            this.txtCusID.TabIndex = 5;
+            this.txtCusID.TextChanged += new System.EventHandler(this.txtCusID_TextChanged);
+            // 
+            // lblASContent
+            // 
+            this.lblASContent.AutoSize = true;
+            this.lblASContent.Location = new System.Drawing.Point(207, 418);
+            this.lblASContent.Name = "lblASContent";
+            this.lblASContent.Size = new System.Drawing.Size(57, 12);
+            this.lblASContent.TabIndex = 2;
+            this.lblASContent.Text = "고장 증상";
+            // 
+            // lblCusID
+            // 
+            this.lblCusID.AutoSize = true;
+            this.lblCusID.Location = new System.Drawing.Point(27, 418);
+            this.lblCusID.Name = "lblCusID";
+            this.lblCusID.Size = new System.Drawing.Size(44, 12);
+            this.lblCusID.TabIndex = 4;
+            this.lblCusID.Text = "회원 ID";
+            // 
             // btnCart
             // 
             this.btnCart.Location = new System.Drawing.Point(291, 50);
@@ -586,20 +604,29 @@
             this.btnBuyRecord.UseVisualStyleBackColor = true;
             this.btnBuyRecord.Click += new System.EventHandler(this.btnBuyRecord_Click);
             // 
-            // Form1
+            // lblCondition
+            // 
+            this.lblCondition.AutoSize = true;
+            this.lblCondition.Location = new System.Drawing.Point(272, 397);
+            this.lblCondition.Name = "lblCondition";
+            this.lblCondition.Size = new System.Drawing.Size(255, 12);
+            this.lblCondition.TabIndex = 16;
+            this.lblCondition.Text = "* 고장 증상을 자세하게 10글자 이상 써주세요.";
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 698);
-            this.Controls.Add(this.gbxBuy);
             this.Controls.Add(this.btnBuyRecord);
+            this.Controls.Add(this.gbxAS);
             this.Controls.Add(this.btnCart);
             this.Controls.Add(this.panBottom);
             this.Controls.Add(this.panTop);
             this.Controls.Add(this.btnAS);
             this.Controls.Add(this.btnBuy);
             this.Controls.Add(this.btnProducts);
-            this.Name = "Form1";
+            this.Name = "FrmMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panTop.ResumeLayout(false);
@@ -614,12 +641,12 @@
             this.gbxBuyRecord.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gViewBuy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gviewCart)).EndInit();
-            this.gbxAS.ResumeLayout(false);
-            this.gbxAS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).EndInit();
             this.gbxBuy.ResumeLayout(false);
             this.gbxBuy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).EndInit();
+            this.gbxAS.ResumeLayout(false);
+            this.gbxAS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -649,8 +676,6 @@
         private System.Windows.Forms.Label lblASContent;
         private System.Windows.Forms.Label lblCusID;
         private System.Windows.Forms.Label lblASRecord;
-        private System.Windows.Forms.TextBox txtCusProDate;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView gViewAS;
         private System.Windows.Forms.Label lblASApply;
         private System.Windows.Forms.GroupBox gbxBuy;
@@ -674,6 +699,10 @@
         private System.Windows.Forms.Button btnCartBuy;
         private System.Windows.Forms.Button btnBuyCancel;
         private System.Windows.Forms.Button btnBill;
+        private System.Windows.Forms.Label lblContentSize;
+        private System.Windows.Forms.ComboBox cbxOrderNo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCondition;
     }
 }
 
