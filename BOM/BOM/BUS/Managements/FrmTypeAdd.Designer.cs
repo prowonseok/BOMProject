@@ -36,6 +36,7 @@
             // 
             // tbTypeNo
             // 
+            this.tbTypeNo.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.tbTypeNo.Location = new System.Drawing.Point(51, 39);
             this.tbTypeNo.MaxLength = 50;
             this.tbTypeNo.Name = "tbTypeNo";

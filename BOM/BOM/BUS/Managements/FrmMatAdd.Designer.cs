@@ -51,7 +51,7 @@
             // lblMatNo
             // 
             this.lblMatNo.AutoSize = true;
-            this.lblMatNo.Location = new System.Drawing.Point(21, 25);
+            this.lblMatNo.Location = new System.Drawing.Point(21, 62);
             this.lblMatNo.Name = "lblMatNo";
             this.lblMatNo.Size = new System.Drawing.Size(57, 12);
             this.lblMatNo.TabIndex = 0;
@@ -60,7 +60,7 @@
             // lblMatType
             // 
             this.lblMatType.AutoSize = true;
-            this.lblMatType.Location = new System.Drawing.Point(21, 63);
+            this.lblMatType.Location = new System.Drawing.Point(21, 25);
             this.lblMatType.Name = "lblMatType";
             this.lblMatType.Size = new System.Drawing.Size(57, 12);
             this.lblMatType.TabIndex = 1;
@@ -104,10 +104,11 @@
             // 
             // tbMatNo
             // 
-            this.tbMatNo.Location = new System.Drawing.Point(113, 22);
+            this.tbMatNo.Location = new System.Drawing.Point(113, 59);
             this.tbMatNo.Name = "tbMatNo";
             this.tbMatNo.Size = new System.Drawing.Size(121, 21);
             this.tbMatNo.TabIndex = 6;
+            this.tbMatNo.TextChanged += new System.EventHandler(this.tbMatNo_TextChanged);
             this.tbMatNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMatNo_KeyPress);
             // 
             // tbName
@@ -155,10 +156,11 @@
             // 
             this.cbMatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMatType.FormattingEnabled = true;
-            this.cbMatType.Location = new System.Drawing.Point(113, 60);
+            this.cbMatType.Location = new System.Drawing.Point(113, 22);
             this.cbMatType.Name = "cbMatType";
             this.cbMatType.Size = new System.Drawing.Size(121, 20);
             this.cbMatType.TabIndex = 17;
+            this.cbMatType.SelectedIndexChanged += new System.EventHandler(this.cbMatType_SelectedIndexChanged);
             // 
             // btnAdd
             // 

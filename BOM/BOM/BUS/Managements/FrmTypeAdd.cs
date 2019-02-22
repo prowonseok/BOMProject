@@ -27,15 +27,26 @@ namespace BOM.BUS.Managements
 
         private void btnRegist_Click(object sender, EventArgs e)
         {
-            try
+            if (!(string.IsNullOrEmpty(tbTypeNo.Text) || string.IsNullOrEmpty(tbTypeCate.Text)))
             {
-                mDAO.InsertMatType(tbTypeNo.Text, tbTypeCate.Text);
-                MessageBox.Show("등록 성공");
-                Close();
+                try
+                {
+                    DialogResult dr = MessageBox.Show("분류 번호 : " + tbTypeNo.Text + "\n분류명 : " + tbTypeCate.Text + "\n등록하시겠습니까?", "확인", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)
+                    {
+                        mDAO.InsertMatType(tbTypeNo.Text, tbTypeCate.Text);
+                        MessageBox.Show("등록 성공", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    Close();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("다음의 사유로 등록 실패\n" + exc.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch (Exception exc)
+            else
             {
-                MessageBox.Show("다음의 사유로 등록 실패\n" + exc.Message);
+                MessageBox.Show("모든 사항을 입력하여 주십시오", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -46,13 +57,13 @@ namespace BOM.BUS.Managements
 
         private void tbTypeNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (int.TryParse(e.ToString(), out int num) && char.GetUnicodeCategory(Convert.ToChar(e))!=System.Globalization.UnicodeCategory.OtherLetter)
+            string stringValidator = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string fKeySet = Convert.ToString(Keys.Back) + Convert.ToString(Keys.Shift) + Convert.ToString(Keys.Control) + Convert.ToString(Keys.Alt) + Convert.ToString(Keys.Tab) + Convert.ToString(Keys.Escape) + Convert.ToString(Keys.LWin) + Convert.ToString(Keys.RWin);
+            //char[] keyCharArray = { Convert.ToChar(Keys.Back), Convert.ToChar(Keys.Shift), Convert.ToChar(Keys.Control), Convert.ToChar(Keys.Alt), Convert.ToChar(Keys.Tab), Convert.ToChar(Keys.Escape), Convert.ToChar(Keys.LWin), Convert.ToChar(Keys.RWin) };
+            //string fKeySet = new string(keyCharArray);
+            if (!(stringValidator.Contains(e.KeyChar.ToString()) || fKeySet.Contains(e.KeyChar.ToString())))
             {
                 e.Handled = true;
-            }
-            else
-            {
-                
             }
         }
     }

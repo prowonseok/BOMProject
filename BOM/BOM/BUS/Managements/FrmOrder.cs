@@ -77,9 +77,11 @@ namespace BOM.BUS.Managements
             {
                 orderList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
             }
-            Controls.Clear();
-            InitializeComponent();
-            FormBuilder();
+            //Controls.Clear();
+            //InitializeComponent();
+            //FormBuilder();
+            dgvOrder.DataSource = null;
+            dgvOrder.DataSource = orderList;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

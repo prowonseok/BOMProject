@@ -60,19 +60,13 @@ namespace BOM.BUS.Managements
 
         private void tbMatNo_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (!(cbMatType.SelectedIndex == -1))
             {
-                if (tbMatNo.Text == string.Empty)
-                {
-                    return;
-                }
-                int.Parse(tbMatNo.Text);
+
             }
-            catch (Exception)
+            else if (cbMatType.SelectedIndex == -1)
             {
-                MessageBox.Show("자재 번호는 정수만 입력 가능합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbMatNo.Clear();
-                return;
+
             }
         }
 
@@ -134,10 +128,17 @@ namespace BOM.BUS.Managements
 
         private void tbMatNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            string stringValidator = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string fKeySet = Convert.ToString(Keys.Back) + Convert.ToString(Keys.Shift) + Convert.ToString(Keys.Control) + Convert.ToString(Keys.Alt) + Convert.ToString(Keys.Tab) + Convert.ToString(Keys.Escape) + Convert.ToString(Keys.LWin) + Convert.ToString(Keys.RWin);
+            if (!(stringValidator.Contains(e.KeyChar.ToString()) || fKeySet.Contains(e.KeyChar.ToString())))
             {
                 e.Handled = true;
             }
+        }
+
+        private void cbMatType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbMatNo.Text = ((List<VO.Materials_TypeVO>)listArray[0])[cbMatType.SelectedIndex].Mat_Type_No;
         }
     }
 }
