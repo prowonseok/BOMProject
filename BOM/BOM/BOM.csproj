@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -146,13 +148,19 @@
     <Compile Include="DAO\MatDAO.cs" />
     <Compile Include="DAO\SalesExcelDao.cs" />
     <Compile Include="DAO\TraderSetDao.cs" />
+    <Compile Include="MaterialsData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialsData.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VO\Address.cs" />
+    <Compile Include="VO\AddressVO.cs" />
+    <Compile Include="VO\MatInfoVO.cs" />
     <Compile Include="VO\RevenueVO.cs" />
     <Compile Include="VO\Customers_Order.cs" />
     <Compile Include="VO\Cus_OrderVO.cs" />
-    <Compile Include="VO\Materials.cs" />
+    <Compile Include="VO\MaterialsVO.cs" />
     <Compile Include="VO\Materials_Type.cs" />
     <Compile Include="VO\ShipmentVO.cs" />
     <EmbeddedResource Include="BUS\BOM\FrmBOM.resx">
@@ -199,6 +207,9 @@
     <EmbeddedResource Include="BUS\Sales\TraderSet.resx">
       <DependentUpon>TraderSet.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MaterialsData.dbml.layout">
+      <DependentUpon>MaterialsData.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,6 +219,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="MaterialsData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MaterialsData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -251,6 +267,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

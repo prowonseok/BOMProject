@@ -17,7 +17,7 @@ namespace BOM.BUS.Sales
     public partial class AddreesForm : Form
     {
        
-        List<Address> addrList;
+        List<AddressVO> addrList;
         string selectAddr = ""; //선택한주소 출하지시서 폼으로 
 
         int totalCount = 0; //페이징 > 전체 데이터 갯수
@@ -29,7 +29,7 @@ namespace BOM.BUS.Sales
             this.distinction = distinction;
             InitializeComponent();
 
-            addrList = new List<Address>();
+            addrList = new List<AddressVO>();
         }        
 
         private void button1_Click(object sender, EventArgs e) //주소 검색 클릭
@@ -130,7 +130,7 @@ namespace BOM.BUS.Sales
             {
                 try
                 {
-                    addrList.Add(new Address
+                    addrList.Add(new AddressVO
                     {
                         ZipNo = Int32.Parse(item.SelectSingleNode("zipNo").InnerText),
                         NameAddr = "도로명: " + item.SelectSingleNode("lnmAdres").InnerText + "\r구주소: " + item.SelectSingleNode("rnAdres").InnerText

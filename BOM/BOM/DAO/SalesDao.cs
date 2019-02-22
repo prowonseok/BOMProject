@@ -80,8 +80,23 @@ namespace BOM.DAO
             return salesList;
         }
 
-        internal List<ProductsListVO> ComboProDuctList(string sp)
+        internal int ProNo(string ProName)
         {
+            string sp = "Bom_JW_GetProNo";
+            SqlParameter[] s = new SqlParameter[1];
+            s[0] = new SqlParameter("@proName", ProName);
+            int ProNo = 0;
+            foreach (DataRow item in dbp.ExecuteParametersDT(sp, s).Rows)
+            {
+                ProNo =Int32.Parse(item["Pro_No"].ToString());
+            }
+            return ProNo;
+            
+        }
+
+        internal List<ProductsListVO> ProList()
+        {
+            string sp = "Bom_JW_ProNameSelect2";
             List<ProductsListVO> productcList = new List<ProductsListVO>();
             productcList.Clear();
 
@@ -100,7 +115,16 @@ namespace BOM.DAO
             
             return productcList;
         }
+        public DataTable MatList2()
+        {
+            string sp = "Bom_JW_MatView";
+            List<ProductsListVO> productcList = new List<ProductsListVO>();
+            productcList.Clear();
 
-        
+            DataTable dataTable = dbp.ExecuteParametersDT(sp, null);
+            return dataTable;
+        }
+
+
     }
 }

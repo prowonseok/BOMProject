@@ -70,8 +70,8 @@ namespace BOM.BUS.Sales
             {
                 comboProduct.Visible = false;
             }
-            string sp2 = "Bom_JW_ProNameSelect2";
-            lst2 = new SalesDao().ComboProDuctList(sp2);
+            
+            lst2 = new SalesDao().ProList();
             foreach (var item in lst2)
             {
                 comboProduct.Items.Add(item.ProductName);
@@ -101,8 +101,8 @@ namespace BOM.BUS.Sales
                 sp = "Bom_JW_DateSelect Procedure";
                 parameter1 = "@Date1";
                 parameter2 = "@Date2";                
-                search = dtp1.Value.ToShortDateString();
-                search2 = dtp2.Value.ToShortDateString();
+                search = dtp1.Value.ToShortDateString();                
+                search2 = dtp2.Value.AddDays(1).ToShortDateString();
             }
             else if(rdoMember.Checked == true)
             {
@@ -189,6 +189,8 @@ namespace BOM.BUS.Sales
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
             dataGridView1.Columns.Add(chk);
             btnSearch_Click(null, null);
+            
         }
+        
     }
 }

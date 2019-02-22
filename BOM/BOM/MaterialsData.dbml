@@ -1,1 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Class="MaterialsDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FinalProject" Class="MaterialsDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=finalprojectbom.database.windows.net;Initial Catalog=FinalProject;User ID=finalproject" SettingsObjectName="BOM.Properties.Settings" SettingsPropertyName="FinalProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Materials" Member="Materials">
+    <Type Name="Materials">
+      <Column Name="Mat_No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Mat_Type_No" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mat_Manufactur" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Mat_Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Mat_Cost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mat_Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mat_EA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Off_No" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Materials_Type_Materials" Member="Materials_Type" ThisKey="Mat_Type_No" OtherKey="Mat_Type_No" Type="Materials_Type" IsForeignKey="true" />
+      <Association Name="Offerer_Materials" Member="Offerer" ThisKey="Off_No" OtherKey="Off_No" Type="Offerer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Materials_Type" Member="Materials_Type">
+    <Type Name="Materials_Type">
+      <Column Name="Mat_Type_No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Mat_Type_Category" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Materials_Type_Materials" Member="Materials" ThisKey="Mat_Type_No" OtherKey="Mat_Type_No" Type="Materials" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Offerer" Member="Offerer">
+    <Type Name="Offerer">
+      <Column Name="Off_No" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Off_Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Off_Owner_Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Off_Owner_Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Off_Addr" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Off_Mgr_Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Off_Mgr_Phone" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="Offerer_Materials" Member="Materials" ThisKey="Off_No" OtherKey="Off_No" Type="Materials" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Bom_JW_MatInfoView" Method="Bom_JW_MatInfoView">
+    <Parameter Name="MatName" Parameter="matName" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="Bom_JW_MatInfoViewResult">
+      <Column Name="Off_Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Mat_Type_Category" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Mat_Manufactur" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Mat_Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Mat_Cost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mat_Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BOM_JW_MOLLA" Method="BOM_JW_MOLLA">
+    <Parameter Name="MatNama" Parameter="matNama" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="BOM_JW_MOLLAResult">
+      <Column Name="Mat_Type_No" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Bom_JW_MatUpdate" Method="Bom_JW_MatUpdate">
+    <Parameter Name="matUpdateName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="offNo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="matType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="matManufactur" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="matName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="matCost" Type="System.Int32" DbType="Int" />
+    <Parameter Name="matLevel" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Bom_JW_MatDelete" Method="Bom_JW_MatDelete">
+    <Parameter Name="MatName" Parameter="matName" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -59,7 +59,7 @@ namespace BOM.DAO
                     Mat_Name = item["Mat_Name"].ToString(),
                     Mat_Cost = cost,
                     Mat_Level = Int32.Parse(item["Mat_Level"].ToString()),
-                    Mat_Ea = ea,
+                    Mat_EA = ea,                    
                     Off_No = off_No
                 }
                 );
@@ -105,7 +105,7 @@ namespace BOM.DAO
                     Mat_Name = item["Mat_Name"].ToString(),
                     Mat_Cost = cost,
                     Mat_Level = Int32.Parse(item["Mat_Level"].ToString()),
-                    Mat_Ea = ea,
+                    Mat_EA = ea,
                     Off_No = off_No
                 }
                 );
@@ -169,7 +169,7 @@ namespace BOM.DAO
                     Mat_Name=item["Mat_Name"].ToString(),
                     Mat_Cost=cost,
                     Mat_Level=Int32.Parse(item["Mat_Level"].ToString()),
-                    Mat_Ea=ea,
+                    Mat_EA=ea,
                     Off_No=off_No
                     }
                 );

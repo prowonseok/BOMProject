@@ -1,8 +1,10 @@
-﻿using dllPackager;
+﻿using BOM.VO;
+using dllPackager;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -104,6 +106,116 @@ namespace BOM.DAO
                 return "저장실패";
             }
         }
+               
+        List<MatInfoVO> matList = new List<MatInfoVO>(); 
         
+        internal ISingleResult<Bom_JW_MatInfoViewResult> LinqMatView(string MatName) //자재 변경테이블에 자재정보 표시
+        {
+            MaterialsDataDataContext mddc = new MaterialsDataDataContext();
+            
+            return mddc.Bom_JW_MatInfoView(MatName);   //프로시저를 활용
+        }
+        public string GetOffNo(string offName)
+        {
+            MaterialsDataDataContext mddc = new MaterialsDataDataContext();
+
+            var GetNo =
+                from off in mddc.Offerer
+                where off.Off_Name == offName
+                select off.Off_No;
+            int a = 0;
+            foreach (var item in GetNo)
+            {
+                a = Int32.Parse(item.ToString());
+            }
+            return a.ToString() ;
+
+
+        }
+
+        internal string GetMatTypeNo(string matTypeName)
+        {            
+            MaterialsDataDataContext mddc = new MaterialsDataDataContext();
+
+            int a = 0;
+            foreach (var item in mddc.BOM_JW_MOLLA(matTypeName))
+            {
+                a= Int32.Parse(item.Mat_Type_No);
+            }
+            
+            return a.ToString();
+        }
+
+        internal void MatModify(string Mat, string modifyOffNo, string modifyMatTypeNo, string matManufactur, string matName, string matCost, string selectedItem)
+        {
+            MaterialsDataDataContext mddc = new MaterialsDataDataContext();
+            if (Mat =="")
+            {
+                Mat = null;
+            }
+            if (modifyOffNo =="")
+            {
+                modifyOffNo = "575213"; //임의로 설정한 값
+            }
+            if (modifyMatTypeNo=="")
+            {
+                modifyMatTypeNo = "575213";
+            }
+            if (matManufactur == "")
+            {
+                matManufactur = null;
+            }
+            if (matName == "")
+            {
+                matName = null;
+            }
+            if (matCost == "")
+            {
+                matCost = "575213";
+            }
+            if (selectedItem == "")
+            {
+                selectedItem = "575213";
+            }
+            mddc.Bom_JW_MatUpdate(Mat, Int32.Parse(modifyOffNo), Int32.Parse(modifyMatTypeNo), matManufactur, matName, Int32.Parse(matCost), Int32.Parse(selectedItem));
+        }
+
+        internal int MatDelete(string matName)
+        {
+            MaterialsDataDataContext mddc = new MaterialsDataDataContext();
+            string result = "";
+            return mddc.Bom_JW_MatDelete(matName);
+            //var dept = mddc.Materials.Where(x => x.Mat_Name == matName).SingleOrDefault();
+
+            //if (dept != null)
+            //{
+            //    mddc.Materials.DeleteOnSubmit(dept);
+            //    mddc.SubmitChanges();
+            //    return result = "삭제 완료";
+            //}
+            //else
+            //{
+            //    return result = "삭제 실패";
+            //}
+
+            //var dept2 = from delete in mddc.Materials
+            //            where delete.Mat_Name == matName
+            //            select delete;
+            //foreach (var item in dept2)
+            //{
+            //    mddc.Materials.DeleteOnSubmit(item);
+            //}
+            //try
+            //{
+            //    mddc.SubmitChanges();
+            //    result = "삭제 완료";
+            //}
+            //catch (Exception)
+            //{
+            //    result = "삭제 실패";
+            //    throw;
+            //}
+            
+        }
     }
 }

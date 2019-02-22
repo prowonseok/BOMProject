@@ -89,9 +89,9 @@ namespace BOM.BUS.Sales
         }
 
         private void RevenueStatus_Load(object sender, EventArgs e)
-        {
-            string sp = "Bom_JW_ProNameSelect2";            
-            foreach (var item in new SalesDao().ComboProDuctList(sp)) //상품별 조회에 아이템 추가
+        {            
+                       
+            foreach (var item in new SalesDao().ProList()) //상품별 조회에 아이템 추가
             {
                 comboProduct.Items.Add(item.ProductName);
             }

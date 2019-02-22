@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOM.VO
 {
-    class Address
+    class AddressVO
     {
         private int zipNo;
         private string nameAddr;

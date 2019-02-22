@@ -54,6 +54,7 @@
             this.comboProduct.Name = "comboProduct";
             this.comboProduct.Size = new System.Drawing.Size(121, 20);
             this.comboProduct.TabIndex = 0;
+            
             this.comboProduct.DropDownClosed += new System.EventHandler(this.comboProduct_DropDownClosed);
             // 
             // txtChaingePrice
