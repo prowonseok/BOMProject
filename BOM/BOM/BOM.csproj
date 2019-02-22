@@ -104,28 +104,28 @@
     <Compile Include="BUS\BOM\FrmBomSearchMat.Designer.cs">
       <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBomMatEstimating.cs">
+    <Compile Include="BUS\BOM\FrmBomMatEstimating.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBomMatEstimating.Designer.cs">
+    <Compile Include="BUS\BOM\FrmBomMatEstimating.Designer.cs">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBomProEstimating.cs">
+    <Compile Include="BUS\BOM\FrmBomProEstimating.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBomProEstimating.Designer.cs">
+    <Compile Include="BUS\BOM\FrmBomProEstimating.Designer.cs">
       <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBomSearchPro.cs">
+    <Compile Include="BUS\BOM\FrmBomSearchPro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBomSearchPro.Designer.cs">
+    <Compile Include="BUS\BOM\FrmBomSearchPro.Designer.cs">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBomUpdate.cs">
+    <Compile Include="BUS\BOM\FrmBomUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBomUpdate.Designer.cs">
+    <Compile Include="BUS\BOM\FrmBomUpdate.Designer.cs">
       <DependentUpon>FrmBomUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -155,16 +155,16 @@
     <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
       <DependentUpon>FrmManageMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBomMatEstimating.resx">
+    <EmbeddedResource Include="BUS\BOM\FrmBomMatEstimating.resx">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBomProEstimating.resx">
+    <EmbeddedResource Include="BUS\BOM\FrmBomProEstimating.resx">
       <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBomSearchPro.resx">
+    <EmbeddedResource Include="BUS\BOM\FrmBomSearchPro.resx">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBomUpdate.resx">
+    <EmbeddedResource Include="BUS\BOM\FrmBomUpdate.resx">
       <DependentUpon>FrmBomUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

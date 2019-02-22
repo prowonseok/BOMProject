@@ -100,6 +100,7 @@
             this.txtChildMatEA.Name = "txtChildMatEA";
             this.txtChildMatEA.Size = new System.Drawing.Size(100, 21);
             this.txtChildMatEA.TabIndex = 6;
+            this.txtChildMatEA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChildMatEA_KeyPress);
             // 
             // lblChildMatEA
             // 

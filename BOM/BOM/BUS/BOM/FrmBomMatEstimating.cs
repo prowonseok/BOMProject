@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using BOM.VO;
 
 namespace BOM
@@ -18,6 +20,8 @@ namespace BOM
 
         List<int> numLst;
         DAO.BomDAO bDao;
+
+        private XmlTextWriter xr;
 
         #region Property
         private Products products;
@@ -59,8 +63,10 @@ namespace BOM
         private void btnSearchTree_Click(object sender, EventArgs e)
         {
             tvProMat.Nodes.Clear();
+            //숫자만 입력 받기 위한 If문
             if (!string.IsNullOrEmpty(txtEA.Text) && int.TryParse(txtEA.Text, out int num))
             {
+                //제품 선택이 되어야 입력받음
                 if (!string.IsNullOrEmpty(this.txtPName.Text))
                 {
                     bDao = new DAO.BomDAO();
@@ -79,7 +85,7 @@ namespace BOM
                     foreach (DataRow item in dt.Rows)
                     {
                         //2. DataTable에서 부모의 Child_Name과 Child_EA를 자식 노드로 저장
-                        TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()) * num + "개");
+                        TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + "...." + Int32.Parse(item["BOM_ChildEA"].ToString()) * num + "EA");
                         pNode.Nodes.Add(cNode);
                         //자식노드의 자식노드 등록
                         DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
@@ -112,7 +118,7 @@ namespace BOM
             DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
             foreach (DataRow item2 in dt2.Rows)
             {
-                TreeNode chNode = new TreeNode(item2["Child_Name"].ToString() + " : " + Int32.Parse(item2["BOM_ChildEA"].ToString()) * num + "개");
+                TreeNode chNode = new TreeNode(item2["Child_Name"].ToString() + "...." + Int32.Parse(item2["BOM_ChildEA"].ToString()) * num + "EA");
                 cNode.Nodes.Add(chNode);
                 SubTreeview(num, item2, chNode);
             }
@@ -133,7 +139,18 @@ namespace BOM
             dgvMat.Columns[2].HeaderText = "개수";
             dgvMat.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-
+        private void AddNextNode(List<string> matLst, TreeNode nextNode)
+        {
+            matLst.Add(nextNode.Text);
+            try
+            {
+                AddNextNode(matLst, nextNode.NextNode);
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
         /// <summary>
         /// 자재별 소요량 예측을 위한 더블 클릭 이벤트
         /// </summary>
@@ -143,9 +160,9 @@ namespace BOM
         {
             numLst = new List<int>();
             List<string> matLst = new List<string>();
-            if (e.Node.Text.Contains(':'))
+            if (e.Node.Text.Contains('.'))
             {
-                lblMatName.Text = e.Node.Text.Substring(0, e.Node.Text.IndexOf(':'));
+                lblMatName.Text = e.Node.Text.Substring(0, e.Node.Text.IndexOf('.'));
             }
             else
             {
@@ -154,35 +171,34 @@ namespace BOM
             try
             {
                 matLst.Add(e.Node.FirstNode.Text);
-                while (true)
-                {
-                    try
-                    {
-                        matLst.Add(e.Node.FirstNode.NextNode.Text);
-                        matLst.Add(e.Node.FirstNode.NextNode.NextNode.Text);
-                        matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.Text);
-                        matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.Text);
-                        matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.NextNode.Text);
-                    }
-                    catch (Exception)
-                    {
-                        break;
-                    }
-                }
 
+                try
+                {
+                    AddNextNode(matLst, e.Node.FirstNode.NextNode);
+                    //matLst.Add(e.Node.FirstNode.NextNode.Text);
+                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.Text);
+                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.Text);
+                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.Text);
+                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.NextNode.Text);
+                }
+                catch (Exception)
+                {
+                    
+                }
+                
             }
             catch (Exception)
             {
                 foreach (DataGridViewRow item in dgvMat.Rows)
                 {
-                    if (item.Cells[1].Value.ToString().Trim() == e.Node.Text.Substring(0, e.Node.Text.IndexOf(':')).Trim())
+                    if (item.Cells[1].Value.ToString().Trim() == e.Node.Text.Substring(0, e.Node.Text.IndexOf('.')).Trim())
                     {
                         item.Selected = true;
                         haveNum = Int32.Parse(item.Cells[2].Value.ToString());
-                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.IndexOf(':') + 1, e.Node.Text.Length - e.Node.Text.IndexOf(':') - 2));
+                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1));
                         if (haveNum / makeNum > 0)
                         {
-                            MessageBox.Show(e.Node.ToString()+"\r\n"+ haveNum / makeNum + "개");
+                            MessageBox.Show(e.Node.ToString()+ "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
                         }
                         else
                         {
@@ -200,11 +216,11 @@ namespace BOM
                     {
                         item2.Selected = true;
                     }
-                    if (item.Substring(0, item.IndexOf(':')).Trim() == item2.Cells[1].Value.ToString().Trim())
+                    if (item.Substring(0, item.IndexOf('.')).Trim() == item2.Cells[1].Value.ToString().Trim())
                     {
-                        haveNum = Int32.Parse(item2.Cells[2].Value.ToString().Trim());
-                        makeNum = Int32.Parse(item.Substring(item.IndexOf(':') + 1, item.Length - item.IndexOf(':') - 2));
-                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.IndexOf(':') + 1, item.Length - item.IndexOf(':') - 2)))
+                        haveNum = Int32.Parse(item2.Cells[2].Value.ToString().Trim()); //현재 재고
+                        makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1));
+                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.')+1 , item.Length - item.LastIndexOf('E') -1)))
                         {
                             numLst.Add(haveNum / makeNum);
                         }
@@ -222,15 +238,49 @@ namespace BOM
                 numLst.Sort();
                 if (numLst[numLst.Count - 1] == 999999)
                 {
-                    MessageBox.Show("재고 부족");
+                    MessageBox.Show("재고가 부족합니다.");
                 }
                 else
                 {
-                    MessageBox.Show(e.Node.Text + "은 \r\n 현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
+                    MessageBox.Show(e.Node.Text + "은 \r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
                 }
             }
         }
 
+        
+
+        private void btnXml_Click(object sender, EventArgs e)
+        {
+            xr = new XmlTextWriter(@"C:\Users\gd19\Desktop\This\MyP2c.xml", Encoding.UTF8);
+            xr.WriteStartDocument();
+
+            xr.WriteStartElement(tvProMat.Nodes[0].Text.Replace(' ','_'));
+            foreach (TreeNode item in tvProMat.Nodes)
+            {
+                SaveNode(item.Nodes);
+            }
+            xr.WriteEndElement();
+            xr.Flush();
+            xr.Close();
+        }
+
+        private void SaveNode(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode item in nodes)
+            {
+                if (item.Nodes.Count > 0)
+                {
+                    xr.WriteStartElement(item.Text.Replace(' ','_'));
+                    xr.WriteRaw("\r\n\n");
+                    SaveNode(item.Nodes);
+                    xr.WriteEndElement();
+                }
+                else
+                {
+                    xr.WriteString(item.Text.Replace(' ','_'));
+                }
+            }
+        }
     }
 }
 

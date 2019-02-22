@@ -165,7 +165,7 @@ namespace BOM
                     try
                     {
                         //DB의 모든 Rows를 돌면서 검색어가 입력 되면 해당 타입(Column)의 값이 검색어가 포함되는지 비교
-                        if (item.Cells[searchType].Value.ToString().Contains(txtSearch.Text))
+                        if (item.Cells[searchType].Value.ToString().ToLower().Contains(txtSearch.Text.ToLower()))//대소문자가 달라도 검색 가능
                         {
                             if (isFirst)
                             {

@@ -39,6 +39,7 @@
             this.dgvMat = new System.Windows.Forms.DataGridView();
             this.lblMatName = new System.Windows.Forms.Label();
             this.lblEA = new System.Windows.Forms.Label();
+            this.btnXml = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,11 +144,22 @@
             this.lblEA.TabIndex = 10;
             this.lblEA.Text = "z";
             // 
+            // btnXml
+            // 
+            this.btnXml.Location = new System.Drawing.Point(365, 471);
+            this.btnXml.Name = "btnXml";
+            this.btnXml.Size = new System.Drawing.Size(75, 23);
+            this.btnXml.TabIndex = 11;
+            this.btnXml.Text = "xml로 저장";
+            this.btnXml.UseVisualStyleBackColor = true;
+            this.btnXml.Click += new System.EventHandler(this.btnXml_Click);
+            // 
             // FrmBomMatEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 519);
+            this.Controls.Add(this.btnXml);
             this.Controls.Add(this.lblEA);
             this.Controls.Add(this.lblMatName);
             this.Controls.Add(this.dgvMat);
@@ -180,5 +192,6 @@
         private System.Windows.Forms.DataGridView dgvMat;
         private System.Windows.Forms.Label lblMatName;
         private System.Windows.Forms.Label lblEA;
+        private System.Windows.Forms.Button btnXml;
     }
 }

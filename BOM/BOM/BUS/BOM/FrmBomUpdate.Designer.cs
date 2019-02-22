@@ -50,10 +50,11 @@
             // 
             // txtEa
             // 
-            this.txtEa.Location = new System.Drawing.Point(113, 116);
+            this.txtEa.Location = new System.Drawing.Point(113, 119);
             this.txtEa.Name = "txtEa";
             this.txtEa.Size = new System.Drawing.Size(92, 21);
             this.txtEa.TabIndex = 3;
+            this.txtEa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEa_KeyPress);
             // 
             // label2
             // 

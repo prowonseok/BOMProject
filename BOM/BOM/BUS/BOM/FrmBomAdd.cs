@@ -200,5 +200,13 @@ namespace BOM
         {
             Close();
         }
+
+        private void txtChildMatEA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)||e.KeyChar==Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

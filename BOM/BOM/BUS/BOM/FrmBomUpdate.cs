@@ -47,6 +47,7 @@ namespace BOM
             txtEa.Text = ea.ToString();
             txtEa.Focus();
         }
+
         /// <summary>
         /// 수정 버튼 클릭 이벤트
         /// </summary>
@@ -83,6 +84,15 @@ namespace BOM
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        
+
+        private void txtEa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

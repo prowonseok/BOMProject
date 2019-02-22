@@ -246,10 +246,16 @@ namespace BOM
             gridView.Columns.RemoveAt(2);
             gridView.Columns.RemoveAt(1);
 
-            gridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
             gridView.Columns[0].HeaderText = "제품명";
             gridView.Columns[1].HeaderText = "현재 재고";
+
+            gridView.Columns[3].Width = 130;
+            gridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            gridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
     }
 }
