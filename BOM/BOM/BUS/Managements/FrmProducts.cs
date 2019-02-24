@@ -16,5 +16,10 @@ namespace BOM.BUS.Managements
         {
             InitializeComponent();
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
