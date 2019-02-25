@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtPW = new System.Windows.Forms.TextBox();
@@ -53,7 +54,6 @@
             this.lblChkPWState = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.btnChkID = new System.Windows.Forms.Button();
-            this.lblEmailState = new System.Windows.Forms.Label();
             this.lblMust = new System.Windows.Forms.Label();
             this.lblPhoneState = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -61,6 +61,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblIDState = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblMailCheck = new System.Windows.Forms.Label();
+            this.btnSendMail = new System.Windows.Forms.Button();
+            this.txtCertiNum = new System.Windows.Forms.TextBox();
+            this.btnChkEmail = new System.Windows.Forms.Button();
+            this.lblMailState = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblID
@@ -136,7 +143,7 @@
             // 
             // txtAddr
             // 
-            this.txtAddr.Location = new System.Drawing.Point(121, 293);
+            this.txtAddr.Location = new System.Drawing.Point(120, 287);
             this.txtAddr.Name = "txtAddr";
             this.txtAddr.Size = new System.Drawing.Size(407, 21);
             this.txtAddr.TabIndex = 10;
@@ -146,7 +153,7 @@
             // lblAddr
             // 
             this.lblAddr.AutoSize = true;
-            this.lblAddr.Location = new System.Drawing.Point(68, 297);
+            this.lblAddr.Location = new System.Drawing.Point(67, 291);
             this.lblAddr.Name = "lblAddr";
             this.lblAddr.Size = new System.Drawing.Size(39, 12);
             this.lblAddr.TabIndex = 9;
@@ -154,7 +161,7 @@
             // 
             // txtEmailID
             // 
-            this.txtEmailID.Location = new System.Drawing.Point(121, 384);
+            this.txtEmailID.Location = new System.Drawing.Point(120, 361);
             this.txtEmailID.Name = "txtEmailID";
             this.txtEmailID.Size = new System.Drawing.Size(124, 21);
             this.txtEmailID.TabIndex = 9;
@@ -163,7 +170,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(60, 388);
+            this.lblEmail.Location = new System.Drawing.Point(59, 365);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(47, 12);
             this.lblEmail.TabIndex = 11;
@@ -181,7 +188,7 @@
             // 
             // txtAddrDetail
             // 
-            this.txtAddrDetail.Location = new System.Drawing.Point(121, 320);
+            this.txtAddrDetail.Location = new System.Drawing.Point(120, 314);
             this.txtAddrDetail.Name = "txtAddrDetail";
             this.txtAddrDetail.Size = new System.Drawing.Size(407, 21);
             this.txtAddrDetail.TabIndex = 8;
@@ -189,7 +196,7 @@
             // lblAddrDetail
             // 
             this.lblAddrDetail.AutoSize = true;
-            this.lblAddrDetail.Location = new System.Drawing.Point(54, 324);
+            this.lblAddrDetail.Location = new System.Drawing.Point(53, 318);
             this.lblAddrDetail.Name = "lblAddrDetail";
             this.lblAddrDetail.Size = new System.Drawing.Size(53, 12);
             this.lblAddrDetail.TabIndex = 14;
@@ -197,7 +204,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(406, 440);
+            this.btnSubmit.Location = new System.Drawing.Point(468, 426);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 16;
@@ -208,7 +215,7 @@
             // 
             // btnAddr
             // 
-            this.btnAddr.Location = new System.Drawing.Point(453, 347);
+            this.btnAddr.Location = new System.Drawing.Point(533, 313);
             this.btnAddr.Name = "btnAddr";
             this.btnAddr.Size = new System.Drawing.Size(75, 23);
             this.btnAddr.TabIndex = 7;
@@ -218,7 +225,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(487, 440);
+            this.btnClose.Location = new System.Drawing.Point(549, 426);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 11;
@@ -229,7 +236,7 @@
             // lblAt
             // 
             this.lblAt.AutoSize = true;
-            this.lblAt.Location = new System.Drawing.Point(248, 388);
+            this.lblAt.Location = new System.Drawing.Point(247, 365);
             this.lblAt.Name = "lblAt";
             this.lblAt.Size = new System.Drawing.Size(17, 12);
             this.lblAt.TabIndex = 19;
@@ -237,7 +244,7 @@
             // 
             // txtEmailSite
             // 
-            this.txtEmailSite.Location = new System.Drawing.Point(268, 384);
+            this.txtEmailSite.Location = new System.Drawing.Point(267, 361);
             this.txtEmailSite.Name = "txtEmailSite";
             this.txtEmailSite.Size = new System.Drawing.Size(127, 21);
             this.txtEmailSite.TabIndex = 10;
@@ -246,7 +253,7 @@
             // cbxEmail
             // 
             this.cbxEmail.FormattingEnabled = true;
-            this.cbxEmail.Location = new System.Drawing.Point(407, 384);
+            this.cbxEmail.Location = new System.Drawing.Point(406, 361);
             this.cbxEmail.Name = "cbxEmail";
             this.cbxEmail.Size = new System.Drawing.Size(121, 20);
             this.cbxEmail.TabIndex = 10;
@@ -287,14 +294,6 @@
             this.btnChkID.Text = "중복확인";
             this.btnChkID.UseVisualStyleBackColor = true;
             this.btnChkID.Click += new System.EventHandler(this.btnChkID_Click);
-            // 
-            // lblEmailState
-            // 
-            this.lblEmailState.AutoSize = true;
-            this.lblEmailState.Location = new System.Drawing.Point(121, 408);
-            this.lblEmailState.Name = "lblEmailState";
-            this.lblEmailState.Size = new System.Drawing.Size(0, 12);
-            this.lblEmailState.TabIndex = 26;
             // 
             // lblMust
             // 
@@ -356,11 +355,74 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "* (6자리 ~ 25자리 / 영문만 가능 / 대, 소문자 구분x)";
             // 
+            // lblMailCheck
+            // 
+            this.lblMailCheck.AutoSize = true;
+            this.lblMailCheck.Location = new System.Drawing.Point(44, 398);
+            this.lblMailCheck.Name = "lblMailCheck";
+            this.lblMailCheck.Size = new System.Drawing.Size(63, 12);
+            this.lblMailCheck.TabIndex = 33;
+            this.lblMailCheck.Text = "* 인증번호";
+            // 
+            // btnSendMail
+            // 
+            this.btnSendMail.Location = new System.Drawing.Point(533, 360);
+            this.btnSendMail.Name = "btnSendMail";
+            this.btnSendMail.Size = new System.Drawing.Size(91, 23);
+            this.btnSendMail.TabIndex = 34;
+            this.btnSendMail.Text = "인증번호 전송";
+            this.btnSendMail.UseVisualStyleBackColor = true;
+            this.btnSendMail.Click += new System.EventHandler(this.btnSendMail_Click);
+            // 
+            // txtCertiNum
+            // 
+            this.txtCertiNum.Location = new System.Drawing.Point(120, 394);
+            this.txtCertiNum.Name = "txtCertiNum";
+            this.txtCertiNum.Size = new System.Drawing.Size(124, 21);
+            this.txtCertiNum.TabIndex = 35;
+            this.txtCertiNum.TextChanged += new System.EventHandler(this.txtCertiNum_TextChanged);
+            // 
+            // btnChkEmail
+            // 
+            this.btnChkEmail.Location = new System.Drawing.Point(250, 393);
+            this.btnChkEmail.Name = "btnChkEmail";
+            this.btnChkEmail.Size = new System.Drawing.Size(91, 23);
+            this.btnChkEmail.TabIndex = 36;
+            this.btnChkEmail.Text = "인증번호 확인";
+            this.btnChkEmail.UseVisualStyleBackColor = true;
+            this.btnChkEmail.Click += new System.EventHandler(this.btnChkEmail_Click);
+            // 
+            // lblMailState
+            // 
+            this.lblMailState.AutoSize = true;
+            this.lblMailState.Location = new System.Drawing.Point(394, 388);
+            this.lblMailState.Name = "lblMailState";
+            this.lblMailState.Size = new System.Drawing.Size(0, 12);
+            this.lblMailState.TabIndex = 37;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Location = new System.Drawing.Point(119, 423);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(0, 12);
+            this.lblTimer.TabIndex = 38;
+            // 
             // FrmJoin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 475);
+            this.ClientSize = new System.Drawing.Size(636, 461);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.lblMailState);
+            this.Controls.Add(this.btnChkEmail);
+            this.Controls.Add(this.txtCertiNum);
+            this.Controls.Add(this.btnSendMail);
+            this.Controls.Add(this.lblMailCheck);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblIDState);
             this.Controls.Add(this.label1);
@@ -368,7 +430,6 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblPhoneState);
             this.Controls.Add(this.lblMust);
-            this.Controls.Add(this.lblEmailState);
             this.Controls.Add(this.btnChkID);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lblChkPWState);
@@ -429,7 +490,6 @@
         private System.Windows.Forms.Label lblChkPWState;
         private System.Windows.Forms.MaskedTextBox txtPhone;
         private System.Windows.Forms.Button btnChkID;
-        private System.Windows.Forms.Label lblEmailState;
         private System.Windows.Forms.Label lblMust;
         private System.Windows.Forms.Label lblPhoneState;
         private System.Windows.Forms.TextBox txtName;
@@ -437,5 +497,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblIDState;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMailCheck;
+        private System.Windows.Forms.Button btnSendMail;
+        private System.Windows.Forms.TextBox txtCertiNum;
+        private System.Windows.Forms.Button btnChkEmail;
+        private System.Windows.Forms.Label lblMailState;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label lblTimer;
     }
 }

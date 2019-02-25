@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +19,9 @@ namespace CustomerApp.BUS
 {
     public partial class FrmJoin : Form
     {
+        private double timeCount;
+        private DateTime time = new DateTime();
+        private Random rand = new Random();
         private CustomerVO customer;
         private FrmAddr addrForm;
         private CustomersDAO cusDAO = new CustomersDAO();
@@ -35,6 +40,8 @@ namespace CustomerApp.BUS
         private bool boolEmail = false;
         private bool boolPhone = false;
         private bool existID = false;
+
+        private string certiNum;
 
         public CustomerVO Customer
         {
@@ -55,7 +62,7 @@ namespace CustomerApp.BUS
         private void FrmJoin_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             cusList.Clear();
             cusList = cusDAO.SelectAll();
 
@@ -65,6 +72,12 @@ namespace CustomerApp.BUS
             txtAddr.ReadOnly = true;
             txtAddrDetail.ReadOnly = true;
             txtEmailSite.ReadOnly = true;
+            btnSendMail.Enabled = false;
+            btnChkEmail.Enabled = false;
+            txtCertiNum.ReadOnly = true;
+            timer.Interval = 1000;
+
+            txtCertiNum.MaxLength = 6;
 
             if (customer != null)
             {
@@ -197,8 +210,24 @@ namespace CustomerApp.BUS
 
         private void txtEmailSite_TextChanged(object sender, EventArgs e)
         {
-            // 이메일 유효성 검사
-            GetEmailState();
+            boolEmail = false;
+            lblTimer.Text = string.Empty;
+            lblMailState.Text = string.Empty;
+            timer.Stop();
+            timer.Enabled = false;
+            if (!string.IsNullOrEmpty(txtEmailID.Text) && Regex.IsMatch(txtEmailID.Text + lblAt.Text + txtEmailSite.Text, emailPattern))
+            {
+                btnSendMail.Enabled = true;
+                txtCertiNum.ReadOnly = true;
+                lblTimer.Text = "이메일을 인증해주세요.";
+                lblTimer.ForeColor = Color.Red;
+            }
+            else
+            {
+                btnSendMail.Enabled = false;
+                lblTimer.Text = "잘못된 이메일 주소입니다.";
+                lblTimer.ForeColor = Color.Red;
+            }
             GetSubmitEnable();
         }
 
@@ -262,26 +291,8 @@ namespace CustomerApp.BUS
             GetSubmitEnable();
         }
 
-        private void GetEmailState()
-        {
-            string email = txtEmailID.Text + lblAt.Text + txtEmailSite.Text;
-            if (string.IsNullOrEmpty(txtEmailID.Text) || string.IsNullOrEmpty(txtEmailSite.Text) || !Regex.IsMatch(email, emailPattern, RegexOptions.IgnoreCase))
-            {
-                lblEmailState.Text = "올바르지 않은 E-mail 주소";
-                lblEmailState.ForeColor = Color.Red;
-                boolEmail = false;
-            }
-            else
-            {
-                lblEmailState.Text = "올바른 E-mail 주소";
-                lblEmailState.ForeColor = Color.Blue;
-                boolEmail = true;
-            }
-        }
-
         private void GetIDState()
         {
-            
             foreach (var customer in cusList)
             {
                 if (customer.Id == txtID.Text)
@@ -299,11 +310,6 @@ namespace CustomerApp.BUS
                 lblIDState.Text = "사용 가능한 ID입니다.";
                 boolId = true;
             }
-        }
-
-        private void txtEmailID_TextChanged(object sender, EventArgs e)
-        {
-            GetEmailState();
         }
 
         private void btnChkID_Click(object sender, EventArgs e)
@@ -352,6 +358,117 @@ namespace CustomerApp.BUS
                 boolId = true;
                 customer = null;
             }
+        }
+
+        private void btnSendMail_Click(object sender, EventArgs e)
+        {
+            SendMail();
+            txtCertiNum.ReadOnly = false;
+            lblTimer.ForeColor = Color.Black;
+        }
+
+        private void SendMail()
+        {
+            timeCount = 180;
+            certiNum = string.Empty;
+            for (int i = 0; i < 6; i++)
+            {
+                certiNum += rand.Next(0, 9).ToString();
+            }
+            MailAddress fromAddr = new MailAddress("indichi@naver.com", "Goodee PC", Encoding.UTF8);
+            MailAddress toAddr = null;
+
+            toAddr = new MailAddress(txtEmailID.Text + lblAt.Text + txtEmailSite.Text, txtName.Text, Encoding.UTF8);
+            timer.Enabled = true;
+            timer.Start();
+            btnSendMail.Text = "다시발송";
+            lblMailState.Text = "인증번호 6자리가 메일로 발송되었습니다.";
+
+            SmtpClient smtp = new SmtpClient("smtp.naver.com", 587);
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential("indichi", "wjdwlsdn2048");
+
+            MailMessage msg = new MailMessage(fromAddr, toAddr);
+            msg.Subject = "Goodee PC 회원가입 인증번호";
+            msg.Body = "Goodee PC 회원가입 인증번호입니다.\r\n인증 번호 : " + certiNum;
+            msg.BodyEncoding = Encoding.UTF8;
+            msg.SubjectEncoding = Encoding.UTF8;
+
+            smtp.Send(msg);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (timeCount > 0)
+            {
+                timeCount--;
+                lblTimer.Text = time.AddSeconds(timeCount).ToString("mm:ss");
+            }
+            else
+            {
+                timer.Stop();
+                timer.Enabled = false;
+                lblTimer.Text = "시간 초과\r\n메일을 다시 전송해주세요.";
+                txtCertiNum.Text = string.Empty;
+                txtCertiNum.ReadOnly = true;
+                btnChkEmail.Enabled = false;
+                lblTimer.ForeColor = Color.Red;
+            }
+        }
+
+        private void btnChkEmail_Click(object sender, EventArgs e)
+        {
+            if (txtCertiNum.Text == certiNum)
+            {
+                boolEmail = true;
+                timer.Enabled = false;
+                lblTimer.Text = "이메일이 인증되었습니다.";
+                lblTimer.ForeColor = Color.Blue;
+                btnChkEmail.Enabled = false;
+                GetSubmitEnable();
+            }
+            else
+            {
+                MessageBox.Show("인증번호가 올바르지 않습니다.", "회원가입", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCertiNum.Text = string.Empty;
+                txtCertiNum.Focus();
+            }
+        }
+
+        private void txtCertiNum_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCertiNum.TextLength == 6)
+            {
+                btnChkEmail.Enabled = true;
+            }
+            else
+            {
+                btnChkEmail.Enabled = false;
+            }
+        }
+
+        private void txtEmailID_TextChanged(object sender, EventArgs e)
+        {
+            boolEmail = false;
+            lblMailState.Text = string.Empty;
+            timer.Stop();
+            timer.Enabled = false;
+            if (!string.IsNullOrEmpty(txtEmailSite.Text) && !string.IsNullOrEmpty(txtEmailID.Text))
+            {
+                txtCertiNum.Text = string.Empty;
+                txtCertiNum.ReadOnly = true;
+                btnSendMail.Text = "인증번호 전송";
+                lblTimer.Text = "이메일을 인증해주세요.";
+                lblTimer.ForeColor = Color.Red; 
+            }
+            else
+            {
+                btnSendMail.Enabled = false;
+                lblTimer.Text = "잘못된 이메일 주소입니다.";
+                lblTimer.ForeColor = Color.Red;
+            }
+            GetSubmitEnable();
         }
     }
 }

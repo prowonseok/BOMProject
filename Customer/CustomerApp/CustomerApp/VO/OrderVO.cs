@@ -96,7 +96,5 @@ namespace CustomerApp.VO
             get { return orderCom; }
             set { orderCom = value; }
         }
-
-
     }
 }

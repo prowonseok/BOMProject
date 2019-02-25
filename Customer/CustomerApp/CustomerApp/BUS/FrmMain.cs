@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomerApp.VO;
 using CustomerApp.DAO;
+using System.Runtime.InteropServices;
 
 namespace CustomerApp.BUS
 {
@@ -17,7 +18,7 @@ namespace CustomerApp.BUS
     {
         public static bool loginState = false;
         private static string path = string.Empty;
-
+        
         ProductsDAO productsDAO = new ProductsDAO();
         OrderDAO orderDAO = new OrderDAO();
         CartDAO cartDAO = new CartDAO();
@@ -32,6 +33,7 @@ namespace CustomerApp.BUS
         List<OrderVO> orderRecords = new List<OrderVO>();
         List<OrderVO> asOrderList = new List<OrderVO>();
         List<AsVO> asList = new List<AsVO>();
+        List<OrderVO> billOrders = new List<OrderVO>();
 
         FrmLogin loginForm;
         ListViewItem selectItem;
@@ -45,6 +47,7 @@ namespace CustomerApp.BUS
         private void Form1_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panBottom.Controls.AddRange(new Control[] { spCont, gbxBuy, gbxAS, gbxCart, gbxBuyRecord });
             spCont.Panel2.Controls.Add(gbxBuy);
 
@@ -288,6 +291,12 @@ namespace CustomerApp.BUS
             cartList.Clear();
             SetGviewCart();
             cartList = cartDAO.Select(customer.No);
+            GviewCartColSet();
+            rdoSaveNo.Checked = true;
+        }
+
+        private void GviewCartColSet()
+        {
             if (cartList.Count != 0)
             {
                 gviewCart.DataSource = null;
@@ -355,6 +364,12 @@ namespace CustomerApp.BUS
             orderRecords.Clear();
             orderRecords = orderDAO.SelectOrderByCusID(customer.No);
             gViewBuy.BackgroundColor = Color.White;
+            GviewBuyColSet();
+            rdoOrderNo.Checked = true;
+        }
+
+        private void GviewBuyColSet()
+        {
             if (orderRecords.Count != 0)
             {
                 gViewBuy.DataSource = null;
@@ -512,6 +527,7 @@ namespace CustomerApp.BUS
 
                 txtCusID.Text = customer.Id;
                 cbxASCusPro.Items.Clear();
+                cbxOrderNo.Text = string.Empty;
                 foreach (OrderVO item in asOrderList)
                 {
                     cbxASCusPro.Items.Add(item.ProName);
@@ -521,7 +537,6 @@ namespace CustomerApp.BUS
                 cbxOrderNo.Enabled = false;
 
                 SetGviewAS();
-                
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -595,13 +610,6 @@ namespace CustomerApp.BUS
                 gViewBuy.Height = panBottom.Height - 100;
                 CtrlVisiTrue(gbxBuyRecord);
                 GviewBuyRecordSet();
-                for (int i = 0; i < gViewBuy.Rows.Count; i++)
-                {
-                    if (gViewBuy.Rows[i].Cells["OrderCom"].Value.ToString() == "거래 완료" || gViewBuy.Rows[i].Cells["OrderCom"].Value.ToString() == "거래 취소")
-                    {
-                        gViewBuy.Rows[i].Cells["cbx"].ReadOnly = true;
-                    }
-                }
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -721,8 +729,16 @@ namespace CustomerApp.BUS
             {
                 if (Convert.ToBoolean(row.Cells["cbx"].Value))
                 {
-                    chkExist = true;
-                    orderDAO.CancelOrder(orderRecords[row.Index].OrderNo);
+                    if (row.Cells["OrderCom"].Value.ToString() == "거래 중")
+                    {
+                        chkExist = true;
+                        orderDAO.CancelOrder(orderRecords[row.Index].OrderNo);
+                    }
+                    else
+                    {
+                        MessageBox.Show("거래 중인 상품만 취소 할 수 있습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             if (!chkExist) MessageBox.Show("선택 된 물품이 없습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -735,7 +751,83 @@ namespace CustomerApp.BUS
 
         private void btnBill_Click(object sender, EventArgs e)
         {
-            // 영수증 기능 (Excel)
+            bool chkExist = false;
+            saveFileDig.Filter = "*.xls|*.xls";
+            saveFileDig.FileName = "영수증.xls";
+
+            billOrders.Clear();
+            foreach (DataGridViewRow row in gViewBuy.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["cbx"].Value))
+                {
+                    if (row.Cells["OrderCom"].Value.ToString() == "거래 완료")
+                    {
+                        chkExist = true;
+                        OrderVO billOrder = new OrderVO()
+                        {
+                            OrderDate = DateTime.Parse(row.Cells["OrderDate"].Value.ToString()),
+                            ProName = row.Cells["ProName"].Value.ToString(),
+                            EA = int.Parse(row.Cells["EA"].Value.ToString()/*.Substring(0, row.Cells["EA"].Value.ToString().IndexOf(' '))*/),
+                            Price = int.Parse(row.Cells["Price"].Value.ToString())
+                        };
+                        billOrders.Add(billOrder);
+                    }
+                    else
+                    {
+                        MessageBox.Show("거래 완료인 상품만 영수증을 발행할 수 있습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }
+
+            if (chkExist)
+            {
+                var result = saveFileDig.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application(); // Excel 응용 프로그램 객체
+                    if (excelApp == null) MessageBox.Show("Excel 응용 프로그램을 찾을 수 없거나, 설치되지 않았습니다.");
+
+                    Microsoft.Office.Interop.Excel.Workbook workBook; // 통합문서 객체
+                    Microsoft.Office.Interop.Excel.Worksheet workSheet; // 워크시트 객체
+
+                    object missing = System.Reflection.Missing.Value;
+
+                    workBook = excelApp.Workbooks.Open(path + "Excelbill.xlsx", missing, false, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing);
+                    workSheet = workBook.Worksheets.Item[1];
+
+
+                    int k = 0;
+                    for (int i = 9; i < billOrders.Count + 9; i++)
+                    {
+                        workSheet.Cells[i, "A"] = billOrders[k].OrderDate.ToString("yyyy-MM-dd");
+                        workSheet.Cells[i, "C"] = billOrders[k].ProName.ToString();
+                        workSheet.Cells[i, "H"] = billOrders[k].EA.ToString();
+                        workSheet.Cells[i, "J"] = billOrders[k].Price.ToString();
+                        k++;
+                    }
+                    // ...
+                    try
+                    {
+                        workBook.SaveAs(saveFileDig.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, null, null, null, null, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Microsoft.Office.Interop.Excel.XlSaveConflictResolution.xlLocalSessionChanges, missing, missing, missing, missing);
+                    }
+                    catch (Exception)
+                    {
+                        return;
+                    }
+
+                    excelApp.Quit(); // 엑셀 프로그램 종료
+
+                    Marshal.ReleaseComObject(workSheet);
+                    Marshal.ReleaseComObject(workBook);
+                    Marshal.ReleaseComObject(excelApp);
+
+                    MessageBox.Show("영수증이 바탕화면에 저장되었습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnBuyRecord_Click(null, null);
+                }
+                else return;
+            }
+            else MessageBox.Show("선택 된 물품이 없습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtASContent_TextChanged(object sender, EventArgs e)
@@ -756,6 +848,7 @@ namespace CustomerApp.BUS
                 cbxOrderNo.Enabled = true;
             }
             else cbxOrderNo.Enabled = false;
+            cbxOrderNo.Text = "선택하세요";
             BtnSubmitEnable();
         }
 
@@ -785,7 +878,12 @@ namespace CustomerApp.BUS
             asList = asDAO.SelectAllAS(customer.No);
             gViewAS.DataSource = null;
             gViewAS.DataSource = asList;
+            GviewAScolSet();
+            rdoAsDate.Checked = true;
+        }
 
+        private void GviewAScolSet()
+        {
             gViewAS.Columns["CusNo"].Visible = false;
             gViewAS.Columns["ASNo"].Visible = false;
             gViewAS.Columns["EmpNo"].Visible = false;
@@ -828,6 +926,119 @@ namespace CustomerApp.BUS
         private void txtCusID_TextChanged(object sender, EventArgs e)
         {
             BtnSubmitEnable();
+        }
+        
+        private void BuySort()
+        {
+            if (rdoOrderNo.Checked)
+            {
+                orderRecords.Sort((a, b) => a.Order_OrderNo > b.Order_OrderNo ? 1 : -1);
+                gViewBuy.DataSource = null;
+                gViewBuy.DataSource = orderRecords;
+                GviewBuyColSet();
+            }
+            else if (rdoDate.Checked)
+            {
+                orderRecords.Sort((a, b) => a.OrderDate < b.OrderDate ? 1 : -1);
+                gViewBuy.DataSource = null;
+                gViewBuy.DataSource = orderRecords;
+                GviewBuyColSet();
+            }
+            else if (rdoCom.Checked)
+            {
+                orderRecords.Sort((a, b) => a.OrderCom.CompareTo(b.OrderCom));
+                gViewBuy.DataSource = null;
+                gViewBuy.DataSource = orderRecords;
+                GviewBuyColSet();
+            }
+        }
+
+        private void AsSort()
+        {
+            if (rdoAsOrderNo.Checked)
+            {
+                asList.Sort((a, b) => a.OrderNo > b.OrderNo ? 1 : -1);
+                gViewAS.DataSource = null;
+                gViewAS.DataSource = asList;
+                GviewAScolSet();
+            }
+            else if (rdoDate.Checked)
+            {
+                asList.Sort((a, b) => a.AsStartDate > b.AsStartDate ? 1 : -1);
+                gViewAS.DataSource = null;
+                gViewAS.DataSource = asList;
+                GviewAScolSet();
+            }
+        }
+
+        private void CartSort()
+        {
+            if (rdoSaveNo.Checked)
+            {
+                cartList.Sort((a, b) => a.SaveNo > b.SaveNo ? 1 : -1);
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = cartList;
+                GviewCartColSet();
+            }
+            else if (rdoCartPriceUp.Checked)
+            {
+                cartList.Sort((a, b) => a.TotalPrice < b.TotalPrice ? 1 : -1);
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = cartList;
+                GviewCartColSet();
+            }
+            else if (rdoCartPriceDown.Checked)
+            {
+                cartList.Sort((a, b) => a.TotalPrice > b.TotalPrice ? 1 : -1);
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = cartList;
+                GviewCartColSet();
+            }
+        }
+
+        private void rdoOrderNo_CheckedChanged(object sender, EventArgs e)
+        {
+            BuySort();
+        }
+
+        private void rdoDate_CheckedChanged(object sender, EventArgs e)
+        {
+            BuySort();
+        }
+
+        private void rdoCom_CheckedChanged(object sender, EventArgs e)
+        {
+            BuySort();
+        }
+
+        private void rdoAsDate_CheckedChanged(object sender, EventArgs e)
+        {
+            AsSort();
+        }
+
+        private void rdoAsOrderNo_CheckedChanged(object sender, EventArgs e)
+        {
+            AsSort();
+        }
+
+        private void rdoSaveNo_CheckedChanged(object sender, EventArgs e)
+        {
+            CartSort();
+        }
+
+        private void rdoCartDate_CheckedChanged(object sender, EventArgs e)
+        {
+            CartSort();
+        }
+
+        private void rdoCartPriceDown_CheckedChanged(object sender, EventArgs e)
+        {
+            CartSort();
+        }
+
+        private void rdoCartPriceUp_CheckedChanged(object sender, EventArgs e)
+        {
+            CartSort();
         }
     }
 }

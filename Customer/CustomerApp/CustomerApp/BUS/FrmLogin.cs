@@ -50,7 +50,7 @@ namespace CustomerApp.BUS
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Text = "Goodee PC 로그인";
 
             txtPW.UseSystemPasswordChar = true;

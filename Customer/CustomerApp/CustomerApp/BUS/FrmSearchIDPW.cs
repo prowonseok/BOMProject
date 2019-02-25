@@ -33,7 +33,7 @@ namespace CustomerApp.BUS
         private void FrmSearchID_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Text = "Goodee PC " + txt;
             btnSearchIDPW.Text = txt;
             btnSearchIDPW.AutoSize = true;
@@ -41,6 +41,7 @@ namespace CustomerApp.BUS
             btnSearchIDPW.Enabled = false;
             txtCertiNum.ReadOnly = true;
             timer.Interval = 1000;
+            txtCertiNum.MaxLength = 6;
         }
 
         private void GetBtnEnable()

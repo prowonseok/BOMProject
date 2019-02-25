@@ -25,7 +25,7 @@ namespace CustomerApp.BUS
         private void FrmMyPage_Load(object sender, EventArgs e)
         {
             Text = "Goodee PC 내 정보";
-
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             CenterToScreen();
 
             txtAddr.ReadOnly = true;

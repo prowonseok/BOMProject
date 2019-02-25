@@ -22,6 +22,7 @@ namespace CustomerApp.BUS
         private void FrmAddr_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Text = "주소 찾기";
             rdoDong.Checked = true;
         }

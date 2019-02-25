@@ -82,9 +82,9 @@
             this.btnSubmit.Enabled = false;
             this.btnSubmit.Location = new System.Drawing.Point(220, 61);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(96, 23);
             this.btnSubmit.TabIndex = 4;
-            this.btnSubmit.Text = "메일발송";
+            this.btnSubmit.Text = "인증번호 전송";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.EnabledChanged += new System.EventHandler(this.btnSubmit_EnabledChanged);
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -130,9 +130,9 @@
             // 
             this.btnSearchIDPW.Location = new System.Drawing.Point(220, 117);
             this.btnSearchIDPW.Name = "btnSearchIDPW";
-            this.btnSearchIDPW.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchIDPW.Size = new System.Drawing.Size(96, 23);
             this.btnSearchIDPW.TabIndex = 9;
-            this.btnSearchIDPW.Text = "아이디찾기";
+            this.btnSearchIDPW.Text = "아이디 찾기";
             this.btnSearchIDPW.UseVisualStyleBackColor = true;
             this.btnSearchIDPW.Click += new System.EventHandler(this.btnSearchIDPW_Click);
             // 
