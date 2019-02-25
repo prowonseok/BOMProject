@@ -34,6 +34,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnTypeAdd = new System.Windows.Forms.Button();
+            this.btnProAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,11 +91,22 @@
             this.btnTypeAdd.UseVisualStyleBackColor = true;
             this.btnTypeAdd.Click += new System.EventHandler(this.btnTypeAdd_Click);
             // 
+            // btnProAdd
+            // 
+            this.btnProAdd.Location = new System.Drawing.Point(245, 66);
+            this.btnProAdd.Name = "btnProAdd";
+            this.btnProAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnProAdd.TabIndex = 6;
+            this.btnProAdd.Text = "상품추가";
+            this.btnProAdd.UseVisualStyleBackColor = true;
+            this.btnProAdd.Click += new System.EventHandler(this.btnProAdd_Click);
+            // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 498);
+            this.Controls.Add(this.btnProAdd);
             this.Controls.Add(this.btnTypeAdd);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvMatList);
@@ -115,5 +127,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Button btnTypeAdd;
+        private System.Windows.Forms.Button btnProAdd;
     }
 }

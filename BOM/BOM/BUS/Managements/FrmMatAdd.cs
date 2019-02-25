@@ -128,9 +128,7 @@ namespace BOM.BUS.Managements
 
         private void tbMatNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string stringValidator = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string fKeySet = Convert.ToString(Keys.Back) + Convert.ToString(Keys.Shift) + Convert.ToString(Keys.Control) + Convert.ToString(Keys.Alt) + Convert.ToString(Keys.Tab) + Convert.ToString(Keys.Escape) + Convert.ToString(Keys.LWin) + Convert.ToString(Keys.RWin);
-            if (!(stringValidator.Contains(e.KeyChar.ToString()) || fKeySet.Contains(e.KeyChar.ToString())))
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
             {
                 e.Handled = true;
             }
