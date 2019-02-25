@@ -85,14 +85,20 @@ namespace BOM
         {
             Close();
         }
-        
 
+        /// <summary>
+        /// 수량 텍스트가 변경될때마다 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtEa_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //입력된 값이 숫자, BackSpace키가 아닐 경우 입력 방지
             if (!(char.IsNumber(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
             {
                 e.Handled = true;
             }
         }
+        
     }
 }

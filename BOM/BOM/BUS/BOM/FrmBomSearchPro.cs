@@ -38,7 +38,7 @@ namespace BOM
         }
 
         /// <summary>
-        /// 그리드뷰 설정하는 메서드
+        /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
         private void DisplayGridview()
         {

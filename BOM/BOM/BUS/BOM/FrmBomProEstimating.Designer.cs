@@ -95,7 +95,7 @@
             this.cbbYear.Name = "cbbYear";
             this.cbbYear.Size = new System.Drawing.Size(121, 20);
             this.cbbYear.TabIndex = 2;
-            this.cbbYear.SelectedIndexChanged += new System.EventHandler(this.cbbProducts_SelectedIndexChanged);
+            this.cbbYear.SelectedIndexChanged += new System.EventHandler(this.cbb_SelectedIndexChanged);
             // 
             // cbbProducts
             // 
@@ -105,7 +105,7 @@
             this.cbbProducts.Name = "cbbProducts";
             this.cbbProducts.Size = new System.Drawing.Size(121, 20);
             this.cbbProducts.TabIndex = 3;
-            this.cbbProducts.SelectedIndexChanged += new System.EventHandler(this.cbbProducts_SelectedIndexChanged);
+            this.cbbProducts.SelectedIndexChanged += new System.EventHandler(this.cbb_SelectedIndexChanged);
             // 
             // btnPro
             // 
@@ -142,9 +142,11 @@
             this.dgvEst.AllowUserToAddRows = false;
             this.dgvEst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEst.Location = new System.Drawing.Point(12, 102);
+            this.dgvEst.MultiSelect = false;
             this.dgvEst.Name = "dgvEst";
             this.dgvEst.ReadOnly = true;
             this.dgvEst.RowTemplate.Height = 23;
+            this.dgvEst.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEst.Size = new System.Drawing.Size(591, 212);
             this.dgvEst.TabIndex = 7;
             // 
@@ -153,6 +155,7 @@
             this.dgvEst2.AllowUserToAddRows = false;
             this.dgvEst2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEst2.Location = new System.Drawing.Point(12, 337);
+            this.dgvEst2.MultiSelect = false;
             this.dgvEst2.Name = "dgvEst2";
             this.dgvEst2.ReadOnly = true;
             this.dgvEst2.RowTemplate.Height = 23;

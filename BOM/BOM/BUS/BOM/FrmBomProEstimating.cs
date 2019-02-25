@@ -15,17 +15,32 @@ namespace BOM
     {
         DAO.BomDAO bDao;
         DataTable dt;
-        List<string> proLst;
+        List<string> proLst; //판매중인 제품들을 저장할 Collection
 
+        DataTable dt2; //현재 달(월)에 대한 판매정보 저장하는 DataTable
+        DataTable dt3; //현재 달(월)+1 달(월)에 대한 판매정보 저장하는 DataTable
+
+        Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
+        ToolTip myToolTip = new ToolTip();
+
+        /// <summary>
+        /// 생성자
+        /// </summary>
         public FrmBomProEstimating()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 폼이 Load될때 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmBomProEstimating_Load(object sender, EventArgs e)
         {
             #region 원형 그래프
             bDao = new DAO.BomDAO();
+
             chartPro.Titles.Add("제품별 판매량");
             dt = bDao.SelectOrder();
             proLst = new List<string>();
@@ -34,27 +49,32 @@ namespace BOM
 
             foreach (DataRow item in dt.Rows)
             {
-                chartPro.Series["s1"].Points.AddXY(item["Pro_Name"].ToString(), item["판매량"].ToString());
-                proLst.Add(item["Pro_Name"].ToString());
-                cbbProducts.Items.Add(item["Pro_Name"].ToString());
+                chartPro.Series["s1"].Points.AddXY(item["Pro_Name"].ToString(), item["판매량"].ToString()); //chartPro Series["s1"]에 제품과 판매량을 등록
+                proLst.Add(item["Pro_Name"].ToString()); //제품들을 proLst Collection에 저장
+                cbbProducts.Items.Add(item["Pro_Name"].ToString()); //제품별로 보기 위한 ComboBox에 제품명 저장
             }
             #endregion
 
+            #region 막대 그래프
             chartDate.Titles.Add("년도별 판매량");
             dt = bDao.SelectDateOrder();
-            for (int i = 2016; i < DateTime.Now.Year+1; i++)
+            for (int i = 2016; i < DateTime.Now.Year + 1; i++)
             {
                 cbbYear.Items.Add(i);
             }
             cbbProducts.Text = "전체";
-            cbbYear.Text = "2019";
+            cbbYear.Text = "2019"; 
+            #endregion
 
+            //최초에 제품별 판매량을 화면에 출력
             btnPro_Click(null,null);
         }
-
-        Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
-        ToolTip myToolTip = new ToolTip();
-
+        
+        /// <summary>
+        /// chartPro 위에서 마우스로 그래프를 가리키면 툴팁을 발생시키는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">현재 마우스의 위치 좌표</param>
         private void chartPro_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location; //현재 마우스 포인터의 좌표 저장
@@ -76,25 +96,9 @@ namespace BOM
                 myToolTip.Show("\""+pc + "\"제품의 판매량은 "+pNum + "개 입니다", chartPro,new Point(position.X+10,position.Y+15)); 
             }
         }
-
-        private void cbbYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            chartDate.Series.Clear();
-            foreach (var item in proLst)
-            {   //PC들을 Series에 추가
-                chartDate.Series.Add(item);
-            }
-            foreach (DataRow item in dt.Rows)
-            {
-                if (item["YEAR"].ToString() == cbbYear.Text)
-                {
-                    chartDate.Series[item["Pro_Name"].ToString()].Points.AddXY(item["MONTH"].ToString(), Int32.Parse(item["COUNT"].ToString()));
-                }
-            }
-        }
-
+        
         /// <summary>
-        /// 날짜별 Chart 위에서 마우스로 그래프를 가리키면 툴팁을 발생시키는 이벤트
+        /// chartDate 위에서 마우스로 그래프를 가리키면 툴팁을 발생시키는 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치</param>
@@ -110,29 +114,32 @@ namespace BOM
             var hit = chartDate.HitTest(position.X, position.Y, ChartElementType.DataPoint);
             if (hit.ChartElementType==ChartElementType.DataPoint)
             {
-                //var xValue = ((DataPoint)hit.Object).AxisLabel;
-                //var xValue = Int32.Parse(hit.PointIndex.ToString())+1;
                 var yValue = ((DataPoint)hit.Object).YValues[0];
-
-                //myToolTip.Show(xValue + "판매량 : " + yValue+"개",chartDate,new Point(position.X+10,position.Y));
                 myToolTip.Show("판매량 : " + yValue+"개",chartDate,new Point(position.X+10,position.Y));
             }
         }
-
-        private void cbbProducts_SelectedIndexChanged(object sender, EventArgs e)
+        
+        /// <summary>
+        /// ComboBox의 값이 변경될 때 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbb_SelectedIndexChanged(object sender, EventArgs e)
         {
             chartDate.Series.Clear();
             if (cbbProducts.Text=="전체")
             {
                 foreach (var item in proLst)
-                {   
+                {   //ComboBox의 Text가 "전체"일 경우 PC전부를 Series에 추가
                     chartDate.Series.Add(item);
                 }
             }
             else
             {
+                //전체가 아닐 경우 선택된 제품만 Series에 추가
                 chartDate.Series.Add(cbbProducts.Text);
             }
+
 
             foreach (DataRow item in dt.Rows)
             {
@@ -153,8 +160,14 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 제품별 판매량 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPro_Click(object sender, EventArgs e)
         {
+            #region Visible처리
             chartPro.Visible = true;
             chartDate.Visible = false;
             cbbProducts.Visible = false;
@@ -162,11 +175,18 @@ namespace BOM
             dgvEst.Visible = false;
             dgvEst2.Visible = false;
             lblFirstMonth.Visible = false;
-            lblSecondMonth.Visible = false;
+            lblSecondMonth.Visible = false; 
+            #endregion
         }
 
+        /// <summary>
+        /// 년도별 판매량 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnYear_Click(object sender, EventArgs e)
         {
+            #region Visible처리
             chartPro.Visible = false;
             chartDate.Visible = true;
             cbbProducts.Visible = true;
@@ -174,11 +194,18 @@ namespace BOM
             dgvEst.Visible = false;
             dgvEst2.Visible = false;
             lblFirstMonth.Visible = false;
-            lblSecondMonth.Visible = false;
+            lblSecondMonth.Visible = false; 
+            #endregion
         }
 
+        /// <summary>
+        /// 판매 예측 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEstimating_Click(object sender, EventArgs e)
         {
+            #region Visible처리
             dgvEst.Visible = true;
             dgvEst2.Visible = true;
             chartPro.Visible = false;
@@ -186,7 +213,8 @@ namespace BOM
             cbbProducts.Visible = false;
             cbbYear.Visible = false;
             lblFirstMonth.Visible = true;
-            lblSecondMonth.Visible = true;
+            lblSecondMonth.Visible = true; 
+            #endregion
 
             int firstMonth = DateTime.Now.Month;
             int secondMonth = 0;
@@ -200,8 +228,9 @@ namespace BOM
                 secondMonth = firstMonth + 1;
             }
 
-            DataTable dt2 = bDao.SelectProYear(firstMonth);
-            DataTable dt3 = bDao.SelectProYear(secondMonth);
+            dt2 = bDao.SelectProYear(firstMonth);
+            dt3 = bDao.SelectProYear(secondMonth);
+
             GridviewCompute(dt2);
             GridviewCompute(dt3);
 
@@ -213,6 +242,7 @@ namespace BOM
             lblFirstMonth.Text = DateTime.Now.Month + "월 판매 정보";
             lblSecondMonth.Text = DateTime.Now.Month + 1 + "월 판매 정보";
         }
+
         /// <summary>
         /// Gridview를 입력받아 Columns들에 대한 연산을 실행
         /// </summary>
@@ -238,7 +268,7 @@ namespace BOM
         }
 
         /// <summary>
-        /// Gridview를 입력받아 출력정보를 수정
+        /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
         /// <param name="gridView">출력정보를 수정할 Gridview</param>
         private void DisplayGridview(DataGridView gridView)

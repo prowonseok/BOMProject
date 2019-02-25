@@ -86,8 +86,7 @@ namespace BOM.DAO
             return proLst;
 
         }
-
-
+        
         //public bool Selectchildnode(string child_Name)
         //{
         //    string sp = "BOM_Bom_ChiledNode_Procedure";
@@ -186,6 +185,11 @@ namespace BOM.DAO
             return result;
         }
 
+        /// <summary>
+        /// 달을 매개변수로 입력하여 제품별 해당하는 달의 전체 판매량, 참고한 년도의 수, 현재 재고를 출력 
+        /// </summary>
+        /// <param name="month">구하고자 하는 달</param>
+        /// <returns></returns>
         internal DataTable SelectProYear(int month)
         {
             string sp = "BOM_Bom_GroupYear_Select";
@@ -225,7 +229,7 @@ namespace BOM.DAO
         /// Parameter와 특별한 조건 없이 Materials Table의 모든 데이터를 Select하는 메서드
         /// </summary>
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
-        public List<Materials> SelectBom()
+        internal List<Materials> SelectBom()
         {
             List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
 
@@ -241,7 +245,7 @@ namespace BOM.DAO
         /// Parameter없고 Mat_Level의 값이 0이 아닌 Materials Table의 데이터를 Select하는 메서드
         /// </summary>
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
-        public List<Materials> SelectBom(bool level_True)
+        internal List<Materials> SelectBom(bool level_True)
         {
             List<Materials> matLst = new List<Materials>(); //Select한 값들을 저장할 Collection
 
@@ -259,7 +263,7 @@ namespace BOM.DAO
         /// <param name="mat_Level">부모 자재 레벨</param>
         /// <param name="mat_No">부모 자재 번호</param>
         /// <returns></returns>
-        public List<Materials> SelectBom(int mat_Level, int mat_No)
+        internal List<Materials> SelectBom(int mat_Level, int mat_No)
         {
             List<Materials> matLst = new List<Materials>();
 
@@ -280,7 +284,7 @@ namespace BOM.DAO
         /// <param name="mat_No">자재 번호</param>
         /// <param name="procedure">프로시져명</param>
         /// <returns></returns>
-        public DataTable SelectBom(int mat_No, string procedure)
+        internal DataTable SelectBom(int mat_No, string procedure)
         {
             List<Materials> matLst = new List<Materials>();
             string sp = procedure;

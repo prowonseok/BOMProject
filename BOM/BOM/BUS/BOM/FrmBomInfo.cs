@@ -15,6 +15,9 @@ namespace BOM
     {
         DAO.BomDAO bDao;
 
+        /// <summary>
+        /// 생성자
+        /// </summary>
         public FrmBomInfo()
         {
             InitializeComponent();
@@ -31,15 +34,16 @@ namespace BOM
         }
 
         /// <summary>
-        /// 그리드뷰의 데이터소스를 불러옴
+        /// GridView의 데이터소스를 불러옴
         /// </summary>
         private void Display()
         {
             bDao = new DAO.BomDAO();
-            //그리드뷰의 데이터소스를 불러옴
+
+            //GridView의 데이터소스를 불러옴
             dgvBom.DataSource = bDao.SelectBom();
 
-            //그리드뷰의 버튼이 필요한 컬럼 추가
+            //GridView의 버튼컬럼 추가
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
             btn.HeaderText = "BOM 등록";
@@ -60,8 +64,7 @@ namespace BOM
             dgvBom.Columns.Remove("Mat_Cost");
             dgvBom.Columns.Remove("Mat_Ea");
             dgvBom.Columns.Remove("Off_No");
-
-
+            
             //Int형 데이터를 가진 컬럼은 오른쪽 정렬
             dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -74,22 +77,46 @@ namespace BOM
             dgvBom.Columns[0].HeaderText = "자재 번호";
             dgvBom.Columns[1].HeaderText = "자재명";
             dgvBom.Columns[2].HeaderText = "자재 레벨";
+
+            //dgvBom.Columns[2].DefaultCellStyle.Format = ToString();
+            dgvBom.Columns[2].ValueType = typeof(String);
+
+            foreach (DataGridViewRow item in dgvBom.Rows)
+            {
+                MessageBox.Show(item.Cells[2].ValueType.ToString());
+                switch (item.Cells[2].Value.ToString())
+                {
+                    case "0":
+                        //dgvBom.Columns[2].DefaultCellStyle.Format = string.Format("원재료", item.Cells[2].Value.ToString());
+                        item.Cells[2].Value = "0";
+                        break;
+                    case "1":
+                        //dgvBom.Columns[2].DefaultCellStyle.Format = string.Format("부재료", item.Cells[2].Value.ToString());
+                        item.Cells[2].Value = "0";
+                        break;
+                    //case "2":
+                    //    item.Cells[2].Value = "c";
+                    //    break;
+                    default:
+                        break;
+                }
+            }
         }
 
         /// <summary>
         /// 그리드뷰의 버튼을 클릭 할 경우 발생하는 이벤트
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">클릭한 버튼의 위치</param>
         private void dgvBom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //BOM등록 클릭 시 
             if (e.ColumnIndex.ToString() == "3")
             {
                 //Level의 값이 0일 경우
-                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString() == "0")
+                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString() == "원재료")
                 {
-                    MessageBox.Show("최하위 자재는 BOM등록을 할 수 없습니다.");
+                    MessageBox.Show("원재료는 부모자재로 BOM등록을 할 수 없습니다.");
                 }
                 else
                 {
@@ -231,5 +258,6 @@ namespace BOM
             FrmBomProEstimating fbpe = new FrmBomProEstimating();
             fbpe.ShowDialog();
         }
+        
     }
 }

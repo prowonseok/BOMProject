@@ -46,11 +46,11 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "개수 : ";
+            this.label1.Text = "수량 : ";
             // 
             // txtEa
             // 
-            this.txtEa.Location = new System.Drawing.Point(113, 119);
+            this.txtEa.Location = new System.Drawing.Point(113, 116);
             this.txtEa.Name = "txtEa";
             this.txtEa.Size = new System.Drawing.Size(92, 21);
             this.txtEa.TabIndex = 3;

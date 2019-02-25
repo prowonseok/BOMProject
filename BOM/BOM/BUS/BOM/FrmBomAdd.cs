@@ -30,14 +30,14 @@ namespace BOM
         #endregion
 
         /// <summary>
-        /// 메인화면에서 매개변수 없이 BOM화면 버튼 클릭 시
+        /// 메인화면에서 매개변수 없이 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         public FrmBomAdd() {
             InitializeComponent();
         }
 
         /// <summary>
-        /// 그리드뷰에서 BOM화면 버튼 클릭 시
+        /// 그리드뷰에서 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials">부모 자재가 될 자재</param>
         public FrmBomAdd(Materials materials) : this()
@@ -80,7 +80,21 @@ namespace BOM
             }
             else
             {   //모자재의 Level 값보다 낮은 Level의 값만 불러오기 위해 Level값도 매개변수로 지정
-                int sendLevel = Int32.Parse(txtParentMatLevel.Text);
+                int sendLevel = 0;
+                switch (txtParentMatLevel.Text)
+                {
+                    case "완제품":
+                        sendLevel = 2;
+                        break;
+                    case "반제품":
+                        sendLevel = 1;
+                        break;
+                    case "원재료":
+                        sendLevel = 0;
+                        break;
+                    default:
+                        break;
+                }
                 int sendNo = Int32.Parse(txtParentMatNo.Text);
                 FrmBomAllMatInfo fbami = new FrmBomAllMatInfo(sendLevel, sendNo);
                 fbami.Owner = this; //FrmBomAllMatInfo Form에서 값을 받아오기 위해 Owner를 지정
@@ -113,9 +127,7 @@ namespace BOM
             catch (Exception)
             {
                 //매개변수 값 없이 BOM등록 이동하는 경우
-                
             }
-
         }
 
         /// <summary>
@@ -129,7 +141,7 @@ namespace BOM
             trvMat.Nodes.Add(tNode);
             //부모 자재명을 보내서 자식 자재와 필요 자재 개수를 출력
             DataTable dt = bDao.SelectChildTreeview(txtParentMatName.Text);
-
+            //자식 자재들을 트리뷰의 tNode에 ChildNode로 추가
             foreach (DataRow item in dt.Rows)
             {
                 TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()));
@@ -201,8 +213,14 @@ namespace BOM
             Close();
         }
 
+        /// <summary>
+        /// 수량 텍스트가 변경될때마다 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">입력된 값</param>
         private void txtChildMatEA_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //입력된 값이 숫자, BackSpace키가 아닐 경우 입력 방지
             if (!(char.IsNumber(e.KeyChar)||e.KeyChar==Convert.ToChar(Keys.Back)))
             {
                 e.Handled = true;

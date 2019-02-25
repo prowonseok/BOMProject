@@ -15,8 +15,8 @@ namespace BOM
 {
     public partial class FrmBomMatEstimating : Form
     {
-        int haveNum = 0; //가지고 있는 재고의 개수
-        int makeNum = 0; //만들고자 하는 재고의 개수
+        private int haveNum = 0; //가지고 있는 재고의 개수
+        private int makeNum = 0; //만들고자 하는 재고의 개수
 
         List<int> numLst;
         DAO.BomDAO bDao;
@@ -125,7 +125,7 @@ namespace BOM
         }
 
         /// <summary>
-        /// 그리드뷰 설정 메서드
+        /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
         private void DisplayGridview()
         {
@@ -134,11 +134,19 @@ namespace BOM
             dgvMat.Columns.RemoveAt(4);
             dgvMat.Columns.RemoveAt(2);
             dgvMat.Columns.RemoveAt(1);
+
             dgvMat.Columns[0].HeaderText = "자재 번호";
             dgvMat.Columns[1].HeaderText = "자재 명";
             dgvMat.Columns[2].HeaderText = "개수";
+
             dgvMat.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        /// <summary>
+        /// 자식 노드에 형제노드가 있을 경우 없을때까지 matLst에 추가
+        /// </summary>
+        /// <param name="matLst">선택한 노드의 자식노드들을 저장하는 리스트</param>
+        /// <param name="nextNode">자식노드의 다음 형제노드</param>
         private void AddNextNode(List<string> matLst, TreeNode nextNode)
         {
             matLst.Add(nextNode.Text);
@@ -151,6 +159,7 @@ namespace BOM
                 
             }
         }
+
         /// <summary>
         /// 자재별 소요량 예측을 위한 더블 클릭 이벤트
         /// </summary>
@@ -158,8 +167,9 @@ namespace BOM
         /// <param name="e">소요량 예측을 위해 더블클릭한 노드</param>
         private void tvProMat_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            numLst = new List<int>();
-            List<string> matLst = new List<string>();
+            numLst = new List<int>();                 //재고들을 저장할 Collection
+            List<string> matLst = new List<string>(); //선택 노드 자식노드들을 저장할 Collection
+
             if (e.Node.Text.Contains('.'))
             {
                 lblMatName.Text = e.Node.Text.Substring(0, e.Node.Text.IndexOf('.'));
@@ -170,32 +180,19 @@ namespace BOM
             }
             try
             {
-                matLst.Add(e.Node.FirstNode.Text);
-
-                try
-                {
-                    AddNextNode(matLst, e.Node.FirstNode.NextNode);
-                    //matLst.Add(e.Node.FirstNode.NextNode.Text);
-                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.Text);
-                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.Text);
-                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.Text);
-                    //matLst.Add(e.Node.FirstNode.NextNode.NextNode.NextNode.NextNode.NextNode.Text);
-                }
-                catch (Exception)
-                {
-                    
-                }
-                
+                matLst.Add(e.Node.FirstNode.Text);               //첫번째 자식노드를 matLst에 저장
+                AddNextNode(matLst, e.Node.FirstNode.NextNode);  //그 후에 자식노드가 형제노드를 가지고 있다면 추가적으로 저장
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
+                //선택한 노드가 자식노드를 가지고 있지 않은 경우(AddNextNode에서 예외처리 되지 않고 matLst.Add에서 예외처리 된 경우)
                 foreach (DataGridViewRow item in dgvMat.Rows)
                 {
-                    if (item.Cells[1].Value.ToString().Trim() == e.Node.Text.Substring(0, e.Node.Text.IndexOf('.')).Trim())
+                    if (item.Cells[1].Value.ToString().Trim() == e.Node.Text.Substring(0, e.Node.Text.IndexOf('.')).Trim()) //GridView의 자재명과 선택한 노드의 명이 같을 때
                     {
-                        item.Selected = true;
-                        haveNum = Int32.Parse(item.Cells[2].Value.ToString());
-                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1));
+                        item.Selected = true;  //해당 항목을 Selected True 처리
+                        haveNum = Int32.Parse(item.Cells[2].Value.ToString());  //GridView를 참조하고 가지고 있는 개수를 haveNum변수에 저장
+                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1)); //만들고자 하는 개수를 makeNum변수에 저장--
                         if (haveNum / makeNum > 0)
                         {
                             MessageBox.Show(e.Node.ToString()+ "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
@@ -208,6 +205,7 @@ namespace BOM
                 }
             }
 
+            //AddNextNode에서 예외처리 되어 matLst에 자식노드들이 저장되어 있는 경우
             foreach (var item in matLst)
             {
                 foreach (DataGridViewRow item2 in dgvMat.Rows)
@@ -222,12 +220,12 @@ namespace BOM
                         makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1));
                         if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.')+1 , item.Length - item.LastIndexOf('E') -1)))
                         {
-                            numLst.Add(haveNum / makeNum);
+                            numLst.Add(haveNum / makeNum); //만들수 있는 개수를 numLst에 저장
                         }
                         else
                         {
                             MessageBox.Show(item2.Cells[1].Value.ToString() + "재고 부족" + (makeNum - haveNum).ToString() + "개 필요");
-                            numLst.Add(999999);
+                            numLst.Add(999999); //재고가 부족할 경우 numLst에 999999를 저장
                         }
                         break;
                     }
@@ -235,46 +233,61 @@ namespace BOM
             }
             if (numLst.Count > 0)
             {
-                numLst.Sort();
-                if (numLst[numLst.Count - 1] == 999999)
+                numLst.Sort(); //numLst를 오름차순으로 정렬(numLst의 최후 값이 999999인지 빠른 비교와 첫번째 값이 만들 수 있는 개수)
+                if (numLst[numLst.Count - 1] == 999999) //재고 부족이 있는 경우
                 {
-                    MessageBox.Show("재고가 부족합니다.");
+                    
                 }
-                else
+                else                                    //재고 부족이 없는 경우
                 {
                     MessageBox.Show(e.Node.Text + "은 \r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
                 }
             }
         }
 
-        
-
+        /// <summary>
+        /// Xml파일로 저장 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnXml_Click(object sender, EventArgs e)
         {
-            xr = new XmlTextWriter(@"C:\Users\gd19\Desktop\This\MyP2c.xml", Encoding.UTF8);
-            xr.WriteStartDocument();
-
-            xr.WriteStartElement(tvProMat.Nodes[0].Text.Replace(' ','_'));
-            foreach (TreeNode item in tvProMat.Nodes)
+            //트리뷰가 비어있지 않을 경우만
+            if (tvProMat.Nodes.Count!=0)
             {
-                SaveNode(item.Nodes);
+                xr = new XmlTextWriter(@"C:\Users\gd19\Desktop\This\MyP2c.xml", Encoding.UTF8);
+                xr.WriteStartDocument();
+
+                xr.WriteStartElement(tvProMat.Nodes[0].Text.Replace(' ', '_')); //공백을 _으로 변경 후 저장
+
+                //Treeview의 Nodes을 저장
+                foreach (TreeNode item in tvProMat.Nodes)
+                {
+                    WriteChildNodeXml(item.Nodes);
+                }
+
+                xr.WriteEndElement();
+                xr.Flush();
+                xr.Close(); 
             }
-            xr.WriteEndElement();
-            xr.Flush();
-            xr.Close();
         }
 
-        private void SaveNode(TreeNodeCollection nodes)
+        /// <summary>
+        /// Treeview의 node를 받아서 XmlTextWriter에 입력하는 재귀함수
+        /// </summary>
+        /// <param name="nodes"></param>
+        private void WriteChildNodeXml(TreeNodeCollection nodes)
         {
             foreach (TreeNode item in nodes)
             {
+                //자식이 있을 경우
                 if (item.Nodes.Count > 0)
                 {
                     xr.WriteStartElement(item.Text.Replace(' ','_'));
                     xr.WriteRaw("\r\n\n");
-                    SaveNode(item.Nodes);
+                    WriteChildNodeXml(item.Nodes);
                     xr.WriteEndElement();
-                }
+                }//자식이 없을 경우
                 else
                 {
                     xr.WriteString(item.Text.Replace(' ','_'));

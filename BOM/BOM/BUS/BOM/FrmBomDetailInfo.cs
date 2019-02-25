@@ -29,14 +29,14 @@ namespace BOM
         private Materials materials;
 
         /// <summary>
-        /// 메인화면에서 매개변수 없이 BOM조회 버튼 클릭 시
+        /// 메인화면에서 매개변수 없이 BOM조회 버튼 클릭 시 생성자
         /// </summary>
         public FrmBomDetailInfo() {
             InitializeComponent();
         }
 
         /// <summary>
-        /// 그리드뷰에서 BOM조회 버튼 클릭 시
+        /// 그리드뷰에서 BOM조회 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials"></param>
         public FrmBomDetailInfo(Materials materials):this()
@@ -61,10 +61,12 @@ namespace BOM
                     this.txtMatName.Text = materials.Mat_Name;
                 }
             }
+            //메인화면에서 매개변수 없이 BOM조회 버튼 클릭 시 발생하는 예외처리
             catch (NullReferenceException)
             {
             }
             dgvBom.AutoResizeColumns();
+            rdoExplosion_CheckedChanged(null, null);
 
         }
 
@@ -85,6 +87,8 @@ namespace BOM
                 this.txtMatName.Text = matName.ToString();
             }
             dgvBom.DataSource = null;
+
+            rdoExplosion_CheckedChanged(null, null);
         }
 
         /// <summary>
@@ -122,6 +126,7 @@ namespace BOM
                 //수정 버튼과 삭제 버튼 비활성화
                 btnUpdate.Visible = false;
                 btnDelete.Visible = false;
+                //자재 번호의 값이 있을 경우
                 if (!string.IsNullOrEmpty(txtMatNo.Text))
                 {
                     bDao = new DAO.BomDAO();
@@ -133,7 +138,7 @@ namespace BOM
         }
 
         /// <summary>
-        /// 그리드뷰에 대한 설정하는 메서드
+        /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
         /// <param name="type"></param>
         private void DisplayGridview(bool type)
@@ -155,6 +160,7 @@ namespace BOM
                     dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvBom.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvBom.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                     dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
@@ -183,6 +189,24 @@ namespace BOM
                     dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
+
+            foreach (DataGridViewRow item in dgvBom.Rows)
+            {
+                switch (item.Cells[3].Value.ToString())
+                {
+                    case "0":
+                        item.Cells[3].Value = "원재료";
+                        break;
+                    case "1":
+                        item.Cells[3].Value = "반제품";
+                        break;
+                    case "2":
+                        item.Cells[3].Value = "완제품";
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -192,6 +216,7 @@ namespace BOM
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            //해당 자재의 자식 자재 갯수를 수정하기 위한 이벤트
             try
             {
                 dgvBom.SelectedRows[0].Cells[1].Value.ToString();
