@@ -5,27 +5,32 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 using Excel = Microsoft.Office.Interop.Excel;
+
 
 
 namespace BOM.DAO
 {
     class SalesExcelDao
     {
-        public string WriteExcelData(List<string> orderInfoList ,List<ShipmentVO> productList, string filePath)
+        
+        public string WriteExcelData(List<string> orderInfoList ,List<ShipmentVO> productList, string filePath, string filePath2)
         {
             string Ex;
             Excel.Application excelApp = null;
             Excel.Workbook wb = null;
             Excel.Worksheet ws = null;
-            string ExcelPath = @"C:\Users\GDI-11\Desktop\출하지시서.xlsx";
+            
+            string testPath = filePath2;            
+            //string ExcelPath = @"C:\Users\GDI-11\Desktop\출하지시서.xlsx";
             try
             {
                 excelApp = new Excel.Application();
                 int addPrice = 0; // 총 금액
                 String oldStr = ","; // 문자열로 이뤄진 가격을 인트값으로 변경하기위한 변수
                 String newStr = ""; //문자열로 이뤄진 가격을 인트값으로 변경하기위한 변수                
-                wb = excelApp.Workbooks.Open(ExcelPath); // 엑셀 파일열기 없으면 만드는건 추가예정 
+                wb = excelApp.Workbooks.Open(testPath); // 엑셀 파일열기 없으면 만드는건 추가예정 
                 ws = wb.Worksheets.get_Item(1) as Excel.Worksheet; //워크시트 선택            
                 ws.Cells[3, 8] = orderInfoList[0]; //주문 번호
                 ws.Cells[8, 8] = orderInfoList[1]; //출하 날짜

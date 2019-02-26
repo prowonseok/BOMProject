@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -207,6 +208,9 @@
     <EmbeddedResource Include="BUS\Sales\TraderSet.resx">
       <DependentUpon>TraderSet.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Excel\Shipment.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MaterialsData.dbml.layout">
       <DependentUpon>MaterialsData.dbml</DependentUpon>
     </None>
@@ -218,6 +222,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="MaterialsData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -233,6 +238,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\출하지시서.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

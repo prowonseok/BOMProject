@@ -17,6 +17,8 @@ namespace BOM.BUS.Sales
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         public Label Lbltest { get { return lblAddr; } set { lblAddr = value; } }
         string fIlePath = null; //파일 지정경로
+        
+        string fIlePath2 = Application.StartupPath + @"\Excel\Shipment.xlsx";
         List<ShipmentVO> ProList;
         
         public Shipment()
@@ -40,7 +42,7 @@ namespace BOM.BUS.Sales
         }
 
         private void Shipment_Load(object sender, EventArgs e) //넘겨받은 준문정보로 출하지시서 폼의 내용을 표시
-        {
+        {            
             string sp = "Bom_JW_Shipment_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@OrderNo", orderNo);
@@ -151,6 +153,7 @@ namespace BOM.BUS.Sales
 
         private void btnConfirm_Click(object sender, EventArgs e) // 클릭시 출하지시서 내용을 엑셀로 저장
         {
+            
             if (txtconf.Text =="")
             {
                 MessageBox.Show("확인란에 서명하세요");
@@ -172,7 +175,7 @@ namespace BOM.BUS.Sales
                     OrderInfoList.Add(lblAddr.Text.Substring(0, lblAddr.Text.IndexOf("구주소")));
                 }               
                 
-                string excelStr = new SalesExcelDao().WriteExcelData(OrderInfoList , ProList, fIlePath);
+                string excelStr = new SalesExcelDao().WriteExcelData(OrderInfoList , ProList, fIlePath, fIlePath2);
                 MessageBox.Show(excelStr);
                 
             }
@@ -184,8 +187,7 @@ namespace BOM.BUS.Sales
             saveFileDialog1.Filter = "Excel|*.xlsx";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                fIlePath = saveFileDialog1.FileName;
-                MessageBox.Show(fIlePath);
+                fIlePath = saveFileDialog1.FileName;                
             }
         }
     }
