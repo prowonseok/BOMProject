@@ -21,7 +21,7 @@ namespace BOM.BUS
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
         public FrmMain()
-        {            
+        {
             InitializeComponent();
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             salesList = new List<Cus_OrderVO>();
@@ -49,10 +49,13 @@ namespace BOM.BUS
         {
 
             Test();
+
         }
 
         private void Test()
         {
+            salesList.Clear();
+            dgvMainSales.DataSource = null;
             DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_MainSelect_Procedure", null);
             foreach (DataRow item in dataTable.Rows)
             {
@@ -64,16 +67,52 @@ namespace BOM.BUS
                     OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
                 });
             }
-            
+
             dgvMainSales.DataSource = salesList;
-            dgvMainSales.AutoResizeColumns();
+            //dgvMainSales.AutoResizeColumns();
+
+            dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMainSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgvMainSales.Columns[0].Width = 70;
+            dgvMainSales.Columns[1].Width = 80;
+            dgvMainSales.Columns[3].Width = 150;
+            dgvMainSales.Columns[0].HeaderText = "주문번호";
+            dgvMainSales.Columns[1].HeaderText = "고객명";
+            dgvMainSales.Columns[2].HeaderText = "주문내용";
+            dgvMainSales.Columns[3].HeaderText = "주문날짜";
+
         }
 
         private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
-            ssd.Show();
+            if (e.RowIndex == -1)
+            {
+
+            }
+            else
+            {
+
+                SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
+                ssd.Show();
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ////AddreesForm ad = new AddreesForm(2);
+            //ad.Owner = this;
+            //ad.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Test();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Test();
         }
     }
 }

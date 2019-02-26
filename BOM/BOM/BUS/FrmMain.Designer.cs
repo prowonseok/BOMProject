@@ -32,12 +32,15 @@
             this.btnManage = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
             this.dgvMainSales = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBOM
             // 
-            this.BtnBOM.Location = new System.Drawing.Point(116, 100);
+            this.BtnBOM.Location = new System.Drawing.Point(125, 39);
             this.BtnBOM.Name = "BtnBOM";
             this.BtnBOM.Size = new System.Drawing.Size(166, 172);
             this.BtnBOM.TabIndex = 0;
@@ -47,7 +50,7 @@
             // 
             // btnManage
             // 
-            this.btnManage.Location = new System.Drawing.Point(327, 100);
+            this.btnManage.Location = new System.Drawing.Point(336, 39);
             this.btnManage.Name = "btnManage";
             this.btnManage.Size = new System.Drawing.Size(166, 172);
             this.btnManage.TabIndex = 1;
@@ -57,7 +60,7 @@
             // 
             // btnSales
             // 
-            this.btnSales.Location = new System.Drawing.Point(522, 100);
+            this.btnSales.Location = new System.Drawing.Point(531, 39);
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(166, 172);
             this.btnSales.TabIndex = 2;
@@ -76,11 +79,43 @@
             this.dgvMainSales.TabIndex = 3;
             this.dgvMainSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMainSales_CellClick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(736, 314);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(736, 432);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(650, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 575);
+            this.ClientSize = new System.Drawing.Size(900, 575);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvMainSales);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.btnManage);
@@ -90,6 +125,7 @@
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -99,5 +135,8 @@
         private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.DataGridView dgvMainSales;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }
