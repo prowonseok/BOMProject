@@ -39,8 +39,10 @@
             // 
             // dgvInfo
             // 
+            this.dgvInfo.AllowUserToAddRows = false;
             this.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfo.Location = new System.Drawing.Point(21, 53);
+            this.dgvInfo.MultiSelect = false;
             this.dgvInfo.Name = "dgvInfo";
             this.dgvInfo.ReadOnly = true;
             this.dgvInfo.RowTemplate.Height = 23;
@@ -119,12 +121,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvInfo;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox cbbType;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        public System.Windows.Forms.DataGridView dgvInfo;
     }
 }

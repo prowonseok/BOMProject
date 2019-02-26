@@ -31,7 +31,7 @@
             this.dgvBom = new System.Windows.Forms.DataGridView();
             this.btnBomInfo = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProEstimating = new System.Windows.Forms.Button();
             this.btnMatEstimating = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -41,6 +41,7 @@
             // 
             // dgvBom
             // 
+            this.dgvBom.AllowUserToAddRows = false;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBom.Location = new System.Drawing.Point(12, 116);
             this.dgvBom.MultiSelect = false;
@@ -72,14 +73,15 @@
             this.btnBomAdd.UseVisualStyleBackColor = true;
             this.btnBomAdd.Click += new System.EventHandler(this.btnBomAdd_Click);
             // 
-            // button1
+            // btnProEstimating
             // 
-            this.button1.Location = new System.Drawing.Point(351, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "생산 예측";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnProEstimating.Location = new System.Drawing.Point(351, 28);
+            this.btnProEstimating.Name = "btnProEstimating";
+            this.btnProEstimating.Size = new System.Drawing.Size(75, 23);
+            this.btnProEstimating.TabIndex = 5;
+            this.btnProEstimating.Text = "판매 예측";
+            this.btnProEstimating.UseVisualStyleBackColor = true;
+            this.btnProEstimating.Click += new System.EventHandler(this.btnProEstimating_Click);
             // 
             // btnMatEstimating
             // 
@@ -115,7 +117,7 @@
             this.cbbType.Items.AddRange(new object[] {
             "자재명",
             "자재 번호",
-            "자재 타입"});
+            "자재 단계"});
             this.cbbType.Location = new System.Drawing.Point(247, 87);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(121, 20);
@@ -129,7 +131,7 @@
             this.Controls.Add(this.cbbType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnProEstimating);
             this.Controls.Add(this.btnMatEstimating);
             this.Controls.Add(this.btnBomInfo);
             this.Controls.Add(this.btnBomAdd);
@@ -147,7 +149,7 @@
         private System.Windows.Forms.DataGridView dgvBom;
         private System.Windows.Forms.Button btnBomInfo;
         private System.Windows.Forms.Button btnBomAdd;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProEstimating;
         private System.Windows.Forms.Button btnMatEstimating;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;

@@ -33,7 +33,6 @@
             this.lblMatType = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.tbMatType = new System.Windows.Forms.TextBox();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbSpec = new System.Windows.Forms.TextBox();
@@ -42,24 +41,25 @@
             this.btnImgSearch = new System.Windows.Forms.Button();
             this.lblImg = new System.Windows.Forms.Label();
             this.gbSpec = new System.Windows.Forms.GroupBox();
-            this.cbCPU = new System.Windows.Forms.ComboBox();
-            this.cbMB = new System.Windows.Forms.ComboBox();
-            this.cbVGA = new System.Windows.Forms.ComboBox();
-            this.cbRAM = new System.Windows.Forms.ComboBox();
-            this.cbHDD = new System.Windows.Forms.ComboBox();
-            this.cbSSD = new System.Windows.Forms.ComboBox();
-            this.cbPSU = new System.Windows.Forms.ComboBox();
-            this.cbCASE = new System.Windows.Forms.ComboBox();
-            this.cbCOOLER = new System.Windows.Forms.ComboBox();
-            this.lblCPU = new System.Windows.Forms.Label();
-            this.lblMB = new System.Windows.Forms.Label();
-            this.lblVGA = new System.Windows.Forms.Label();
-            this.lblSSD = new System.Windows.Forms.Label();
-            this.lblHDD = new System.Windows.Forms.Label();
-            this.lblRAM = new System.Windows.Forms.Label();
             this.lblCOOLER = new System.Windows.Forms.Label();
             this.lblCASE = new System.Windows.Forms.Label();
             this.lblPSU = new System.Windows.Forms.Label();
+            this.lblSSD = new System.Windows.Forms.Label();
+            this.lblHDD = new System.Windows.Forms.Label();
+            this.lblRAM = new System.Windows.Forms.Label();
+            this.lblVGA = new System.Windows.Forms.Label();
+            this.lblMB = new System.Windows.Forms.Label();
+            this.lblCPU = new System.Windows.Forms.Label();
+            this.cbCOOLER = new System.Windows.Forms.ComboBox();
+            this.cbCASE = new System.Windows.Forms.ComboBox();
+            this.cbPSU = new System.Windows.Forms.ComboBox();
+            this.cbSSD = new System.Windows.Forms.ComboBox();
+            this.cbHDD = new System.Windows.Forms.ComboBox();
+            this.cbRAM = new System.Windows.Forms.ComboBox();
+            this.cbVGA = new System.Windows.Forms.ComboBox();
+            this.cbMB = new System.Windows.Forms.ComboBox();
+            this.cbCPU = new System.Windows.Forms.ComboBox();
+            this.cbMatType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbProImg)).BeginInit();
             this.gbSpec.SuspendLayout();
             this.SuspendLayout();
@@ -109,13 +109,6 @@
             this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "제품명";
-            // 
-            // tbMatType
-            // 
-            this.tbMatType.Location = new System.Drawing.Point(130, 38);
-            this.tbMatType.Name = "tbMatType";
-            this.tbMatType.Size = new System.Drawing.Size(100, 21);
-            this.tbMatType.TabIndex = 8;
             // 
             // tbPrice
             // 
@@ -198,104 +191,32 @@
             this.gbSpec.TabStop = false;
             this.gbSpec.Text = "제품 사양";
             // 
-            // cbCPU
+            // lblCOOLER
             // 
-            this.cbCPU.FormattingEnabled = true;
-            this.cbCPU.Location = new System.Drawing.Point(553, 36);
-            this.cbCPU.Name = "cbCPU";
-            this.cbCPU.Size = new System.Drawing.Size(121, 20);
-            this.cbCPU.TabIndex = 16;
+            this.lblCOOLER.AutoSize = true;
+            this.lblCOOLER.Location = new System.Drawing.Point(436, 391);
+            this.lblCOOLER.Name = "lblCOOLER";
+            this.lblCOOLER.Size = new System.Drawing.Size(55, 12);
+            this.lblCOOLER.TabIndex = 33;
+            this.lblCOOLER.Text = "COOLER";
             // 
-            // cbMB
+            // lblCASE
             // 
-            this.cbMB.FormattingEnabled = true;
-            this.cbMB.Location = new System.Drawing.Point(553, 80);
-            this.cbMB.Name = "cbMB";
-            this.cbMB.Size = new System.Drawing.Size(121, 20);
-            this.cbMB.TabIndex = 17;
+            this.lblCASE.AutoSize = true;
+            this.lblCASE.Location = new System.Drawing.Point(436, 347);
+            this.lblCASE.Name = "lblCASE";
+            this.lblCASE.Size = new System.Drawing.Size(38, 12);
+            this.lblCASE.TabIndex = 32;
+            this.lblCASE.Text = "CASE";
             // 
-            // cbVGA
+            // lblPSU
             // 
-            this.cbVGA.FormattingEnabled = true;
-            this.cbVGA.Location = new System.Drawing.Point(553, 124);
-            this.cbVGA.Name = "cbVGA";
-            this.cbVGA.Size = new System.Drawing.Size(121, 20);
-            this.cbVGA.TabIndex = 18;
-            // 
-            // cbRAM
-            // 
-            this.cbRAM.FormattingEnabled = true;
-            this.cbRAM.Location = new System.Drawing.Point(553, 168);
-            this.cbRAM.Name = "cbRAM";
-            this.cbRAM.Size = new System.Drawing.Size(121, 20);
-            this.cbRAM.TabIndex = 19;
-            // 
-            // cbHDD
-            // 
-            this.cbHDD.FormattingEnabled = true;
-            this.cbHDD.Location = new System.Drawing.Point(553, 212);
-            this.cbHDD.Name = "cbHDD";
-            this.cbHDD.Size = new System.Drawing.Size(121, 20);
-            this.cbHDD.TabIndex = 20;
-            // 
-            // cbSSD
-            // 
-            this.cbSSD.FormattingEnabled = true;
-            this.cbSSD.Location = new System.Drawing.Point(553, 256);
-            this.cbSSD.Name = "cbSSD";
-            this.cbSSD.Size = new System.Drawing.Size(121, 20);
-            this.cbSSD.TabIndex = 21;
-            // 
-            // cbPSU
-            // 
-            this.cbPSU.FormattingEnabled = true;
-            this.cbPSU.Location = new System.Drawing.Point(553, 300);
-            this.cbPSU.Name = "cbPSU";
-            this.cbPSU.Size = new System.Drawing.Size(121, 20);
-            this.cbPSU.TabIndex = 22;
-            // 
-            // cbCASE
-            // 
-            this.cbCASE.FormattingEnabled = true;
-            this.cbCASE.Location = new System.Drawing.Point(553, 344);
-            this.cbCASE.Name = "cbCASE";
-            this.cbCASE.Size = new System.Drawing.Size(121, 20);
-            this.cbCASE.TabIndex = 23;
-            // 
-            // cbCOOLER
-            // 
-            this.cbCOOLER.FormattingEnabled = true;
-            this.cbCOOLER.Location = new System.Drawing.Point(553, 388);
-            this.cbCOOLER.Name = "cbCOOLER";
-            this.cbCOOLER.Size = new System.Drawing.Size(121, 20);
-            this.cbCOOLER.TabIndex = 24;
-            // 
-            // lblCPU
-            // 
-            this.lblCPU.AutoSize = true;
-            this.lblCPU.Location = new System.Drawing.Point(436, 39);
-            this.lblCPU.Name = "lblCPU";
-            this.lblCPU.Size = new System.Drawing.Size(30, 12);
-            this.lblCPU.TabIndex = 25;
-            this.lblCPU.Text = "CPU";
-            // 
-            // lblMB
-            // 
-            this.lblMB.AutoSize = true;
-            this.lblMB.Location = new System.Drawing.Point(436, 83);
-            this.lblMB.Name = "lblMB";
-            this.lblMB.Size = new System.Drawing.Size(30, 12);
-            this.lblMB.TabIndex = 26;
-            this.lblMB.Text = "M/B";
-            // 
-            // lblVGA
-            // 
-            this.lblVGA.AutoSize = true;
-            this.lblVGA.Location = new System.Drawing.Point(436, 127);
-            this.lblVGA.Name = "lblVGA";
-            this.lblVGA.Size = new System.Drawing.Size(30, 12);
-            this.lblVGA.TabIndex = 27;
-            this.lblVGA.Text = "VGA";
+            this.lblPSU.AutoSize = true;
+            this.lblPSU.Location = new System.Drawing.Point(436, 303);
+            this.lblPSU.Name = "lblPSU";
+            this.lblPSU.Size = new System.Drawing.Size(29, 12);
+            this.lblPSU.TabIndex = 31;
+            this.lblPSU.Text = "PSU";
             // 
             // lblSSD
             // 
@@ -324,45 +245,125 @@
             this.lblRAM.TabIndex = 28;
             this.lblRAM.Text = "RAM";
             // 
-            // lblCOOLER
+            // lblVGA
             // 
-            this.lblCOOLER.AutoSize = true;
-            this.lblCOOLER.Location = new System.Drawing.Point(436, 391);
-            this.lblCOOLER.Name = "lblCOOLER";
-            this.lblCOOLER.Size = new System.Drawing.Size(55, 12);
-            this.lblCOOLER.TabIndex = 33;
-            this.lblCOOLER.Text = "COOLER";
+            this.lblVGA.AutoSize = true;
+            this.lblVGA.Location = new System.Drawing.Point(436, 127);
+            this.lblVGA.Name = "lblVGA";
+            this.lblVGA.Size = new System.Drawing.Size(30, 12);
+            this.lblVGA.TabIndex = 27;
+            this.lblVGA.Text = "VGA";
             // 
-            // lblCASE
+            // lblMB
             // 
-            this.lblCASE.AutoSize = true;
-            this.lblCASE.Location = new System.Drawing.Point(436, 347);
-            this.lblCASE.Name = "lblCASE";
-            this.lblCASE.Size = new System.Drawing.Size(38, 12);
-            this.lblCASE.TabIndex = 32;
-            this.lblCASE.Text = "CASE";
+            this.lblMB.AutoSize = true;
+            this.lblMB.Location = new System.Drawing.Point(436, 83);
+            this.lblMB.Name = "lblMB";
+            this.lblMB.Size = new System.Drawing.Size(30, 12);
+            this.lblMB.TabIndex = 26;
+            this.lblMB.Text = "M/B";
             // 
-            // lblPSU
+            // lblCPU
             // 
-            this.lblPSU.AutoSize = true;
-            this.lblPSU.Location = new System.Drawing.Point(436, 303);
-            this.lblPSU.Name = "lblPSU";
-            this.lblPSU.Size = new System.Drawing.Size(29, 12);
-            this.lblPSU.TabIndex = 31;
-            this.lblPSU.Text = "PSU";
+            this.lblCPU.AutoSize = true;
+            this.lblCPU.Location = new System.Drawing.Point(436, 39);
+            this.lblCPU.Name = "lblCPU";
+            this.lblCPU.Size = new System.Drawing.Size(30, 12);
+            this.lblCPU.TabIndex = 25;
+            this.lblCPU.Text = "CPU";
+            // 
+            // cbCOOLER
+            // 
+            this.cbCOOLER.FormattingEnabled = true;
+            this.cbCOOLER.Location = new System.Drawing.Point(553, 388);
+            this.cbCOOLER.Name = "cbCOOLER";
+            this.cbCOOLER.Size = new System.Drawing.Size(121, 20);
+            this.cbCOOLER.TabIndex = 24;
+            // 
+            // cbCASE
+            // 
+            this.cbCASE.FormattingEnabled = true;
+            this.cbCASE.Location = new System.Drawing.Point(553, 344);
+            this.cbCASE.Name = "cbCASE";
+            this.cbCASE.Size = new System.Drawing.Size(121, 20);
+            this.cbCASE.TabIndex = 23;
+            // 
+            // cbPSU
+            // 
+            this.cbPSU.FormattingEnabled = true;
+            this.cbPSU.Location = new System.Drawing.Point(553, 300);
+            this.cbPSU.Name = "cbPSU";
+            this.cbPSU.Size = new System.Drawing.Size(121, 20);
+            this.cbPSU.TabIndex = 22;
+            // 
+            // cbSSD
+            // 
+            this.cbSSD.FormattingEnabled = true;
+            this.cbSSD.Location = new System.Drawing.Point(553, 256);
+            this.cbSSD.Name = "cbSSD";
+            this.cbSSD.Size = new System.Drawing.Size(121, 20);
+            this.cbSSD.TabIndex = 21;
+            // 
+            // cbHDD
+            // 
+            this.cbHDD.FormattingEnabled = true;
+            this.cbHDD.Location = new System.Drawing.Point(553, 212);
+            this.cbHDD.Name = "cbHDD";
+            this.cbHDD.Size = new System.Drawing.Size(121, 20);
+            this.cbHDD.TabIndex = 20;
+            // 
+            // cbRAM
+            // 
+            this.cbRAM.FormattingEnabled = true;
+            this.cbRAM.Location = new System.Drawing.Point(553, 168);
+            this.cbRAM.Name = "cbRAM";
+            this.cbRAM.Size = new System.Drawing.Size(121, 20);
+            this.cbRAM.TabIndex = 19;
+            // 
+            // cbVGA
+            // 
+            this.cbVGA.FormattingEnabled = true;
+            this.cbVGA.Location = new System.Drawing.Point(553, 124);
+            this.cbVGA.Name = "cbVGA";
+            this.cbVGA.Size = new System.Drawing.Size(121, 20);
+            this.cbVGA.TabIndex = 18;
+            // 
+            // cbMB
+            // 
+            this.cbMB.FormattingEnabled = true;
+            this.cbMB.Location = new System.Drawing.Point(553, 80);
+            this.cbMB.Name = "cbMB";
+            this.cbMB.Size = new System.Drawing.Size(121, 20);
+            this.cbMB.TabIndex = 17;
+            // 
+            // cbCPU
+            // 
+            this.cbCPU.FormattingEnabled = true;
+            this.cbCPU.Location = new System.Drawing.Point(553, 36);
+            this.cbCPU.Name = "cbCPU";
+            this.cbCPU.Size = new System.Drawing.Size(121, 20);
+            this.cbCPU.TabIndex = 16;
+            // 
+            // cbMatType
+            // 
+            this.cbMatType.FormattingEnabled = true;
+            this.cbMatType.Location = new System.Drawing.Point(130, 38);
+            this.cbMatType.Name = "cbMatType";
+            this.cbMatType.Size = new System.Drawing.Size(121, 20);
+            this.cbMatType.TabIndex = 34;
             // 
             // FrmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 609);
+            this.Controls.Add(this.cbMatType);
             this.Controls.Add(this.lblImg);
             this.Controls.Add(this.btnImgSearch);
             this.Controls.Add(this.pbProImg);
             this.Controls.Add(this.tbSpec);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbPrice);
-            this.Controls.Add(this.tbMatType);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblMatType);
@@ -387,7 +388,6 @@
         private System.Windows.Forms.Label lblMatType;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox tbMatType;
         private System.Windows.Forms.TextBox tbPrice;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbSpec;
@@ -414,5 +414,6 @@
         private System.Windows.Forms.Label lblVGA;
         private System.Windows.Forms.Label lblMB;
         private System.Windows.Forms.Label lblCPU;
+        private System.Windows.Forms.ComboBox cbMatType;
     }
 }

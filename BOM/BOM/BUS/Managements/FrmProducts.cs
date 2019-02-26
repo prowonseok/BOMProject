@@ -16,6 +16,7 @@ namespace BOM.BUS.Managements
     {
         ProductsDAO pdao = new ProductsDAO();
         MatDAO mdao = new MatDAO();
+        DataTable dt;
 
         byte[] imageArr;
         public FrmProducts()
@@ -25,47 +26,47 @@ namespace BOM.BUS.Managements
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            pdao.InsertProducts(tbMatType.Text, int.Parse(tbPrice.Text), tbName.Text, tbSpec.Text, imageArr);
+            pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text), int.Parse(tbPrice.Text), tbName.Text, tbSpec.Text, imageArr);
         }
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-            DataTable dt = mdao.SelectMat();
-
-            foreach (DataRow item in dt.Rows)
-            {
-                switch (int.Parse(item["Mat_Type_No"].ToString()))
+            using (DataTable dt = mdao.SelectMat())
+            { 
+                foreach (DataRow item in dt.Rows)
                 {
-                    case 1000:
-                        cbCPU.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 2000:
-                        cbMB.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 3000:
-                        cbVGA.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 4000:
-                        cbRAM.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 5000:
-                        cbHDD.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 6000:
-                        cbSSD.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 7000:
-                        cbPSU.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 8000:
-                        cbCASE.Items.Add(item["Mat_Name"].ToString());
-                        break;
-                    case 9000:
-                        cbCOOLER.Items.Add(item["Mat_Name"].ToString());
-                        break;
+                    switch (int.Parse(item["Mat_Type_No"].ToString()))
+                    {
+                        case 1000:
+                            cbCPU.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 2000:
+                            cbMB.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 3000:
+                            cbVGA.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 4000:
+                            cbRAM.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 5000:
+                            cbHDD.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 6000:
+                            cbSSD.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 7000:
+                            cbPSU.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 8000:
+                            cbCASE.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                        case 9000:
+                            cbCOOLER.Items.Add(item["Mat_Name"].ToString());
+                            break;
+                    }
                 }
             }
-
             cbCPU.Text = string.Empty;
             cbMB.Text = string.Empty;
             cbVGA.Text = string.Empty;
@@ -85,6 +86,12 @@ namespace BOM.BUS.Managements
             cbPSU.SelectedIndexChanged += ComboBoxHandler;
             cbCASE.SelectedIndexChanged += ComboBoxHandler;
             cbCOOLER.SelectedIndexChanged += ComboBoxHandler;
+
+            dt = pdao.ProSelectFromMat();
+            foreach (DataRow item in dt.Rows)
+            {
+                cbMatType.Items.Add(item["Mat_Type_Category"].ToString());
+            }
         }
 
         private void btnImgSearch_Click(object sender, EventArgs e)

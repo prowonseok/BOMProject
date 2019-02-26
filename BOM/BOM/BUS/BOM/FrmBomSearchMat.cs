@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOM.BUS.BOM;
 using BOM.VO;
 
 namespace BOM
@@ -15,20 +16,35 @@ namespace BOM
     {
         bool isFirst =true;
         DAO.BomDAO bDao;
+        DataTable dt;
+        DataTable dtClone;
+        FrmBomInfo fbi;
 
+        /// <summary>
+        /// 생성자
+        /// </summary>
         public FrmBomSearchMat()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Form이 Load될 때 발생하는 이벤트로 Materials Table 모든 데이터를 그리드뷰에 출력
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmBomSearchMat_Load(object sender, EventArgs e)
         {
             bDao = new DAO.BomDAO();
-            dgvInfo.DataSource = bDao.SelectBom();
+            fbi = new FrmBomInfo();
+            dt = bDao.SelectBom();
+            dgvInfo.DataSource = fbi.CloneDataTable(dt, dtClone);
             DisplayGridview();
-
         }
 
+        /// <summary>
+        /// 그리드뷰 설정 메서드
+        /// </summary>
         private void DisplayGridview()
         {
             dgvInfo.Columns.RemoveAt(6);
@@ -47,6 +63,11 @@ namespace BOM
             dgvInfo.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
+        /// <summary>
+        /// 등록 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmBomDetailInfo fbdi = (FrmBomDetailInfo)Owner;
@@ -56,6 +77,11 @@ namespace BOM
             this.Close();
         }
 
+        /// <summary>
+        /// 취소 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             FrmBomDetailInfo fba = (FrmBomDetailInfo)Owner;
@@ -63,6 +89,11 @@ namespace BOM
             this.Close();
         }
 
+        /// <summary>
+        /// 검색 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cbbType.Text))
@@ -111,6 +142,11 @@ namespace BOM
 
             }
         }
+
+        /// <summary>
+        /// 검색 시 선택 항목을 최상단으로 올려주는 메서드
+        /// </summary>
+        /// <param name="item"></param>
         private void SearchMat(DataGridViewRow item)
         {
             dgvInfo.FirstDisplayedScrollingRowIndex = item.Index;

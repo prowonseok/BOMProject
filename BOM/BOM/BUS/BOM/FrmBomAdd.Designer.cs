@@ -47,6 +47,7 @@
             this.txtChildMatLevel = new System.Windows.Forms.TextBox();
             this.lblChildMatLevel = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.trvMat = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // lblChildMatNo
@@ -99,6 +100,7 @@
             this.txtChildMatEA.Name = "txtChildMatEA";
             this.txtChildMatEA.Size = new System.Drawing.Size(100, 21);
             this.txtChildMatEA.TabIndex = 6;
+            this.txtChildMatEA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChildMatEA_KeyPress);
             // 
             // lblChildMatEA
             // 
@@ -216,11 +218,19 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // trvMat
+            // 
+            this.trvMat.Location = new System.Drawing.Point(507, 12);
+            this.trvMat.Name = "trvMat";
+            this.trvMat.Size = new System.Drawing.Size(316, 266);
+            this.trvMat.TabIndex = 19;
+            // 
             // FrmBomAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 312);
+            this.ClientSize = new System.Drawing.Size(851, 312);
+            this.Controls.Add(this.trvMat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtChildMatLevel);
             this.Controls.Add(this.lblChildMatLevel);
@@ -269,5 +279,6 @@
         private System.Windows.Forms.TextBox txtChildMatLevel;
         private System.Windows.Forms.Label lblChildMatLevel;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TreeView trvMat;
     }
 }

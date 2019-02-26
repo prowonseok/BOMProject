@@ -29,14 +29,14 @@ namespace BOM.BUS.BOM
         #endregion
 
         /// <summary>
-        /// 메인화면에서 매개변수 없이 BOM화면 버튼 클릭 시
+        /// 메인화면에서 매개변수 없이 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         public FrmBomAdd() {
             InitializeComponent();
         }
         
         /// <summary>
-        /// 그리드뷰에서 BOM화면 버튼 클릭 시
+        /// 그리드뷰에서 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials">부모 자재가 될 자재</param>
         public FrmBomAdd(MaterialsVO materials) : this()
@@ -57,9 +57,34 @@ namespace BOM.BUS.BOM
             //FrmBomAllMatInfo Form에서 등록인지 취소인지 판단
             if (canOrAdd)
             {
+                LevelChange(matLevel.ToString(), txtParentMatLevel);
                 this.txtParentMatNo.Text = matNo.ToString();
-                this.txtParentMatLevel.Text = matLevel.ToString();
-                this.txtParentMatName.Text = matName; 
+                this.txtParentMatName.Text = matName;
+
+                ViewTreeview();
+            }
+        }
+
+        /// <summary>
+        /// 숫자 Level(String형)을 입력하여 원재료, 반제품, 완제품으로 출력 변경하는 메서드
+        /// </summary>
+        /// <param name="level">입력하는 숫자 Level</param>
+        /// <param name="textBox">값은 변경할 텍스트 박스</param>
+        private void LevelChange(string level, TextBox textBox)
+        {
+            switch (level)
+            {
+                case "0":
+                    textBox.Text = "원재료";
+                    break;
+                case "1":
+                    textBox.Text = "반제품";
+                    break;
+                case "2":
+                    textBox.Text = "완제품";
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -77,7 +102,21 @@ namespace BOM.BUS.BOM
             }
             else
             {   //모자재의 Level 값보다 낮은 Level의 값만 불러오기 위해 Level값도 매개변수로 지정
-                int sendLevel = Int32.Parse(txtParentMatLevel.Text);
+                int sendLevel = 0;
+                switch (txtParentMatLevel.Text)
+                {
+                    case "완제품":
+                        sendLevel = 2;
+                        break;
+                    case "반제품":
+                        sendLevel = 1;
+                        break;
+                    case "원재료":
+                        sendLevel = 0;
+                        break;
+                    default:
+                        break;
+                }
                 int sendNo = Int32.Parse(txtParentMatNo.Text);
                 FrmBomAllMatInfo fbami = new FrmBomAllMatInfo(sendLevel, sendNo);
                 fbami.Owner = this; //FrmBomAllMatInfo Form에서 값을 받아오기 위해 Owner를 지정
@@ -86,7 +125,7 @@ namespace BOM.BUS.BOM
                 if (canOrAdd)
                 {
                     this.txtChildMatNo.Text = matNo.ToString();
-                    this.txtChildMatLevel.Text = matLevel.ToString();
+                    LevelChange(matLevel.ToString(), txtChildMatLevel);
                     this.txtChildMatName.Text = matName; 
                 }
             }
@@ -104,14 +143,32 @@ namespace BOM.BUS.BOM
                 //BOM 조회에서 등록으로 이동하는 경우
                 txtParentMatNo.Text = materials.Mat_No.ToString();
                 txtParentMatName.Text = materials.Mat_Name;
-                txtParentMatLevel.Text = materials.Mat_Level.ToString();
+                LevelChange(materials.Mat_Level.ToString(), txtParentMatLevel);
+                ViewTreeview();
             }
             catch (Exception)
             {
                 //매개변수 값 없이 BOM등록 이동하는 경우
-                
             }
+        }
 
+        /// <summary>
+        /// 부모 자재에 대한 자식 자재들을 트리뷰로 출력
+        /// </summary>
+        private void ViewTreeview()
+        {
+            trvMat.Nodes.Clear();
+            bDao = new DAO.BomDAO();
+            TreeNode tNode = new TreeNode(txtParentMatName.Text);
+            trvMat.Nodes.Add(tNode);
+            //부모 자재명을 보내서 자식 자재와 필요 자재 개수를 출력
+            DataTable dt = bDao.SelectChildTreeview(txtParentMatName.Text);
+            //자식 자재들을 트리뷰의 tNode에 ChildNode로 추가
+            foreach (DataRow item in dt.Rows)
+            {
+                TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()));
+                tNode.Nodes.Add(cNode);
+            }
         }
 
         /// <summary>
@@ -157,7 +214,7 @@ namespace BOM.BUS.BOM
                         {
                             MessageBox.Show("저장 성공!");
                             txtChildMatNo.Text = txtChildMatName.Text = txtChildMatLevel.Text = txtChildMatEA.Text = null;
-                            Close();
+                            ViewTreeview();
                         }
                         else
                         {
@@ -176,6 +233,20 @@ namespace BOM.BUS.BOM
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// 수량 텍스트가 변경될때마다 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">입력된 값</param>
+        private void txtChildMatEA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //입력된 값이 숫자, BackSpace키가 아닐 경우 입력 방지
+            if (!(char.IsNumber(e.KeyChar)||e.KeyChar==Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
