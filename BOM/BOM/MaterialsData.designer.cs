@@ -102,13 +102,6 @@ namespace BOM
 			return ((ISingleResult<Bom_JW_MatInfoViewResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.BOM_JW_MOLLA")]
-		public ISingleResult<BOM_JW_MOLLAResult> BOM_JW_MOLLA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MatNama", DbType="NVarChar(50)")] string matNama)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matNama);
-			return ((ISingleResult<BOM_JW_MOLLAResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Bom_JW_MatUpdate")]
 		public int Bom_JW_MatUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string matUpdateName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> offNo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string matManufactur, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string matName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matCost, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matLevel)
 		{
@@ -121,6 +114,13 @@ namespace BOM
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matName);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.BOM_JW_MOLLA")]
+		public ISingleResult<BOM_JW_MOLLAResult> BOM_JW_MOLLA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MatName", DbType="NVarChar(50)")] string matName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matName);
+			return ((ISingleResult<BOM_JW_MOLLAResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -903,14 +903,14 @@ namespace BOM
 	public partial class BOM_JW_MOLLAResult
 	{
 		
-		private string _Mat_Type_No;
+		private int _Mat_Type_No;
 		
 		public BOM_JW_MOLLAResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mat_Type_No", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Mat_Type_No
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mat_Type_No", DbType="Int NOT NULL")]
+		public int Mat_Type_No
 		{
 			get
 			{

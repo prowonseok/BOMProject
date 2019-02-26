@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,8 @@ namespace BOM.BUS.Sales
 
         private void SalesInfo()// 주문내역을 상세하게 보여주는 메서드
         {
+            //SqlParameter[] sqlParameters = new SqlParameter[1];
+            //sqlParameters[0] = new SqlParameter("@Order_No", thisContantsIndex);
             DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_ProSelect2_Procedure", null);
 
             lblOrderNo.Text = dataTable.Rows[thisContantsIndex]["Cus_Order_OrderNo"].ToString();
@@ -54,7 +57,15 @@ namespace BOM.BUS.Sales
             int price = Int32.Parse(dataTable.Rows[thisContantsIndex]["Cus_Order_Price"].ToString());
             lblDate.Text = (DateTime.Parse(dataTable.Rows[thisContantsIndex]["Cus_Order_Date"].ToString()).ToShortDateString()).ToString();
             lblEmpName.Text = dataTable.Rows[thisContantsIndex]["Emp_Name"].ToString();
-            lblProductCount.Text = dataTable.Rows[thisContantsIndex]["Mat_No"].ToString() + " 개";
+            if (dataTable.Rows[thisContantsIndex]["Mat_No"].ToString() == "")
+            {
+                lblProductCount.Text = "0" + " 개";
+            }
+            else
+            {
+                lblProductCount.Text = dataTable.Rows[thisContantsIndex]["Mat_No"].ToString() + " 개";
+            }
+            
             lblPhone.Text = dataTable.Rows[thisContantsIndex]["Cus_Phone"].ToString();
             lblAddr.Text = dataTable.Rows[thisContantsIndex]["Cus_Addr"].ToString();
             lblOrderPrice.Text = String.Format("{0:##,##0}", price) + " 원";

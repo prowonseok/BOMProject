@@ -155,22 +155,21 @@ namespace BOM.BUS.Sales
 
         }                 
 
-        private void btnConfirm_Click(object sender, EventArgs e) //라디오버튼 판매중일때 그리드뷰 셀체크한 목록 출하지시서로 정보 넘겨주면서 폼띄워주는 메서드
+        private void btnConfirm_Click(object sender, EventArgs e) //라디오버튼 판매중일때 그리드뷰 셀 체크한 목록 출하지시서로 정보 넘겨주면서 폼띄워주는 메서드
         {
-            int count = 0; // 체크목록 없을경우 예외처리에 필요한 변수
+            int NoCheckCount = 0; // 체크목록 없을경우 예외처리에 필요한 변수
             int checkRowIndex = 0;// 체크된 로우의 인덱스 값
             int numOfRepit = 0; // 로우 반복횟수.
             foreach (DataGridViewRow item in dataGridView1.Rows)
             {
-                numOfRepit++;
+                numOfRepit++;                
                 if (Convert.ToBoolean(item.Cells[0].Value))
                 {
-                    count++;
-                    checkRowIndex = numOfRepit;
+                    NoCheckCount++;                    
                 }               
             }
-
-            if (count == 0)
+            checkRowIndex = Int32.Parse(dataGridView1.Rows[checkRowIndex].Cells[1].Value.ToString());
+            if (NoCheckCount == 0)
             {
                 MessageBox.Show("체크한 목록이 없습니다.");
                 return;
@@ -180,7 +179,7 @@ namespace BOM.BUS.Sales
                 Shipment s = new Shipment(checkRowIndex);
                 s.Show();
             }
-            count = 0;
+            NoCheckCount = 0;
 
         }   
 

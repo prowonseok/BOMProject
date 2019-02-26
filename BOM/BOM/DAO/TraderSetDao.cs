@@ -137,10 +137,11 @@ namespace BOM.DAO
         {            
             MaterialsDataDataContext mddc = new MaterialsDataDataContext();
 
+            //mddc.BOM_JW_MOLLA()
             int a = 0;
             foreach (var item in mddc.BOM_JW_MOLLA(matTypeName))
             {
-                a= Int32.Parse(item.Mat_Type_No);
+                a= Int32.Parse(item.Mat_Type_No.ToString());
             }
             
             return a.ToString();

@@ -219,7 +219,7 @@ namespace BOM.BUS.Sales
         private void comboProTypeList2_DropDownClosed(object sender, EventArgs e)
         {
             if (comboProTypeList2.SelectedIndex != -1)
-            {
+            {               
                 modifyMatTypeNo = new TraderSetDao().GetMatTypeNo(comboProTypeList2.SelectedItem.ToString());
             }        }
 

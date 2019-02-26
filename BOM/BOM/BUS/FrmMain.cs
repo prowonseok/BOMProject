@@ -90,6 +90,7 @@ namespace BOM.BUS
             }
             else
             {
+                
                 SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
                 ssd.Show();
             }

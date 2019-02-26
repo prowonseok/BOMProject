@@ -44,12 +44,6 @@
       <Column Name="Mat_Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.BOM_JW_MOLLA" Method="BOM_JW_MOLLA">
-    <Parameter Name="MatNama" Parameter="matNama" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="BOM_JW_MOLLAResult">
-      <Column Name="Mat_Type_No" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Bom_JW_MatUpdate" Method="Bom_JW_MatUpdate">
     <Parameter Name="matUpdateName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="offNo" Type="System.Int32" DbType="Int" />
@@ -63,5 +57,11 @@
   <Function Name="dbo.Bom_JW_MatDelete" Method="Bom_JW_MatDelete">
     <Parameter Name="MatName" Parameter="matName" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BOM_JW_MOLLA" Method="BOM_JW_MOLLA">
+    <Parameter Name="MatName" Parameter="matName" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="BOM_JW_MOLLAResult">
+      <Column Name="Mat_Type_No" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>
