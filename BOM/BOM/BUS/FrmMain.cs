@@ -30,8 +30,11 @@ namespace BOM.BUS
 
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            FrmBomInfo fbi = new FrmBomInfo();
-            fbi.ShowDialog();
+            FrmBomInfoControl fbic = new FrmBomInfoControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fbic);
+            //FrmBomInfo fbi = new FrmBomInfo();
+            //fbi.ShowDialog();
         }
 
         private void btnManage_Click(object sender, EventArgs e)
@@ -112,6 +115,18 @@ namespace BOM.BUS
 
         {
             Test();
+        }
+
+        private void 상품관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmMainControl fmc = new FrmMainControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fmc);
         }
     }
 }

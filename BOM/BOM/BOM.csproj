@@ -173,6 +173,18 @@
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="DAO\OfferOrderDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
+    <Compile Include="FrmBomInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmBomInfoControl.Designer.cs">
+      <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmMainControl.Designer.cs">
+      <DependentUpon>FrmMainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="VO\OffererOrderViewVO.cs" />
     <Compile Include="VO\OffererOrderVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
@@ -320,6 +332,12 @@
     <None Include="MaterialsData.dbml.layout">
       <DependentUpon>MaterialsData.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="FrmBomInfoControl.resx">
+      <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMainControl.resx">
+      <DependentUpon>FrmMainControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
