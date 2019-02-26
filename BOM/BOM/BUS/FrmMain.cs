@@ -13,6 +13,7 @@ namespace BOM.BUS
 {
     public partial class FrmMain : Form
     {
+        Test t;
         public FrmMain()
         {
             InitializeComponent();
@@ -20,8 +21,11 @@ namespace BOM.BUS
 
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            FrmBomInfo fbi = new FrmBomInfo();
-            fbi.ShowDialog();
+            t = new Test();
+            panel1.Controls.Add(t);
+
+            //FrmBomInfo fbi = new FrmBomInfo();
+            //fbi.ShowDialog();
         }
 
         private void btnManage_Click(object sender, EventArgs e)
