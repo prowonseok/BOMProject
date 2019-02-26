@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomerApp.VO;
 
@@ -13,8 +6,8 @@ namespace CustomerApp.BUS
 {
     public partial class FrmMyInfo : Form
     {
-        CustomerVO customer;
-        FrmJoin joinForm;
+        private CustomerVO customer;
+        private FrmJoin joinForm;
 
         public FrmMyInfo(CustomerVO customer)
         {
@@ -27,6 +20,7 @@ namespace CustomerApp.BUS
             Text = "Goodee PC 내 정보";
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             CenterToScreen();
+            MaximizeBox = false;
 
             txtAddr.ReadOnly = true;
             txtEmailID.ReadOnly = true;

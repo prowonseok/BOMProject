@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomerApp.VO;
 
@@ -15,14 +11,15 @@ namespace CustomerApp.BUS
 {
     public partial class FrmSearchIDPW : Form
     {
-        double timeCount = 180;
-        DateTime time = new DateTime();
+        private double timeCount = 180;
+        private DateTime time = new DateTime();
 
-        CustomerVO customer;
-        List<CustomerVO> cusList;
-        Random rand;
-        string certiNum;
-        string txt;
+        private CustomerVO customer;
+        private List<CustomerVO> cusList;
+        private Random rand;
+        private string certiNum;
+        private string txt;
+
         public FrmSearchIDPW(List<CustomerVO> cusList, string txt)
         {
             InitializeComponent();
@@ -34,6 +31,7 @@ namespace CustomerApp.BUS
         {
             CenterToScreen();
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            MaximizeBox = false;
             Text = "Goodee PC " + txt;
             btnSearchIDPW.Text = txt;
             btnSearchIDPW.AutoSize = true;

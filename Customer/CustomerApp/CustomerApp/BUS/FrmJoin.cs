@@ -63,6 +63,7 @@ namespace CustomerApp.BUS
         {
             CenterToScreen();
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            MaximizeBox = false;
             cusList.Clear();
             cusList = cusDAO.SelectAll();
 
@@ -231,6 +232,9 @@ namespace CustomerApp.BUS
             GetSubmitEnable();
         }
 
+        /// <summary>
+        /// 회원가입 버튼 Enable 조건에 따라 변환
+        /// </summary>
         private void GetSubmitEnable()
         {
             if (boolName && boolId && boolPw && boolChkPw && boolEmail && boolPhone && !string.IsNullOrEmpty(txtAddr.Text)) btnSubmit.Enabled = true;

@@ -234,3 +234,50 @@ CREATE PROCEDURE [dbo].[InsertAS]
 	@Emp_No int
 AS
 	INSERT INTO [A/S] (Cus_ID, Cus_Order_No, Pro_No, AS_Content, AS_StartDate, Emp_No) values (@Cus_ID, @Cus_Order_No, @Pro_No, @AS_Content, @AS_StartDate, @Emp_No);
+
+-- A/S SELECT
+CREATE PROCEDURE [dbo].[SelectAllAS]
+	@Cus_No int
+AS
+	SELECT [as].AS_No, [as].Cus_Order_No, [as].Emp_No, [as].Pro_No, [as].AS_Content, [as].AS_Price,
+	[as].AS_StartDate, [as].AS_EndDate, [as].Cus_ID, [pro].Pro_Name, [cus].Cus_Name, [emp].Emp_Name
+	from [A/S] [as] inner join Products [pro] on [as].Pro_No = [pro].Pro_No
+	inner join Customers [cus] on  [as].Cus_ID = [cus].Cus_No
+	inner join Employees [emp] on [as].Emp_No = [emp].Emp_No
+	where [as].Cus_ID = @Cus_No;
+
+-- Order_OrderNo 최대값 가져오기
+CREATE PROCEDURE [dbo].[GetOrder_OrderNo_ByCus]
+	@Cus_No int
+AS
+	SELECT max(Cus_Order_OrderNo) AS Max_Order_OrderNo from Customers_Order where Cus_No = @Cus_No;
+
+
+-- STORED PROCEDURE TEST
+
+-- SELECT
+exec [SelectAllCusID];
+exec [SelectAllPro];
+exec [SelectAllCus];
+exec [SelectProDetail];
+exec [SelectOrderByCusID] 5, 1
+exec [SelectCart] 5;
+exec [SelectProCount] 5;
+exec [SelectBuyPro] 5;
+exec [SelectBuyOrderNo] 5, 5;
+exec [GetOrder_OrderNo_ByCus] 5;
+
+-- INSERT
+exec [InsertCus] 'testID', '테스트', '010-2525-6464', '서울특별시 금천구 가산동 448 대륭테크노타운3차', 'Qlalfqjsgh1!', 'test@naver.com';
+exec [InsertSingleOrder] 1, 5, 5, '2019-02-27', 4, 50000;
+exec [InsertCartOrder] 5, 5, 1, '2019-02-27', 50000, 3, 1;
+exec [InsertCart] 5, 1, 5, 3, '2019-02-27', 150000;
+
+-- UPDATE
+exec [UpdateCus] 'testID', '주소 수정 테스트', 'Qlalfqjsgh2@', null, null
+exec [CancelOrder] 153;
+exec [SetSaveNo] 5, 2;
+
+-- DELETE
+exec [DeleteCart] 5, 2
+exec [InsertAS] 5, 153, 5, 'AS신청 프로시저 테스트', '2019-02-27', 1;

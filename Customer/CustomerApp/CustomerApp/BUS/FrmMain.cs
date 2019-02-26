@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomerApp.VO;
 using CustomerApp.DAO;
@@ -17,26 +12,27 @@ namespace CustomerApp.BUS
     public partial class FrmMain : Form
     {
         public static bool loginState = false;
+
         private static string path = string.Empty;
         
-        ProductsDAO productsDAO = new ProductsDAO();
-        OrderDAO orderDAO = new OrderDAO();
-        CartDAO cartDAO = new CartDAO();
-        AsDAO asDAO = new AsDAO();
-
-        OrderVO orderVO;
-        CustomerVO customer;
-
-        List<ProductVO> proList; // 실시간 특성상 로드 이벤트에 두는게 좋을 것 같음
-        List<CartVO> cartList = new List<CartVO>();
-        List<OrderVO> cartOrders = new List<OrderVO>();
-        List<OrderVO> orderRecords = new List<OrderVO>();
-        List<OrderVO> asOrderList = new List<OrderVO>();
-        List<AsVO> asList = new List<AsVO>();
-        List<OrderVO> billOrders = new List<OrderVO>();
-
-        FrmLogin loginForm;
-        ListViewItem selectItem;
+        private ProductsDAO productsDAO = new ProductsDAO();
+        private OrderDAO orderDAO = new OrderDAO();
+        private CartDAO cartDAO = new CartDAO();
+        private AsDAO asDAO = new AsDAO();
+        
+        private OrderVO orderVO;
+        private CustomerVO customer;
+        
+        private List<ProductVO> proList;
+        private List<CartVO> cartList = new List<CartVO>();
+        private List<OrderVO> cartOrders = new List<OrderVO>();
+        private List<OrderVO> orderRecords = new List<OrderVO>();
+        private List<OrderVO> asOrderList = new List<OrderVO>();
+        private List<AsVO> asList = new List<AsVO>();
+        private List<OrderVO> billOrders = new List<OrderVO>();
+        
+        private FrmLogin loginForm;
+        private ListViewItem selectItem;
 
         public FrmMain()
         {
@@ -48,6 +44,7 @@ namespace CustomerApp.BUS
         {
             CenterToScreen();
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            MaximizeBox = false;
             panBottom.Controls.AddRange(new Control[] { spCont, gbxBuy, gbxAS, gbxCart, gbxBuyRecord });
             spCont.Panel2.Controls.Add(gbxBuy);
 
@@ -291,7 +288,7 @@ namespace CustomerApp.BUS
             cartList.Clear();
             SetGviewCart();
             cartList = cartDAO.Select(customer.No);
-            GviewCartColSet();
+            rdoSaveNo.Checked = false;
             rdoSaveNo.Checked = true;
         }
 
@@ -364,7 +361,7 @@ namespace CustomerApp.BUS
             orderRecords.Clear();
             orderRecords = orderDAO.SelectOrderByCusID(customer.No);
             gViewBuy.BackgroundColor = Color.White;
-            GviewBuyColSet();
+            rdoOrderNo.Checked = false;
             rdoOrderNo.Checked = true;
         }
 
@@ -421,6 +418,63 @@ namespace CustomerApp.BUS
             cbxCol.HeaderText = headerTxt;
             gView.Columns.Add(cbxCol);
             gView.Columns[name].DisplayIndex = 0;
+        }
+
+        /// <summary>
+        /// AS 그리드 뷰 기본 세팅
+        /// </summary>
+        private void SetGviewAS()
+        {
+            gViewAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gViewAS.ScrollBars = ScrollBars.Vertical;
+
+            asList.Clear();
+            asList = asDAO.SelectAllAS(customer.No);
+            gViewAS.DataSource = null;
+            gViewAS.DataSource = asList;
+            GviewAScolSet();
+            rdoAsDate.Checked = true;
+        }
+
+        /// <summary>
+        /// AS 그리드 뷰의 컬럼 세팅
+        /// </summary>
+        private void GviewAScolSet()
+        {
+            gViewAS.Columns["CusNo"].Visible = false;
+            gViewAS.Columns["ASNo"].Visible = false;
+            gViewAS.Columns["EmpNo"].Visible = false;
+            gViewAS.Columns["ProNo"].Visible = false;
+
+            gViewAS.Columns["OrderNo"].HeaderText = "주문번호";
+            gViewAS.Columns["ASContent"].HeaderText = "고장내용";
+            gViewAS.Columns["AsPrice"].HeaderText = "A/S 가격";
+            gViewAS.Columns["AsStartDate"].HeaderText = "A/S 신청날짜";
+            gViewAS.Columns["AsEndDate"].HeaderText = "A/S 종료날짜";
+            gViewAS.Columns["ProName"].HeaderText = "상품이름";
+            gViewAS.Columns["CusName"].HeaderText = "고객이름";
+            gViewAS.Columns["EmpName"].HeaderText = "담당자";
+
+            gViewAS.Columns["AsStartDate"].DefaultCellStyle.Format = "d";
+            gViewAS.Columns["AsEndDate"].DefaultCellStyle.Format = "d";
+            gViewAS.Columns["AsPrice"].DefaultCellStyle.Format = "c";
+
+            gViewAS.Columns["CusName"].DisplayIndex = 0;
+            gViewAS.Columns["ProName"].DisplayIndex = 2;
+
+            gViewAS.Columns["AsStartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["AsEndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gViewAS.Columns["ASContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        /// <summary>
+        /// AS 신청 버튼 Enable 조건에 맞게 활성, 비활성
+        /// </summary>
+        private void BtnSubmitEnable()
+        {
+            if (!string.IsNullOrEmpty(txtCusID.Text) && cbxASCusPro.SelectedItem != null && cbxOrderNo.SelectedItem != null && txtASContent.TextLength > 9) btnSubmit.Enabled = true;
+            else btnSubmit.Enabled = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -514,6 +568,7 @@ namespace CustomerApp.BUS
                 gbxAS.Dock = DockStyle.Fill;
                 CtrlVisiTrue(gbxAS);
                 txtASContent.MaxLength = 300;
+                txtASContent.Text = string.Empty;
                 lblContentSize.Text = "글자제한\r\n(" + txtASContent.TextLength + " / 300)";
                 btnSubmit.Enabled = false;
 
@@ -753,7 +808,7 @@ namespace CustomerApp.BUS
         {
             bool chkExist = false;
             saveFileDig.Filter = "*.xls|*.xls";
-            saveFileDig.FileName = "영수증.xls";
+            saveFileDig.FileName = DateTime.Now.ToShortDateString() + "영수증.xls";
 
             billOrders.Clear();
             foreach (DataGridViewRow row in gViewBuy.Rows)
@@ -767,7 +822,7 @@ namespace CustomerApp.BUS
                         {
                             OrderDate = DateTime.Parse(row.Cells["OrderDate"].Value.ToString()),
                             ProName = row.Cells["ProName"].Value.ToString(),
-                            EA = int.Parse(row.Cells["EA"].Value.ToString()/*.Substring(0, row.Cells["EA"].Value.ToString().IndexOf(' '))*/),
+                            EA = int.Parse(row.Cells["EA"].Value.ToString()),
                             Price = int.Parse(row.Cells["Price"].Value.ToString())
                         };
                         billOrders.Add(billOrder);
@@ -866,56 +921,7 @@ namespace CustomerApp.BUS
             };
             asDAO.Insert(asVO);
             MessageBox.Show("A/S 신청이 완료되었습니다.", "A/S", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            SetGviewAS();
-        }
-
-        private void SetGviewAS()
-        {
-            gViewAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gViewAS.ScrollBars = ScrollBars.Vertical;
-
-            asList.Clear();
-            asList = asDAO.SelectAllAS(customer.No);
-            gViewAS.DataSource = null;
-            gViewAS.DataSource = asList;
-            GviewAScolSet();
-            rdoAsDate.Checked = true;
-        }
-
-        private void GviewAScolSet()
-        {
-            gViewAS.Columns["CusNo"].Visible = false;
-            gViewAS.Columns["ASNo"].Visible = false;
-            gViewAS.Columns["EmpNo"].Visible = false;
-            gViewAS.Columns["ProNo"].Visible = false;
-
-            gViewAS.Columns["OrderNo"].HeaderText = "주문번호";
-            gViewAS.Columns["ASContent"].HeaderText = "고장내용";
-            gViewAS.Columns["AsPrice"].HeaderText = "A/S 가격";
-            gViewAS.Columns["AsStartDate"].HeaderText = "A/S 시작날짜";
-            gViewAS.Columns["AsEndDate"].HeaderText = "A/S 종료날짜";
-            gViewAS.Columns["ProName"].HeaderText = "상품이름";
-            gViewAS.Columns["CusName"].HeaderText = "고객이름";
-            gViewAS.Columns["EmpName"].HeaderText = "담당자";
-
-            gViewAS.Columns["AsStartDate"].DefaultCellStyle.Format = "d";
-            gViewAS.Columns["AsEndDate"].DefaultCellStyle.Format = "d";
-            gViewAS.Columns["AsPrice"].DefaultCellStyle.Format = "c";
-
-            gViewAS.Columns["CusName"].DisplayIndex = 0;
-            gViewAS.Columns["ProName"].DisplayIndex = 2;
-
-            gViewAS.Columns["AsStartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gViewAS.Columns["AsEndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gViewAS.Columns["ProName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gViewAS.Columns["ASContent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        }
-
-        private void BtnSubmitEnable()
-        {
-            if (!string.IsNullOrEmpty(txtCusID.Text) && cbxASCusPro.SelectedItem != null && cbxOrderNo.SelectedItem != null && txtASContent.TextLength > 9) btnSubmit.Enabled = true;
-            else btnSubmit.Enabled = false;
-            
+            btnAS_Click(null, null);
         }
 
         private void cbxOrderNo_SelectedIndexChanged(object sender, EventArgs e)
@@ -927,8 +933,8 @@ namespace CustomerApp.BUS
         {
             BtnSubmitEnable();
         }
-        
-        private void BuySort()
+
+        private void rdoOrderNo_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoOrderNo.Checked)
             {
@@ -936,15 +942,23 @@ namespace CustomerApp.BUS
                 gViewBuy.DataSource = null;
                 gViewBuy.DataSource = orderRecords;
                 GviewBuyColSet();
-            }
-            else if (rdoDate.Checked)
+            }   
+        }
+
+        private void rdoDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoDate.Checked)
             {
                 orderRecords.Sort((a, b) => a.OrderDate < b.OrderDate ? 1 : -1);
                 gViewBuy.DataSource = null;
                 gViewBuy.DataSource = orderRecords;
                 GviewBuyColSet();
             }
-            else if (rdoCom.Checked)
+        }
+
+        private void rdoCom_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoCom.Checked)
             {
                 orderRecords.Sort((a, b) => a.OrderCom.CompareTo(b.OrderCom));
                 gViewBuy.DataSource = null;
@@ -953,7 +967,7 @@ namespace CustomerApp.BUS
             }
         }
 
-        private void AsSort()
+        private void rdoAsDate_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoAsOrderNo.Checked)
             {
@@ -962,7 +976,11 @@ namespace CustomerApp.BUS
                 gViewAS.DataSource = asList;
                 GviewAScolSet();
             }
-            else if (rdoDate.Checked)
+        }
+
+        private void rdoAsOrderNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoDate.Checked)
             {
                 asList.Sort((a, b) => a.AsStartDate > b.AsStartDate ? 1 : -1);
                 gViewAS.DataSource = null;
@@ -971,7 +989,7 @@ namespace CustomerApp.BUS
             }
         }
 
-        private void CartSort()
+        private void rdoSaveNo_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoSaveNo.Checked)
             {
@@ -980,14 +998,11 @@ namespace CustomerApp.BUS
                 gviewCart.DataSource = cartList;
                 GviewCartColSet();
             }
-            else if (rdoCartPriceUp.Checked)
-            {
-                cartList.Sort((a, b) => a.TotalPrice < b.TotalPrice ? 1 : -1);
-                gviewCart.DataSource = null;
-                gviewCart.DataSource = cartList;
-                GviewCartColSet();
-            }
-            else if (rdoCartPriceDown.Checked)
+        }
+
+        private void rdoCartPriceDown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoCartPriceDown.Checked)
             {
                 cartList.Sort((a, b) => a.TotalPrice > b.TotalPrice ? 1 : -1);
                 gviewCart.DataSource = null;
@@ -996,49 +1011,15 @@ namespace CustomerApp.BUS
             }
         }
 
-        private void rdoOrderNo_CheckedChanged(object sender, EventArgs e)
-        {
-            BuySort();
-        }
-
-        private void rdoDate_CheckedChanged(object sender, EventArgs e)
-        {
-            BuySort();
-        }
-
-        private void rdoCom_CheckedChanged(object sender, EventArgs e)
-        {
-            BuySort();
-        }
-
-        private void rdoAsDate_CheckedChanged(object sender, EventArgs e)
-        {
-            AsSort();
-        }
-
-        private void rdoAsOrderNo_CheckedChanged(object sender, EventArgs e)
-        {
-            AsSort();
-        }
-
-        private void rdoSaveNo_CheckedChanged(object sender, EventArgs e)
-        {
-            CartSort();
-        }
-
-        private void rdoCartDate_CheckedChanged(object sender, EventArgs e)
-        {
-            CartSort();
-        }
-
-        private void rdoCartPriceDown_CheckedChanged(object sender, EventArgs e)
-        {
-            CartSort();
-        }
-
         private void rdoCartPriceUp_CheckedChanged(object sender, EventArgs e)
         {
-            CartSort();
+            if (rdoCartPriceUp.Checked)
+            {
+                cartList.Sort((a, b) => a.TotalPrice < b.TotalPrice ? 1 : -1);
+                gviewCart.DataSource = null;
+                gviewCart.DataSource = cartList;
+                GviewCartColSet();
+            }
         }
     }
 }

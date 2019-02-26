@@ -23,6 +23,7 @@ namespace CustomerApp.BUS
         {
             CenterToScreen();
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            MaximizeBox = false;
             Text = "주소 찾기";
             rdoDong.Checked = true;
         }
