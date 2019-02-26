@@ -34,7 +34,10 @@ namespace BOM.DAO
                 //ws.Cells[3, 1] = OrderInfoList[4]; //고객 전화번호
                 ws.Cells[9, 3] = orderInfoList[5]; //고객 주소
 
-                
+                for (int i = 0; i < 9; i++)
+                {
+                    ws.Cells[i + 13, 2] = ws.Cells[i + 13, 7]= ws.Cells[i + 13, 8]= "";
+                }
                 for (int i = 0; i < productList.Count; i++)
                 {
                     ws.Cells[i + 13, 2] = productList[i].ProName;
