@@ -81,5 +81,17 @@ namespace BOM.DAO
         {
             return dp.ExecuteParametersDT(sp, null);
         }
+
+        public DataTable SelectMat()
+        {
+            string sp = "Materials_Select_Procedure";
+            return dp.ExecuteParametersDT(sp, null);
+        }
+
+        public DataTable SelectMatType()
+        {
+            string sp = "Materials_Type_Select_Procedure";
+            return dp.ExecuteParametersDT(sp, null);
+        }
     }
 }
