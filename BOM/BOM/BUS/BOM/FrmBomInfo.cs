@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.VO;
 
-namespace BOM
+namespace BOM.BUS.BOM
 {
     public partial class FrmBomInfo : Form
     {
@@ -151,8 +151,8 @@ namespace BOM
                 else
                 {
                     //BOM등록 페이지에 선택한 항목들의 값을 매개변수로 보냄
+                    FrmBomAdd fba = new FrmBomAdd(new MaterialsVO
 
-                    FrmBomAdd fba = new FrmBomAdd(new Materials
                     {
                         Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
                         Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
@@ -165,7 +165,7 @@ namespace BOM
             else if (e.ColumnIndex.ToString() == "4")
             {
                 //BOM조회 페이지에 선택한 항목들의 값을 매개변수로 보냄
-                FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new Materials
+                FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new MaterialsVO
                 {
                     Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
                     Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),

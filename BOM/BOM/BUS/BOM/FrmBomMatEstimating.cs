@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using BOM.VO;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace BOM
 {
@@ -17,6 +20,10 @@ namespace BOM
     {
         private int haveNum = 0; //가지고 있는 재고의 개수
         private int makeNum = 0; //만들고자 하는 재고의 개수
+
+        string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
+        string savePath;
+
 
         List<int> numLst;
         DAO.BomDAO bDao;
@@ -292,6 +299,37 @@ namespace BOM
                 {
                     xr.WriteString(item.Text.Replace(' ','_'));
                 }
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp;
+            Excel.Workbook wb;
+            Excel.Worksheet ws;
+            saveFileDialog1.DefaultExt = ".xlsx";
+            saveFileDialog1.Filter = "Excel|*.xlsx";
+
+            if (saveFileDialog1.ShowDialog()!=DialogResult.Cancel)
+            {
+                savePath = saveFileDialog1.FileName; //저장 경로
+
+                excelApp = new Excel.Application();
+
+                wb = excelApp.Workbooks.Open(excelFilePath);
+                ws = wb.Worksheets.Item[1];
+                ws.Cells[3, 3] = txtPName.Text;
+                ws.Cells[4, 3] = txtEA.Text;
+                //MessageBox.Show(ws.Cells[4,2]);
+                wb.Save();
+
+                wb.Close();
+                excelApp.Quit();
+
+                Marshal.ReleaseComObject(ws);
+                Marshal.ReleaseComObject(wb);
+                Marshal.ReleaseComObject(excelApp);
+                
             }
         }
     }

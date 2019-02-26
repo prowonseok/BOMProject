@@ -1,4 +1,4 @@
-﻿namespace BOM
+﻿namespace BOM.BUS.BOM
 {
     partial class FrmBomAdd
     {
@@ -53,7 +53,7 @@
             // lblChildMatNo
             // 
             this.lblChildMatNo.AutoSize = true;
-            this.lblChildMatNo.Location = new System.Drawing.Point(47, 144);
+            this.lblChildMatNo.Location = new System.Drawing.Point(21, 115);
             this.lblChildMatNo.Name = "lblChildMatNo";
             this.lblChildMatNo.Size = new System.Drawing.Size(85, 12);
             this.lblChildMatNo.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             // txtChildMatNo
             // 
-            this.txtChildMatNo.Location = new System.Drawing.Point(138, 141);
+            this.txtChildMatNo.Location = new System.Drawing.Point(112, 112);
             this.txtChildMatNo.Name = "txtChildMatNo";
             this.txtChildMatNo.ReadOnly = true;
             this.txtChildMatNo.Size = new System.Drawing.Size(100, 21);
@@ -69,7 +69,7 @@
             // 
             // txtChildMatName
             // 
-            this.txtChildMatName.Location = new System.Drawing.Point(138, 186);
+            this.txtChildMatName.Location = new System.Drawing.Point(112, 157);
             this.txtChildMatName.Name = "txtChildMatName";
             this.txtChildMatName.ReadOnly = true;
             this.txtChildMatName.Size = new System.Drawing.Size(279, 21);
@@ -78,7 +78,7 @@
             // lblChildMatName
             // 
             this.lblChildMatName.AutoSize = true;
-            this.lblChildMatName.Location = new System.Drawing.Point(75, 189);
+            this.lblChildMatName.Location = new System.Drawing.Point(49, 160);
             this.lblChildMatName.Name = "lblChildMatName";
             this.lblChildMatName.Size = new System.Drawing.Size(57, 12);
             this.lblChildMatName.TabIndex = 2;
@@ -86,7 +86,7 @@
             // 
             // btnCMatSearch
             // 
-            this.btnCMatSearch.Location = new System.Drawing.Point(437, 139);
+            this.btnCMatSearch.Location = new System.Drawing.Point(411, 110);
             this.btnCMatSearch.Name = "btnCMatSearch";
             this.btnCMatSearch.Size = new System.Drawing.Size(75, 23);
             this.btnCMatSearch.TabIndex = 4;
@@ -96,7 +96,7 @@
             // 
             // txtChildMatEA
             // 
-            this.txtChildMatEA.Location = new System.Drawing.Point(138, 231);
+            this.txtChildMatEA.Location = new System.Drawing.Point(112, 202);
             this.txtChildMatEA.Name = "txtChildMatEA";
             this.txtChildMatEA.Size = new System.Drawing.Size(100, 21);
             this.txtChildMatEA.TabIndex = 6;
@@ -105,7 +105,7 @@
             // lblChildMatEA
             // 
             this.lblChildMatEA.AutoSize = true;
-            this.lblChildMatEA.Location = new System.Drawing.Point(91, 234);
+            this.lblChildMatEA.Location = new System.Drawing.Point(65, 205);
             this.lblChildMatEA.Name = "lblChildMatEA";
             this.lblChildMatEA.Size = new System.Drawing.Size(41, 12);
             this.lblChildMatEA.TabIndex = 5;
@@ -113,7 +113,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(492, 307);
+            this.btnAdd.Location = new System.Drawing.Point(411, 255);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             // btnPMatSearch
             // 
-            this.btnPMatSearch.Location = new System.Drawing.Point(437, 36);
+            this.btnPMatSearch.Location = new System.Drawing.Point(411, 20);
             this.btnPMatSearch.Name = "btnPMatSearch";
             this.btnPMatSearch.Size = new System.Drawing.Size(75, 23);
             this.btnPMatSearch.TabIndex = 10;
@@ -133,7 +133,7 @@
             // 
             // txtParentMatNo
             // 
-            this.txtParentMatNo.Location = new System.Drawing.Point(138, 38);
+            this.txtParentMatNo.Location = new System.Drawing.Point(112, 22);
             this.txtParentMatNo.Name = "txtParentMatNo";
             this.txtParentMatNo.ReadOnly = true;
             this.txtParentMatNo.Size = new System.Drawing.Size(100, 21);
@@ -142,7 +142,7 @@
             // lblParentMatNo
             // 
             this.lblParentMatNo.AutoSize = true;
-            this.lblParentMatNo.Location = new System.Drawing.Point(63, 41);
+            this.lblParentMatNo.Location = new System.Drawing.Point(37, 25);
             this.lblParentMatNo.Name = "lblParentMatNo";
             this.lblParentMatNo.Size = new System.Drawing.Size(69, 12);
             this.lblParentMatNo.TabIndex = 8;
@@ -150,7 +150,7 @@
             // 
             // txtParentMatName
             // 
-            this.txtParentMatName.Location = new System.Drawing.Point(138, 83);
+            this.txtParentMatName.Location = new System.Drawing.Point(112, 67);
             this.txtParentMatName.Name = "txtParentMatName";
             this.txtParentMatName.ReadOnly = true;
             this.txtParentMatName.Size = new System.Drawing.Size(279, 21);
@@ -159,7 +159,7 @@
             // lblParentMatName
             // 
             this.lblParentMatName.AutoSize = true;
-            this.lblParentMatName.Location = new System.Drawing.Point(75, 86);
+            this.lblParentMatName.Location = new System.Drawing.Point(49, 70);
             this.lblParentMatName.Name = "lblParentMatName";
             this.lblParentMatName.Size = new System.Drawing.Size(57, 12);
             this.lblParentMatName.TabIndex = 11;
@@ -168,7 +168,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(246, 234);
+            this.label1.Location = new System.Drawing.Point(220, 205);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 13;
@@ -176,7 +176,7 @@
             // 
             // txtParentMatLevel
             // 
-            this.txtParentMatLevel.Location = new System.Drawing.Point(317, 38);
+            this.txtParentMatLevel.Location = new System.Drawing.Point(291, 22);
             this.txtParentMatLevel.Name = "txtParentMatLevel";
             this.txtParentMatLevel.ReadOnly = true;
             this.txtParentMatLevel.Size = new System.Drawing.Size(100, 21);
@@ -185,7 +185,7 @@
             // lblPLevel
             // 
             this.lblPLevel.AutoSize = true;
-            this.lblPLevel.Location = new System.Drawing.Point(242, 41);
+            this.lblPLevel.Location = new System.Drawing.Point(216, 25);
             this.lblPLevel.Name = "lblPLevel";
             this.lblPLevel.Size = new System.Drawing.Size(69, 12);
             this.lblPLevel.TabIndex = 14;
@@ -193,7 +193,7 @@
             // 
             // txtChildMatLevel
             // 
-            this.txtChildMatLevel.Location = new System.Drawing.Point(317, 141);
+            this.txtChildMatLevel.Location = new System.Drawing.Point(291, 112);
             this.txtChildMatLevel.Name = "txtChildMatLevel";
             this.txtChildMatLevel.ReadOnly = true;
             this.txtChildMatLevel.Size = new System.Drawing.Size(100, 21);
@@ -202,7 +202,7 @@
             // lblChildMatLevel
             // 
             this.lblChildMatLevel.AutoSize = true;
-            this.lblChildMatLevel.Location = new System.Drawing.Point(242, 144);
+            this.lblChildMatLevel.Location = new System.Drawing.Point(216, 115);
             this.lblChildMatLevel.Name = "lblChildMatLevel";
             this.lblChildMatLevel.Size = new System.Drawing.Size(69, 12);
             this.lblChildMatLevel.TabIndex = 16;
@@ -210,7 +210,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(372, 307);
+            this.btnCancel.Location = new System.Drawing.Point(291, 255);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -220,7 +220,7 @@
             // 
             // trvMat
             // 
-            this.trvMat.Location = new System.Drawing.Point(609, 25);
+            this.trvMat.Location = new System.Drawing.Point(507, 12);
             this.trvMat.Name = "trvMat";
             this.trvMat.Size = new System.Drawing.Size(316, 266);
             this.trvMat.TabIndex = 19;
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 361);
+            this.ClientSize = new System.Drawing.Size(851, 312);
             this.Controls.Add(this.trvMat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtChildMatLevel);

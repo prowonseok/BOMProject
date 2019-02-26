@@ -9,19 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.VO;
 
-namespace BOM
+namespace BOM.BUS.BOM
 {
     public partial class FrmBomAdd : Form
     {
         DAO.BomDAO bDao;
-        private Materials materials;
 
         #region Property
         private int matNo;
         private int matLevel;
         private string matName;
         private bool canOrAdd; //Cancel인지 Add인지
-
+        private MaterialsVO materials;
 
         public int MatNo { get => matNo; set => matNo = value; }
         public int MatLevel { get => matLevel; set => matLevel = value; }
@@ -35,12 +34,12 @@ namespace BOM
         public FrmBomAdd() {
             InitializeComponent();
         }
-
+        
         /// <summary>
         /// 그리드뷰에서 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials">부모 자재가 될 자재</param>
-        public FrmBomAdd(Materials materials) : this()
+        public FrmBomAdd(MaterialsVO materials) : this()
         {
             this.materials = materials;
         }

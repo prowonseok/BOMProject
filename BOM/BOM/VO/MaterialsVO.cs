@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOM.VO
 {
-    public class Materials
+    public class MaterialsVO
     {
         private int mat_No;
         private int mat_Type_No;

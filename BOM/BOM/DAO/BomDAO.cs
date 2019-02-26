@@ -25,7 +25,7 @@ namespace BOM.DAO
         /// </summary>
         /// <param name="matLst"></param>
         /// <param name="dt"></param>
-        internal static void DataTableValidation(List<Materials> matLst, DataTable dt)
+        internal static void DataTableValidation(List<MaterialsVO> matLst, DataTable dt)
         {
             foreach (DataRow item in dt.Rows)
             {
@@ -49,7 +49,7 @@ namespace BOM.DAO
                 {
                     off_No = Int32.Parse(item["Off_No"].ToString());
                 }
-                matLst.Add(new Materials
+                matLst.Add(new MaterialsVO
                 {
                     Mat_No = Int32.Parse(item["Mat_No"].ToString()),
                     Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
@@ -232,13 +232,11 @@ namespace BOM.DAO
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
         internal DataTable SelectBom()
         {
-            //List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
 
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            //DataTableValidation(matLst, dt);
             return dt;
         }
 

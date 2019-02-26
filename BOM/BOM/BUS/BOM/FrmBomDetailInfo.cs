@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOM.BUS.BOM;
 using BOM.VO;
 
 namespace BOM
@@ -30,7 +31,7 @@ namespace BOM
         public int UpdateNum { get => updateNum; set => updateNum = value; } 
         #endregion
 
-        private Materials materials;
+        private MaterialsVO materials;
 
         /// <summary>
         /// 메인화면에서 매개변수 없이 BOM조회 버튼 클릭 시 생성자
@@ -43,7 +44,7 @@ namespace BOM
         /// 그리드뷰에서 BOM조회 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials"></param>
-        public FrmBomDetailInfo(Materials materials):this()
+        public FrmBomDetailInfo(MaterialsVO materials):this()
         {
             this.materials = materials;
         }
@@ -211,7 +212,8 @@ namespace BOM
             {
                 dgvBom.SelectedRows[0].Cells[1].Value.ToString();
                 FrmBomUpdate fbu = new FrmBomUpdate(Int32.Parse(txtMatNo.Text), 
-                    new Materials {
+                    new MaterialsVO
+                    {
                     Mat_No = Int32.Parse(dgvBom.SelectedRows[0].Cells[0].Value.ToString()),
                     Mat_Name= dgvBom.SelectedRows[0].Cells[1].Value.ToString()
                 }, Int32.Parse(dgvBom.SelectedRows[0].Cells[4].Value.ToString()));

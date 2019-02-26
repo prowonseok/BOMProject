@@ -13,7 +13,7 @@ namespace BOM
 {
     public partial class FrmBomUpdate : Form
     {
-        Materials materials;
+        MaterialsVO materials;
         DAO.BomDAO bDao;
 
         int ea;
@@ -22,10 +22,14 @@ namespace BOM
         /// <summary>
         /// 수정할 자재에 대한 정보를 매개변수로 받아옴
         /// </summary>
+        /// <param name="pNo"></param>
+        /// <param name="materials"></param>
+        /// <param name="ea"></param>
+        
         /// <param name="pNo">부모 자재 번호</param>
         /// <param name="materials">수정할 자재에 대한 정보</param>
         /// <param name="ea">기존 필요 자재 개수</param>
-        public FrmBomUpdate(int pNo, Materials materials, int ea)
+        public FrmBomUpdate(int pNo, MaterialsVO materials, int ea)
         {
             this.pNo = pNo;
             this.ea = ea;
