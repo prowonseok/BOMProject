@@ -39,6 +39,7 @@
             // 
             // dgvInfo
             // 
+            this.dgvInfo.AllowUserToAddRows = false;
             this.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInfo.Location = new System.Drawing.Point(21, 53);
             this.dgvInfo.MultiSelect = false;

@@ -15,6 +15,9 @@ namespace BOM
     {
         bool isFirst =true;
         DAO.BomDAO bDao;
+        DataTable dt;
+        DataTable dtClone;
+        FrmBomInfo fbi;
 
         /// <summary>
         /// 생성자
@@ -32,9 +35,10 @@ namespace BOM
         private void FrmBomSearchMat_Load(object sender, EventArgs e)
         {
             bDao = new DAO.BomDAO();
-            dgvInfo.DataSource = bDao.SelectBom();
+            fbi = new FrmBomInfo();
+            dt = bDao.SelectBom();
+            dgvInfo.DataSource = fbi.CloneDataTable(dt, dtClone);
             DisplayGridview();
-
         }
 
         /// <summary>

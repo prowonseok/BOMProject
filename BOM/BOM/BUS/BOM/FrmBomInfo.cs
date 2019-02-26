@@ -14,7 +14,8 @@ namespace BOM
     public partial class FrmBomInfo : Form
     {
         DAO.BomDAO bDao;
-
+        DataTable dt;
+        DataTable dtClone; //DataTable dt에 Materials Table을 입력 받아 복사하기 위한 DataTable
         /// <summary>
         /// 생성자
         /// </summary>
@@ -41,7 +42,8 @@ namespace BOM
             bDao = new DAO.BomDAO();
 
             //GridView의 데이터소스를 불러옴
-            dgvBom.DataSource = bDao.SelectBom();
+            dt = bDao.SelectBom();
+            dgvBom.DataSource = CloneDataTable(dt, dtClone);
 
             //GridView의 버튼컬럼 추가
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -64,7 +66,7 @@ namespace BOM
             dgvBom.Columns.Remove("Mat_Cost");
             dgvBom.Columns.Remove("Mat_Ea");
             dgvBom.Columns.Remove("Off_No");
-            
+
             //Int형 데이터를 가진 컬럼은 오른쪽 정렬
             dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvBom.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -76,31 +78,43 @@ namespace BOM
             //컬럼명 설정
             dgvBom.Columns[0].HeaderText = "자재 번호";
             dgvBom.Columns[1].HeaderText = "자재명";
-            dgvBom.Columns[2].HeaderText = "자재 레벨";
+            dgvBom.Columns[2].HeaderText = "자재 단계";
+        }
 
-            //dgvBom.Columns[2].DefaultCellStyle.Format = ToString();
-            dgvBom.Columns[2].ValueType = typeof(String);
+        /// <summary>
+        /// DataTable Clone 및 Mat_Level 형변환을 위한 메서드
+        /// </summary>
+        /// <param name="dt">기존 DataTable</param>
+        /// <param name="dtClone">형변환 시킬 DataTable</param>
+        internal DataTable CloneDataTable(DataTable dt, DataTable dtClone)
+        {
+            dtClone = dt.Clone();  //dt의 구조를 dtClone에 Clone()해줌
 
-            foreach (DataGridViewRow item in dgvBom.Rows)
+            dtClone.Columns["Mat_Level"].DataType = typeof(String); //Mat_Level 컬럼의 타입을 변경(값이 있을 경우 type 변경이 되지 않음)
+
+            foreach (DataRow item in dt.Rows)
             {
-                MessageBox.Show(item.Cells[2].ValueType.ToString());
-                switch (item.Cells[2].Value.ToString())
+                dtClone.ImportRow(item);
+            }
+
+            foreach (DataRow item in dtClone.Rows)
+            {
+                switch (item["Mat_Level"].ToString())
                 {
                     case "0":
-                        //dgvBom.Columns[2].DefaultCellStyle.Format = string.Format("원재료", item.Cells[2].Value.ToString());
-                        item.Cells[2].Value = "0";
+                        item["Mat_Level"] = "원재료";
                         break;
                     case "1":
-                        //dgvBom.Columns[2].DefaultCellStyle.Format = string.Format("부재료", item.Cells[2].Value.ToString());
-                        item.Cells[2].Value = "0";
+                        item["Mat_Level"] = "반제품";
                         break;
-                    //case "2":
-                    //    item.Cells[2].Value = "c";
-                    //    break;
+                    case "2":
+                        item["Mat_Level"] = "완제품";
+                        break;
                     default:
                         break;
                 }
             }
+            return dtClone;
         }
 
         /// <summary>
@@ -110,6 +124,22 @@ namespace BOM
         /// <param name="e">클릭한 버튼의 위치</param>
         private void dgvBom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int levelNum = 0;
+            //매개변수 값을 위한 Level값 변경
+            switch (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
+            {
+                case "원재료":
+                    levelNum = 0;
+                    break;
+                case "반제품":
+                    levelNum = 1;
+                    break;
+                case "완제품":
+                    levelNum = 2;
+                    break;
+                default:
+                    break;
+            }
             //BOM등록 클릭 시 
             if (e.ColumnIndex.ToString() == "3")
             {
@@ -121,11 +151,12 @@ namespace BOM
                 else
                 {
                     //BOM등록 페이지에 선택한 항목들의 값을 매개변수로 보냄
+
                     FrmBomAdd fba = new FrmBomAdd(new Materials
                     {
                         Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
                         Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                        Mat_Level = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
+                        Mat_Level = levelNum
                     });
                     fba.ShowDialog();
                 }
@@ -138,7 +169,7 @@ namespace BOM
                 {
                     Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
                     Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    Mat_Level = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    Mat_Level = levelNum
                 });
                 fbdi.ShowDialog();
             }
@@ -206,7 +237,7 @@ namespace BOM
                 {
                     searchType = 0;
                 }
-                else if (cbbType.Text == "자재 타입")
+                else if (cbbType.Text == "자재 단계")
                 {
                     searchType = 2;
                 }

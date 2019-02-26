@@ -80,7 +80,8 @@ namespace BOM.DAO
                 proLst.Add(new Products {
                     Pro_No=Int32.Parse(item["Pro_No"].ToString()),
                     Pro_Name=item["Pro_Name"].ToString(),
-                    Mat_No=Int32.Parse(item["Mat_No"].ToString())
+                    Mat_No=Int32.Parse(item["Mat_No"].ToString()),
+                    Pro_Price=Int32.Parse(item["Pro_Price"].ToString())
                 });
             }
             return proLst;
@@ -229,32 +230,32 @@ namespace BOM.DAO
         /// Parameter와 특별한 조건 없이 Materials Table의 모든 데이터를 Select하는 메서드
         /// </summary>
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
-        internal List<Materials> SelectBom()
+        internal DataTable SelectBom()
         {
-            List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
+            //List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
 
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            DataTableValidation(matLst, dt);
-            return matLst;
+            //DataTableValidation(matLst, dt);
+            return dt;
         }
 
         /// <summary>
         /// Parameter없고 Mat_Level의 값이 0이 아닌 Materials Table의 데이터를 Select하는 메서드
         /// </summary>
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
-        internal List<Materials> SelectBom(bool level_True)
+        internal DataTable SelectBom(bool level_True)
         {
-            List<Materials> matLst = new List<Materials>(); //Select한 값들을 저장할 Collection
+            //List<Materials> matLst = new List<Materials>(); //Select한 값들을 저장할 Collection
 
             string sp = "Bom_Mat_View_Procedure_No_Level_0";
             SqlParameter[] sqlParameters = null;
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            DataTableValidation(matLst, dt);
-            return matLst;
+            //DataTableValidation(matLst, dt);
+            return dt;
         }
 
         /// <summary>
@@ -263,9 +264,9 @@ namespace BOM.DAO
         /// <param name="mat_Level">부모 자재 레벨</param>
         /// <param name="mat_No">부모 자재 번호</param>
         /// <returns></returns>
-        internal List<Materials> SelectBom(int mat_Level, int mat_No)
+        internal DataTable SelectBom(int mat_Level, int mat_No)
         {
-            List<Materials> matLst = new List<Materials>();
+            //List<Materials> matLst = new List<Materials>();
 
             string sp = "Bom_Mat_View_Procedure_PLevel";
             SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -273,8 +274,8 @@ namespace BOM.DAO
             sqlParameters[1] = new SqlParameter("@Mat_No", mat_No);
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            DataTableValidation(matLst, dt);
-            return matLst;
+            //DataTableValidation(matLst, dt);
+            return dt;
         }
 
         /// <summary>

@@ -14,6 +14,10 @@ namespace BOM
     public partial class FrmBomDetailInfo : Form
     {
         DAO.BomDAO bDao;
+        DataTable dt;
+        DataTable dtClone;
+        FrmBomInfo fbi;
+
         #region Property
         private int updateNum;
         private int matNo;
@@ -108,7 +112,9 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     //정전개시 자재 번호와 정전개 프로시저를 매개변수로 전송
-                    dgvBom.DataSource = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
+                    dt = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
+                    fbi = new FrmBomInfo();
+                    dgvBom.DataSource = fbi.CloneDataTable(dt, dtClone);
                     DisplayGridview(true); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }
@@ -131,7 +137,9 @@ namespace BOM
                 {
                     bDao = new DAO.BomDAO();
                     //역전개시 자재 번호와 역전개 프로시저를 매개변수로 전송
-                    dgvBom.DataSource = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
+                    dt= bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
+                    fbi = new FrmBomInfo();
+                    dgvBom.DataSource = fbi.CloneDataTable(dt, dtClone);
                     DisplayGridview(false); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
             }
@@ -187,24 +195,6 @@ namespace BOM
                     dgvBom.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                     dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-            }
-
-            foreach (DataGridViewRow item in dgvBom.Rows)
-            {
-                switch (item.Cells[3].Value.ToString())
-                {
-                    case "0":
-                        item.Cells[3].Value = "원재료";
-                        break;
-                    case "1":
-                        item.Cells[3].Value = "반제품";
-                        break;
-                    case "2":
-                        item.Cells[3].Value = "완제품";
-                        break;
-                    default:
-                        break;
                 }
             }
         }

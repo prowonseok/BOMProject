@@ -58,11 +58,34 @@ namespace BOM
             //FrmBomAllMatInfo Form에서 등록인지 취소인지 판단
             if (canOrAdd)
             {
+                LevelChange(matLevel.ToString(), txtParentMatLevel);
                 this.txtParentMatNo.Text = matNo.ToString();
-                this.txtParentMatLevel.Text = matLevel.ToString();
                 this.txtParentMatName.Text = matName;
 
                 ViewTreeview();
+            }
+        }
+
+        /// <summary>
+        /// 숫자 Level(String형)을 입력하여 원재료, 반제품, 완제품으로 출력 변경하는 메서드
+        /// </summary>
+        /// <param name="level">입력하는 숫자 Level</param>
+        /// <param name="textBox">값은 변경할 텍스트 박스</param>
+        private void LevelChange(string level, TextBox textBox)
+        {
+            switch (level)
+            {
+                case "0":
+                    textBox.Text = "원재료";
+                    break;
+                case "1":
+                    textBox.Text = "반제품";
+                    break;
+                case "2":
+                    textBox.Text = "완제품";
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -103,7 +126,7 @@ namespace BOM
                 if (canOrAdd)
                 {
                     this.txtChildMatNo.Text = matNo.ToString();
-                    this.txtChildMatLevel.Text = matLevel.ToString();
+                    LevelChange(matLevel.ToString(), txtChildMatLevel);
                     this.txtChildMatName.Text = matName; 
                 }
             }
@@ -121,7 +144,7 @@ namespace BOM
                 //BOM 조회에서 등록으로 이동하는 경우
                 txtParentMatNo.Text = materials.Mat_No.ToString();
                 txtParentMatName.Text = materials.Mat_Name;
-                txtParentMatLevel.Text = materials.Mat_Level.ToString();
+                LevelChange(materials.Mat_Level.ToString(), txtParentMatLevel);
                 ViewTreeview();
             }
             catch (Exception)

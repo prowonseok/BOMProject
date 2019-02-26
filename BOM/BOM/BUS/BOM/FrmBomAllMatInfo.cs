@@ -15,6 +15,9 @@ namespace BOM
     {
         
         DAO.BomDAO bDao;
+        DataTable dt;
+        DataTable dtClone;
+        FrmBomInfo fbi;
 
         int mat_Level=9999;//Form이 매개변수 없이 실행되었을 때(부모 자재 지정시) 초기값을 지정
         int mat_No;
@@ -45,12 +48,14 @@ namespace BOM
         /// <param name="e"></param>
         private void FrmBomAllMatInfo_Load(object sender, EventArgs e)
         {
+            fbi = new FrmBomInfo();
             //부모 자재를 등록할 때
             if (mat_Level==9999)
             {
                 //부모 자재는 Mat_Level의 값이 0이 아닌 값만 뜨도록 설정
                 bDao = new DAO.BomDAO();
-                dgvAllMat.DataSource = bDao.SelectBom(true);
+                dt = bDao.SelectBom(true);
+                dgvAllMat.DataSource = fbi.CloneDataTable(dt,dtClone);
                 DisplayGridview();
             }
             else //자식 자재를 등록할 때
@@ -58,7 +63,8 @@ namespace BOM
                 //자식 자재는 부모 자재보다 Level값이 같거나 작은 값만 뜨며, 자신은 안뜨도록 설정
                 //자식 자재는 완제품은 출력되지 않도록 설정
                 bDao = new DAO.BomDAO();
-                dgvAllMat.DataSource = bDao.SelectBom(mat_Level, mat_No);
+                dt = bDao.SelectBom(mat_Level, mat_No);
+                dgvAllMat.DataSource =fbi.CloneDataTable(dt, dtClone);
                 DisplayGridview();
             }
         }
@@ -82,24 +88,6 @@ namespace BOM
             dgvAllMat.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvAllMat.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            foreach (DataGridViewRow item in dgvAllMat.Rows)
-            {
-                switch (item.Cells[3].Value.ToString())
-                {
-                    case "0":
-                        item.Cells[3].Value = "원재료";
-                        break;
-                    case "1":
-                        item.Cells[3].Value = "반제품";
-                        break;
-                    case "2":
-                        item.Cells[3].Value = "완제품";
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
 
         /// <summary>
@@ -109,11 +97,26 @@ namespace BOM
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            int levelNum = 0;
             //주인 Form인 FrmBomAdd의 프로퍼티에 값을 저장하며 등록을 뜻하는 CanOrAdd의 값을 True로 저장
             FrmBomAdd fba = (FrmBomAdd)Owner;
-            fba.MatNo = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[0].Value.ToString());      //품목 번호
-            fba.MatName = dgvAllMat.SelectedRows[0].Cells[2].Value.ToString();                 //품목 명
-            fba.MatLevel = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[3].Value.ToString());                //품목 레벨
+            fba.MatNo = Int32.Parse(dgvAllMat.SelectedRows[0].Cells[0].Value.ToString());                   //품목 번호
+            fba.MatName = dgvAllMat.SelectedRows[0].Cells[2].Value.ToString();                              //품목 명
+            switch (dgvAllMat.SelectedRows[0].Cells[3].Value.ToString())
+            {
+                case "원재료":
+                    levelNum = 0;
+                    break;
+                case "반제품":
+                    levelNum = 1;
+                    break;
+                case "완제품":
+                    levelNum = 2;
+                    break;
+                default:
+                    break;
+            }
+            fba.MatLevel = levelNum;                                                                        //품목 레벨
             fba.CanOrAdd = true;
             this.Close();
         }

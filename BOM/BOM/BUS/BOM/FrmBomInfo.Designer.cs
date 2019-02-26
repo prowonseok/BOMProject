@@ -41,6 +41,7 @@
             // 
             // dgvBom
             // 
+            this.dgvBom.AllowUserToAddRows = false;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBom.Location = new System.Drawing.Point(12, 116);
             this.dgvBom.MultiSelect = false;
@@ -116,7 +117,7 @@
             this.cbbType.Items.AddRange(new object[] {
             "자재명",
             "자재 번호",
-            "자재 타입"});
+            "자재 단계"});
             this.cbbType.Location = new System.Drawing.Point(247, 87);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(121, 20);

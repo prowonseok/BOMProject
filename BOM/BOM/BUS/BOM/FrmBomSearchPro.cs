@@ -46,8 +46,6 @@ namespace BOM
             dgvProInfo.Columns.Remove("Pro_Img_No");
             dgvProInfo.Columns.Remove("Pro_ChangepriceDate");
 
-            dgvProInfo.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
             dgvProInfo.Columns[0].HeaderText = "제품 번호";
             dgvProInfo.Columns[1].HeaderText = "자재 번호";
             dgvProInfo.Columns[2].HeaderText = "제품 가격";
@@ -57,6 +55,8 @@ namespace BOM
             dgvProInfo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProInfo.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProInfo.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvProInfo.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         /// <summary>
