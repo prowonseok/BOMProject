@@ -20,6 +20,7 @@ namespace BOM.BUS
     {
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -47,9 +48,8 @@ namespace BOM.BUS
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
-            Test();
-
+            Test();      
+            
         }
 
         private void Test()
@@ -65,12 +65,11 @@ namespace BOM.BUS
                     CusID = item["Cus_ID"].ToString(),
                     OrderContants = item["Pro_Name"].ToString() + ", " + item["Cus_Order_EA"].ToString() + " 개",
                     OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
-                });
+                });                
             }
 
             dgvMainSales.DataSource = salesList;
             //dgvMainSales.AutoResizeColumns();
-
             dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMainSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgvMainSales.Columns[0].Width = 70;
@@ -91,11 +90,9 @@ namespace BOM.BUS
             }
             else
             {
-
                 SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
                 ssd.Show();
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -104,6 +101,7 @@ namespace BOM.BUS
             //ad.Owner = this;
             //ad.Show();
         }
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -111,6 +109,7 @@ namespace BOM.BUS
         }
 
         private void button2_Click(object sender, EventArgs e)
+
         {
             Test();
         }

@@ -16,8 +16,7 @@ namespace BOM.DAO
     {
         private DBProcessor con;
 
-        public BomDAO()
-        {
+        public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
 
@@ -89,23 +88,23 @@ namespace BOM.DAO
 
         }
         
-        public bool Selectchildnode(string child_Name)
-        {
-            string sp = "BOM_Bom_ChiledNode_Procedure";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
+        //public bool Selectchildnode(string child_Name)
+        //{
+        //    string sp = "BOM_Bom_ChiledNode_Procedure";
+        //    SqlParameter[] sqlParameters = new SqlParameter[1];
+        //    sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
 
-            if (con.ExecuteParametersDT(sp, sqlParameters).Rows.Count > 0)
-            {
-                return true; //자식의 자식이 있다
-            }
-            else
-            {
-                return false; //없다
-            }
+        //    if (con.ExecuteParametersDT(sp, sqlParameters).Rows.Count>0) 
+        //    {
+        //        return true; //자식의 자식이 있다
+        //    }
+        //    else
+        //    {
+        //        return false; //없다
+        //    }
 
-        }
-        
+        //}
+
         /// <summary>
         /// 상품 번호를 입력받아서 해당 상품번호가 BOM Table의 부모 자재일때의 부모 자재명, 자식 자재명, 자식 자재 필요 개수 
         /// </summary>
@@ -134,7 +133,7 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
             return dt;
         }
-        
+
         /// <summary>
         /// BOM등록 하는 메서드
         /// </summary>
@@ -161,7 +160,6 @@ namespace BOM.DAO
             }
             return result;
         }
-        
 
         /// <summary>
         /// BOM Table에서 부모 자재 번호와 자식 자재 번호를 매개변수 값과 비교하여 둘다 같은 경우 필요 자재 개수를 매개변수의 값으로 UPDATE
@@ -170,7 +168,6 @@ namespace BOM.DAO
         /// <param name="cNo">자식 자재 번호</param>
         /// <param name="ea">필요 자재 개수</param>
         /// <returns></returns>
-
         internal bool UpdateBom(int pNo, int cNo, int ea) {
             string sp = "BOM_Bom_Update_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[3];
@@ -178,7 +175,7 @@ namespace BOM.DAO
             sqlParameters[1] = new SqlParameter("@BOM_ChildNo", cNo);
             sqlParameters[2] = new SqlParameter("@BOM_ChildEA", ea);
             bool result = false;
-            if (con.ExecuteParameters(sp, sqlParameters) != -1)
+            if (con.ExecuteParameters(sp,sqlParameters) !=-1)
             {
                 result = true;
             }
@@ -188,7 +185,6 @@ namespace BOM.DAO
             }
             return result;
         }
-
 
         /// <summary>
         /// 달을 매개변수로 입력하여 제품별 해당하는 달의 전체 판매량, 참고한 년도의 수, 현재 재고를 출력 
@@ -218,7 +214,7 @@ namespace BOM.DAO
             sqlParameters[1] = new SqlParameter("@BOM_ChildNo", cNo);
 
             bool result = false;
-            if (con.ExecuteParameters(sp, sqlParameters) != -1)
+            if (con.ExecuteParameters(sp, sqlParameters) !=-1)
             {
                 result = true;
             }
@@ -236,6 +232,8 @@ namespace BOM.DAO
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
         internal DataTable SelectBom()
         {
+            //List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
+
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
@@ -289,7 +287,7 @@ namespace BOM.DAO
         /// <returns></returns>
         internal DataTable SelectBom(int mat_No, string procedure)
         {
-            List<MaterialsVO> matLst = new List<MaterialsVO>();
+            List<Materials> matLst = new List<Materials>();
             string sp = procedure;
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Mat_No", mat_No);

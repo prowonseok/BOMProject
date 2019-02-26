@@ -185,5 +185,6 @@ namespace BOM.BUS.Managements
             FrmProducts fp = new FrmProducts();
             fp.ShowDialog();
         }
+        
     }
 }

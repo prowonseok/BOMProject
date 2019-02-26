@@ -43,12 +43,20 @@ namespace BOM.DAO
         {
             List<SalesVO> salesList = new List<SalesVO>();
             int parameterCount =1;
-            if (search2 != "")
+            if (search2 != "") // 두개의 입력값 있을시 배열의 크기를 증가시킴
             {
                 parameterCount ++;
             }
-            SqlParameter[] sqlParameters = new SqlParameter[parameterCount];
-            sqlParameters[0] = new SqlParameter(parameter1, search);
+            SqlParameter[] sqlParameters = new SqlParameter[parameterCount]; 
+            
+            if (search==""&& parameter1=="")
+            {
+                sqlParameters = null;
+            }
+            else
+            {
+                sqlParameters[0] = new SqlParameter(parameter1, search);
+            }
             if (search2 !="")
             {
                 sqlParameters[1] = new SqlParameter(parameter2, search2);
@@ -66,14 +74,29 @@ namespace BOM.DAO
                     Price = Int32.Parse(item["Cus_Order_Price"].ToString()),
                     Ea = Int32.Parse(item["Cus_Order_EA"].ToString()),
                     OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString()),
-                    OrderComplete = item["Cus_OrderComplete"].ToString(),
+                    OrderComplete = item["Com_Type"].ToString(),
                 });
             }            
             return salesList;
         }
 
-        internal List<ProductsListVO> ComboProDuctList(string sp)
+        internal int ProNo(string ProName)
         {
+            string sp = "Bom_JW_GetProNo";
+            SqlParameter[] s = new SqlParameter[1];
+            s[0] = new SqlParameter("@proName", ProName);
+            int ProNo = 0;
+            foreach (DataRow item in dbp.ExecuteParametersDT(sp, s).Rows)
+            {
+                ProNo =Int32.Parse(item["Pro_No"].ToString());
+            }
+            return ProNo;
+            
+        }
+
+        internal List<ProductsListVO> ProList()
+        {
+            string sp = "Bom_JW_ProNameSelect2";
             List<ProductsListVO> productcList = new List<ProductsListVO>();
             productcList.Clear();
 
@@ -92,7 +115,16 @@ namespace BOM.DAO
             
             return productcList;
         }
+        public DataTable MatList2()
+        {
+            string sp = "Bom_JW_MatView";
+            List<ProductsListVO> productcList = new List<ProductsListVO>();
+            productcList.Clear();
 
-        
+            DataTable dataTable = dbp.ExecuteParametersDT(sp, null);
+            return dataTable;
+        }
+
+
     }
 }

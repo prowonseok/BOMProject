@@ -40,6 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dllStorager\dllPackager.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -47,6 +50,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,11 +106,28 @@
     <Compile Include="BUS\Managements\FrmTypeAdd.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BUS\Sales\AddreesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\AddreesForm.Designer.cs">
+      <DependentUpon>AddreesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\Shipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\Shipment.Designer.cs">
+      <DependentUpon>Shipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Sales\TraderSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Sales\TraderSet.Designer.cs">
+      <DependentUpon>TraderSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmTypeAdd.Designer.cs">
       <DependentUpon>FrmTypeAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\Managements\OrderInfo.cs" />
-    <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="BUS\BOM\FrmBomAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,11 +170,13 @@
     <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="DAO\OfferOrderDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
     <Compile Include="VO\OffererOrderViewVO.cs" />
     <Compile Include="VO\OffererOrderVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
+    <Compile Include="DAO\RevenueDao.cs" />
     <Compile Include="DAO\SalesDao.cs" />
     <Compile Include="BUS\Sales\FrmSalesMain.cs">
       <SubType>Form</SubType>
@@ -195,13 +221,24 @@
     <Compile Include="BUS\BOM\FrmBomUpdate.Designer.cs">
       <DependentUpon>FrmBomUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\SalesExcelDao.cs" />
+    <Compile Include="DAO\TraderSetDao.cs" />
+    <Compile Include="MaterialsData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialsData.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VO\AddressVO.cs" />
+    <Compile Include="VO\MatInfoVO.cs" />
+    <Compile Include="VO\RevenueVO.cs" />
     <Compile Include="VO\Customers_Order.cs" />
     <Compile Include="VO\Cus_OrderVO.cs" />
     <Compile Include="VO\MaterialsVO.cs" />
     <Compile Include="VO\Materials_TypeVO.cs" />
     <Compile Include="VO\Products.cs" />
+    <Compile Include="VO\ShipmentVO.cs" />
     <EmbeddedResource Include="BUS\BOM\FrmBomAdd.resx">
       <DependentUpon>FrmBomAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +278,9 @@
     <EmbeddedResource Include="BUS\Managements\FrmTypeAdd.resx">
       <DependentUpon>FrmTypeAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\AddreesForm.resx">
+      <DependentUpon>AddreesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
       <DependentUpon>ChaingePrice.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +308,18 @@
     <EmbeddedResource Include="BUS\BOM\FrmBomUpdate.resx">
       <DependentUpon>FrmBomUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\Shipment.resx">
+      <DependentUpon>Shipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Sales\TraderSet.resx">
+      <DependentUpon>TraderSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Excel\Shipment.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MaterialsData.dbml.layout">
+      <DependentUpon>MaterialsData.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -276,7 +328,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MaterialsData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MaterialsData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,11 +344,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\출하지시서.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
