@@ -40,6 +40,8 @@
             this.lblMatName = new System.Windows.Forms.Label();
             this.lblEA = new System.Windows.Forms.Label();
             this.btnXml = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,11 +157,22 @@
             this.btnXml.UseVisualStyleBackColor = true;
             this.btnXml.Click += new System.EventHandler(this.btnXml_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(476, 471);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(97, 23);
+            this.btnExcel.TabIndex = 12;
+            this.btnExcel.Text = "Excel로 저장";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // FrmBomMatEstimating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 519);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnXml);
             this.Controls.Add(this.lblEA);
             this.Controls.Add(this.lblMatName);
@@ -194,5 +207,7 @@
         private System.Windows.Forms.Label lblMatName;
         private System.Windows.Forms.Label lblEA;
         private System.Windows.Forms.Button btnXml;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

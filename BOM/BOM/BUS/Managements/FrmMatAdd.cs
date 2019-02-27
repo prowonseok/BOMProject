@@ -94,11 +94,6 @@ namespace BOM.BUS.Managements
             {
                 MessageBox.Show("입력 범위를 초과하였습니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch (Exception)
-            {
-                MessageBox.Show("단가는 정수만 입력 가능합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                tbCost.Clear();
-            }
         }
 
         private void tbMatEa_KeyPress(object sender, KeyPressEventArgs e)

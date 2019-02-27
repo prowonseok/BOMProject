@@ -29,17 +29,7 @@ namespace BOM.BUS.Managements
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
-            FormBuilder();
-        }
-
-        private void FormBuilder()
-        {
-            dgvOrder.DataSource = orderList;
-            dgvOrder.Columns[0].Name = "품명";
-            dgvOrder.Columns[1].Name = "판매자";
-            dgvOrder.Columns[2].Name = "단가";
-            dgvOrder.Columns[3].Name = "개수";
-            dgvOrder.Columns[4].Name = "합계";
+            DGVBuilder();
             DataTable dt = ood.SelectOrder();
             foreach (DataRow item in dt.Rows)
             {
@@ -49,6 +39,27 @@ namespace BOM.BUS.Managements
             {
                 cbName.Items.Add(item.Mat_Name);
             }
+        }
+
+        private void DGVBuilder()
+        {
+            dgvOrder.DataSource = null;
+            dgvOrder.DataSource = orderList;
+            dgvOrder.Columns[0].HeaderText = "자재번호";
+            dgvOrder.Columns[1].HeaderText = "자재명";
+            dgvOrder.Columns[2].HeaderText = "제조사 번호";
+            dgvOrder.Columns[3].HeaderText = "제조사";
+            dgvOrder.Columns[4].HeaderText = "단가";
+            dgvOrder.Columns[5].HeaderText = "수량";
+            dgvOrder.Columns[6].HeaderText = "합계";
+
+            dgvOrder.Columns[0].Width = 55;
+            dgvOrder.Columns[1].Width = 70;
+            dgvOrder.Columns[2].Width = 70;
+            dgvOrder.Columns[3].Width = 60;
+            dgvOrder.Columns[4].Width = 80;
+            dgvOrder.Columns[5].Width = 55;
+            dgvOrder.Columns[6].Width = 60;
         }
 
         private void cbName_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,8 +88,7 @@ namespace BOM.BUS.Managements
             {
                 orderList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
             }
-            dgvOrder.DataSource = null;
-            dgvOrder.DataSource = orderList;
+            DGVBuilder();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -90,9 +100,7 @@ namespace BOM.BUS.Managements
                     orderList.RemoveAt(i);
                 }
             }
-            Controls.Clear();
-            InitializeComponent();
-            FormBuilder();
+            DGVBuilder();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

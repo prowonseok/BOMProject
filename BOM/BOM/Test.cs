@@ -8,27 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.VO;
-using BOM.BUS.BOM;
 
 namespace BOM
 {
-    public partial class FrmBomInfoControl : UserControl
+    public partial class Test : UserControl
     {
-        DAO.BomDAO bDao;
-        DataTable dt;
-        DataTable dtClone; //DataTable dt에 Materials Table을 입력 받아 복사하기 위한 DataTable
-
-        public FrmBomInfoControl()
+        public Test()
         {
             InitializeComponent();
         }
-
+        DAO.BomDAO bDao;
+        DataTable dt;
+        DataTable dtClone; //DataTable dt에 Materials Table을 입력 받아 복사하기 위한 DataTable
+        /// <summary>
+        /// 생성자
+        /// </summary>
+       
         /// <summary>
         /// 폼이 Load 될 경우 실행됨
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FrmBomInfoControl_Load(object sender, EventArgs e)
+
+        private void Test_Load(object sender, EventArgs e)
         {
             Display();
         }
@@ -42,15 +44,7 @@ namespace BOM
 
             //GridView의 데이터소스를 불러옴
             dt = bDao.SelectBom();
-            dt = CloneDataTable(dt, dtClone);
-
-            //필요 없는 컬럼 삭제
-            dt.Columns.Remove("Mat_Type_No");
-            dt.Columns.Remove("Mat_Manufactur");
-            dt.Columns.Remove("Mat_Cost");
-            dt.Columns.Remove("Mat_Ea");
-            dt.Columns.Remove("Off_No");
-            dgvBom.DataSource = dt;
+            dgvBom.DataSource = CloneDataTable(dt, dtClone);
 
             //GridView의 버튼컬럼 추가
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -67,8 +61,12 @@ namespace BOM
             btn2.UseColumnTextForButtonValue = true;
             dgvBom.Columns.Add(btn2);
 
-            
-            
+            //필요 없는 컬럼 삭제
+            dgvBom.Columns.Remove("Mat_Type_No");
+            dgvBom.Columns.Remove("Mat_Manufactur");
+            dgvBom.Columns.Remove("Mat_Cost");
+            dgvBom.Columns.Remove("Mat_Ea");
+            dgvBom.Columns.Remove("Off_No");
 
             //Int형 데이터를 가진 컬럼은 오른쪽 정렬
             dgvBom.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -129,7 +127,7 @@ namespace BOM
         {
             int levelNum = 0;
             //매개변수 값을 위한 Level값 변경
-            switch (dgvBom.Rows[e.RowIndex].Cells[4].Value.ToString())
+            switch (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString())
             {
                 case "원재료":
                     levelNum = 0;
@@ -144,34 +142,34 @@ namespace BOM
                     break;
             }
             //BOM등록 클릭 시 
-            if (e.ColumnIndex.ToString() == "0")
+            if (e.ColumnIndex.ToString() == "3")
             {
                 //Level의 값이 0일 경우
-                if (dgvBom.Rows[e.RowIndex].Cells[4].Value.ToString() == "원재료")
+                if (dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString() == "원재료")
                 {
                     MessageBox.Show("원재료는 부모자재로 BOM등록을 할 수 없습니다.");
                 }
                 else
                 {
                     //BOM등록 페이지에 선택한 항목들의 값을 매개변수로 보냄
-                    FrmBomAdd fba = new FrmBomAdd(new MaterialsVO
 
+                    FrmBomAdd fba = new FrmBomAdd(new Materials
                     {
-                        Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString()),
-                        Mat_Name = dgvBom.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                        Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
                         Mat_Level = levelNum
                     });
                     fba.ShowDialog();
                 }
 
             }//BOM조회 클릭 시
-            else if (e.ColumnIndex.ToString() == "1")
+            else if (e.ColumnIndex.ToString() == "4")
             {
                 //BOM조회 페이지에 선택한 항목들의 값을 매개변수로 보냄
-                FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new MaterialsVO
+                FrmBomDetailInfo fbdi = new FrmBomDetailInfo(new Materials
                 {
-                    Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString()),
-                    Mat_Name = dgvBom.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                    Mat_Name = dgvBom.Rows[e.RowIndex].Cells[1].Value.ToString(),
                     Mat_Level = levelNum
                 });
                 fbdi.ShowDialog();
@@ -233,17 +231,17 @@ namespace BOM
                 int searchType = 0;  //그리드뷰의 column 번호를 저장하는 변수
                 bool isFirst = true; //검색 클릭 후 첫번째와 그 이후를 나누는 변수
 
-                if (cbbType.Text == "자재 번호")
+                if (cbbType.Text == "자재명")
                 {
-                    searchType = 2;
+                    searchType = 1;
                 }
-                else if (cbbType.Text == "자재명")
+                else if (cbbType.Text == "자재 번호")
                 {
-                    searchType = 3;
+                    searchType = 0;
                 }
                 else if (cbbType.Text == "자재 단계")
                 {
-                    searchType = 4;
+                    searchType = 2;
                 }
                 foreach (DataGridViewRow item in dgvBom.Rows)
                 {
@@ -268,7 +266,6 @@ namespace BOM
                             }
                         }
                     }
-                    
                 }
 
             }
@@ -294,6 +291,6 @@ namespace BOM
             FrmBomProEstimating fbpe = new FrmBomProEstimating();
             fbpe.ShowDialog();
         }
-        
+
     }
 }

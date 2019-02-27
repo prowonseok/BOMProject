@@ -232,13 +232,11 @@ namespace BOM.DAO
         /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
         internal DataTable SelectBom()
         {
-            //List<Materials> matLst = new List<Materials>();//Select한 값들을 저장할 Collection
 
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            //DataTableValidation(matLst, dt);
             return dt;
         }
 

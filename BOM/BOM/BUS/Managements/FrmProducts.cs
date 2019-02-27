@@ -26,15 +26,22 @@ namespace BOM.BUS.Managements
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            if (!string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
             {
-                pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text), int.Parse(tbPrice.Text), tbName.Text, tbSpec.Text, imageArr);
-                MessageBox.Show("등록 성공");
-                Close();
+                try
+                {
+                    pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
+                    MessageBox.Show("등록 성공");
+                    Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("등록 실패");
+                } 
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("등록 실패");
+                MessageBox.Show("항목을 모두 입력하여 주십시오");
             }
         }
 
@@ -144,7 +151,45 @@ namespace BOM.BUS.Managements
 
         private void tbPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                string[] sp = tbPrice.Text.Split(',');
+                if (sp[sp.Length - 1].Length >= 4)
+                {
+                    tbPrice.Text = tbPrice.Text.Insert(tbPrice.Text.Length - 1, ",");
+                    tbPrice.Select(tbPrice.Text.Length, 0);
+                }
+            }
+        }
 
+        private void tbPrice_TextChanged(object sender, EventArgs e)
+        {
+            string[] sp = tbPrice.Text.Split(',');
+            if (sp[sp.Length - 1].Length >= 4)
+            {
+                tbPrice.Text = tbPrice.Text.Insert(tbPrice.Text.Length - 1, ",");
+                tbPrice.Select(tbPrice.Text.Length, 0);
+            }
+            string tb = tbPrice.Text.Replace(",", "");
+            try
+            {
+                if (string.IsNullOrEmpty(tb))
+                {
+                    return;
+                }
+                else
+                {
+                    uint.Parse(tb);
+                }
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("입력 범위를 초과하였습니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

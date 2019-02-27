@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BOM.VO;
 using dllPackager;
 using System.Configuration;
+using BOM.BUS.Sales;
 
 namespace BOM
 {
@@ -56,6 +57,24 @@ namespace BOM
             dgvMainSales.Columns[2].HeaderText = "주문내용";
             dgvMainSales.Columns[3].HeaderText = "주문날짜";
 
+        }
+
+        private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+
+            }
+            else
+            {
+                SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
+                ssd.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Test();
         }
     }
 }

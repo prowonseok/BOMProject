@@ -154,17 +154,16 @@
             this.lblAddr.AutoSize = true;
             this.lblAddr.Location = new System.Drawing.Point(104, 195);
             this.lblAddr.Name = "lblAddr";
-            this.lblAddr.Size = new System.Drawing.Size(40, 12);
+            this.lblAddr.Size = new System.Drawing.Size(0, 12);
             this.lblAddr.TabIndex = 13;
-            this.lblAddr.Text = "imsi\\";
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(36, 459);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 23);
+            this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 14;
-            this.button2.Text = "판매조회";
+            this.button2.Text = "출하지시서 작성";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -180,54 +179,48 @@
             this.lblEmp.AutoSize = true;
             this.lblEmp.Location = new System.Drawing.Point(104, 132);
             this.lblEmp.Name = "lblEmp";
-            this.lblEmp.Size = new System.Drawing.Size(40, 12);
+            this.lblEmp.Size = new System.Drawing.Size(0, 12);
             this.lblEmp.TabIndex = 16;
-            this.lblEmp.Text = "imsi\\";
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Location = new System.Drawing.Point(104, 101);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(40, 12);
+            this.lblDate.Size = new System.Drawing.Size(0, 12);
             this.lblDate.TabIndex = 17;
-            this.lblDate.Text = "imsi\\";
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Location = new System.Drawing.Point(104, 163);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(40, 12);
+            this.lblPhone.Size = new System.Drawing.Size(0, 12);
             this.lblPhone.TabIndex = 18;
-            this.lblPhone.Text = "imsi\\";
             // 
             // lblCus
             // 
             this.lblCus.AutoSize = true;
             this.lblCus.Location = new System.Drawing.Point(428, 101);
             this.lblCus.Name = "lblCus";
-            this.lblCus.Size = new System.Drawing.Size(40, 12);
+            this.lblCus.Size = new System.Drawing.Size(0, 12);
             this.lblCus.TabIndex = 19;
-            this.lblCus.Text = "imsi\\";
             // 
             // lblFactory
             // 
             this.lblFactory.AutoSize = true;
             this.lblFactory.Location = new System.Drawing.Point(428, 132);
             this.lblFactory.Name = "lblFactory";
-            this.lblFactory.Size = new System.Drawing.Size(40, 12);
+            this.lblFactory.Size = new System.Drawing.Size(0, 12);
             this.lblFactory.TabIndex = 20;
-            this.lblFactory.Text = "imsi\\";
             // 
             // lblShipDate
             // 
             this.lblShipDate.AutoSize = true;
             this.lblShipDate.Location = new System.Drawing.Point(428, 163);
             this.lblShipDate.Name = "lblShipDate";
-            this.lblShipDate.Size = new System.Drawing.Size(40, 12);
+            this.lblShipDate.Size = new System.Drawing.Size(0, 12);
             this.lblShipDate.TabIndex = 21;
-            this.lblShipDate.Text = "imsi\\";
             // 
             // label7
             // 
@@ -243,12 +236,12 @@
             this.lblOrderNo.AutoSize = true;
             this.lblOrderNo.Location = new System.Drawing.Point(104, 69);
             this.lblOrderNo.Name = "lblOrderNo";
-            this.lblOrderNo.Size = new System.Drawing.Size(40, 12);
+            this.lblOrderNo.Size = new System.Drawing.Size(0, 12);
             this.lblOrderNo.TabIndex = 23;
-            this.lblOrderNo.Text = "imsi\\";
             // 
             // btnConfirm
             // 
+            this.btnConfirm.Enabled = false;
             this.btnConfirm.Location = new System.Drawing.Point(501, 460);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(66, 23);
@@ -259,6 +252,7 @@
             // 
             // btnPath
             // 
+            this.btnPath.Enabled = false;
             this.btnPath.Location = new System.Drawing.Point(429, 460);
             this.btnPath.Name = "btnPath";
             this.btnPath.Size = new System.Drawing.Size(66, 23);
@@ -323,7 +317,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProList);
             this.Name = "Shipment";
-            this.Text = "Shipment";
             this.Load += new System.EventHandler(this.Shipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProList)).EndInit();
             this.ResumeLayout(false);

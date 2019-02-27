@@ -1,6 +1,6 @@
 ﻿namespace BOM
 {
-    partial class FrmBomInfoControl
+    partial class Test
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -31,6 +31,10 @@
             this.cbbType = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnProEstimating = new System.Windows.Forms.Button();
+            this.btnMatEstimating = new System.Windows.Forms.Button();
+            this.btnBomInfo = new System.Windows.Forms.Button();
+            this.btnBomAdd = new System.Windows.Forms.Button();
             this.dgvBom = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
             this.SuspendLayout();
@@ -43,14 +47,14 @@
             "자재명",
             "자재 번호",
             "자재 단계"});
-            this.cbbType.Location = new System.Drawing.Point(268, 20);
+            this.cbbType.Location = new System.Drawing.Point(263, 119);
             this.cbbType.Name = "cbbType";
             this.cbbType.Size = new System.Drawing.Size(121, 20);
             this.cbbType.TabIndex = 16;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(585, 20);
+            this.btnSearch.Location = new System.Drawing.Point(580, 119);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 15;
@@ -60,16 +64,56 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(408, 22);
+            this.txtSearch.Location = new System.Drawing.Point(403, 121);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(171, 21);
             this.txtSearch.TabIndex = 14;
+            // 
+            // btnProEstimating
+            // 
+            this.btnProEstimating.Location = new System.Drawing.Point(367, 60);
+            this.btnProEstimating.Name = "btnProEstimating";
+            this.btnProEstimating.Size = new System.Drawing.Size(75, 23);
+            this.btnProEstimating.TabIndex = 13;
+            this.btnProEstimating.Text = "판매 예측";
+            this.btnProEstimating.UseVisualStyleBackColor = true;
+            this.btnProEstimating.Click += new System.EventHandler(this.btnProEstimating_Click);
+            // 
+            // btnMatEstimating
+            // 
+            this.btnMatEstimating.Location = new System.Drawing.Point(254, 60);
+            this.btnMatEstimating.Name = "btnMatEstimating";
+            this.btnMatEstimating.Size = new System.Drawing.Size(88, 23);
+            this.btnMatEstimating.TabIndex = 12;
+            this.btnMatEstimating.Text = "소요량 예측";
+            this.btnMatEstimating.UseVisualStyleBackColor = true;
+            this.btnMatEstimating.Click += new System.EventHandler(this.btnMatEstimating_Click);
+            // 
+            // btnBomInfo
+            // 
+            this.btnBomInfo.Location = new System.Drawing.Point(141, 60);
+            this.btnBomInfo.Name = "btnBomInfo";
+            this.btnBomInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnBomInfo.TabIndex = 11;
+            this.btnBomInfo.Text = "BOM조회";
+            this.btnBomInfo.UseVisualStyleBackColor = true;
+            this.btnBomInfo.Click += new System.EventHandler(this.btnBomInfo_Click);
+            // 
+            // btnBomAdd
+            // 
+            this.btnBomAdd.Location = new System.Drawing.Point(28, 60);
+            this.btnBomAdd.Name = "btnBomAdd";
+            this.btnBomAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnBomAdd.TabIndex = 10;
+            this.btnBomAdd.Text = "BOM등록";
+            this.btnBomAdd.UseVisualStyleBackColor = true;
+            this.btnBomAdd.Click += new System.EventHandler(this.btnBomAdd_Click);
             // 
             // dgvBom
             // 
             this.dgvBom.AllowUserToAddRows = false;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBom.Location = new System.Drawing.Point(33, 49);
+            this.dgvBom.Location = new System.Drawing.Point(28, 148);
             this.dgvBom.MultiSelect = false;
             this.dgvBom.Name = "dgvBom";
             this.dgvBom.ReadOnly = true;
@@ -77,19 +121,22 @@
             this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBom.Size = new System.Drawing.Size(627, 260);
             this.dgvBom.TabIndex = 9;
-            this.dgvBom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBom_CellContentClick);
             // 
-            // FrmBomInfoControl
+            // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cbbType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnProEstimating);
+            this.Controls.Add(this.btnMatEstimating);
+            this.Controls.Add(this.btnBomInfo);
+            this.Controls.Add(this.btnBomAdd);
             this.Controls.Add(this.dgvBom);
-            this.Name = "FrmBomInfoControl";
+            this.Name = "Test";
             this.Size = new System.Drawing.Size(683, 468);
-            this.Load += new System.EventHandler(this.FrmBomInfoControl_Load);
+            this.Load += new System.EventHandler(this.Test_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,6 +148,10 @@
         private System.Windows.Forms.ComboBox cbbType;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnProEstimating;
+        private System.Windows.Forms.Button btnMatEstimating;
+        private System.Windows.Forms.Button btnBomInfo;
+        private System.Windows.Forms.Button btnBomAdd;
         private System.Windows.Forms.DataGridView dgvBom;
     }
 }

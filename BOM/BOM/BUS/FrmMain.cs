@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,31 +29,67 @@ namespace BOM.BUS
             salesList = new List<Cus_OrderVO>();
         }
 
+        /// <summary>
+        /// BOM 관리 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBOM_Click(object sender, EventArgs e)
         {
+            button3.FlatAppearance.BorderSize = 1;
+            BtnBOM.FlatAppearance.BorderSize = 3;
+            btnSales.FlatAppearance.BorderSize = 1;
+            btnManage.FlatAppearance.BorderSize = 1;
+
             FrmBomInfoControl fbic = new FrmBomInfoControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fbic);
-            //FrmBomInfo fbi = new FrmBomInfo();
-            //fbi.ShowDialog();
+
+            btnBomAdd.Visible = true;
+            btnBomMatEstimating.Visible = true;
+            btnBomSearch.Visible = true;
+            btnProMatEstimating.Visible = true;
+            btnSales1.Visible = false;
+            btnSi.Visible = false;
+            btnchp.Visible = false;
+            btnma.Visible = false;
+            button6.Visible = false;
+            button5.Visible = false;
+            button4.Visible = false;
+            button1.Visible = false;
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
+            button3.FlatAppearance.BorderSize = 1;
+            BtnBOM.FlatAppearance.BorderSize = 1;
+            btnSales.FlatAppearance.BorderSize = 1;
+            btnManage.FlatAppearance.BorderSize = 3;
             Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
             fmanagemain.ShowDialog();
         }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
+            button3.FlatAppearance.BorderSize = 1;
+            BtnBOM.FlatAppearance.BorderSize = 1;
+            btnSales.FlatAppearance.BorderSize = 3;
+            btnManage.FlatAppearance.BorderSize = 1;
+            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = true;
+            btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = false;
+            //한줄더
             Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
             fsalesmain.ShowDialog();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            Test();      
-            
+            Test();
+            PrivateFontCollection privateFonts = new PrivateFontCollection();
+            //MessageBox.Show(Application.StartupPath);
+            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
+            Font font = new Font(privateFonts.Families[0], 14f);
+            btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font = button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = btnBomAdd .Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font;
         }
 
         private void Test()
@@ -124,9 +161,102 @@ namespace BOM.BUS
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button3.FlatAppearance.BorderSize = 3;
+            BtnBOM.FlatAppearance.BorderSize = 1;
+            btnSales.FlatAppearance.BorderSize = 1; 
+            btnManage.FlatAppearance.BorderSize = 1;
+
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
         }
+
+        private void btnBomAdd_Click(object sender, EventArgs e)
+        {
+            FrmBomAdd fba = new FrmBomAdd();
+            fba.ShowDialog();
+        }
+
+        /// <summary>
+        /// BOM조회 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBomSearch_Click(object sender, EventArgs e)
+        {
+            FrmBomDetailInfo fbdi = new FrmBomDetailInfo();
+            fbdi.ShowDialog();
+        }
+
+        /// <summary>
+        /// 생산 예측 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBomMatEstimating_Click(object sender, EventArgs e)
+        {
+            FrmBomMatEstimating fme = new FrmBomMatEstimating();
+            fme.ShowDialog();
+        }
+
+        /// <summary>
+        /// 소요량 예측 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnProMatEstimating_Click(object sender, EventArgs e)
+        {
+
+            FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fbpe);
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSales1_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = "판매 조회";
+            FrmSalesInquiryControl fs = new FrmSalesInquiryControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fs);
+        }
+
+        private void btnSi_Click(object sender, EventArgs e)
+        {
+            ChaingePrice cp = new ChaingePrice();
+            cp.Show();
+        }
+
+        private void btnchp_Click(object sender, EventArgs e)
+        {
+            TraderSet ts = new TraderSet();
+            ts.Show();
+        }
+
+        private void btnma_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = "매출 조회";
+            FrmRevenueStatusControl fr = new FrmRevenueStatusControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fr);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = "출하 지시서";
+            Shipment sh = new Shipment();
+            sh.Show();
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            txtTimer.Text = DateTime.Now.ToLongTimeString();
+
+        }
+        
     }
 }

@@ -36,15 +36,15 @@
             // dgvMain
             // 
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMain.Location = new System.Drawing.Point(12, 79);
+            this.dgvMain.Location = new System.Drawing.Point(12, 43);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.RowTemplate.Height = 23;
-            this.dgvMain.Size = new System.Drawing.Size(447, 424);
+            this.dgvMain.Size = new System.Drawing.Size(504, 424);
             this.dgvMain.TabIndex = 3;
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(12, 50);
+            this.btnOrder.Location = new System.Drawing.Point(12, 14);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(75, 23);
             this.btnOrder.TabIndex = 2;

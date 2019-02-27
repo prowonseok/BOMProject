@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +11,12 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BOM
 {
-    public partial class FrmBomProEstimating : Form
+    public partial class FrmBomProEstimatingControl : UserControl
     {
+        public FrmBomProEstimatingControl()
+        {
+            InitializeComponent();
+        }
         DAO.BomDAO bDao;
         DataTable dt;
         List<string> proLst; //판매중인 제품들을 저장할 Collection
@@ -22,21 +26,13 @@ namespace BOM
 
         Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
         ToolTip myToolTip = new ToolTip();
-
-        /// <summary>
-        /// 생성자
-        /// </summary>
-        public FrmBomProEstimating()
-        {
-            InitializeComponent();
-        }
-
+        
         /// <summary>
         /// 폼이 Load될때 발생하는 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FrmBomProEstimating_Load(object sender, EventArgs e)
+        private void FrmBomProEstimatingControl_Load(object sender, EventArgs e)
         {
             #region 원형 그래프
             bDao = new DAO.BomDAO();
@@ -75,7 +71,7 @@ namespace BOM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치 좌표</param>
-        private void chartPro_MouseMove(object sender, MouseEventArgs e)
+        private void ChartPro_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location; //현재 마우스 포인터의 좌표 저장
             if (previousPos.HasValue && position == previousPos)
@@ -102,7 +98,7 @@ namespace BOM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치</param>
-        private void chartDate_MouseMove(object sender, MouseEventArgs e)
+        private void ChartDate_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location;
             if (previousPos.HasValue && position == previousPos)
@@ -267,6 +263,7 @@ namespace BOM
 
         }
 
+       
         /// <summary>
         /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
@@ -285,7 +282,7 @@ namespace BOM
             gridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
         }
+        
     }
 }
