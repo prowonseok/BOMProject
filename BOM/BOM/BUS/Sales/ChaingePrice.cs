@@ -129,11 +129,7 @@ namespace BOM.BUS.Sales
                         return;
                     }
                 }
-            }
-            
-            
+            }  
         }
-
-        
     }
 }

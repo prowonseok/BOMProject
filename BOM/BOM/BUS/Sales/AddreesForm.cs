@@ -216,10 +216,5 @@ namespace BOM.BUS.Sales
         {
             selectAddr = dgvAddr.Rows[e.RowIndex].Cells[1].Value.ToString();         
         }
-
-        private void AddreesForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
