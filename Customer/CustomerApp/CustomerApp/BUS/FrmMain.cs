@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using CustomerApp.VO;
 using CustomerApp.DAO;
 using System.Runtime.InteropServices;
-using System.Globalization;
 
 namespace CustomerApp.BUS
 {
@@ -80,7 +79,7 @@ namespace CustomerApp.BUS
         /// 해당 컨트롤 Visible을 True로 설정하는 Method
         /// </summary>
         /// <param name="controls">설정하고 싶은 컨트롤</param>
-        private void CtrlVisiTrue(params Control[] controls)
+        public void CtrlVisiTrue(params Control[] controls)
         {
             for (int i = 0; i < controls.Length; i++)
             {
@@ -91,7 +90,7 @@ namespace CustomerApp.BUS
         /// <summary>
         /// PanBottom 패널의 Visible을 False로 설정하는 Method
         /// </summary>
-        private void PanBottomCtrlVisiFalse()
+        public void PanBottomCtrlVisiFalse()
         {
             for (int i = 0; i < panBottom.Controls.Count; i++)
             {
@@ -476,6 +475,16 @@ namespace CustomerApp.BUS
         {
             if (!string.IsNullOrEmpty(txtCusID.Text) && cbxASCusPro.SelectedItem != null && cbxOrderNo.SelectedItem != null && txtASContent.TextLength > 9) btnSubmit.Enabled = true;
             else btnSubmit.Enabled = false;
+        }
+
+        /// <summary>
+        /// 엑셀 병합된 셀의 테두리 설정 Method
+        /// </summary>
+        /// <param name="missing">missValue</param>
+        /// <param name="range">병합 범위</param>
+        private static void GetXlBorders(object missing, Microsoft.Office.Interop.Excel.Range range)
+        {
+            range.BorderAround2(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, missing, missing);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -910,11 +919,6 @@ namespace CustomerApp.BUS
                 else return;
             }
             else MessageBox.Show("선택 된 물품이 없습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private static void GetXlBorders(object missing, Microsoft.Office.Interop.Excel.Range range)
-        {
-            range.BorderAround2(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, missing, missing);
         }
 
         private void txtASContent_TextChanged(object sender, EventArgs e)
