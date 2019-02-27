@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.BtnBOM = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnManage = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
             this.dgvMainSales = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -42,15 +42,15 @@
             this.btnSi = new System.Windows.Forms.Button();
             this.btnSales1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnManageMat = new System.Windows.Forms.Button();
-            this.btnProMatEstimating = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.btnBomMatEstimating = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnBomSearch = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.btnBomAdd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnProMatEstimating = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnBomMatEstimating = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btnBomSearch = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnBomAdd = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,15 +66,15 @@
             this.BtnBOM.UseVisualStyleBackColor = true;
             this.BtnBOM.Click += new System.EventHandler(this.BtnBOM_Click);
             // 
-            // button4
+            // btnManage
             // 
-            this.button4.Location = new System.Drawing.Point(0, 295);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 74);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "관리자";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnManage_Click);
+            this.btnManage.Location = new System.Drawing.Point(0, 295);
+            this.btnManage.Name = "btnManage";
+            this.btnManage.Size = new System.Drawing.Size(124, 74);
+            this.btnManage.TabIndex = 1;
+            this.btnManage.Text = "관리자";
+            this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // btnSales
             // 
@@ -174,27 +174,27 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnManageMat);
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnProMatEstimating);
-            this.panel2.Controls.Add(this.button8);
+            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.btnBomMatEstimating);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.btnBomSearch);
             this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.btnBomSearch);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.btnBomAdd);
             this.panel2.Location = new System.Drawing.Point(123, 78);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(132, 483);
             this.panel2.TabIndex = 9;
             // 
-            // btnManageMat
+            // button1
             // 
-            this.btnManageMat.Location = new System.Drawing.Point(0, 364);
-            this.btnManageMat.Name = "btnManageMat";
-            this.btnManageMat.Size = new System.Drawing.Size(132, 50);
-            this.btnManageMat.TabIndex = 11;
-            this.btnManageMat.Text = "자재 등록";
-            this.btnManageMat.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(0, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 50);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "자재 등록";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnProMatEstimating
             // 
@@ -205,14 +205,14 @@
             this.btnProMatEstimating.Text = "판매 예측";
             this.btnProMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // button4
             // 
-            this.button8.Location = new System.Drawing.Point(0, 315);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 50);
-            this.button8.TabIndex = 10;
-            this.button8.Text = "상품 관리";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(0, 315);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(132, 50);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "상품 관리";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // btnBomMatEstimating
             // 
@@ -223,14 +223,14 @@
             this.btnBomMatEstimating.Text = "소요량 예측";
             this.btnBomMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button5
             // 
-            this.button6.Location = new System.Drawing.Point(0, 266);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(132, 50);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "발주 관리";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button5.Location = new System.Drawing.Point(0, 266);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(132, 50);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "발주 관리";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // btnBomSearch
             // 
@@ -241,14 +241,14 @@
             this.btnBomSearch.Text = "BOM조회";
             this.btnBomSearch.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button6
             // 
-            this.button5.Location = new System.Drawing.Point(0, 217);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 50);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "자재 조회";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button6.Location = new System.Drawing.Point(0, 217);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(132, 50);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "자재 조회";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // btnBomAdd
             // 
@@ -259,26 +259,26 @@
             this.btnBomAdd.Text = "BOM등록";
             this.btnBomAdd.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button3
             // 
-            this.button1.Location = new System.Drawing.Point(0, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 74);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Home";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(0, 78);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(124, 74);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Home";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 580);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.BtnBOM);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnManage);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -293,7 +293,7 @@
         #endregion
 
         private System.Windows.Forms.Button BtnBOM;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.DataGridView dgvMainSales;
         private System.Windows.Forms.Timer timer1;
@@ -305,14 +305,14 @@
         private System.Windows.Forms.Button btnSi;
         private System.Windows.Forms.Button btnSales1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnManageMat;
-        private System.Windows.Forms.Button btnProMatEstimating;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button btnBomMatEstimating;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button btnBomSearch;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button btnBomAdd;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProMatEstimating;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnBomMatEstimating;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnBomSearch;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnBomAdd;
+        private System.Windows.Forms.Button button3;
     }
 }
