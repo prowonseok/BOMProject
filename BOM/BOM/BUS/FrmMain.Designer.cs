@@ -51,6 +51,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnBomMain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,7 +134,7 @@
             this.panel1.Controls.Add(this.btnSales1);
             this.panel1.Location = new System.Drawing.Point(256, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(736, 483);
+            this.panel1.Size = new System.Drawing.Size(836, 502);
             this.panel1.TabIndex = 8;
             // 
             // btnma
@@ -174,6 +175,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnBomMain);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnProMatEstimating);
             this.panel2.Controls.Add(this.button4);
@@ -198,7 +200,7 @@
             // 
             // btnProMatEstimating
             // 
-            this.btnProMatEstimating.Location = new System.Drawing.Point(0, 148);
+            this.btnProMatEstimating.Location = new System.Drawing.Point(0, 195);
             this.btnProMatEstimating.Name = "btnProMatEstimating";
             this.btnProMatEstimating.Size = new System.Drawing.Size(132, 50);
             this.btnProMatEstimating.TabIndex = 3;
@@ -217,7 +219,7 @@
             // 
             // btnBomMatEstimating
             // 
-            this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 99);
+            this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 146);
             this.btnBomMatEstimating.Name = "btnBomMatEstimating";
             this.btnBomMatEstimating.Size = new System.Drawing.Size(132, 50);
             this.btnBomMatEstimating.TabIndex = 2;
@@ -236,11 +238,11 @@
             // 
             // btnBomSearch
             // 
-            this.btnBomSearch.Location = new System.Drawing.Point(0, 50);
+            this.btnBomSearch.Location = new System.Drawing.Point(0, 97);
             this.btnBomSearch.Name = "btnBomSearch";
             this.btnBomSearch.Size = new System.Drawing.Size(132, 50);
             this.btnBomSearch.TabIndex = 1;
-            this.btnBomSearch.Text = "BOM조회";
+            this.btnBomSearch.Text = "BOM 조회";
             this.btnBomSearch.UseVisualStyleBackColor = true;
             this.btnBomSearch.Click += new System.EventHandler(this.btnBomSearch_Click);
             // 
@@ -256,7 +258,7 @@
             // 
             // btnBomAdd
             // 
-            this.btnBomAdd.Location = new System.Drawing.Point(0, 1);
+            this.btnBomAdd.Location = new System.Drawing.Point(0, 48);
             this.btnBomAdd.Name = "btnBomAdd";
             this.btnBomAdd.Size = new System.Drawing.Size(132, 50);
             this.btnBomAdd.TabIndex = 0;
@@ -274,11 +276,20 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnBomMain
+            // 
+            this.btnBomMain.Location = new System.Drawing.Point(0, 0);
+            this.btnBomMain.Name = "btnBomMain";
+            this.btnBomMain.Size = new System.Drawing.Size(132, 50);
+            this.btnBomMain.TabIndex = 12;
+            this.btnBomMain.Text = "BOM 메인";
+            this.btnBomMain.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 562);
+            this.ClientSize = new System.Drawing.Size(1093, 580);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -320,5 +331,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnBomAdd;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBomMain;
     }
 }

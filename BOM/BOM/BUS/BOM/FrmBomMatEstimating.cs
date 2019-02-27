@@ -20,12 +20,12 @@ namespace BOM
     {
         private int haveNum = 0; //가지고 있는 재고의 개수
         private int makeNum = 0; //만들고자 하는 재고의 개수
-
+        
         string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
-        string savePath;
 
-
-        List<int> numLst;
+        DataTable matTable;
+        List<int> numLst;         //재고들을 저장할 Collection
+        List<MaterialsVO> matLst; //Excel 파일 저장을 위한 Collection
         DAO.BomDAO bDao;
 
         private XmlTextWriter xr;
@@ -69,6 +69,7 @@ namespace BOM
         /// <param name="e"></param>
         private void btnSearchTree_Click(object sender, EventArgs e)
         {
+            matLst = new List<MaterialsVO>();
             tvProMat.Nodes.Clear();
             //숫자만 입력 받기 위한 If문
             if (!string.IsNullOrEmpty(txtEA.Text) && int.TryParse(txtEA.Text, out int num))
@@ -93,14 +94,17 @@ namespace BOM
                     {
                         //2. DataTable에서 부모의 Child_Name과 Child_EA를 자식 노드로 저장
                         TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + "...." + Int32.Parse(item["BOM_ChildEA"].ToString()) * num + "EA");
+                        matLst.Add(new MaterialsVO {
+                            Mat_Name = item["Child_Name"].ToString(),
+                            Mat_Ea = Int32.Parse(item["BOM_ChildEA"].ToString())*num
+                        }); //Excel 저장을 위한 자재명 저장
                         pNode.Nodes.Add(cNode);
                         //자식노드의 자식노드 등록
                         DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
                         
                         SubTreeview(num, item, cNode);
                     }
-
-                    dgvMat.DataSource = bDao.SelectBom();
+                    dgvMat.DataSource = matTable = bDao.SelectBom();
                     DisplayGridview();
                 }
                 else
@@ -123,10 +127,16 @@ namespace BOM
         private void SubTreeview(int num, DataRow item, TreeNode cNode)
         {
             DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
+            
             foreach (DataRow item2 in dt2.Rows)
             {
                 TreeNode chNode = new TreeNode(item2["Child_Name"].ToString() + "...." + Int32.Parse(item2["BOM_ChildEA"].ToString()) * num + "EA");
                 cNode.Nodes.Add(chNode);
+                
+                matLst.Add(new MaterialsVO {
+                    Mat_Name = "└"+item2["Child_Name"].ToString(),
+                    Mat_Ea = Int32.Parse(item2["BOM_ChildEA"].ToString()) * num
+                }); //Excel 저장을 위한 자재명 저장
                 SubTreeview(num, item2, chNode);
             }
         }
@@ -262,20 +272,30 @@ namespace BOM
             //트리뷰가 비어있지 않을 경우만
             if (tvProMat.Nodes.Count!=0)
             {
-                xr = new XmlTextWriter(@"C:\Users\gd19\Desktop\This\MyP2c.xml", Encoding.UTF8);
-                xr.WriteStartDocument();
+                saveFileDialog1.DefaultExt = ".xml";
+                saveFileDialog1.Filter = "Xml|*.xml";
 
-                xr.WriteStartElement(tvProMat.Nodes[0].Text.Replace(' ', '_')); //공백을 _으로 변경 후 저장
-
-                //Treeview의 Nodes을 저장
-                foreach (TreeNode item in tvProMat.Nodes)
+                if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
                 {
-                    WriteChildNodeXml(item.Nodes);
-                }
+                    xr = new XmlTextWriter(saveFileDialog1.FileName, Encoding.UTF8);
+                    xr.WriteStartDocument();
 
-                xr.WriteEndElement();
-                xr.Flush();
-                xr.Close(); 
+                    xr.WriteStartElement(tvProMat.Nodes[0].Text.Replace(' ', '_')); //공백을 _으로 변경 후 저장
+
+                    //Treeview의 Nodes을 저장
+                    foreach (TreeNode item in tvProMat.Nodes)
+                    {
+                        WriteChildNodeXml(item.Nodes);
+                    }
+
+                    xr.WriteEndElement();
+                    xr.Flush();
+                    xr.Close(); 
+                }
+            }
+            else
+            {
+                MessageBox.Show("검색을 해주세요");
             }
         }
 
@@ -304,32 +324,89 @@ namespace BOM
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            Excel.Application excelApp;
-            Excel.Workbook wb;
-            Excel.Worksheet ws;
-            saveFileDialog1.DefaultExt = ".xlsx";
-            saveFileDialog1.Filter = "Excel|*.xlsx";
-
-            if (saveFileDialog1.ShowDialog()!=DialogResult.Cancel)
+            if (tvProMat.Nodes.Count != 0)
             {
-                savePath = saveFileDialog1.FileName; //저장 경로
+                Excel.Application excelApp;
+                Excel.Workbook wb;
+                Excel.Worksheet ws;
+                Excel.Range range;
 
-                excelApp = new Excel.Application();
+                saveFileDialog1.DefaultExt = ".xls";
+                saveFileDialog1.Filter = "Excel|*.xls";
 
-                wb = excelApp.Workbooks.Open(excelFilePath);
-                ws = wb.Worksheets.Item[1];
-                ws.Cells[3, 3] = txtPName.Text;
-                ws.Cells[4, 3] = txtEA.Text;
-                //MessageBox.Show(ws.Cells[4,2]);
-                wb.Save();
 
-                wb.Close();
-                excelApp.Quit();
+                if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
+                {
+                    foreach (DataRow item in matTable.Rows)
+                    {
+                        foreach (var item2 in matLst)
+                        {
+                            if (item["Mat_Name"].ToString() == item2.Mat_Name.Replace("└",""))
+                            {
+                                item2.Mat_No = Int32.Parse(item["Mat_No"].ToString());
+                                item2.Mat_Level = Int32.Parse(item["Mat_Level"].ToString());
+                                item2.Mat_Cost = Int32.Parse(item["Mat_Cost"].ToString());
+                                item2.Mat_Manufactur = item["Mat_Manufactur"].ToString();
+                            }
+                        }
+                        
+                    }
 
-                Marshal.ReleaseComObject(ws);
-                Marshal.ReleaseComObject(wb);
-                Marshal.ReleaseComObject(excelApp);
-                
+                    excelApp = new Excel.Application();
+
+                    object missing = System.Reflection.Missing.Value;
+
+                    wb = excelApp.Workbooks.Open(excelFilePath);
+                    ws = wb.Worksheets.Item[1];
+                    ws.Cells[3, 3] = txtPName.Text;
+                    ws.Cells[3, 7] =products.Pro_Price;
+                    ws.Cells[4, 7] =products.Pro_Price*Int32.Parse(txtEA.Text);
+                    ws.Cells[4, 3] = txtEA.Text;
+                    int firstRow = 6;
+                    int finalRow = matLst.Count+5;
+                    foreach (var item in matLst)
+                    {
+                        ws.Cells[firstRow, 2] = item.Mat_No;
+                        ws.Cells[firstRow, 3] = item.Mat_Name;
+                        if (item.Mat_Level==0)
+                        {
+                            ws.Cells[firstRow, 4] = "원자재";
+                        }
+                        else if (item.Mat_Level==1)
+                        {
+                            ws.Cells[firstRow, 4] = "반제품";
+                        }
+                        else
+                        {
+                            ws.Cells[firstRow, 4] = "완제품";
+                        }
+                        ws.Cells[firstRow, 5] = item.Mat_Ea+"개";
+                        ws.Cells[firstRow, 6] = item.Mat_Cost;
+                        ws.Cells[firstRow, 7] = item.Mat_Manufactur;
+                        firstRow++;
+                    }
+                    //Excel 테두리를 색칠을 위한 range설정
+                    range = ws.get_Range("B6", "H" + finalRow);
+                    range.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    range.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    range.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
+
+
+                    wb.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal, null, null, null, null, Excel.XlSaveAsAccessMode.xlExclusive, Excel.XlSaveConflictResolution.xlLocalSessionChanges, missing, missing, missing, missing);
+
+
+                    wb.Close();
+                    excelApp.Quit();
+
+                    Marshal.ReleaseComObject(ws);
+                    Marshal.ReleaseComObject(wb);
+                    Marshal.ReleaseComObject(excelApp); 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("검색을 해주세요");
             }
         }
     }

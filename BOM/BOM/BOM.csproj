@@ -179,6 +179,12 @@
     <Compile Include="FrmBomInfoControl.Designer.cs">
       <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBomProEstimatingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmBomProEstimatingControl.Designer.cs">
+      <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -335,6 +341,9 @@
     </None>
     <EmbeddedResource Include="FrmBomInfoControl.resx">
       <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBomProEstimatingControl.resx">
+      <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>

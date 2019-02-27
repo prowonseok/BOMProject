@@ -31,9 +31,6 @@
             this.cbbType = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnProEstimating = new System.Windows.Forms.Button();
-            this.btnMatEstimating = new System.Windows.Forms.Button();
-            this.btnBomInfo = new System.Windows.Forms.Button();
             this.dgvBom = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
             this.SuspendLayout();
@@ -68,33 +65,6 @@
             this.txtSearch.Size = new System.Drawing.Size(171, 21);
             this.txtSearch.TabIndex = 14;
             // 
-            // btnProEstimating
-            // 
-            this.btnProEstimating.Location = new System.Drawing.Point(414, 359);
-            this.btnProEstimating.Name = "btnProEstimating";
-            this.btnProEstimating.Size = new System.Drawing.Size(75, 23);
-            this.btnProEstimating.TabIndex = 13;
-            this.btnProEstimating.Text = "판매 예측";
-            this.btnProEstimating.UseVisualStyleBackColor = true;
-            // 
-            // btnMatEstimating
-            // 
-            this.btnMatEstimating.Location = new System.Drawing.Point(301, 359);
-            this.btnMatEstimating.Name = "btnMatEstimating";
-            this.btnMatEstimating.Size = new System.Drawing.Size(88, 23);
-            this.btnMatEstimating.TabIndex = 12;
-            this.btnMatEstimating.Text = "소요량 예측";
-            this.btnMatEstimating.UseVisualStyleBackColor = true;
-            // 
-            // btnBomInfo
-            // 
-            this.btnBomInfo.Location = new System.Drawing.Point(188, 359);
-            this.btnBomInfo.Name = "btnBomInfo";
-            this.btnBomInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnBomInfo.TabIndex = 11;
-            this.btnBomInfo.Text = "BOM조회";
-            this.btnBomInfo.UseVisualStyleBackColor = true;
-            // 
             // dgvBom
             // 
             this.dgvBom.AllowUserToAddRows = false;
@@ -116,9 +86,6 @@
             this.Controls.Add(this.cbbType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnProEstimating);
-            this.Controls.Add(this.btnMatEstimating);
-            this.Controls.Add(this.btnBomInfo);
             this.Controls.Add(this.dgvBom);
             this.Name = "FrmBomInfoControl";
             this.Size = new System.Drawing.Size(683, 468);
@@ -134,9 +101,6 @@
         private System.Windows.Forms.ComboBox cbbType;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnProEstimating;
-        private System.Windows.Forms.Button btnMatEstimating;
-        private System.Windows.Forms.Button btnBomInfo;
         private System.Windows.Forms.DataGridView dgvBom;
     }
 }

@@ -180,8 +180,10 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnProMatEstimating_Click(object sender, EventArgs e)
         {
-            FrmBomProEstimating fbpe = new FrmBomProEstimating();
-            fbpe.ShowDialog();
+
+            FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fbpe);
         }
     }
 }

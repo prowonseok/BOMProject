@@ -69,6 +69,7 @@ namespace BOM
             products = new Products();
             products.Pro_No = Int32.Parse(dgvProInfo.SelectedRows[0].Cells[0].Value.ToString());
             products.Mat_No = Int32.Parse(dgvProInfo.SelectedRows[0].Cells[1].Value.ToString());
+            products.Pro_Price = Int32.Parse(dgvProInfo.SelectedRows[0].Cells[2].Value.ToString());
             products.Pro_Name = dgvProInfo.SelectedRows[0].Cells[3].Value.ToString();
             FrmBomMatEstimating fbme = (FrmBomMatEstimating)Owner;
             fbme.Products = this.products;
