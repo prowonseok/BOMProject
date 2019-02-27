@@ -54,7 +54,6 @@
             this.comboProduct.Name = "comboProduct";
             this.comboProduct.Size = new System.Drawing.Size(121, 20);
             this.comboProduct.TabIndex = 0;
-            
             this.comboProduct.DropDownClosed += new System.EventHandler(this.comboProduct_DropDownClosed);
             // 
             // txtChaingePrice
@@ -178,9 +177,8 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(83, 231);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 12);
+            this.label4.Size = new System.Drawing.Size(0, 12);
             this.label4.TabIndex = 29;
-            this.label4.Text = "\\asem";
             // 
             // label5
             // 

@@ -33,7 +33,7 @@ namespace BOM.BUS.Sales
         }        
 
         private void button1_Click(object sender, EventArgs e) //주소 검색 클릭
-        {
+        {            
             if (txtSearchAddr.Text == "")
             {
                 MessageBox.Show("주소입력 하세요");
@@ -95,9 +95,9 @@ namespace BOM.BUS.Sales
                     MessageBox.Show("검색된 주소결과가 없습니다");
                     lblTest.Text = "";
                     return;
-                    
+
                 }
-                
+
             }
             
         }

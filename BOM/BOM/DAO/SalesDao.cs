@@ -102,15 +102,30 @@ namespace BOM.DAO
 
             DataTable dataTable =  dbp.ExecuteParametersDT(sp, null);
 
+            
             foreach (DataRow item in dataTable.Rows)
-            {
-                productcList.Add(new ProductsListVO()
+            {       
+                try
                 {
-                    ProductName = item["Pro_name"].ToString(),
-                    ProductPrice = item["Pro_Price"].ToString(),
-                    ProductDate = DateTime.Parse(item["Pro_ChangePriceDate"].ToString())
+                    productcList.Add(new ProductsListVO()
+                    {
+                        ProductName = item["Pro_name"].ToString(),
+                        ProductPrice = item["Pro_Price"].ToString(),
+                        ProductDate = DateTime.Parse(item["Pro_ChangePriceDate"].ToString())
 
-                });
+                    });
+                }
+                catch (FormatException)
+                {
+
+                    productcList.Add(new ProductsListVO()
+                    {
+                        ProductName = item["Pro_name"].ToString(),
+                        ProductPrice = item["Pro_Price"].ToString(),
+                        ProductDate = DateTime.Parse(DateTime.Now.ToShortDateString())
+
+                    });
+                }
             }  
             
             return productcList;

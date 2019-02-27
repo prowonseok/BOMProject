@@ -43,6 +43,7 @@
             this.dgvMainSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMainSales.Size = new System.Drawing.Size(572, 245);
             this.dgvMainSales.TabIndex = 7;
+            this.dgvMainSales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMainSales_CellClick);
             // 
             // label1
             // 
@@ -62,6 +63,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "갱신";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmMainControl
             // 
