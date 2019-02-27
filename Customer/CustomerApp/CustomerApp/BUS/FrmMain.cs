@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CustomerApp.VO;
 using CustomerApp.DAO;
 using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace CustomerApp.BUS
 {
@@ -851,16 +852,40 @@ namespace CustomerApp.BUS
                     workBook = excelApp.Workbooks.Open(path + "Excelbill.xlsx", missing, false, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing);
                     workSheet = workBook.Worksheets.Item[1];
 
+                    //Microsoft.Office.Interop.Excel.Range insertRange = workSheet.get_Range("")
 
                     int k = 0;
+                    int totalPrice = 0;
+
+                    Microsoft.Office.Interop.Excel.Range range = null;
                     for (int i = 9; i < billOrders.Count + 9; i++)
                     {
+                        range = workSheet.get_Range("A" + i, "K" + i);
+                        range.Insert(Microsoft.Office.Interop.Excel.XlInsertShiftDirection.xlShiftDown, missing); // 동적 행 삽입
+
+                        range = workSheet.get_Range("A" + i, "B" + i);
+                        range.Merge(true);
+                        GetXlBorders(missing, range);
+                        range = workSheet.get_Range("C" + i, "G" + i);
+                        range.Merge(true);
+                        GetXlBorders(missing, range);
+                        range = workSheet.get_Range("H" + i, "I" + i);
+                        range.Merge(true);
+                        GetXlBorders(missing, range);
+                        range = workSheet.get_Range("J" + i, "K" + i);
+                        range.Merge(true);
+                        GetXlBorders(missing, range);
+                        range.NumberFormatLocal = "\\ #,##0";
+                        range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
                         workSheet.Cells[i, "A"] = billOrders[k].OrderDate.ToString("yyyy-MM-dd");
                         workSheet.Cells[i, "C"] = billOrders[k].ProName.ToString();
-                        workSheet.Cells[i, "H"] = billOrders[k].EA.ToString();
-                        workSheet.Cells[i, "J"] = billOrders[k].Price.ToString();
+                        workSheet.Cells[i, "H"] = billOrders[k].EA.ToString() + "개";
+                        workSheet.Cells[i, "J"] = billOrders[k].Price;
+                        totalPrice += billOrders[k].Price;
                         k++;
                     }
+                    workSheet.Cells[billOrders.Count + 9, "J"] = totalPrice;
+
                     // ...
                     try
                     {
@@ -870,6 +895,8 @@ namespace CustomerApp.BUS
                     {
                         return;
                     }
+
+                    workBook.Close(); // 워크북 종료
 
                     excelApp.Quit(); // 엑셀 프로그램 종료
 
@@ -883,6 +910,11 @@ namespace CustomerApp.BUS
                 else return;
             }
             else MessageBox.Show("선택 된 물품이 없습니다!", "구매내역", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private static void GetXlBorders(object missing, Microsoft.Office.Interop.Excel.Range range)
+        {
+            range.BorderAround2(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, missing, missing);
         }
 
         private void txtASContent_TextChanged(object sender, EventArgs e)
