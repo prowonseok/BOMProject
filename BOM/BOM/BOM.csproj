@@ -191,6 +191,18 @@
     <Compile Include="FrmMainControl.Designer.cs">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRevenueStatusControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmRevenueStatusControl.Designer.cs">
+      <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesInquiryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmSalesInquiryControl.Designer.cs">
+      <DependentUpon>FrmSalesInquiryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="VO\OffererOrderViewVO.cs" />
     <Compile Include="VO\OffererOrderVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
@@ -336,6 +348,9 @@
     <None Include="Excel\Shipment.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Font\NanumSquareRoundB.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MaterialsData.dbml.layout">
       <DependentUpon>MaterialsData.dbml</DependentUpon>
     </None>
@@ -347,6 +362,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRevenueStatusControl.resx">
+      <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesInquiryControl.resx">
+      <DependentUpon>FrmSalesInquiryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

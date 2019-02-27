@@ -23,7 +23,7 @@ namespace BOM.BUS.Sales
         
         public Shipment()
         {
-
+            InitializeComponent();
         }
         int orderNo = 0;
         public Shipment(int orderNo) //주문번호를 넘겨받음
@@ -42,75 +42,84 @@ namespace BOM.BUS.Sales
         }
 
         private void Shipment_Load(object sender, EventArgs e) //넘겨받은 준문정보로 출하지시서 폼의 내용을 표시
-        {            
-            string sp = "Bom_JW_Shipment_Procedure";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@OrderNo", orderNo);
-            DataTable dt = dbp.ExecuteParametersDT(sp, sqlParameters);
+        {
             
-            
-            foreach (DataRow item in dt.Rows)
-            {                
-                lblOrderNo.Text = item["Cus_Order_OrderNO"].ToString();
-                lblDate.Text = DateTime.Parse(item["Cus_Order_Date"].ToString()).ToShortDateString().ToString();
-                lblCus.Text = item["Cus_ID"].ToString();
-                lblEmp.Text = item["Emp_Name"].ToString();
-                lblPhone.Text = item["Cus_Phone"].ToString();
-                lblAddr.Text = item["Cus_Addr"].ToString();                
-
-                ProList.Add(new ShipmentVO
-                {
-                    ProName = item["Pro_Name"].ToString(),
-                    ProEa = Int32.Parse(item["Cus_Order_EA"].ToString()),
-                    ProPrice = String.Format("{0:##,##0}", item["Cus_Order_Price"]) + " 원",
-                    ResidualAmount = Int32.Parse(item["RemainingAmount"].ToString())
-                    
-                });                 
-            }
-            lblShipDate.Text = DateTime.Now.AddDays(2).ToShortDateString();
-            dgvProList.DataSource = ProList;
-            dgvProList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-            dgvProList.Columns[0].Width = 200;
-            dgvProList.Columns[1].Width = 40;
-            dgvProList.Columns[2].Width = 90;
-            dgvProList.Columns[3].Width = 90;
-            dgvProList.Columns[0].HeaderText = "제품명";
-            dgvProList.Columns[1].HeaderText = "개수";
-            dgvProList.Columns[2].HeaderText = "가격";
-            dgvProList.Columns[3].HeaderText = "잔여량";            
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            DataGridViewDisableButtonColumn column1 =
-                new DataGridViewDisableButtonColumn();
-            
-            column1.Name = "발주";
-            
-            dgvProList.Columns.Add(column1);
-
-            // Set the text for each button.
-            for (int i = 0; i < dgvProList.RowCount; i++)
+            if (this.orderNo != 0 )
             {
-                dgvProList.Rows[i].Cells["발주"].Value =
-                    "발주신청";
-            }
-            
-            //dgvProList.CurrentCellDirtyStateChanged += DgvProList_CurrentCellDirtyStateChanged;
-            dgvProList.CellClick += DgvProList_CellClick;
-            
+                string sp = "Bom_JW_Shipment_Procedure";
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@OrderNo", orderNo);
+                DataTable dt = dbp.ExecuteParametersDT(sp, sqlParameters);
 
-            this.Controls.Add(dgvProList);
-            for (int i = 0; i < dgvProList.Rows.Count; i++)
-            {
-                
-                if (Int32.Parse(dgvProList.Rows[i].Cells["ProEa"].Value.ToString()) < Int32.Parse(dgvProList.Rows[i].Cells["residualAmount"].Value.ToString()))
+
+                foreach (DataRow item in dt.Rows)
                 {
-                    DataGridViewDisableButtonCell buttonCell = (DataGridViewDisableButtonCell)dgvProList.Rows[i].Cells["발주"];                   
-                    buttonCell.Enabled = false;
-                    dgvProList.Invalidate();
+                    lblOrderNo.Text = item["Cus_Order_OrderNO"].ToString();
+                    lblDate.Text = DateTime.Parse(item["Cus_Order_Date"].ToString()).ToShortDateString().ToString();
+                    lblCus.Text = item["Cus_ID"].ToString();
+                    lblEmp.Text = item["Emp_Name"].ToString();
+                    lblPhone.Text = item["Cus_Phone"].ToString();
+                    lblAddr.Text = item["Cus_Addr"].ToString();
+
+                    ProList.Add(new ShipmentVO
+                    {
+                        ProName = item["Pro_Name"].ToString(),
+                        ProEa = Int32.Parse(item["Cus_Order_EA"].ToString()),
+                        ProPrice = String.Format("{0:##,##0}", item["Cus_Order_Price"]) + " 원",
+                        ResidualAmount = Int32.Parse(item["RemainingAmount"].ToString())
+
+                    });
                 }
+                lblShipDate.Text = DateTime.Now.AddDays(2).ToShortDateString();
+                dgvProList.DataSource = ProList;
+                dgvProList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvProList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgvProList.Columns[0].Width = 200;
+                dgvProList.Columns[1].Width = 40;
+                dgvProList.Columns[2].Width = 90;
+                dgvProList.Columns[3].Width = 90;
+                dgvProList.Columns[0].HeaderText = "제품명";
+                dgvProList.Columns[1].HeaderText = "개수";
+                dgvProList.Columns[2].HeaderText = "가격";
+                dgvProList.Columns[3].HeaderText = "잔여량";
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                DataGridViewDisableButtonColumn column1 =
+                    new DataGridViewDisableButtonColumn();
+
+                column1.Name = "발주";
+
+                dgvProList.Columns.Add(column1);
+
+                // Set the text for each button.
+                for (int i = 0; i < dgvProList.RowCount; i++)
+                {
+                    dgvProList.Rows[i].Cells["발주"].Value =
+                        "발주신청";
+                }
+
+                //dgvProList.CurrentCellDirtyStateChanged += DgvProList_CurrentCellDirtyStateChanged;
+                dgvProList.CellClick += DgvProList_CellClick;
+
+
+                this.Controls.Add(dgvProList);
+                for (int i = 0; i < dgvProList.Rows.Count; i++)
+                {
+
+                    if (Int32.Parse(dgvProList.Rows[i].Cells["ProEa"].Value.ToString()) < Int32.Parse(dgvProList.Rows[i].Cells["residualAmount"].Value.ToString()))
+                    {
+                        DataGridViewDisableButtonCell buttonCell = (DataGridViewDisableButtonCell)dgvProList.Rows[i].Cells["발주"];
+                        buttonCell.Enabled = false;
+                        dgvProList.Invalidate();
+                    }
+                } 
             }
+            if (lblOrderNo.Text !="")
+            {
+                btnPath.Enabled = btnConfirm.Enabled = true;
+            }
+
         }
 
         private void DgvProList_CellClick(object sender, DataGridViewCellEventArgs e) // 제품 보유량이 부족시 발주버튼이 활성화되고 발주가 가능

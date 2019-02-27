@@ -114,7 +114,15 @@ namespace BOM.BUS.Sales
                     if (CheckPrice(txtChaingePrice.Text))
                     {
                         se = new SalesExcelDao();
-                        label4.Text = se.NumToString(Int32.Parse(txtChaingePrice.Text));
+                        try
+                        {
+                            label4.Text = se.NumToString(Int32.Parse(txtChaingePrice.Text));
+                        }
+                        catch (FormatException)
+                        {
+                           
+                            txtChaingePrice.Text = "";
+                        }
                     }
                     else
                     {

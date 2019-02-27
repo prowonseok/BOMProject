@@ -42,7 +42,6 @@
             this.rdoSales = new System.Windows.Forms.RadioButton();
             this.lblMsg = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -127,10 +126,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 229);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 164);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(798, 357);
+            this.dataGridView1.Size = new System.Drawing.Size(798, 242);
             this.dataGridView1.TabIndex = 8;
             // 
             // btnSearch
@@ -155,7 +154,7 @@
             this.groupBox1.Controls.Add(this.comboProduct);
             this.groupBox1.Controls.Add(this.dtp2);
             this.groupBox1.Controls.Add(this.lbl1);
-            this.groupBox1.Location = new System.Drawing.Point(44, 75);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(434, 127);
             this.groupBox1.TabIndex = 10;
@@ -179,7 +178,7 @@
             // 
             this.lblMsg.AutoSize = true;
             this.lblMsg.ForeColor = System.Drawing.Color.Red;
-            this.lblMsg.Location = new System.Drawing.Point(510, 98);
+            this.lblMsg.Location = new System.Drawing.Point(475, 33);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(259, 12);
             this.lblMsg.TabIndex = 11;
@@ -187,7 +186,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(694, 119);
+            this.btnConfirm.Location = new System.Drawing.Point(659, 54);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 11;
@@ -195,23 +194,12 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(40, 21);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 21);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "판매조회";
-            // 
             // SalesInquiry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(873, 615);
-            this.Controls.Add(this.label11);
+            this.ClientSize = new System.Drawing.Size(820, 418);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.groupBox1);
@@ -243,6 +231,5 @@
         private System.Windows.Forms.RadioButton rdoSales;
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Label label11;
     }
 }
