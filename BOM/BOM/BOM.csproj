@@ -191,6 +191,12 @@
     <Compile Include="FrmMainControl.Designer.cs">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMatEstimatingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmMatEstimatingControl.Designer.cs">
+      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRevenueStatusControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -362,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMatEstimatingControl.resx">
+      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRevenueStatusControl.resx">
       <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>

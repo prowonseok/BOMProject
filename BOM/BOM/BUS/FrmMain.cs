@@ -21,6 +21,7 @@ namespace BOM.BUS
     {
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
+        
 
         public FrmMain()
         {
@@ -195,8 +196,8 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnBomMatEstimating_Click(object sender, EventArgs e)
         {
-            FrmBomMatEstimating fme = new FrmBomMatEstimating();
-            fme.ShowDialog();
+            FrmBomMatEstimating fmec = new FrmBomMatEstimating();
+            fmec.ShowDialog();
         }
 
         /// <summary>
@@ -206,6 +207,7 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnProMatEstimating_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t') + 2);
 
             FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
             panel1.Controls.Clear();
@@ -257,6 +259,16 @@ namespace BOM.BUS
             txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
-        
+
+        /// <summary>
+        /// BOM 메인 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBomMain_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t')+2);
+
+        }
     }
 }

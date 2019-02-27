@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOM.BUS;
 using BOM.VO;
 
 namespace BOM
@@ -71,6 +72,7 @@ namespace BOM
             products.Mat_No = Int32.Parse(dgvProInfo.SelectedRows[0].Cells[1].Value.ToString());
             products.Pro_Price = Int32.Parse(dgvProInfo.SelectedRows[0].Cells[2].Value.ToString());
             products.Pro_Name = dgvProInfo.SelectedRows[0].Cells[3].Value.ToString();
+
             FrmBomMatEstimating fbme = (FrmBomMatEstimating)Owner;
             fbme.Products = this.products;
             fbme.CanOrAdd = true;

@@ -136,10 +136,9 @@ namespace BOM.BUS.Sales
                         NameAddr = "도로명: " + item.SelectSingleNode("lnmAdres").InnerText + "\r구주소: " + item.SelectSingleNode("rnAdres").InnerText
                     });
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
                     return;
-                    //MessageBox.Show(e.Message);
                 }
             }
             AddrView();

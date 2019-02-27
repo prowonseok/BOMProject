@@ -52,8 +52,8 @@
             this.btnBomSearch = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnBomMain = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblFunctionName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
@@ -213,25 +213,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btnma);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.btnProMatEstimating);
-            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.btnBomMatEstimating);
-            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.btnSales1);
             this.panel2.Controls.Add(this.btnSi);
-            this.panel2.Controls.Add(this.btnBomSearch);
             this.panel2.Controls.Add(this.btnchp);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.btnBomAdd);
-            this.panel2.Location = new System.Drawing.Point(123, 78);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(132, 483);
-            this.panel2.TabIndex = 9;
-            // 
-            // panel2
-            // 
             this.panel2.Controls.Add(this.btnBomMain);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnProMatEstimating);
@@ -263,15 +248,6 @@
             this.btnProMatEstimating.BackColor = System.Drawing.Color.White;
             this.btnProMatEstimating.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnProMatEstimating.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProMatEstimating.Location = new System.Drawing.Point(0, 148);
-            this.btnProMatEstimating.Name = "btnProMatEstimating";
-            this.btnProMatEstimating.Size = new System.Drawing.Size(132, 50);
-            this.btnProMatEstimating.TabIndex = 3;
-            this.btnProMatEstimating.Text = "판매 예측";
-            this.btnProMatEstimating.UseVisualStyleBackColor = false;
-            // 
-            // btnProMatEstimating
-            // 
             this.btnProMatEstimating.Location = new System.Drawing.Point(0, 195);
             this.btnProMatEstimating.Name = "btnProMatEstimating";
             this.btnProMatEstimating.Size = new System.Drawing.Size(132, 50);
@@ -310,15 +286,6 @@
             this.btnBomMatEstimating.BackColor = System.Drawing.Color.White;
             this.btnBomMatEstimating.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnBomMatEstimating.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 99);
-            this.btnBomMatEstimating.Name = "btnBomMatEstimating";
-            this.btnBomMatEstimating.Size = new System.Drawing.Size(132, 50);
-            this.btnBomMatEstimating.TabIndex = 2;
-            this.btnBomMatEstimating.Text = "소요량 예측";
-            this.btnBomMatEstimating.UseVisualStyleBackColor = false;
-            // 
-            // btnBomMatEstimating
-            // 
             this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 146);
             this.btnBomMatEstimating.Name = "btnBomMatEstimating";
             this.btnBomMatEstimating.Size = new System.Drawing.Size(132, 50);
@@ -344,15 +311,6 @@
             this.btnBomSearch.BackColor = System.Drawing.Color.White;
             this.btnBomSearch.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnBomSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBomSearch.Location = new System.Drawing.Point(0, 50);
-            this.btnBomSearch.Name = "btnBomSearch";
-            this.btnBomSearch.Size = new System.Drawing.Size(132, 50);
-            this.btnBomSearch.TabIndex = 1;
-            this.btnBomSearch.Text = "BOM조회";
-            this.btnBomSearch.UseVisualStyleBackColor = false;
-            // 
-            // btnBomSearch
-            // 
             this.btnBomSearch.Location = new System.Drawing.Point(0, 97);
             this.btnBomSearch.Name = "btnBomSearch";
             this.btnBomSearch.Size = new System.Drawing.Size(132, 50);
@@ -379,13 +337,23 @@
             this.btnBomAdd.BackColor = System.Drawing.Color.White;
             this.btnBomAdd.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnBomAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBomAdd.Location = new System.Drawing.Point(0, 1);
+            this.btnBomAdd.Location = new System.Drawing.Point(0, 48);
             this.btnBomAdd.Name = "btnBomAdd";
             this.btnBomAdd.Size = new System.Drawing.Size(132, 50);
             this.btnBomAdd.TabIndex = 0;
             this.btnBomAdd.Text = "BOM등록";
-            this.btnBomAdd.UseVisualStyleBackColor = false;
+            this.btnBomAdd.UseVisualStyleBackColor = true;
             this.btnBomAdd.Click += new System.EventHandler(this.btnBomAdd_Click);
+            // 
+            // btnBomMain
+            // 
+            this.btnBomMain.Location = new System.Drawing.Point(0, 1);
+            this.btnBomMain.Name = "btnBomMain";
+            this.btnBomMain.Size = new System.Drawing.Size(132, 50);
+            this.btnBomMain.TabIndex = 12;
+            this.btnBomMain.Text = "BOM 메인";
+            this.btnBomMain.UseVisualStyleBackColor = true;
+            this.btnBomMain.Click += new System.EventHandler(this.btnBomMain_Click);
             // 
             // button3
             // 
@@ -397,7 +365,7 @@
             this.button3.Size = new System.Drawing.Size(124, 74);
             this.button3.TabIndex = 10;
             this.button3.Text = "Home";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // timer2
@@ -413,35 +381,6 @@
             this.lblFunctionName.Name = "lblFunctionName";
             this.lblFunctionName.Size = new System.Drawing.Size(0, 27);
             this.lblFunctionName.TabIndex = 11;
-            // 
-            // btnBomAdd
-            // 
-            this.btnBomAdd.Location = new System.Drawing.Point(0, 48);
-            this.btnBomAdd.Name = "btnBomAdd";
-            this.btnBomAdd.Size = new System.Drawing.Size(132, 50);
-            this.btnBomAdd.TabIndex = 0;
-            this.btnBomAdd.Text = "BOM등록";
-            this.btnBomAdd.UseVisualStyleBackColor = true;
-            this.btnBomAdd.Click += new System.EventHandler(this.btnBomAdd_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 74);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Home";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnBomMain
-            // 
-            this.btnBomMain.Location = new System.Drawing.Point(0, 0);
-            this.btnBomMain.Name = "btnBomMain";
-            this.btnBomMain.Size = new System.Drawing.Size(132, 50);
-            this.btnBomMain.TabIndex = 12;
-            this.btnBomMain.Text = "BOM 메인";
-            this.btnBomMain.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
