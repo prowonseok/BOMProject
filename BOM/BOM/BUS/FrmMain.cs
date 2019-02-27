@@ -1,4 +1,6 @@
 ﻿using BOM.BUS.BOM;
+using BOM.BUS.Managements;
+using BOM.BUS.Managements.Controls;
 using BOM.BUS.Sales;
 using BOM.VO;
 using dllPackager;
@@ -21,6 +23,7 @@ namespace BOM.BUS
     {
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
+        
 
         public FrmMain()
         {
@@ -36,15 +39,22 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 3;
-            btnSales.FlatAppearance.BorderSize = 1;
-            btnManage.FlatAppearance.BorderSize = 1;
+            btnBomMain.Location = new Point(0, 224);
+            btnBomAdd.Location = new Point(0, 253);
+            btnBomSearch.Location = new Point(0, 282);
+            btnBomMatEstimating.Location = new Point(0, 311);
+            btnProMatEstimating.Location = new Point(0, 340);
+            btnSales.Location = new Point(0, 370);
+            btnManage.Location = new Point(0, 443);
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 3;
+            //btnSales.FlatAppearance.BorderSize = 1;
+            //btnManage.FlatAppearance.BorderSize = 1;
 
             FrmBomInfoControl fbic = new FrmBomInfoControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fbic);
-
+            btnBomMain.Visible = true;
             btnBomAdd.Visible = true;
             btnBomMatEstimating.Visible = true;
             btnBomSearch.Visible = true;
@@ -57,39 +67,100 @@ namespace BOM.BUS
             button5.Visible = false;
             button4.Visible = false;
             button1.Visible = false;
+            button7.Visible = false;
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 1;
-            btnSales.FlatAppearance.BorderSize = 1;
-            btnManage.FlatAppearance.BorderSize = 3;
-            Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
-            fmanagemain.ShowDialog();
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 1;
+            //btnSales.FlatAppearance.BorderSize = 1;
+            //btnManage.FlatAppearance.BorderSize = 3;
+            //Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
+            //fmanagemain.ShowDialog();
+            button3.Location = new Point(0, 79);
+            BtnBOM.Location = new Point(0, 151);
+            btnSales.Location = new Point(0, 226);
+            btnManage.Location = new Point(0, 300);
+            btnBomMain.Visible = false;
+            btnBomAdd.Visible = false;
+            btnBomMatEstimating.Visible = false;
+            btnBomSearch.Visible = false;
+            btnProMatEstimating.Visible = false;
+            btnSales1.Visible = false;
+            btnSi.Visible = false;
+            btnchp.Visible = false;
+            btnma.Visible = false;
+            button6.Visible = true;
+            button5.Visible = true;
+            button4.Visible = true;
+            button1.Visible = true;
+            button7.Visible = false;
         }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 1;
-            btnSales.FlatAppearance.BorderSize = 3;
-            btnManage.FlatAppearance.BorderSize = 1;
-            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = true;
-            btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = false;
+            btnSales1.Location = new Point(0, 297);
+            btnSi.Location = new Point(0, 326);
+            btnchp.Location = new Point(0, 355);
+            btnma.Location = new Point(0, 384);
+            button7.Location = new Point(0, 413);
+            btnSales.Location = new Point(0, 224);
+            btnManage.Location = new Point(0, 443);
+
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 1;
+            //btnSales.FlatAppearance.BorderSize = 3;
+            //btnManage.FlatAppearance.BorderSize = 1;
+            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = true;
+            btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible= false;
+            button1.Visible = button4.Visible = button5.Visible = button6.Visible = false;
             //한줄더
-            Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
-            fsalesmain.ShowDialog();
+            //Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
+            //fsalesmain.ShowDialog();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            Test();
+            FrmMainControl fmc = new FrmMainControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fmc);
             PrivateFontCollection privateFonts = new PrivateFontCollection();
-            //MessageBox.Show(Application.StartupPath);
+
             privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
             Font font = new Font(privateFonts.Families[0], 14f);
-            btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font = button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = btnBomAdd .Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font;
+            Font font2 = new Font(privateFonts.Families[0], 12f);
+
+            btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font =  btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font2;
+            button1.Font = button4.Font = button5.Font = button6.Font = font2;
+            button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = lblFunctionName.Font = font;
+
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
+            button1.ForeColor = button4.ForeColor = button5.ForeColor = button6.ForeColor = Color.White;
+            button3.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                }
+            }
+
+            btnBomMain.Visible = false;
+            btnBomAdd.Visible = false;
+            btnBomMatEstimating.Visible = false;
+            btnBomSearch.Visible = false;
+            btnProMatEstimating.Visible = false;
+            btnSales1.Visible = false;
+            btnSi.Visible = false;
+            btnchp.Visible = false;
+            btnma.Visible = false;
+            button6.Visible = false;
+            button5.Visible = false;
+            button4.Visible = false;
+            button1.Visible = false;
+            button7.Visible = false;
         }
 
         private void Test()
@@ -134,13 +205,6 @@ namespace BOM.BUS
                 ssd.Show();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ////AddreesForm ad = new AddreesForm(2);
-            //ad.Owner = this;
-            //ad.Show();
-        }
         
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -161,11 +225,14 @@ namespace BOM.BUS
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+            btnSales.Location = new Point(0, 224);
+            btnManage.Location = new Point(0, 297);
             button3.FlatAppearance.BorderSize = 3;
             BtnBOM.FlatAppearance.BorderSize = 1;
             btnSales.FlatAppearance.BorderSize = 1; 
             btnManage.FlatAppearance.BorderSize = 1;
-
+            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible = false;
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
@@ -195,8 +262,8 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnBomMatEstimating_Click(object sender, EventArgs e)
         {
-            FrmBomMatEstimating fme = new FrmBomMatEstimating();
-            fme.ShowDialog();
+            FrmBomMatEstimating fmec = new FrmBomMatEstimating();
+            fmec.ShowDialog();
         }
 
         /// <summary>
@@ -206,6 +273,7 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnProMatEstimating_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t') + 2);
 
             FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
             panel1.Controls.Clear();
@@ -257,6 +325,50 @@ namespace BOM.BUS
             txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
-        
+
+        /// <summary>
+        /// BOM 메인 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBomMain_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t')+2);
+            FrmBomInfoControl fbic = new FrmBomInfoControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fbic);
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CtrlOrderMain com = new CtrlOrderMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(com);
+            com.btnOrder_Click(null, null);
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CtrlMatMain cmm = new CtrlMatMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cmm);
+            cmm.btnMatAdd_Click(null, null);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CtrlProducts cpd = new CtrlProducts();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cpd);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CtrlMatMain cmm = new CtrlMatMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cmm);
+        }
     }
 }

@@ -136,10 +136,9 @@ namespace BOM.BUS.Sales
                         NameAddr = "도로명: " + item.SelectSingleNode("lnmAdres").InnerText + "\r구주소: " + item.SelectSingleNode("rnAdres").InnerText
                     });
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
                     return;
-                    //MessageBox.Show(e.Message);
                 }
             }
             AddrView();
@@ -216,11 +215,6 @@ namespace BOM.BUS.Sales
         private void dgvAddr_CellClick(object sender, DataGridViewCellEventArgs e) //셀 클릭하여 클릭한 주소 값 저장
         {
             selectAddr = dgvAddr.Rows[e.RowIndex].Cells[1].Value.ToString();         
-        }
-
-        private void AddreesForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

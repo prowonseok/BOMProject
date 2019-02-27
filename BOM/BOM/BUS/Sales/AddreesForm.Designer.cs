@@ -155,7 +155,7 @@
             this.Controls.Add(this.txtSearchAddr);
             this.Name = "AddreesForm";
             this.Text = "Addrees";
-            this.Load += new System.EventHandler(this.AddreesForm_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
