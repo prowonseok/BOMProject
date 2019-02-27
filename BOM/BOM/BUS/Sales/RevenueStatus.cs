@@ -37,7 +37,7 @@ namespace BOM.BUS.Sales
                 startDate = dtpStart.Value.ToShortDateString();
                 endDate = dtpEnd.Value.AddDays(1).ToShortDateString();
                 RevenueSearch(startDate, endDate);
-                chartRevenue.Series.Clear();
+                //chartRevenue.Series.Clear();
                 ChartView(revenueList, "날짜", 0);
             }
             else

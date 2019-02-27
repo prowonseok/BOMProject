@@ -243,7 +243,7 @@
             this.chartRevenue.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartRevenue.Legends.Add(legend2);
-            this.chartRevenue.Location = new System.Drawing.Point(168, 152);
+            this.chartRevenue.Location = new System.Drawing.Point(198, 101);
             this.chartRevenue.Name = "chartRevenue";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
