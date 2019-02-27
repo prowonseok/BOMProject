@@ -44,7 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnManageMat = new System.Windows.Forms.Button();
             this.btnProMatEstimating = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.btnBomMatEstimating = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnBomSearch = new System.Windows.Forms.Button();
@@ -176,7 +176,7 @@
             // 
             this.panel2.Controls.Add(this.btnManageMat);
             this.panel2.Controls.Add(this.btnProMatEstimating);
-            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.btnBomMatEstimating);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.btnBomSearch);
@@ -205,14 +205,14 @@
             this.btnProMatEstimating.Text = "판매 예측";
             this.btnProMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // button8
             // 
-            this.button7.Location = new System.Drawing.Point(0, 315);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(132, 50);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "상품 관리";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button8.Location = new System.Drawing.Point(0, 315);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(132, 50);
+            this.button8.TabIndex = 10;
+            this.button8.Text = "상품 관리";
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // btnBomMatEstimating
             // 
@@ -307,7 +307,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnManageMat;
         private System.Windows.Forms.Button btnProMatEstimating;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button btnBomMatEstimating;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnBomSearch;
