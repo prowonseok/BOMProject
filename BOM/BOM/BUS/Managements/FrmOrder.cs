@@ -77,9 +77,6 @@ namespace BOM.BUS.Managements
             {
                 orderList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
             }
-            //Controls.Clear();
-            //InitializeComponent();
-            //FormBuilder();
             dgvOrder.DataSource = null;
             dgvOrder.DataSource = orderList;
         }
@@ -105,9 +102,19 @@ namespace BOM.BUS.Managements
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach (OrderInfo item in orderList)
+            try
             {
-                ood.InsertOrder(orderNo + 1, item.Mat_No, item.Mat_EA, item.Off_No);
+                foreach (OrderInfo item in orderList)
+                {
+                    ood.InsertOrder(orderNo + 1, item.Mat_No, item.Mat_EA, item.Off_No);
+                }
+                MessageBox.Show("발주 성공");
+                Close();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("발주 실패");
             }
         }
     }

@@ -37,20 +37,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnBomAdd = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnBomSearch = new System.Windows.Forms.Button();
-            this.btnBomMatEstimating = new System.Windows.Forms.Button();
-            this.btnProMatEstimating = new System.Windows.Forms.Button();
             this.btnma = new System.Windows.Forms.Button();
             this.btnchp = new System.Windows.Forms.Button();
             this.btnSi = new System.Windows.Forms.Button();
             this.btnSales1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnManageMat = new System.Windows.Forms.Button();
+            this.btnProMatEstimating = new System.Windows.Forms.Button();
+            this.btnManageProd = new System.Windows.Forms.Button();
+            this.btnBomMatEstimating = new System.Windows.Forms.Button();
+            this.btnManageOrder = new System.Windows.Forms.Button();
+            this.btnBomSearch = new System.Windows.Forms.Button();
+            this.btnManageMain = new System.Windows.Forms.Button();
+            this.btnBomAdd = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,69 +133,8 @@
             this.panel1.Controls.Add(this.btnSales1);
             this.panel1.Location = new System.Drawing.Point(256, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(736, 483);
+            this.panel1.Size = new System.Drawing.Size(836, 502);
             this.panel1.TabIndex = 8;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.btnProMatEstimating);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.btnBomMatEstimating);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.btnBomSearch);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.btnBomAdd);
-            this.panel2.Location = new System.Drawing.Point(123, 78);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(132, 483);
-            this.panel2.TabIndex = 9;
-            // 
-            // btnBomAdd
-            // 
-            this.btnBomAdd.Location = new System.Drawing.Point(0, 1);
-            this.btnBomAdd.Name = "btnBomAdd";
-            this.btnBomAdd.Size = new System.Drawing.Size(132, 50);
-            this.btnBomAdd.TabIndex = 0;
-            this.btnBomAdd.Text = "BOM등록";
-            this.btnBomAdd.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 74);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Home";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnBomSearch
-            // 
-            this.btnBomSearch.Location = new System.Drawing.Point(0, 50);
-            this.btnBomSearch.Name = "btnBomSearch";
-            this.btnBomSearch.Size = new System.Drawing.Size(132, 50);
-            this.btnBomSearch.TabIndex = 1;
-            this.btnBomSearch.Text = "BOM조회";
-            this.btnBomSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnBomMatEstimating
-            // 
-            this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 99);
-            this.btnBomMatEstimating.Name = "btnBomMatEstimating";
-            this.btnBomMatEstimating.Size = new System.Drawing.Size(132, 50);
-            this.btnBomMatEstimating.TabIndex = 2;
-            this.btnBomMatEstimating.Text = "소요량 예측";
-            this.btnBomMatEstimating.UseVisualStyleBackColor = true;
-            // 
-            // btnProMatEstimating
-            // 
-            this.btnProMatEstimating.Location = new System.Drawing.Point(0, 148);
-            this.btnProMatEstimating.Name = "btnProMatEstimating";
-            this.btnProMatEstimating.Size = new System.Drawing.Size(132, 50);
-            this.btnProMatEstimating.TabIndex = 3;
-            this.btnProMatEstimating.Text = "판매 예측";
-            this.btnProMatEstimating.UseVisualStyleBackColor = true;
             // 
             // btnma
             // 
@@ -233,49 +172,110 @@
             this.btnSales1.Text = "BOM등록";
             this.btnSales1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // panel2
             // 
-            this.button1.Location = new System.Drawing.Point(43, 350);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 50);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "자재 등록";
-            this.button1.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.btnManageMat);
+            this.panel2.Controls.Add(this.btnProMatEstimating);
+            this.panel2.Controls.Add(this.btnManageProd);
+            this.panel2.Controls.Add(this.btnBomMatEstimating);
+            this.panel2.Controls.Add(this.btnManageOrder);
+            this.panel2.Controls.Add(this.btnBomSearch);
+            this.panel2.Controls.Add(this.btnManageMain);
+            this.panel2.Controls.Add(this.btnBomAdd);
+            this.panel2.Location = new System.Drawing.Point(123, 78);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(132, 483);
+            this.panel2.TabIndex = 9;
             // 
-            // button4
+            // btnManageMat
             // 
-            this.button4.Location = new System.Drawing.Point(43, 301);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 50);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "상품 관리";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnManageMat.Location = new System.Drawing.Point(0, 364);
+            this.btnManageMat.Name = "btnManageMat";
+            this.btnManageMat.Size = new System.Drawing.Size(132, 50);
+            this.btnManageMat.TabIndex = 11;
+            this.btnManageMat.Text = "자재 등록";
+            this.btnManageMat.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnProMatEstimating
             // 
-            this.button5.Location = new System.Drawing.Point(43, 252);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 50);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "발주 관리";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnProMatEstimating.Location = new System.Drawing.Point(0, 148);
+            this.btnProMatEstimating.Name = "btnProMatEstimating";
+            this.btnProMatEstimating.Size = new System.Drawing.Size(132, 50);
+            this.btnProMatEstimating.TabIndex = 3;
+            this.btnProMatEstimating.Text = "판매 예측";
+            this.btnProMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnManageProd
             // 
-            this.button6.Location = new System.Drawing.Point(43, 203);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(132, 50);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "자재 조회";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnManageProd.Location = new System.Drawing.Point(0, 315);
+            this.btnManageProd.Name = "btnManageProd";
+            this.btnManageProd.Size = new System.Drawing.Size(132, 50);
+            this.btnManageProd.TabIndex = 10;
+            this.btnManageProd.Text = "상품 관리";
+            this.btnManageProd.UseVisualStyleBackColor = true;
+            // 
+            // btnBomMatEstimating
+            // 
+            this.btnBomMatEstimating.Location = new System.Drawing.Point(0, 99);
+            this.btnBomMatEstimating.Name = "btnBomMatEstimating";
+            this.btnBomMatEstimating.Size = new System.Drawing.Size(132, 50);
+            this.btnBomMatEstimating.TabIndex = 2;
+            this.btnBomMatEstimating.Text = "소요량 예측";
+            this.btnBomMatEstimating.UseVisualStyleBackColor = true;
+            // 
+            // btnManageOrder
+            // 
+            this.btnManageOrder.Location = new System.Drawing.Point(0, 266);
+            this.btnManageOrder.Name = "btnManageOrder";
+            this.btnManageOrder.Size = new System.Drawing.Size(132, 50);
+            this.btnManageOrder.TabIndex = 9;
+            this.btnManageOrder.Text = "발주 관리";
+            this.btnManageOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnBomSearch
+            // 
+            this.btnBomSearch.Location = new System.Drawing.Point(0, 50);
+            this.btnBomSearch.Name = "btnBomSearch";
+            this.btnBomSearch.Size = new System.Drawing.Size(132, 50);
+            this.btnBomSearch.TabIndex = 1;
+            this.btnBomSearch.Text = "BOM조회";
+            this.btnBomSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnManageMain
+            // 
+            this.btnManageMain.Location = new System.Drawing.Point(0, 217);
+            this.btnManageMain.Name = "btnManageMain";
+            this.btnManageMain.Size = new System.Drawing.Size(132, 50);
+            this.btnManageMain.TabIndex = 8;
+            this.btnManageMain.Text = "자재 조회";
+            this.btnManageMain.UseVisualStyleBackColor = true;
+            this.btnManageMain.Click += new System.EventHandler(this.btnManageMain_Click);
+            // 
+            // btnBomAdd
+            // 
+            this.btnBomAdd.Location = new System.Drawing.Point(0, 1);
+            this.btnBomAdd.Name = "btnBomAdd";
+            this.btnBomAdd.Size = new System.Drawing.Size(132, 50);
+            this.btnBomAdd.TabIndex = 0;
+            this.btnBomAdd.Text = "BOM등록";
+            this.btnBomAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Location = new System.Drawing.Point(0, 78);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(124, 74);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 562);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1093, 580);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSales);
@@ -307,14 +307,14 @@
         private System.Windows.Forms.Button btnSi;
         private System.Windows.Forms.Button btnSales1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManageMat;
         private System.Windows.Forms.Button btnProMatEstimating;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnManageProd;
         private System.Windows.Forms.Button btnBomMatEstimating;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnManageOrder;
         private System.Windows.Forms.Button btnBomSearch;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnManageMain;
         private System.Windows.Forms.Button btnBomAdd;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnHome;
     }
 }

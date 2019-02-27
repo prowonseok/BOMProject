@@ -26,7 +26,16 @@ namespace BOM.BUS.Managements
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text), int.Parse(tbPrice.Text), tbName.Text, tbSpec.Text, imageArr);
+            try
+            {
+                pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text), int.Parse(tbPrice.Text), tbName.Text, tbSpec.Text, imageArr);
+                MessageBox.Show("등록 성공");
+                Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("등록 실패");
+            }
         }
 
         private void FrmProducts_Load(object sender, EventArgs e)
@@ -131,6 +140,11 @@ namespace BOM.BUS.Managements
                     
                 }
             }
+        }
+
+        private void tbPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

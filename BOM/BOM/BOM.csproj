@@ -73,6 +73,12 @@
     <Compile Include="BUS\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlManageMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlManageMain.Designer.cs">
+      <DependentUpon>CtrlManageMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmManageMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlManageMain.resx">
+      <DependentUpon>CtrlManageMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
       <DependentUpon>FrmManageMain.cs</DependentUpon>

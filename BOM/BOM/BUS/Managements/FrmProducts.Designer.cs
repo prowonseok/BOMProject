@@ -86,7 +86,7 @@
             // lblMatType
             // 
             this.lblMatType.AutoSize = true;
-            this.lblMatType.Location = new System.Drawing.Point(45, 41);
+            this.lblMatType.Location = new System.Drawing.Point(12, 9);
             this.lblMatType.Name = "lblMatType";
             this.lblMatType.Size = new System.Drawing.Size(57, 12);
             this.lblMatType.TabIndex = 2;
@@ -95,7 +95,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(45, 99);
+            this.lblPrice.Location = new System.Drawing.Point(12, 67);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(29, 12);
             this.lblPrice.TabIndex = 3;
@@ -104,7 +104,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(45, 156);
+            this.lblName.Location = new System.Drawing.Point(12, 124);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 4;
@@ -112,14 +112,15 @@
             // 
             // tbPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(130, 96);
+            this.tbPrice.Location = new System.Drawing.Point(89, 64);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(100, 21);
             this.tbPrice.TabIndex = 9;
+            this.tbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPrice_KeyPress);
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(130, 153);
+            this.tbName.Location = new System.Drawing.Point(89, 121);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 21);
             this.tbName.TabIndex = 10;
@@ -138,7 +139,7 @@
             // 
             // pbProImg
             // 
-            this.pbProImg.Location = new System.Drawing.Point(130, 218);
+            this.pbProImg.Location = new System.Drawing.Point(89, 186);
             this.pbProImg.Name = "pbProImg";
             this.pbProImg.Size = new System.Drawing.Size(237, 244);
             this.pbProImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -147,7 +148,7 @@
             // 
             // btnImgSearch
             // 
-            this.btnImgSearch.Location = new System.Drawing.Point(130, 477);
+            this.btnImgSearch.Location = new System.Drawing.Point(89, 445);
             this.btnImgSearch.Name = "btnImgSearch";
             this.btnImgSearch.Size = new System.Drawing.Size(75, 23);
             this.btnImgSearch.TabIndex = 13;
@@ -158,7 +159,7 @@
             // lblImg
             // 
             this.lblImg.AutoSize = true;
-            this.lblImg.Location = new System.Drawing.Point(45, 218);
+            this.lblImg.Location = new System.Drawing.Point(12, 186);
             this.lblImg.Name = "lblImg";
             this.lblImg.Size = new System.Drawing.Size(41, 12);
             this.lblImg.TabIndex = 14;
@@ -274,6 +275,7 @@
             // 
             // cbCOOLER
             // 
+            this.cbCOOLER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCOOLER.FormattingEnabled = true;
             this.cbCOOLER.Location = new System.Drawing.Point(553, 388);
             this.cbCOOLER.Name = "cbCOOLER";
@@ -282,6 +284,7 @@
             // 
             // cbCASE
             // 
+            this.cbCASE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCASE.FormattingEnabled = true;
             this.cbCASE.Location = new System.Drawing.Point(553, 344);
             this.cbCASE.Name = "cbCASE";
@@ -290,6 +293,7 @@
             // 
             // cbPSU
             // 
+            this.cbPSU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPSU.FormattingEnabled = true;
             this.cbPSU.Location = new System.Drawing.Point(553, 300);
             this.cbPSU.Name = "cbPSU";
@@ -298,6 +302,7 @@
             // 
             // cbSSD
             // 
+            this.cbSSD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSSD.FormattingEnabled = true;
             this.cbSSD.Location = new System.Drawing.Point(553, 256);
             this.cbSSD.Name = "cbSSD";
@@ -306,6 +311,7 @@
             // 
             // cbHDD
             // 
+            this.cbHDD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHDD.FormattingEnabled = true;
             this.cbHDD.Location = new System.Drawing.Point(553, 212);
             this.cbHDD.Name = "cbHDD";
@@ -314,6 +320,7 @@
             // 
             // cbRAM
             // 
+            this.cbRAM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRAM.FormattingEnabled = true;
             this.cbRAM.Location = new System.Drawing.Point(553, 168);
             this.cbRAM.Name = "cbRAM";
@@ -322,6 +329,7 @@
             // 
             // cbVGA
             // 
+            this.cbVGA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVGA.FormattingEnabled = true;
             this.cbVGA.Location = new System.Drawing.Point(553, 124);
             this.cbVGA.Name = "cbVGA";
@@ -330,6 +338,7 @@
             // 
             // cbMB
             // 
+            this.cbMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMB.FormattingEnabled = true;
             this.cbMB.Location = new System.Drawing.Point(553, 80);
             this.cbMB.Name = "cbMB";
@@ -338,6 +347,7 @@
             // 
             // cbCPU
             // 
+            this.cbCPU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCPU.FormattingEnabled = true;
             this.cbCPU.Location = new System.Drawing.Point(553, 36);
             this.cbCPU.Name = "cbCPU";
@@ -346,8 +356,9 @@
             // 
             // cbMatType
             // 
+            this.cbMatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMatType.FormattingEnabled = true;
-            this.cbMatType.Location = new System.Drawing.Point(130, 38);
+            this.cbMatType.Location = new System.Drawing.Point(89, 6);
             this.cbMatType.Name = "cbMatType";
             this.cbMatType.Size = new System.Drawing.Size(121, 20);
             this.cbMatType.TabIndex = 34;
