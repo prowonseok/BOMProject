@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.BtnBOM = new System.Windows.Forms.Button();
-            this.btnManage = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
             this.dgvMainSales = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -44,13 +44,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnManageMat = new System.Windows.Forms.Button();
             this.btnProMatEstimating = new System.Windows.Forms.Button();
-            this.btnManageProd = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.btnBomMatEstimating = new System.Windows.Forms.Button();
-            this.btnManageOrder = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.btnBomSearch = new System.Windows.Forms.Button();
-            this.btnManageMain = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,15 +66,15 @@
             this.BtnBOM.UseVisualStyleBackColor = true;
             this.BtnBOM.Click += new System.EventHandler(this.BtnBOM_Click);
             // 
-            // btnManage
+            // button4
             // 
-            this.btnManage.Location = new System.Drawing.Point(0, 295);
-            this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(124, 74);
-            this.btnManage.TabIndex = 1;
-            this.btnManage.Text = "관리자";
-            this.btnManage.UseVisualStyleBackColor = true;
-            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
+            this.button4.Location = new System.Drawing.Point(0, 295);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(124, 74);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "관리자";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // btnSales
             // 
@@ -176,11 +176,11 @@
             // 
             this.panel2.Controls.Add(this.btnManageMat);
             this.panel2.Controls.Add(this.btnProMatEstimating);
-            this.panel2.Controls.Add(this.btnManageProd);
+            this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.btnBomMatEstimating);
-            this.panel2.Controls.Add(this.btnManageOrder);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.btnBomSearch);
-            this.panel2.Controls.Add(this.btnManageMain);
+            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.btnBomAdd);
             this.panel2.Location = new System.Drawing.Point(123, 78);
             this.panel2.Name = "panel2";
@@ -205,14 +205,14 @@
             this.btnProMatEstimating.Text = "판매 예측";
             this.btnProMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // btnManageProd
+            // button7
             // 
-            this.btnManageProd.Location = new System.Drawing.Point(0, 315);
-            this.btnManageProd.Name = "btnManageProd";
-            this.btnManageProd.Size = new System.Drawing.Size(132, 50);
-            this.btnManageProd.TabIndex = 10;
-            this.btnManageProd.Text = "상품 관리";
-            this.btnManageProd.UseVisualStyleBackColor = true;
+            this.button7.Location = new System.Drawing.Point(0, 315);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(132, 50);
+            this.button7.TabIndex = 10;
+            this.button7.Text = "상품 관리";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // btnBomMatEstimating
             // 
@@ -223,14 +223,14 @@
             this.btnBomMatEstimating.Text = "소요량 예측";
             this.btnBomMatEstimating.UseVisualStyleBackColor = true;
             // 
-            // btnManageOrder
+            // button6
             // 
-            this.btnManageOrder.Location = new System.Drawing.Point(0, 266);
-            this.btnManageOrder.Name = "btnManageOrder";
-            this.btnManageOrder.Size = new System.Drawing.Size(132, 50);
-            this.btnManageOrder.TabIndex = 9;
-            this.btnManageOrder.Text = "발주 관리";
-            this.btnManageOrder.UseVisualStyleBackColor = true;
+            this.button6.Location = new System.Drawing.Point(0, 266);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(132, 50);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "발주 관리";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // btnBomSearch
             // 
@@ -241,15 +241,14 @@
             this.btnBomSearch.Text = "BOM조회";
             this.btnBomSearch.UseVisualStyleBackColor = true;
             // 
-            // btnManageMain
+            // button5
             // 
-            this.btnManageMain.Location = new System.Drawing.Point(0, 217);
-            this.btnManageMain.Name = "btnManageMain";
-            this.btnManageMain.Size = new System.Drawing.Size(132, 50);
-            this.btnManageMain.TabIndex = 8;
-            this.btnManageMain.Text = "자재 조회";
-            this.btnManageMain.UseVisualStyleBackColor = true;
-            this.btnManageMain.Click += new System.EventHandler(this.btnManageMain_Click);
+            this.button5.Location = new System.Drawing.Point(0, 217);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(132, 50);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "자재 조회";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // btnBomAdd
             // 
@@ -260,27 +259,26 @@
             this.btnBomAdd.Text = "BOM등록";
             this.btnBomAdd.UseVisualStyleBackColor = true;
             // 
-            // btnHome
+            // button1
             // 
-            this.btnHome.Location = new System.Drawing.Point(0, 78);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(124, 74);
-            this.btnHome.TabIndex = 10;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.button1.Location = new System.Drawing.Point(0, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 74);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Home";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 580);
-            this.Controls.Add(this.btnHome);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.BtnBOM);
-            this.Controls.Add(this.btnManage);
+            this.Controls.Add(this.button4);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -295,7 +293,7 @@
         #endregion
 
         private System.Windows.Forms.Button BtnBOM;
-        private System.Windows.Forms.Button btnManage;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.DataGridView dgvMainSales;
         private System.Windows.Forms.Timer timer1;
@@ -309,12 +307,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnManageMat;
         private System.Windows.Forms.Button btnProMatEstimating;
-        private System.Windows.Forms.Button btnManageProd;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnBomMatEstimating;
-        private System.Windows.Forms.Button btnManageOrder;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnBomSearch;
-        private System.Windows.Forms.Button btnManageMain;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnBomAdd;
-        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button button1;
     }
 }
