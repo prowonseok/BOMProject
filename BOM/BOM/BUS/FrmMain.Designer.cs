@@ -267,7 +267,7 @@
             // 
             this.lblFunctionName.AutoSize = true;
             this.lblFunctionName.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblFunctionName.Location = new System.Drawing.Point(269, 49);
+            this.lblFunctionName.Location = new System.Drawing.Point(130, 49);
             this.lblFunctionName.Name = "lblFunctionName";
             this.lblFunctionName.Size = new System.Drawing.Size(0, 27);
             this.lblFunctionName.TabIndex = 11;
@@ -283,9 +283,9 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Location = new System.Drawing.Point(124, 82);
+            this.panel1.Location = new System.Drawing.Point(124, 79);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(919, 572);
+            this.panel1.Size = new System.Drawing.Size(838, 472);
             this.panel1.TabIndex = 13;
             // 
             // txtTimer
@@ -332,7 +332,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(58, 399);
+            this.button1.Location = new System.Drawing.Point(-72, 269);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 50);
             this.button1.TabIndex = 11;
@@ -344,7 +344,7 @@
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(118, 456);
+            this.button6.Location = new System.Drawing.Point(-12, 326);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(132, 50);
             this.button6.TabIndex = 8;
@@ -357,7 +357,7 @@
             this.button4.BackColor = System.Drawing.Color.White;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(58, 350);
+            this.button4.Location = new System.Drawing.Point(-72, 220);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(132, 50);
             this.button4.TabIndex = 10;
@@ -369,7 +369,7 @@
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(58, 301);
+            this.button5.Location = new System.Drawing.Point(-72, 171);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 50);
             this.button5.TabIndex = 9;
@@ -381,7 +381,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1042, 646);
+            this.ClientSize = new System.Drawing.Size(963, 552);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);

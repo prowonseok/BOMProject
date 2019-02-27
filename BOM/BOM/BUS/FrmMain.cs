@@ -110,8 +110,8 @@ namespace BOM.BUS
             Font font = new Font(privateFonts.Families[0], 14f);
             Font font2 = new Font(privateFonts.Families[0], 12f);
 
-            btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font =  btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = lblFunctionName.Font = font2;
-            button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = font;
+            btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font =  btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font2;
+            button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = lblFunctionName.Font = font;
 
             btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
             button3.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
