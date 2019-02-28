@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblSecondMonth = new System.Windows.Forms.Label();
             this.lblFirstMonth = new System.Windows.Forms.Label();
             this.dgvEst2 = new System.Windows.Forms.DataGridView();
@@ -54,7 +54,7 @@
             // lblSecondMonth
             // 
             this.lblSecondMonth.AutoSize = true;
-            this.lblSecondMonth.Location = new System.Drawing.Point(539, 260);
+            this.lblSecondMonth.Location = new System.Drawing.Point(539, 238);
             this.lblSecondMonth.Name = "lblSecondMonth";
             this.lblSecondMonth.Size = new System.Drawing.Size(0, 12);
             this.lblSecondMonth.TabIndex = 21;
@@ -62,7 +62,7 @@
             // lblFirstMonth
             // 
             this.lblFirstMonth.AutoSize = true;
-            this.lblFirstMonth.Location = new System.Drawing.Point(539, 30);
+            this.lblFirstMonth.Location = new System.Drawing.Point(539, 8);
             this.lblFirstMonth.Name = "lblFirstMonth";
             this.lblFirstMonth.Size = new System.Drawing.Size(0, 12);
             this.lblFirstMonth.TabIndex = 20;
@@ -71,7 +71,7 @@
             // 
             this.dgvEst2.AllowUserToAddRows = false;
             this.dgvEst2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEst2.Location = new System.Drawing.Point(35, 279);
+            this.dgvEst2.Location = new System.Drawing.Point(35, 257);
             this.dgvEst2.MultiSelect = false;
             this.dgvEst2.Name = "dgvEst2";
             this.dgvEst2.ReadOnly = true;
@@ -83,7 +83,7 @@
             // 
             this.dgvEst.AllowUserToAddRows = false;
             this.dgvEst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEst.Location = new System.Drawing.Point(35, 45);
+            this.dgvEst.Location = new System.Drawing.Point(35, 23);
             this.dgvEst.MultiSelect = false;
             this.dgvEst.Name = "dgvEst";
             this.dgvEst.ReadOnly = true;
@@ -94,7 +94,7 @@
             // 
             // btnEstimating
             // 
-            this.btnEstimating.Location = new System.Drawing.Point(500, 4);
+            this.btnEstimating.Location = new System.Drawing.Point(512, 0);
             this.btnEstimating.Name = "btnEstimating";
             this.btnEstimating.Size = new System.Drawing.Size(126, 23);
             this.btnEstimating.TabIndex = 17;
@@ -104,7 +104,7 @@
             // 
             // btnYear
             // 
-            this.btnYear.Location = new System.Drawing.Point(263, 4);
+            this.btnYear.Location = new System.Drawing.Point(275, 0);
             this.btnYear.Name = "btnYear";
             this.btnYear.Size = new System.Drawing.Size(126, 23);
             this.btnYear.TabIndex = 16;
@@ -114,7 +114,7 @@
             // 
             // btnPro
             // 
-            this.btnPro.Location = new System.Drawing.Point(35, 4);
+            this.btnPro.Location = new System.Drawing.Point(47, 0);
             this.btnPro.Name = "btnPro";
             this.btnPro.Size = new System.Drawing.Size(117, 23);
             this.btnPro.TabIndex = 15;
@@ -126,7 +126,7 @@
             // 
             this.cbbProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProducts.FormattingEnabled = true;
-            this.cbbProducts.Location = new System.Drawing.Point(330, 44);
+            this.cbbProducts.Location = new System.Drawing.Point(330, 22);
             this.cbbProducts.Name = "cbbProducts";
             this.cbbProducts.Size = new System.Drawing.Size(121, 20);
             this.cbbProducts.TabIndex = 14;
@@ -136,7 +136,7 @@
             // 
             this.cbbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbYear.FormattingEnabled = true;
-            this.cbbYear.Location = new System.Drawing.Point(505, 44);
+            this.cbbYear.Location = new System.Drawing.Point(505, 22);
             this.cbbYear.Name = "cbbYear";
             this.cbbYear.Size = new System.Drawing.Size(121, 20);
             this.cbbYear.TabIndex = 13;
@@ -144,17 +144,17 @@
             // 
             // chartDate
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartDate.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartDate.Legends.Add(legend3);
-            this.chartDate.Location = new System.Drawing.Point(35, 70);
+            chartArea1.Name = "ChartArea1";
+            this.chartDate.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDate.Legends.Add(legend1);
+            this.chartDate.Location = new System.Drawing.Point(35, 48);
             this.chartDate.Name = "chartDate";
             this.chartDate.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartDate.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartDate.Series.Add(series1);
             this.chartDate.Size = new System.Drawing.Size(591, 421);
             this.chartDate.TabIndex = 12;
             this.chartDate.Text = "chart1";
@@ -162,17 +162,17 @@
             // 
             // chartPro
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartPro.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartPro.Legends.Add(legend4);
-            this.chartPro.Location = new System.Drawing.Point(35, 43);
+            chartArea2.Name = "ChartArea1";
+            this.chartPro.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartPro.Legends.Add(legend2);
+            this.chartPro.Location = new System.Drawing.Point(35, 21);
             this.chartPro.Name = "chartPro";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "s1";
-            this.chartPro.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "s1";
+            this.chartPro.Series.Add(series2);
             this.chartPro.Size = new System.Drawing.Size(591, 448);
             this.chartPro.TabIndex = 11;
             this.chartPro.Text = "chart1";
@@ -194,7 +194,7 @@
             this.Controls.Add(this.chartDate);
             this.Controls.Add(this.chartPro);
             this.Name = "FrmBomProEstimatingControl";
-            this.Size = new System.Drawing.Size(659, 626);
+            this.Size = new System.Drawing.Size(718, 667);
             this.Load += new System.EventHandler(this.FrmBomProEstimatingControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEst2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEst)).EndInit();

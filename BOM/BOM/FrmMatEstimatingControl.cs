@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using BOM.VO;
+using System.Xml;
 using Excel = Microsoft.Office.Interop.Excel;
-
+using System.Runtime.InteropServices;
+using BOM.BUS;
 
 namespace BOM
 {
-    public partial class FrmBomMatEstimating : Form
+    public partial class FrmMatEstimatingControl : UserControl
     {
         private int haveNum = 0; //가지고 있는 재고의 개수
         private int makeNum = 0; //만들고자 하는 재고의 개수
-        
+
         string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
 
         DataTable matTable;
@@ -32,21 +31,21 @@ namespace BOM
 
         private XmlTextWriter xr;
 
+        /// <summary>
+        /// 생성자
+        /// </summary>
+        public FrmMatEstimatingControl()
+        {
+            InitializeComponent();
+        }
+
         #region Property
         private Products products;
         private bool canOrAdd;
         internal Products Products { get => products; set => products = value; }
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
         #endregion
-
-        /// <summary>
-        /// 생성자
-        /// </summary>
-        public FrmBomMatEstimating()
-        {
-            InitializeComponent();
-        }
-
+        
         /// <summary>
         /// 제품 찾기 버튼 클릭 이벤트
         /// </summary>
@@ -55,15 +54,13 @@ namespace BOM
         private void btnSearchPro_Click(object sender, EventArgs e)
         {
             FrmBomSearchPro fbsp = new FrmBomSearchPro();
-            fbsp.Owner = this;
             fbsp.ShowDialog();
-
-            if (canOrAdd)
+            if (CanOrAdd)
             {
                 this.txtPName.Text = products.Pro_Name.ToString();
             }
         }
-        
+
         /// <summary>
         /// 검색 버튼 클릭 이벤트
         /// </summary>
@@ -96,14 +93,15 @@ namespace BOM
                     {
                         //2. DataTable에서 부모의 Child_Name과 Child_EA를 자식 노드로 저장
                         TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + "...." + Int32.Parse(item["BOM_ChildEA"].ToString()) * num + "EA");
-                        matLst.Add(new MaterialsVO {
+                        matLst.Add(new MaterialsVO
+                        {
                             Mat_Name = item["Child_Name"].ToString(),
-                            Mat_Ea = Int32.Parse(item["BOM_ChildEA"].ToString())*num
+                            Mat_Ea = Int32.Parse(item["BOM_ChildEA"].ToString()) * num
                         }); //Excel 저장을 위한 자재명 저장
                         pNode.Nodes.Add(cNode);
                         //자식노드의 자식노드 등록
                         DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
-                        
+
                         SubTreeview(num, item, cNode);
                     }
                     dgvMat.DataSource = matTable = bDao.SelectBom();
@@ -129,14 +127,15 @@ namespace BOM
         private void SubTreeview(int num, DataRow item, TreeNode cNode)
         {
             DataTable dt2 = bDao.SelectChildTreeview(item["Child_Name"].ToString());
-            
+
             foreach (DataRow item2 in dt2.Rows)
             {
                 TreeNode chNode = new TreeNode(item2["Child_Name"].ToString() + "...." + Int32.Parse(item2["BOM_ChildEA"].ToString()) * num + "EA");
                 cNode.Nodes.Add(chNode);
-                
-                matLst.Add(new MaterialsVO {
-                    Mat_Name = "└"+item2["Child_Name"].ToString(),
+
+                matLst.Add(new MaterialsVO
+                {
+                    Mat_Name = "└" + item2["Child_Name"].ToString(),
                     Mat_Ea = Int32.Parse(item2["BOM_ChildEA"].ToString()) * num
                 }); //Excel 저장을 위한 자재명 저장
                 SubTreeview(num, item2, chNode);
@@ -175,7 +174,7 @@ namespace BOM
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -214,7 +213,7 @@ namespace BOM
                         makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1)); //만들고자 하는 개수를 makeNum변수에 저장--
                         if (haveNum / makeNum > 0)
                         {
-                            MessageBox.Show(e.Node.ToString()+ "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
+                            MessageBox.Show(e.Node.ToString() + "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
                         }
                         else
                         {
@@ -237,7 +236,7 @@ namespace BOM
                     {
                         haveNum = Int32.Parse(item2.Cells[2].Value.ToString().Trim()); //현재 재고
                         makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1));
-                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.')+1 , item.Length - item.LastIndexOf('E') -1)))
+                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1)))
                         {
                             numLst.Add(haveNum / makeNum); //만들수 있는 개수를 numLst에 저장
                         }
@@ -255,7 +254,7 @@ namespace BOM
                 numLst.Sort(); //numLst를 오름차순으로 정렬(numLst의 최후 값이 999999인지 빠른 비교와 첫번째 값이 만들 수 있는 개수)
                 if (numLst[numLst.Count - 1] == 999999) //재고 부족이 있는 경우
                 {
-                    
+
                 }
                 else                                    //재고 부족이 없는 경우
                 {
@@ -272,7 +271,7 @@ namespace BOM
         private void btnXml_Click(object sender, EventArgs e)
         {
             //트리뷰가 비어있지 않을 경우만
-            if (tvProMat.Nodes.Count!=0)
+            if (tvProMat.Nodes.Count != 0)
             {
                 saveFileDialog1.DefaultExt = ".xml";
                 saveFileDialog1.Filter = "Xml|*.xml";
@@ -292,7 +291,7 @@ namespace BOM
 
                     xr.WriteEndElement();
                     xr.Flush();
-                    xr.Close(); 
+                    xr.Close();
                 }
             }
             else
@@ -312,14 +311,14 @@ namespace BOM
                 //자식이 있을 경우
                 if (item.Nodes.Count > 0)
                 {
-                    xr.WriteStartElement(item.Text.Replace(' ','_'));
+                    xr.WriteStartElement(item.Text.Replace(' ', '_'));
                     xr.WriteRaw("\r\n\n");
                     WriteChildNodeXml(item.Nodes);
                     xr.WriteEndElement();
                 }//자식이 없을 경우
                 else
                 {
-                    xr.WriteString(item.Text.Replace(' ','_'));
+                    xr.WriteString(item.Text.Replace(' ', '_'));
                 }
             }
         }
@@ -349,7 +348,7 @@ namespace BOM
                     {
                         foreach (var item2 in matLst)
                         {
-                            if (item["Mat_Name"].ToString() == item2.Mat_Name.Replace("└",""))
+                            if (item["Mat_Name"].ToString() == item2.Mat_Name.Replace("└", ""))
                             {
                                 item2.Mat_No = Int32.Parse(item["Mat_No"].ToString());
                                 item2.Mat_Level = Int32.Parse(item["Mat_Level"].ToString());
@@ -357,7 +356,7 @@ namespace BOM
                                 item2.Mat_Manufactur = item["Mat_Manufactur"].ToString();
                             }
                         }
-                        
+
                     }
 
                     excelApp = new Excel.Application();
@@ -367,20 +366,20 @@ namespace BOM
                     wb = excelApp.Workbooks.Open(excelFilePath);
                     ws = wb.Worksheets.Item[1];
                     ws.Cells[3, 3] = txtPName.Text;
-                    ws.Cells[3, 7] =products.Pro_Price;
-                    ws.Cells[4, 7] =products.Pro_Price*Int32.Parse(txtEA.Text);
+                    ws.Cells[3, 7] = products.Pro_Price;
+                    ws.Cells[4, 7] = products.Pro_Price * Int32.Parse(txtEA.Text);
                     ws.Cells[4, 3] = txtEA.Text;
                     int firstRow = 6;
-                    int finalRow = matLst.Count+5;
+                    int finalRow = matLst.Count + 5;
                     foreach (var item in matLst)
                     {
                         ws.Cells[firstRow, 2] = item.Mat_No;
                         ws.Cells[firstRow, 3] = item.Mat_Name;
-                        if (item.Mat_Level==0)
+                        if (item.Mat_Level == 0)
                         {
                             ws.Cells[firstRow, 4] = "원자재";
                         }
-                        else if (item.Mat_Level==1)
+                        else if (item.Mat_Level == 1)
                         {
                             ws.Cells[firstRow, 4] = "반제품";
                         }
@@ -388,7 +387,7 @@ namespace BOM
                         {
                             ws.Cells[firstRow, 4] = "완제품";
                         }
-                        ws.Cells[firstRow, 5] = item.Mat_Ea+"개";
+                        ws.Cells[firstRow, 5] = item.Mat_Ea + "개";
                         ws.Cells[firstRow, 6] = item.Mat_Cost;
                         ws.Cells[firstRow, 7] = item.Mat_Manufactur;
                         firstRow++;
@@ -408,7 +407,7 @@ namespace BOM
 
                     Marshal.ReleaseComObject(ws);
                     Marshal.ReleaseComObject(wb);
-                    Marshal.ReleaseComObject(excelApp); 
+                    Marshal.ReleaseComObject(excelApp);
                 }
 
             }
@@ -419,4 +418,3 @@ namespace BOM
         }
     }
 }
-

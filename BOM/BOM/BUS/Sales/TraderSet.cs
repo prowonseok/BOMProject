@@ -16,11 +16,8 @@ using System.Windows.Forms;
 namespace BOM.BUS.Sales
 {
     public partial class TraderSet : Form
-    {
-        
-        TraderSetDao tsd;       
-        
-
+    {        
+        TraderSetDao tsd;           
         public TextBox TextBoxText
         {
             get { return txtOffAddr; }
@@ -35,6 +32,7 @@ namespace BOM.BUS.Sales
         DataTable offLst;
         DataTable proTypeLst;
         DataTable proList;
+
         private void TraderSet_Load(object sender, EventArgs e)
         {
             offLst = new DataTable();
@@ -63,8 +61,12 @@ namespace BOM.BUS.Sales
                 comboMatList.Items.Add(item["Mat_Name"].ToString());
             }
 
-        }
-
+        }        
+        /// <summary>
+        /// 필수입력값 체크후 거래처를 등록하는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
             if (txtOffName.Text != "" && txtOwnerName.Text != "" && txtOffAddr.Text != "" && txtManager.Text != "" && txtManagerMobile.Text != "")
@@ -76,31 +78,25 @@ namespace BOM.BUS.Sales
             {
                 label18.Visible = label19.Visible = label20.Visible = label21.Visible = label22.Visible = true;
             }
-                
-            
         }
         int offNo;
-        int typeNo;
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (comboOffList.Text != "" && comboProTypeList.Text != "" && txtMatName.Text != "" && comboMatLevel.Text != ""){
-                offNo = Int32.Parse(offLst.Rows[OffIndexNo]["Off_No"].ToString());
-                typeNo = Int32.Parse(proTypeLst.Rows[typeindexNo]["Mat_Type_No"].ToString());
-
-                MessageBox.Show(tsd.MatInsert(typeNo, txtManufactur.Text, txtMatName.Text, Int32.Parse(txtMatPrice.Text), comboMatLevel.Text, Int32.Parse(txtMatEa.Text), offNo));
-            }
-            else
-            {
-                MessageBox.Show("거래처, 제품타입, 제품이름, 제품라벨은 필수항목 입니다.");
-            }
-        }
-
-        int OffIndexNo;
+        int typeNo; 
+        int OffIndexNo; // 거래처 번호 변수
+        /// <summary>
+        /// 거래처 선택시 DB에 저장된 거래처 번호를 불러오는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>        
         private void comboOffList_SelectedIndexChanged(object sender, EventArgs e)
         {
             OffIndexNo = Int32.Parse(comboOffList.SelectedIndex.ToString());           
         }
-        int typeindexNo;
+        int typeindexNo; // 제품 타입 번호 변수
+        /// <summary>
+        /// 제품타입 선택시 DB에 저장된 제품타입 번호를 불러오는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboProTypeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             typeindexNo = Int32.Parse(comboProTypeList.SelectedIndex.ToString());
@@ -134,6 +130,11 @@ namespace BOM.BUS.Sales
             }
         }
         string matlevel = "";
+        /// <summary>
+        /// 변경할 데이터를 DB에 저장하는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (comboMatList.SelectedItem!=null)
@@ -162,7 +163,11 @@ namespace BOM.BUS.Sales
         }
 
         
-
+        /// <summary>
+        /// 제품을 삭제하는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (comboMatList.SelectedItem !=null)
@@ -178,7 +183,11 @@ namespace BOM.BUS.Sales
             }
             
         }
-
+        /// <summary>
+        /// 변경할 제품 선택시 제품의 스펙을 보여주는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboMatList_DropDownClosed(object sender, EventArgs e)
         {
             if (comboMatList.SelectedIndex != -1)
@@ -205,7 +214,12 @@ namespace BOM.BUS.Sales
             }
 
         }
-        string modifyOffNo = "";
+        string modifyOffNo = ""; // 변경할 거래처 번호 변수
+        /// <summary>
+        /// DB에 저장된 변경할 거래처 번호를 받아오는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboOff_DropDownClosed(object sender, EventArgs e)
         {
             if (comboOff.SelectedIndex != -1)
@@ -215,17 +229,38 @@ namespace BOM.BUS.Sales
            
             
         }
-        string modifyMatTypeNo = "";
+        string modifyMatTypeNo = ""; // 제품타입 변수
+        /// <summary>
+        /// DB에 저저장된 변경할 제품타입 번호를 받아오는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboProTypeList2_DropDownClosed(object sender, EventArgs e)
         {
             if (comboProTypeList2.SelectedIndex != -1)
             {               
                 modifyMatTypeNo = new TraderSetDao().GetMatTypeNo(comboProTypeList2.SelectedItem.ToString());
-            }        }
+            }
+        }       
 
-        private void tabPage2_Click(object sender, EventArgs e)
+        private void btnCheck_Click(object sender, EventArgs e)
         {
+            if (comboOffList.Text != "" && comboProTypeList.Text != "" && txtMatName.Text != "" && comboMatLevel.Text != "")
+            {
+                offNo = Int32.Parse(offLst.Rows[OffIndexNo]["Off_No"].ToString());
+                typeNo = Int32.Parse(proTypeLst.Rows[typeindexNo]["Mat_Type_No"].ToString());
 
+                MessageBox.Show(tsd.MatInsert(typeNo, txtManufactur.Text, txtMatName.Text, Int32.Parse(txtMatPrice.Text), comboMatLevel.Text, Int32.Parse(txtMatEa.Text), offNo));
+            }
+            else
+            {
+                MessageBox.Show("거래처, 제품타입, 제품이름, 제품라벨은 필수항목 입니다.");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

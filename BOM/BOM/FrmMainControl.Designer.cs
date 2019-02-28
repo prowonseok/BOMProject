@@ -52,15 +52,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(476, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 12);
+            this.label1.Size = new System.Drawing.Size(119, 14);
             this.label1.TabIndex = 8;
             this.label1.Text = "1분마다 자동으로 갱신";
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button2.Location = new System.Drawing.Point(609, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 23);
@@ -72,10 +74,11 @@
             // txtTimer
             // 
             this.txtTimer.AutoSize = true;
+            this.txtTimer.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtTimer.ForeColor = System.Drawing.Color.Black;
             this.txtTimer.Location = new System.Drawing.Point(575, 359);
             this.txtTimer.Name = "txtTimer";
-            this.txtTimer.Size = new System.Drawing.Size(34, 12);
+            this.txtTimer.Size = new System.Drawing.Size(35, 14);
             this.txtTimer.TabIndex = 10;
             this.txtTimer.Text = "Time";
             // 
@@ -94,6 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.txtTimer);
             this.Controls.Add(this.dgvMainSales);
             this.Controls.Add(this.label1);

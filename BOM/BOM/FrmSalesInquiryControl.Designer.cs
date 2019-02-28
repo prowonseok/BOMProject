@@ -48,6 +48,7 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnConfirm.Location = new System.Drawing.Point(669, 74);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
@@ -59,10 +60,11 @@
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
+            this.lblMsg.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMsg.ForeColor = System.Drawing.Color.Red;
             this.lblMsg.Location = new System.Drawing.Point(485, 53);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(259, 12);
+            this.lblMsg.Size = new System.Drawing.Size(260, 15);
             this.lblMsg.TabIndex = 15;
             this.lblMsg.Text = "*체크 표시후 확인버튼 누르면 출하지시서 이동";
             // 
@@ -78,6 +80,7 @@
             this.groupBox1.Controls.Add(this.comboProduct);
             this.groupBox1.Controls.Add(this.dtp2);
             this.groupBox1.Controls.Add(this.lbl1);
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(19, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(434, 127);
@@ -91,7 +94,7 @@
             this.rdoSales.Checked = true;
             this.rdoSales.Location = new System.Drawing.Point(16, 20);
             this.rdoSales.Name = "rdoSales";
-            this.rdoSales.Size = new System.Drawing.Size(59, 16);
+            this.rdoSales.Size = new System.Drawing.Size(61, 19);
             this.rdoSales.TabIndex = 10;
             this.rdoSales.TabStop = true;
             this.rdoSales.Text = "판매중";
@@ -102,7 +105,7 @@
             // 
             this.dtp1.Location = new System.Drawing.Point(81, 39);
             this.dtp1.Name = "dtp1";
-            this.dtp1.Size = new System.Drawing.Size(115, 21);
+            this.dtp1.Size = new System.Drawing.Size(135, 23);
             this.dtp1.TabIndex = 3;
             this.dtp1.Visible = false;
             // 
@@ -121,7 +124,7 @@
             this.rdoDate.AutoSize = true;
             this.rdoDate.Location = new System.Drawing.Point(16, 45);
             this.rdoDate.Name = "rdoDate";
-            this.rdoDate.Size = new System.Drawing.Size(59, 16);
+            this.rdoDate.Size = new System.Drawing.Size(61, 19);
             this.rdoDate.TabIndex = 0;
             this.rdoDate.Text = "날짜별";
             this.rdoDate.UseVisualStyleBackColor = true;
@@ -132,7 +135,7 @@
             this.rdoMember.AutoSize = true;
             this.rdoMember.Location = new System.Drawing.Point(16, 72);
             this.rdoMember.Name = "rdoMember";
-            this.rdoMember.Size = new System.Drawing.Size(59, 16);
+            this.rdoMember.Size = new System.Drawing.Size(61, 19);
             this.rdoMember.TabIndex = 1;
             this.rdoMember.Text = "회원별";
             this.rdoMember.UseVisualStyleBackColor = true;
@@ -142,7 +145,7 @@
             // 
             this.txtMember.Location = new System.Drawing.Point(81, 67);
             this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(135, 21);
+            this.txtMember.Size = new System.Drawing.Size(135, 23);
             this.txtMember.TabIndex = 7;
             this.txtMember.Visible = false;
             // 
@@ -151,7 +154,7 @@
             this.rdoProduct.AutoSize = true;
             this.rdoProduct.Location = new System.Drawing.Point(16, 99);
             this.rdoProduct.Name = "rdoProduct";
-            this.rdoProduct.Size = new System.Drawing.Size(59, 16);
+            this.rdoProduct.Size = new System.Drawing.Size(61, 19);
             this.rdoProduct.TabIndex = 2;
             this.rdoProduct.Text = "상품별";
             this.rdoProduct.UseVisualStyleBackColor = true;
@@ -163,24 +166,24 @@
             this.comboProduct.FormattingEnabled = true;
             this.comboProduct.Location = new System.Drawing.Point(81, 96);
             this.comboProduct.Name = "comboProduct";
-            this.comboProduct.Size = new System.Drawing.Size(135, 20);
+            this.comboProduct.Size = new System.Drawing.Size(135, 23);
             this.comboProduct.TabIndex = 6;
             this.comboProduct.Visible = false;
             // 
             // dtp2
             // 
-            this.dtp2.Location = new System.Drawing.Point(222, 39);
+            this.dtp2.Location = new System.Drawing.Point(244, 39);
             this.dtp2.Name = "dtp2";
-            this.dtp2.Size = new System.Drawing.Size(114, 21);
+            this.dtp2.Size = new System.Drawing.Size(137, 23);
             this.dtp2.TabIndex = 4;
             this.dtp2.Visible = false;
             // 
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(202, 44);
+            this.lbl1.Location = new System.Drawing.Point(224, 44);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(14, 12);
+            this.lbl1.Size = new System.Drawing.Size(16, 15);
             this.lbl1.TabIndex = 5;
             this.lbl1.Text = "~";
             this.lbl1.Visible = false;

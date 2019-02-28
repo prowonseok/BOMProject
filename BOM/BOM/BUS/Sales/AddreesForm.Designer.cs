@@ -43,14 +43,16 @@
             // 
             // txtSearchAddr
             // 
+            this.txtSearchAddr.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtSearchAddr.Location = new System.Drawing.Point(29, 75);
             this.txtSearchAddr.Name = "txtSearchAddr";
-            this.txtSearchAddr.Size = new System.Drawing.Size(217, 21);
+            this.txtSearchAddr.Size = new System.Drawing.Size(217, 23);
             this.txtSearchAddr.TabIndex = 0;
             this.txtSearchAddr.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchAddr_KeyUp);
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearch.Location = new System.Drawing.Point(252, 75);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -72,6 +74,7 @@
             // 
             // btnPre
             // 
+            this.btnPre.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnPre.Location = new System.Drawing.Point(335, 415);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(33, 23);
@@ -82,6 +85,7 @@
             // 
             // btnNext
             // 
+            this.btnNext.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnNext.Location = new System.Drawing.Point(429, 415);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(33, 23);
@@ -93,32 +97,36 @@
             // lblTest
             // 
             this.lblTest.AutoSize = true;
+            this.lblTest.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblTest.Location = new System.Drawing.Point(374, 421);
             this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(0, 12);
+            this.lblTest.Size = new System.Drawing.Size(0, 15);
             this.lblTest.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(333, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 12);
+            this.label2.Size = new System.Drawing.Size(104, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "ex) 인천시 남동구";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.Red;
             this.label3.Location = new System.Drawing.Point(333, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 12);
+            this.label3.Size = new System.Drawing.Size(172, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "* 최소 구 단위까지 입력하세요";
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.Location = new System.Drawing.Point(469, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -130,10 +138,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.Location = new System.Drawing.Point(25, 23);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 21);
+            this.label11.Size = new System.Drawing.Size(97, 30);
             this.label11.TabIndex = 28;
             this.label11.Text = "주소검색";
             // 
@@ -142,6 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(571, 451);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button1);
@@ -155,7 +164,7 @@
             this.Controls.Add(this.txtSearchAddr);
             this.Name = "AddreesForm";
             this.Text = "Addrees";
-            
+            this.Load += new System.EventHandler(this.AddreesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

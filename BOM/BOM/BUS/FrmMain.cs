@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,12 +22,14 @@ namespace BOM.BUS
     {
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
+        
 
         public FrmMain()
         {
             InitializeComponent();
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             salesList = new List<Cus_OrderVO>();
+            
         }
 
         /// <summary>
@@ -36,17 +39,17 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void BtnBOM_Click(object sender, EventArgs e)
         {
-            btnBomMain.Location = new Point(25, 224);
-            btnBomAdd.Location = new Point(25, 253);
-            btnBomSearch.Location = new Point(25, 282);
-            btnBomMatEstimating.Location = new Point(25, 311);
-            btnProMatEstimating.Location = new Point(25, 340);
-            btnSales.Location = new Point(0, 369);
-            btnManage.Location = new Point(0, 442);
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 3;
-            btnSales.FlatAppearance.BorderSize = 1;
-            btnManage.FlatAppearance.BorderSize = 1;
+            btnBomMain.Location = new Point(0, 224);
+            btnBomAdd.Location = new Point(0, 253);
+            btnBomSearch.Location = new Point(0, 282);
+            btnBomMatEstimating.Location = new Point(0, 311);
+            btnProMatEstimating.Location = new Point(0, 340);
+            btnSales.Location = new Point(0, 370);
+            btnManage.Location = new Point(0, 443);
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 3;
+            //btnSales.FlatAppearance.BorderSize = 1;
+            //btnManage.FlatAppearance.BorderSize = 1;
 
             FrmBomInfoControl fbic = new FrmBomInfoControl();
             panel1.Controls.Clear();
@@ -69,28 +72,28 @@ namespace BOM.BUS
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 1;
-            btnSales.FlatAppearance.BorderSize = 1;
-            btnManage.FlatAppearance.BorderSize = 3;
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 1;
+            //btnSales.FlatAppearance.BorderSize = 1;
+            //btnManage.FlatAppearance.BorderSize = 3;
             Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
             fmanagemain.ShowDialog();
         }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            btnSales1.Location = new Point(25, 297);
-            btnSi.Location = new Point(25, 326);
-            btnchp.Location = new Point(25, 355);
-            btnma.Location = new Point(25, 384);
-            button7.Location = new Point(25, 413);
+            btnSales1.Location = new Point(0, 297);
+            btnSi.Location = new Point(0, 326);
+            btnchp.Location = new Point(0, 355);
+            btnma.Location = new Point(0, 384);
+            button7.Location = new Point(0, 413);
             btnSales.Location = new Point(0, 224);
-            btnManage.Location = new Point(0, 442);
+            btnManage.Location = new Point(0, 443);
 
-            button3.FlatAppearance.BorderSize = 1;
-            BtnBOM.FlatAppearance.BorderSize = 1;
-            btnSales.FlatAppearance.BorderSize = 3;
-            btnManage.FlatAppearance.BorderSize = 1;
+            //button3.FlatAppearance.BorderSize = 1;
+            //BtnBOM.FlatAppearance.BorderSize = 1;
+            //btnSales.FlatAppearance.BorderSize = 3;
+            //btnManage.FlatAppearance.BorderSize = 1;
             btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = true;
             btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible= false;
             //한줄더
@@ -98,18 +101,30 @@ namespace BOM.BUS
             //fsalesmain.ShowDialog();
         }
 
+       
         private void FrmMain_Load(object sender, EventArgs e)
         {
+
+            ThreadStart ts = new ThreadStart(CurrentTime);
+            Thread t = new Thread(ts);
+            t.Start();
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
-            PrivateFontCollection privateFonts = new PrivateFontCollection();
-            //MessageBox.Show(Application.StartupPath);
-            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
-            Font font = new Font(privateFonts.Families[0], 14f);
-            Font font2 = new Font(privateFonts.Families[0], 12f);
-            btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font =  btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = lblFunctionName.Font = font2;
-            button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = font;
+            
+
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
+            button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+           
+            
+
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                }
+            }
         }
 
         private void Test()
@@ -218,8 +233,8 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnBomMatEstimating_Click(object sender, EventArgs e)
         {
-            FrmBomMatEstimating fme = new FrmBomMatEstimating();
-            fme.ShowDialog();
+            FrmBomMatEstimating fmec = new FrmBomMatEstimating();
+            fmec.ShowDialog();
         }
 
         /// <summary>
@@ -229,6 +244,7 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void btnProMatEstimating_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t') + 2);
 
             FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
             panel1.Controls.Clear();
@@ -275,11 +291,31 @@ namespace BOM.BUS
 
         }
 
+
+        private void CurrentTime()
+        {
+            timer2_Tick(null, null);
+        }
         private void timer2_Tick(object sender, EventArgs e)
         {
             txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
+
+        /// <summary>
+        /// BOM 메인 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBomMain_Click(object sender, EventArgs e)
+        {
+            lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t')+2);
+            FrmBomInfoControl fbic = new FrmBomInfoControl();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(fbic);
+
+        }
         
+       
     }
 }

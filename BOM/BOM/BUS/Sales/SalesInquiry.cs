@@ -188,7 +188,9 @@ namespace BOM.BUS.Sales
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
             dataGridView1.Columns.Add(chk);
             btnSearch_Click(null, null);
-            
+            dataGridView1.Font = new Font("맑은고딕", 9);
+
+
         }
         
     }

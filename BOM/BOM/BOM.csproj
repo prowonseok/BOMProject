@@ -191,6 +191,12 @@
     <Compile Include="FrmMainControl.Designer.cs">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMatEstimatingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmMatEstimatingControl.Designer.cs">
+      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRevenueStatusControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -208,12 +214,6 @@
     <Compile Include="VO\OffererVO.cs" />
     <Compile Include="DAO\RevenueDao.cs" />
     <Compile Include="DAO\SalesDao.cs" />
-    <Compile Include="BUS\Sales\FrmSalesMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\Sales\FrmSalesMain.Designer.cs">
-      <DependentUpon>FrmSalesMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="DAO\MatDAO.cs" />
     <Compile Include="BUS\BOM\FrmBomDetailInfo.cs">
       <SubType>Form</SubType>
@@ -323,9 +323,6 @@
     <EmbeddedResource Include="BUS\Sales\SalesStatusDatails.resx">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BUS\Sales\FrmSalesMain.resx">
-      <DependentUpon>FrmSalesMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomMatEstimating.resx">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
     </EmbeddedResource>
@@ -362,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMatEstimatingControl.resx">
+      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRevenueStatusControl.resx">
       <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>
@@ -404,6 +404,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="privateFonts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

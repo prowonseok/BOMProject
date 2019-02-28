@@ -16,7 +16,7 @@ namespace BOM.BUS.Sales
     {
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         public Label Lbltest { get { return lblAddr; } set { lblAddr = value; } }
-        string fIlePath = null; //파일 지정경로
+        string fIlePath = null; //파일 지정경로 변수
         
         string fIlePath2 = Application.StartupPath + @"\Excel\Shipment.xlsx";
         List<ShipmentVO> ProList;
@@ -26,24 +26,36 @@ namespace BOM.BUS.Sales
             InitializeComponent();
         }
         int orderNo = 0;
-        public Shipment(int orderNo) //주문번호를 넘겨받음
+        /// <summary>
+        /// 주문번호를 넘겨받는 오버로딩된 생성자
+        /// </summary>
+        /// <param name="orderNo">매개변수 주문번호</param>
+        public Shipment(int orderNo) 
         {
             InitializeComponent();
             this.orderNo = orderNo;
             ProList = new List<ShipmentVO>();            
         }
-
-        private void button1_Click(object sender, EventArgs e) //주소변경시 주소변경 폼을 띄워줌
-        {
-            
+        /// <summary>
+        /// 주소변경시 주소변경 폼을 띄워주는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e) 
+        {            
             AddreesForm ad = new AddreesForm(1);
             ad.Owner = this;
             ad.Show();
         }
-
-        private void Shipment_Load(object sender, EventArgs e) //넘겨받은 준문정보로 출하지시서 폼의 내용을 표시
+        /// <summary>
+        /// 넘겨받은 준문정보로 출하지시서 폼의 내용을 표시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Shipment_Load(object sender, EventArgs e) 
         {
-            
+            dgvProList.Font = new Font("맑은고딕", 9);
+
             if (this.orderNo != 0 )
             {
                 string sp = "Bom_JW_Shipment_Procedure";
@@ -82,26 +94,21 @@ namespace BOM.BUS.Sales
                 dgvProList.Columns[0].HeaderText = "제품명";
                 dgvProList.Columns[1].HeaderText = "개수";
                 dgvProList.Columns[2].HeaderText = "가격";
-                dgvProList.Columns[3].HeaderText = "잔여량";
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+                dgvProList.Columns[3].HeaderText = "잔여량";         
 
                 DataGridViewDisableButtonColumn column1 =
                     new DataGridViewDisableButtonColumn();
 
                 column1.Name = "발주";
-
                 dgvProList.Columns.Add(column1);
-
-                // Set the text for each button.
+              
                 for (int i = 0; i < dgvProList.RowCount; i++)
                 {
                     dgvProList.Rows[i].Cells["발주"].Value =
                         "발주신청";
                 }
-
-                //dgvProList.CurrentCellDirtyStateChanged += DgvProList_CurrentCellDirtyStateChanged;
+                               
                 dgvProList.CellClick += DgvProList_CellClick;
-
 
                 this.Controls.Add(dgvProList);
                 for (int i = 0; i < dgvProList.Rows.Count; i++)
@@ -119,10 +126,13 @@ namespace BOM.BUS.Sales
             {
                 btnPath.Enabled = btnConfirm.Enabled = true;
             }
-
         }
-
-        private void DgvProList_CellClick(object sender, DataGridViewCellEventArgs e) // 제품 보유량이 부족시 발주버튼이 활성화되고 발주가 가능
+        /// <summary>
+        /// 제품 보유량이 부족시 발주버튼이 활성화되고 발주가 가능
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvProList_CellClick(object sender, DataGridViewCellEventArgs e) 
         {
             if (e.RowIndex == -1)
             {
@@ -143,8 +153,12 @@ namespace BOM.BUS.Sales
                 }
             }
         }
-
-        private void DgvProList_CurrentCellDirtyStateChanged(object sender, EventArgs e) // 셀내용 변경시(셀체크 변경시) 발생하는 이벤트
+        /// <summary>
+        /// 셀내용 변경시(셀체크 변경시) 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvProList_CurrentCellDirtyStateChanged(object sender, EventArgs e) 
         {
             
             if (dgvProList.IsCurrentCellDirty)
@@ -159,10 +173,13 @@ namespace BOM.BUS.Sales
             sI.Show();
             this.Close();
         }
-
-        private void btnConfirm_Click(object sender, EventArgs e) // 클릭시 출하지시서 내용을 엑셀로 저장
-        {
-            
+        /// <summary>
+        /// 클릭시 출하지시서 내용을 엑셀로 저장
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfirm_Click(object sender, EventArgs e) 
+        {            
             if (txtconf.Text =="")
             {
                 MessageBox.Show("확인란에 서명하세요");
@@ -185,11 +202,14 @@ namespace BOM.BUS.Sales
                 }               
                 
                 string excelStr = new SalesExcelDao().WriteExcelData(OrderInfoList , ProList, fIlePath, fIlePath2);
-                MessageBox.Show(excelStr);
-                
+                MessageBox.Show(excelStr);                
             }
         }        
-
+        /// <summary>
+        /// 엑셀저장 경로 지정하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPath_Click(object sender, EventArgs e)
         {
             saveFileDialog1.DefaultExt = ".xlsx";      
@@ -206,8 +226,10 @@ namespace BOM.BUS.Sales
         {
             this.CellTemplate = new DataGridViewDisableButtonCell();
         }
-    } //그리드뷰 버튼 
-
+    }  
+    /// <summary>
+    /// 그리드뷰에 버튼을 만드는 메서드
+    /// </summary>
     public class DataGridViewDisableButtonCell : DataGridViewButtonCell
     {
         private bool enabledValue;
@@ -222,8 +244,7 @@ namespace BOM.BUS.Sales
                 enabledValue = value;
             }
         }
-
-        // Override the Clone method so that the Enabled property is copied.
+        
         public override object Clone()
         {
             DataGridViewDisableButtonCell cell =
@@ -232,7 +253,9 @@ namespace BOM.BUS.Sales
             return cell;
         }
 
-        // By default, enable the button cell.
+        /// <summary>
+        /// 버튼셀 활성화
+        /// </summary>
         public DataGridViewDisableButtonCell()
         {
             this.enabledValue = true;
@@ -246,11 +269,10 @@ namespace BOM.BUS.Sales
             DataGridViewAdvancedBorderStyle advancedBorderStyle,
             DataGridViewPaintParts paintParts)
         {
-            // The button cell is disabled, so paint the border,  
-            // background, and disabled button for the cell.
+            // 버튼 비활성시 셀테두리,배경을 비활성 버튼으로 표시
             if (!this.enabledValue)
             {
-                // Draw the cell background, if specified.
+                //버튼 활성화시 배경을 그린다.
                 if ((paintParts & DataGridViewPaintParts.Background) ==
                     DataGridViewPaintParts.Background)
                 {
@@ -260,7 +282,7 @@ namespace BOM.BUS.Sales
                     cellBackground.Dispose();
                 }
 
-                // Draw the cell borders, if specified.
+                //버튼 활성시 버튼 테두리를그린다
                 if ((paintParts & DataGridViewPaintParts.Border) ==
                     DataGridViewPaintParts.Border)
                 {
@@ -268,7 +290,7 @@ namespace BOM.BUS.Sales
                         advancedBorderStyle);
                 }
 
-                // Calculate the area in which to draw the button.
+                //버튼 그릴 영역 선택
                 Rectangle buttonArea = cellBounds;
                 Rectangle buttonAdjustment =
                     this.BorderWidths(advancedBorderStyle);
@@ -277,11 +299,11 @@ namespace BOM.BUS.Sales
                 buttonArea.Height -= buttonAdjustment.Height;
                 buttonArea.Width -= buttonAdjustment.Width;
 
-                // Draw the disabled button.                
+                //비활성화된 버튼을 나타낸다.               
                 ButtonRenderer.DrawButton(graphics, buttonArea,
                     PushButtonState.Disabled);
 
-                // Draw the disabled button text. 
+                //비활성화된 버튼 텍스트를 그린다 
                 if (this.FormattedValue is String)
                 {
                     TextRenderer.DrawText(graphics,
@@ -292,8 +314,7 @@ namespace BOM.BUS.Sales
             }
             else
             {
-                // The button cell is enabled, so let the base class 
-                // handle the painting.
+                
                 base.Paint(graphics, clipBounds, cellBounds, rowIndex,
                     elementState, value, formattedValue, errorText,
                     cellStyle, advancedBorderStyle, paintParts);

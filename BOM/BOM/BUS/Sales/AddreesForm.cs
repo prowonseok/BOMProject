@@ -31,7 +31,7 @@ namespace BOM.BUS.Sales
 
             addrList = new List<AddressVO>();
         }        
-
+        
         private void button1_Click(object sender, EventArgs e) //주소 검색 클릭
         {            
             if (txtSearchAddr.Text == "")
@@ -64,8 +64,11 @@ namespace BOM.BUS.Sales
             dgvAddr.Columns[0].HeaderText = "지번";
             dgvAddr.Columns[1].HeaderText = "지명";
         }
-
-        private void Paging(XmlDocument doc) // 페이징 메서드
+        /// <summary>
+        /// XML을 이용하여 데이터갯수를 파악하여 페이징을 만드는 메서드
+        /// </summary>
+        /// <param name="doc">API에서 가져온 데이터 XML</param>
+        private void Paging(XmlDocument doc) 
         {            
             XmlNodeList xmltotalCount = doc.DocumentElement.SelectNodes("/NewAddressListResponse/cmmMsgHeader");
             foreach (XmlNode item in xmltotalCount)
@@ -101,8 +104,11 @@ namespace BOM.BUS.Sales
             }
             
         }
-
-        private XmlDocument xmldocument() // API를 이용하여 데이터를 XML형식으로 가져오는 메서드
+        /// <summary>
+        /// 공공데이터 포털에 주소API를 이용하여 주소검색을하고 검색결과를 가져오는 메서드
+        /// </summary>
+        /// <returns>API에서 받은 데이터를 XML형식으로 만든 변수</returns>
+        private XmlDocument xmldocument() 
         {
             string serverUrl = "http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdSearchAllService/retrieveNewAdressAreaCdSearchAllService/getNewAddressListAreaCdSearchAll?ServiceKey=jwwy5dPFIMUMXJHkr2SEzG4v%2BH9OQHKzRCHg0B9cy%2B1ycgHLgWGpQU7HFCCCvp78YqiGeLpyLv5p6N8KCWkHVg%3D%3D&countPerPage=10&currentPage=" + page + "&srchwrd=" + txtSearchAddr.Text;
 
@@ -121,8 +127,11 @@ namespace BOM.BUS.Sales
             doc.LoadXml(xml);            
             return doc;
         }
-
-        private void SearchAddr(XmlDocument doc) // 그리드뷰에 검색한 주소 표현
+        /// <summary>
+        /// 그리드뷰에 XML형태로된 데이터를 AddressVO객체화하여 출력
+        /// </summary>
+        /// <param name="doc">XML형태로된 주소 데이터</param>
+        private void SearchAddr(XmlDocument doc) 
         {
             addrList.Clear();
             XmlNodeList xmlAddrList = doc.DocumentElement.SelectNodes("/NewAddressListResponse/newAddressListAreaCdSearchAll");
@@ -136,16 +145,19 @@ namespace BOM.BUS.Sales
                         NameAddr = "도로명: " + item.SelectSingleNode("lnmAdres").InnerText + "\r구주소: " + item.SelectSingleNode("rnAdres").InnerText
                     });
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
                     return;
-                    //MessageBox.Show(e.Message);
                 }
             }
             AddrView();
         }      
-
-        private void txtSearchAddr_KeyUp(object sender, KeyEventArgs e) // 엔터누를시 검색메서드로 이동
+        /// <summary>
+        /// 엔터누를시 주소검색버튼 활성화시키는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSearchAddr_KeyUp(object sender, KeyEventArgs e) 
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -153,7 +165,12 @@ namespace BOM.BUS.Sales
             }
         }
         
-        private void button1_Click_1(object sender, EventArgs e) // 출하지시서 폼으로 선택된 주소 전달
+        /// <summary>
+        /// 저장된 주소를 출하지시서 폼으로 넘기면서 출하지시서폼 띄우는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click_1(object sender, EventArgs e) 
         {           
             if (selectAddr != "")
             {
@@ -170,16 +187,18 @@ namespace BOM.BUS.Sales
                     ts.TextBoxText.Text = "";
                     ts.TextBoxText.Text = selectAddr.Substring(0, selectAddr.IndexOf("구주소"));
                     this.Close();
-                }
-                
+                }                
             }
             else
             {
                 this.Close();
-            }
-            
-        }        
-
+            }            
+        }       
+        /// <summary>
+        /// 페이징 구현후 다음페이지를 나타내는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, EventArgs e) // 다음페이지
         {
             if (page< totalPage)
@@ -194,9 +213,12 @@ namespace BOM.BUS.Sales
             {
                 MessageBox.Show("마지막 페이지");
             }
-
         }
-
+        /// <summary>
+        /// 페이징 구현후 이전페이지를 나타내는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPre_Click(object sender, EventArgs e) //이전 페이지
         {
             if (page > 1)
@@ -211,11 +233,20 @@ namespace BOM.BUS.Sales
             {
                 MessageBox.Show("첫번째 페이지");
             }
-        }
-        
-        private void dgvAddr_CellClick(object sender, DataGridViewCellEventArgs e) //셀 클릭하여 클릭한 주소 값 저장
+        }        
+        /// <summary>
+        /// 셀클릭하여 클릭한 주소의 값 저장
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvAddr_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             selectAddr = dgvAddr.Rows[e.RowIndex].Cells[1].Value.ToString();         
+        }
+
+        private void AddreesForm_Load(object sender, EventArgs e)
+        {
+            dgvAddr.Font = new Font("맑은고딕", 9);
         }
     }
 }
