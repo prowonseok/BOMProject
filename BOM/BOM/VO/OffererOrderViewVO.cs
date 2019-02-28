@@ -29,6 +29,14 @@ namespace BOM.VO
             set { mat_Name = value; }
         }
 
+        private int mat_Level;
+        public int Mat_Level
+        {
+            get { return mat_Level; }
+            set { mat_Level = value; }
+        }
+
+
         private string off_Name;
         public string Off_Name
         {
@@ -44,11 +52,12 @@ namespace BOM.VO
         }
 
 
-        public OffererOrderViewVO(int mat_No, int off_No, string mat_Name, string off_Name, int mat_Cost)
+        public OffererOrderViewVO(int mat_No, int off_No, string mat_Name, int mat_Level, string off_Name, int mat_Cost)
         {
             Mat_No = mat_No;
             Off_No = off_No;
             Mat_Name = mat_Name;
+            Mat_Level = mat_Level;
             Off_Name = off_Name;
             Mat_Cost = mat_Cost;
         }

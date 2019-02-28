@@ -1,33 +1,33 @@
-﻿using BOM.DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOM.DAO;
 
-namespace BOM.BUS.Managements
+namespace BOM.BUS.Managements.Controls
 {
-    public partial class FrmMatAdd : Form
+    public partial class CtrlMatAdd : UserControl
     {
         MatDAO md;
         private object[] listArray;
 
-        public FrmMatAdd()
+        public CtrlMatAdd()
         {
             InitializeComponent();
         }
 
-        public FrmMatAdd(object md, object[] listArray) : this()
+        public CtrlMatAdd(object md, object[] listArray) : this()
         {
             this.md = (MatDAO)md;
             this.listArray = listArray;
         }
 
-        private void FrmMatAdd_Load(object sender, EventArgs e)
+        private void CtrlMatAdd_Load(object sender, EventArgs e)
         {
             foreach (VO.Materials_TypeVO item in (List<VO.Materials_TypeVO>)listArray[0])
             {
@@ -37,19 +37,6 @@ namespace BOM.BUS.Managements
             {
                 cbOfferer.Items.Add(item.OffName);
             }
-            foreach (var item in Controls)
-            {
-                if (item.GetType().ToString() == "System.Windows.Forms.Button")
-                {
-                    ((Button)item).BackColor = Color.Silver;
-                    ((Button)item).ForeColor = Color.White;
-                }
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -58,7 +45,6 @@ namespace BOM.BUS.Managements
             {
                 md.InsertMat(int.Parse(tbMatNo.Text), int.Parse(((List<VO.Materials_TypeVO>)listArray[0])[cbMatType.SelectedIndex].Mat_Type_No.ToString()), tbManufac.Text, tbName.Text, int.Parse(tbCost.Text.Replace(",", "")), cbMatLvl.SelectedIndex, int.Parse(tbMatEa.Text), int.Parse(((List<VO.OffererVO>)listArray[1])[cbOfferer.SelectedIndex].OffNo.ToString()));
                 MessageBox.Show("성공적으로 등록하였습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                Close();
             }
             else
             {

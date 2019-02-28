@@ -74,6 +74,30 @@
     <Compile Include="BUS\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlMatAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlMatAdd.Designer.cs">
+      <DependentUpon>CtrlMatAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlMatMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlMatMain.Designer.cs">
+      <DependentUpon>CtrlMatMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlOrderMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlOrderMain.Designer.cs">
+      <DependentUpon>CtrlOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlProducts.Designer.cs">
+      <DependentUpon>CtrlProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmManageMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +290,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatAdd.resx">
+      <DependentUpon>CtrlMatAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatMain.resx">
+      <DependentUpon>CtrlMatMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlOrderMain.resx">
+      <DependentUpon>CtrlOrderMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlProducts.resx">
+      <DependentUpon>CtrlProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
       <DependentUpon>FrmManageMain.cs</DependentUpon>

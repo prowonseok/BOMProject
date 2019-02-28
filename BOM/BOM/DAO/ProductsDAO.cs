@@ -24,7 +24,7 @@ namespace BOM.DAO
             try
             {
                 string sp = "Products_Insert_Procedure";
-                SqlParameter[] sqlParameters = new SqlParameter[8];
+                SqlParameter[] sqlParameters = new SqlParameter[7];
                 sqlParameters[0] = new SqlParameter("@mat_TypeNo", mat_TypeNo);
                 sqlParameters[1] = new SqlParameter("@mat_Name", mat_Name);
                 sqlParameters[2] = new SqlParameter("@mat_Cost", mat_Cost);
