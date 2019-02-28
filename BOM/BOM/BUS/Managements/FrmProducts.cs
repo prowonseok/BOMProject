@@ -26,23 +26,23 @@ namespace BOM.BUS.Managements
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
-            {
-                try
-                {
-                    pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
-                    MessageBox.Show("등록 성공");
-                    Close();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("등록 실패");
-                } 
-            }
-            else
-            {
-                MessageBox.Show("항목을 모두 입력하여 주십시오");
-            }
+            //if (!string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
+            //{
+            //    try
+            //    {
+            //        pdao.InsertProducts(int.Parse()int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
+            //        MessageBox.Show("등록 성공");
+            //        Close();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        MessageBox.Show("등록 실패");
+            //    } 
+            //}
+            //else
+            //{
+            //    MessageBox.Show("항목을 모두 입력하여 주십시오");
+            //}
         }
 
         private void FrmProducts_Load(object sender, EventArgs e)

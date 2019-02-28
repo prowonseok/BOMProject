@@ -59,6 +59,8 @@
             this.cbMB = new System.Windows.Forms.ComboBox();
             this.cbCPU = new System.Windows.Forms.ComboBox();
             this.ofdProImg = new System.Windows.Forms.OpenFileDialog();
+            this.tbMatNo = new System.Windows.Forms.TextBox();
+            this.lblMatNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbProImg)).BeginInit();
             this.gbSpec.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +125,7 @@
             // tbPrice
             // 
             this.tbPrice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbPrice.Location = new System.Drawing.Point(26, 104);
+            this.tbPrice.Location = new System.Drawing.Point(26, 127);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(100, 23);
             this.tbPrice.TabIndex = 40;
@@ -142,7 +144,7 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblPrice.Location = new System.Drawing.Point(24, 89);
+            this.lblPrice.Location = new System.Drawing.Point(24, 112);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(31, 15);
             this.lblPrice.TabIndex = 38;
@@ -363,11 +365,31 @@
             // 
             this.ofdProImg.FileName = "openFileDialog1";
             // 
+            // tbMatNo
+            // 
+            this.tbMatNo.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbMatNo.Location = new System.Drawing.Point(26, 83);
+            this.tbMatNo.Name = "tbMatNo";
+            this.tbMatNo.Size = new System.Drawing.Size(100, 23);
+            this.tbMatNo.TabIndex = 49;
+            // 
+            // lblMatNo
+            // 
+            this.lblMatNo.AutoSize = true;
+            this.lblMatNo.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMatNo.Location = new System.Drawing.Point(24, 68);
+            this.lblMatNo.Name = "lblMatNo";
+            this.lblMatNo.Size = new System.Drawing.Size(59, 15);
+            this.lblMatNo.TabIndex = 48;
+            this.lblMatNo.Text = "제품 번호";
+            // 
             // CtrlProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.tbMatNo);
+            this.Controls.Add(this.lblMatNo);
             this.Controls.Add(this.cbMatType);
             this.Controls.Add(this.lblImg);
             this.Controls.Add(this.btnImgSearch);
@@ -424,5 +446,7 @@
         private System.Windows.Forms.ComboBox cbMB;
         private System.Windows.Forms.ComboBox cbCPU;
         private System.Windows.Forms.OpenFileDialog ofdProImg;
+        private System.Windows.Forms.TextBox tbMatNo;
+        private System.Windows.Forms.Label lblMatNo;
     }
 }
