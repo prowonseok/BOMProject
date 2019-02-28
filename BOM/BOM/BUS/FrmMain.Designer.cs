@@ -78,7 +78,7 @@
             this.btnManage.BackColor = System.Drawing.Color.White;
             this.btnManage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManage.Location = new System.Drawing.Point(0, 442);
+            this.btnManage.Location = new System.Drawing.Point(0, 297);
             this.btnManage.Name = "btnManage";
             this.btnManage.Size = new System.Drawing.Size(124, 74);
             this.btnManage.TabIndex = 1;
@@ -382,7 +382,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1042, 646);
+            this.ClientSize = new System.Drawing.Size(1042, 583);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);
             this.Controls.Add(this.btnma);
