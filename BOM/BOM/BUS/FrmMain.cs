@@ -90,10 +90,7 @@ namespace BOM.BUS
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 443);
 
-            //button3.FlatAppearance.BorderSize = 1;
-            //BtnBOM.FlatAppearance.BorderSize = 1;
-            //btnSales.FlatAppearance.BorderSize = 3;
-            //btnManage.FlatAppearance.BorderSize = 1;
+            
             btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = true;
             btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible= false;
             //한줄더
@@ -105,9 +102,10 @@ namespace BOM.BUS
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
-            ThreadStart ts = new ThreadStart(CurrentTime);
-            Thread t = new Thread(ts);
-            t.Start();
+            //ThreadStart ts = new ThreadStart(timer2_Tick(null, null));
+            //Thread t = new Thread(CurrentTime);
+            //t.Start();
+            //CheckForIllegalCrossThreadCalls = false;
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
@@ -294,11 +292,14 @@ namespace BOM.BUS
 
         private void CurrentTime()
         {
-            timer2_Tick(null, null);
+            
+            //timer2_Tick(null, null);
+            //txtTimer.Text = DateTime.Now.ToLongTimeString();
+            
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            txtTimer.Text = DateTime.Now.ToLongTimeString();
+            //txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
 

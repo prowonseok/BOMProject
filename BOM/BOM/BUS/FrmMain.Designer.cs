@@ -45,7 +45,6 @@
             this.btnBomSearch = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblFunctionName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTimer = new System.Windows.Forms.Label();
@@ -258,11 +257,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // timer2
-            // 
-            this.timer2.Enabled = true;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // lblFunctionName
             // 
             this.lblFunctionName.AutoSize = true;
@@ -426,7 +420,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnBomMain;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lblFunctionName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label txtTimer;
