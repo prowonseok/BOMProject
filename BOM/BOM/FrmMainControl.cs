@@ -11,6 +11,8 @@ using BOM.VO;
 using dllPackager;
 using System.Configuration;
 using BOM.BUS.Sales;
+using System.Windows.Media;
+using BOM.BUS;
 
 namespace BOM
 {
@@ -23,13 +25,19 @@ namespace BOM
             InitializeComponent();
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             salesList = new List<Cus_OrderVO>();
+
+            
         }
 
         private void FrmMainControl_Load(object sender, EventArgs e)
         {
-            Test();
+            dgvMainSales.Font = new Font("맑은고딕", 9);
+            RealTiemSales();
         }
-        private void Test()
+        /// <summary>
+        /// 판매현황을 데이터 그리드뷰에 표현
+        /// </summary>
+        private void RealTiemSales()
         {
             salesList.Clear();
             dgvMainSales.DataSource = null;
@@ -44,7 +52,6 @@ namespace BOM
                     OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
                 });
             }
-
             dgvMainSales.DataSource = salesList;
             //dgvMainSales.AutoResizeColumns();
             dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -58,7 +65,11 @@ namespace BOM
             dgvMainSales.Columns[3].HeaderText = "주문날짜";
 
         }
-
+        /// <summary>
+        /// 그리드뷰에 판매중인 셀클릭시 상세폼을 띄워주는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -74,17 +85,19 @@ namespace BOM
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Test();
-        }
+            RealTiemSales();
+        }    
 
-        private void timer2_Tick(object sender, EventArgs e)
+        
+
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
             txtTimer.Text = DateTime.Now.ToLongTimeString();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer2_Tick(object sender, EventArgs e)
         {
-            Test();
+            RealTiemSales();
         }
     }
 }

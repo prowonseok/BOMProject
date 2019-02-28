@@ -159,7 +159,7 @@
             this.button7.BackColor = System.Drawing.Color.White;
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(0, 413);
+            this.button7.Location = new System.Drawing.Point(0, 399);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(124, 30);
             this.button7.TabIndex = 12;
@@ -173,7 +173,7 @@
             this.btnBomMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnBomMain.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnBomMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBomMain.Location = new System.Drawing.Point(0, 53);
+            this.btnBomMain.Location = new System.Drawing.Point(0, 0);
             this.btnBomMain.Name = "btnBomMain";
             this.btnBomMain.Size = new System.Drawing.Size(124, 30);
             this.btnBomMain.TabIndex = 12;
@@ -255,10 +255,10 @@
             // lblFunctionName
             // 
             this.lblFunctionName.AutoSize = true;
-            this.lblFunctionName.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblFunctionName.Location = new System.Drawing.Point(130, 49);
+            this.lblFunctionName.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblFunctionName.Location = new System.Drawing.Point(130, 39);
             this.lblFunctionName.Name = "lblFunctionName";
-            this.lblFunctionName.Size = new System.Drawing.Size(0, 27);
+            this.lblFunctionName.Size = new System.Drawing.Size(0, 37);
             this.lblFunctionName.TabIndex = 11;
             // 
             // panel1
@@ -268,10 +268,6 @@
             this.panel1.Controls.Add(this.dgvMainSales);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Location = new System.Drawing.Point(124, 79);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(838, 472);
@@ -321,49 +317,52 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(-72, 269);
+            this.button1.Location = new System.Drawing.Point(0, 432);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 50);
+            this.button1.Size = new System.Drawing.Size(124, 30);
             this.button1.TabIndex = 11;
             this.button1.Text = "자재 등록";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(-12, 326);
+            this.button6.Location = new System.Drawing.Point(0, 461);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(132, 50);
+            this.button6.Size = new System.Drawing.Size(124, 30);
             this.button6.TabIndex = 8;
             this.button6.Text = "자재 조회";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.White;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(-72, 220);
+            this.button4.Location = new System.Drawing.Point(0, 403);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 50);
+            this.button4.Size = new System.Drawing.Size(124, 30);
             this.button4.TabIndex = 10;
             this.button4.Text = "상품 관리";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(-72, 171);
+            this.button5.Location = new System.Drawing.Point(0, 374);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 50);
+            this.button5.Size = new System.Drawing.Size(124, 30);
             this.button5.TabIndex = 9;
             this.button5.Text = "발주 관리";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // timer1
             // 
@@ -379,8 +378,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);
-            this.Controls.Add(this.btnma);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.btnBomMain);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.button7);
@@ -392,6 +394,7 @@
             this.Controls.Add(this.BtnBOM);
             this.Controls.Add(this.btnchp);
             this.Controls.Add(this.btnBomMatEstimating);
+            this.Controls.Add(this.btnma);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);

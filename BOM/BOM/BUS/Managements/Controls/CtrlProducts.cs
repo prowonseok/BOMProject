@@ -1,25 +1,25 @@
-﻿using BOM.DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOM.DAO;
+using System.IO;
 
-namespace BOM.BUS.Managements
+namespace BOM.BUS.Managements.Controls
 {
-    public partial class FrmProducts : Form
+    public partial class CtrlProducts : UserControl
     {
         ProductsDAO pdao = new ProductsDAO();
         MatDAO mdao = new MatDAO();
         DataTable dt;
 
         byte[] imageArr;
-        public FrmProducts()
+        public CtrlProducts()
         {
             InitializeComponent();
         }
@@ -32,12 +32,11 @@ namespace BOM.BUS.Managements
                 {
                     pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
                     MessageBox.Show("등록 성공");
-                    Close();
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("등록 실패");
-                } 
+                }
             }
             else
             {
@@ -45,10 +44,10 @@ namespace BOM.BUS.Managements
             }
         }
 
-        private void FrmProducts_Load(object sender, EventArgs e)
+        private void CtrlProducts_Load(object sender, EventArgs e)
         {
             using (DataTable dt = mdao.SelectMat())
-            { 
+            {
                 foreach (DataRow item in dt.Rows)
                 {
                     switch (int.Parse(item["Mat_Type_No"].ToString()))
@@ -80,6 +79,14 @@ namespace BOM.BUS.Managements
                         case 9000:
                             cbCOOLER.Items.Add(item["Mat_Name"].ToString());
                             break;
+                    }
+                }
+                foreach (var item in Controls)
+                {
+                    if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                    {
+                        ((Button)item).BackColor = Color.Silver;
+                        ((Button)item).ForeColor = Color.White;
                     }
                 }
             }
@@ -130,7 +137,7 @@ namespace BOM.BUS.Managements
                 fs.Close();
             }
         }
-        
+
         private void ComboBoxHandler(object sender, EventArgs e)
         {
             tbSpec.Text = string.Empty;
@@ -144,7 +151,7 @@ namespace BOM.BUS.Managements
                 }
                 else if (string.IsNullOrEmpty(item))
                 {
-                    
+
                 }
             }
         }

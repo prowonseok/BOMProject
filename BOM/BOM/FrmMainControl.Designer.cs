@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvMainSales = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.txtTimer = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,15 +52,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(476, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 12);
+            this.label1.Size = new System.Drawing.Size(119, 14);
             this.label1.TabIndex = 8;
             this.label1.Text = "1분마다 자동으로 갱신";
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button2.Location = new System.Drawing.Point(609, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 23);
@@ -69,17 +74,30 @@
             // txtTimer
             // 
             this.txtTimer.AutoSize = true;
+            this.txtTimer.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtTimer.ForeColor = System.Drawing.Color.Black;
             this.txtTimer.Location = new System.Drawing.Point(575, 359);
             this.txtTimer.Name = "txtTimer";
-            this.txtTimer.Size = new System.Drawing.Size(34, 12);
+            this.txtTimer.Size = new System.Drawing.Size(35, 14);
             this.txtTimer.TabIndex = 10;
             this.txtTimer.Text = "Time";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmMainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.txtTimer);
             this.Controls.Add(this.dgvMainSales);
             this.Controls.Add(this.label1);
@@ -99,5 +117,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label txtTimer;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

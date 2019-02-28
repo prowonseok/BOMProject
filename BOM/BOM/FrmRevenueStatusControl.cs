@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.DAO;
 using BOM.VO;
+using BOM.BUS;
 
 namespace BOM
 {
@@ -18,9 +19,7 @@ namespace BOM
         {
             InitializeComponent();
             rd = new RevenueDao();
-            dt = new DataTable();
-            //revenueList = new List<RevenueVO>();
-            //comparisonRevenueList = new List<RevenueVO>();
+            dt = new DataTable();            
         }
 
         RevenueDao rd;
@@ -42,14 +41,14 @@ namespace BOM
                 ChartView(revenueList, "날짜", 0);
                 lbl1.Text = String.Format("{0:##,##0}", (int)(Accumulated * 0.27)) + " 원";
                 label7.Text = String.Format("{0:##,##0}", (Accumulated)) + " 원";
-            }
-            else
-            {
-
-            }
+            }           
         }
-
-        private void RevenueSearch(string startDate, string endDate) //매출 조회하는 기능
+        /// <summary>
+        /// 매출 조회하는 기능
+        /// </summary>
+        /// <param name="startDate">조회할 구간 시작날짜</param>
+        /// <param name="endDate">조회할 구간 마지막 날짜</param>
+        private void RevenueSearch(string startDate, string endDate)
         {
             revenueList.Clear();
             grdRevenue.DataSource = null;
@@ -68,7 +67,13 @@ namespace BOM
         }
 
         double Accumulated = 0;
-        private void ChartView(List<RevenueVO> List, string ChartSeriesName, int ChartSeriesNo) //차트에 데이터 표시하는 메서드
+        /// <summary>
+        /// 차트에 매출 데이터 표시하는 메서드
+        /// </summary>
+        /// <param name="List"> 일별 매출 리스트 </param>
+        /// <param name="ChartSeriesName">차트에 추가할 시리즈 이름</param>
+        /// <param name="ChartSeriesNo">추가할 시리즈 번호</param>
+        private void ChartView(List<RevenueVO> List, string ChartSeriesName, int ChartSeriesNo) 
         {
             if (List.Count != 0)
             {
@@ -91,18 +96,11 @@ namespace BOM
                 // MessageBox.Show("리스트가 비어있음 ");
             }
         }
-        
-
-        private void rdoDate_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdoProduct_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 매출 비교할 데이터 차트에 출력
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnComparison_Click(object sender, EventArgs e)
         {
             string comStartDate = dtpComparison1.Value.ToShortDateString();
@@ -125,6 +123,7 @@ namespace BOM
 
         private void FrmRevenueStatusControl_Load(object sender, EventArgs e)
         {
+            grdRevenue.Font = new Font("맑은고딕", 9);
             foreach (var item in new SalesDao().ProList()) //상품별 조회에 아이템 추가
             {
                 comboProduct.Items.Add(item.ProductName);

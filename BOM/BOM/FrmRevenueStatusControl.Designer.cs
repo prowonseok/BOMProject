@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.btnComparison = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoDate = new System.Windows.Forms.RadioButton();
+            this.rdoProduct = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpComparison2 = new System.Windows.Forms.DateTimePicker();
             this.dtpComparison1 = new System.Windows.Forms.DateTimePicker();
@@ -46,7 +47,6 @@
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.lbl2 = new System.Windows.Forms.Label();
-            this.rdoProduct = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.comboProduct = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,6 +58,7 @@
             // 
             // btnComparison
             // 
+            this.btnComparison.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnComparison.Location = new System.Drawing.Point(439, 221);
             this.btnComparison.Name = "btnComparison";
             this.btnComparison.Size = new System.Drawing.Size(75, 23);
@@ -70,6 +71,7 @@
             // 
             this.groupBox1.Controls.Add(this.rdoDate);
             this.groupBox1.Controls.Add(this.rdoProduct);
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(523, 34);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 64);
@@ -84,69 +86,87 @@
             this.rdoDate.Checked = true;
             this.rdoDate.Location = new System.Drawing.Point(6, 19);
             this.rdoDate.Name = "rdoDate";
-            this.rdoDate.Size = new System.Drawing.Size(87, 16);
+            this.rdoDate.Size = new System.Drawing.Size(89, 19);
             this.rdoDate.TabIndex = 37;
             this.rdoDate.TabStop = true;
             this.rdoDate.Text = "날짜별 매출";
             this.rdoDate.UseVisualStyleBackColor = true;
             this.rdoDate.Visible = false;
-            this.rdoDate.CheckedChanged += new System.EventHandler(this.rdoDate_CheckedChanged);
+            
+            // 
+            // rdoProduct
+            // 
+            this.rdoProduct.AutoSize = true;
+            this.rdoProduct.Location = new System.Drawing.Point(6, 41);
+            this.rdoProduct.Name = "rdoProduct";
+            this.rdoProduct.Size = new System.Drawing.Size(89, 19);
+            this.rdoProduct.TabIndex = 36;
+            this.rdoProduct.Text = "상품별 매출";
+            this.rdoProduct.UseVisualStyleBackColor = true;
+            this.rdoProduct.Visible = false;
+            
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(258, 229);
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(237, 228);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 12);
+            this.label4.Size = new System.Drawing.Size(16, 15);
             this.label4.TabIndex = 53;
             this.label4.Text = "~";
             // 
             // dtpComparison2
             // 
-            this.dtpComparison2.Location = new System.Drawing.Point(278, 223);
+            this.dtpComparison2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dtpComparison2.Location = new System.Drawing.Point(259, 223);
             this.dtpComparison2.Name = "dtpComparison2";
-            this.dtpComparison2.Size = new System.Drawing.Size(155, 21);
+            this.dtpComparison2.Size = new System.Drawing.Size(136, 23);
             this.dtpComparison2.TabIndex = 52;
             // 
             // dtpComparison1
             // 
+            this.dtpComparison1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtpComparison1.Location = new System.Drawing.Point(96, 223);
             this.dtpComparison1.Name = "dtpComparison1";
-            this.dtpComparison1.Size = new System.Drawing.Size(156, 21);
+            this.dtpComparison1.Size = new System.Drawing.Size(137, 23);
             this.dtpComparison1.TabIndex = 51;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.Location = new System.Drawing.Point(32, 228);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 12);
+            this.label5.Size = new System.Drawing.Size(59, 15);
             this.label5.TabIndex = 50;
             this.label5.Text = "비교 날짜";
             // 
             // lbl1
             // 
             this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl1.Location = new System.Drawing.Point(461, 205);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(0, 12);
+            this.lbl1.Size = new System.Drawing.Size(0, 15);
             this.lbl1.TabIndex = 49;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(378, 205);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 12);
+            this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 48;
             this.label1.Text = "예상 순수익 : ";
             // 
             // chartRevenue
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(31, 250);
             this.chartRevenue.Name = "chartRevenue";
             this.chartRevenue.Size = new System.Drawing.Size(483, 218);
@@ -164,6 +184,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearch.Location = new System.Drawing.Point(435, 34);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -175,53 +196,46 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(222, 40);
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(201, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 12);
+            this.label3.Size = new System.Drawing.Size(16, 15);
             this.label3.TabIndex = 44;
             this.label3.Text = "~";
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(242, 34);
+            this.dtpEnd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dtpEnd.Location = new System.Drawing.Point(223, 35);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(155, 21);
+            this.dtpEnd.Size = new System.Drawing.Size(134, 23);
             this.dtpEnd.TabIndex = 43;
             // 
             // dtpStart
             // 
+            this.dtpStart.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtpStart.Location = new System.Drawing.Point(60, 34);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(156, 21);
+            this.dtpStart.Size = new System.Drawing.Size(135, 23);
             this.dtpStart.TabIndex = 42;
             // 
             // lbl2
             // 
             this.lbl2.AutoSize = true;
+            this.lbl2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl2.Location = new System.Drawing.Point(28, 43);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(29, 12);
+            this.lbl2.Size = new System.Drawing.Size(31, 15);
             this.lbl2.TabIndex = 41;
             this.lbl2.Text = "날짜";
-            // 
-            // rdoProduct
-            // 
-            this.rdoProduct.AutoSize = true;
-            this.rdoProduct.Location = new System.Drawing.Point(6, 41);
-            this.rdoProduct.Name = "rdoProduct";
-            this.rdoProduct.Size = new System.Drawing.Size(87, 16);
-            this.rdoProduct.TabIndex = 36;
-            this.rdoProduct.Text = "상품별 매출";
-            this.rdoProduct.UseVisualStyleBackColor = true;
-            this.rdoProduct.Visible = false;
-            this.rdoProduct.CheckedChanged += new System.EventHandler(this.rdoProduct_CheckedChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(478, 306);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 12);
+            this.label6.Size = new System.Drawing.Size(59, 15);
             this.label6.TabIndex = 56;
             this.label6.Text = "상품 조회";
             this.label6.Visible = false;
@@ -229,28 +243,31 @@
             // comboProduct
             // 
             this.comboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboProduct.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboProduct.FormattingEnabled = true;
             this.comboProduct.Location = new System.Drawing.Point(541, 298);
             this.comboProduct.Name = "comboProduct";
-            this.comboProduct.Size = new System.Drawing.Size(121, 20);
+            this.comboProduct.Size = new System.Drawing.Size(121, 23);
             this.comboProduct.TabIndex = 55;
             this.comboProduct.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(258, 205);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 12);
+            this.label7.Size = new System.Drawing.Size(37, 15);
             this.label7.TabIndex = 59;
             this.label7.Text = "asd\\";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(195, 205);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 12);
+            this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 58;
             this.label8.Text = "총 매출 : ";
             // 

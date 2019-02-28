@@ -1,4 +1,5 @@
-﻿using BOM.DAO;
+﻿using BOM.BUS.Managements.Controls;
+using BOM.DAO;
 using BOM.VO;
 using System;
 using System.Collections.Generic;
@@ -29,26 +30,48 @@ namespace BOM.BUS.Managements
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
-            FormBuilder();
-        }
-
-        private void FormBuilder()
-        {
-            dgvOrder.DataSource = orderList;
-            dgvOrder.Columns[0].Name = "품명";
-            dgvOrder.Columns[1].Name = "판매자";
-            dgvOrder.Columns[2].Name = "단가";
-            dgvOrder.Columns[3].Name = "개수";
-            dgvOrder.Columns[4].Name = "합계";
+            DGVBuilder();
             DataTable dt = ood.SelectOrder();
             foreach (DataRow item in dt.Rows)
             {
-                oovList.Add(new OffererOrderViewVO(int.Parse(item["Mat_No"].ToString()), int.Parse(item["Off_No"].ToString()), item["Mat_Name"].ToString(), item["Off_Name"].ToString(), int.Parse(item["Mat_Cost"].ToString())));
+                oovList.Add(new OffererOrderViewVO(int.Parse(item["Mat_No"].ToString()), int.Parse(item["Off_No"].ToString()), item["Mat_Name"].ToString(), int.Parse(item["Mat_Level"].ToString()), item["Off_Name"].ToString(), int.Parse(item["Mat_Cost"].ToString())));
             }
             foreach (OffererOrderViewVO item in oovList)
             {
-                cbName.Items.Add(item.Mat_Name);
+                if (item.Mat_Level == 0)
+                {
+                    cbName.Items.Add(item.Mat_Name); 
+                }
             }
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                    ((Button)item).ForeColor = Color.White;
+                }
+            }
+        }
+
+        private void DGVBuilder()
+        {
+            dgvOrder.DataSource = null;
+            dgvOrder.DataSource = orderList;
+            dgvOrder.Columns[0].HeaderText = "자재번호";
+            dgvOrder.Columns[1].HeaderText = "자재명";
+            dgvOrder.Columns[2].HeaderText = "제조사 번호";
+            dgvOrder.Columns[3].HeaderText = "제조사";
+            dgvOrder.Columns[4].HeaderText = "단가";
+            dgvOrder.Columns[5].HeaderText = "수량";
+            dgvOrder.Columns[6].HeaderText = "합계";
+
+            dgvOrder.Columns[0].Width = 60;
+            dgvOrder.Columns[1].Width = 70;
+            dgvOrder.Columns[2].Width = 70;
+            dgvOrder.Columns[3].Width = 70;
+            dgvOrder.Columns[4].Width = 60;
+            dgvOrder.Columns[5].Width = 60;
+            dgvOrder.Columns[6].Width = 60;
         }
 
         private void cbName_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,7 +91,15 @@ namespace BOM.BUS.Managements
 
         private void nudEA_ValueChanged(object sender, EventArgs e)
         {
-            tbTotalCost.Text = (int.Parse(tbCost.Text) * nudEA.Value).ToString();
+            if (!(cbName.SelectedIndex == -1))
+            {
+                tbTotalCost.Text = (int.Parse(tbCost.Text) * nudEA.Value).ToString(); 
+            }
+            else if(cbName.SelectedIndex == -1)
+            {
+                nudEA.Value = 0;
+                MessageBox.Show("자재를 선택하여 주십시오");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -77,11 +108,13 @@ namespace BOM.BUS.Managements
             {
                 orderList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
             }
-            //Controls.Clear();
-            //InitializeComponent();
-            //FormBuilder();
-            dgvOrder.DataSource = null;
-            dgvOrder.DataSource = orderList;
+            DGVBuilder();
+            int sum = 0;
+            foreach (var item in orderList)
+            {
+                sum += item.TotalCost;
+            }
+            lblTotalCost.Text = sum.ToString();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -93,9 +126,13 @@ namespace BOM.BUS.Managements
                     orderList.RemoveAt(i);
                 }
             }
-            Controls.Clear();
-            InitializeComponent();
-            FormBuilder();
+            DGVBuilder();
+            int sum = 0;
+            foreach (var item in orderList)
+            {
+                sum += item.TotalCost;
+            }
+            lblTotalCost.Text = sum.ToString();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -105,9 +142,26 @@ namespace BOM.BUS.Managements
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach (OrderInfo item in orderList)
+            try
             {
-                ood.InsertOrder(orderNo + 1, item.Mat_No, item.Mat_EA, item.Off_No);
+                if (!(orderList.Count == 0))
+                {
+                    foreach (OrderInfo item in orderList)
+                    {
+                        ood.InsertOrder(orderNo + 1, item.Mat_No, item.Mat_EA, item.Off_No);
+                    }
+                    MessageBox.Show("발주 성공");
+                    Close(); 
+                }
+                else
+                {
+                    MessageBox.Show("품목을 등록하십시오");
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("발주 실패");
             }
         }
     }

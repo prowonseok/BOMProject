@@ -1,4 +1,6 @@
 ﻿using BOM.BUS.BOM;
+using BOM.BUS.Managements;
+using BOM.BUS.Managements.Controls;
 using BOM.BUS.Sales;
 using BOM.VO;
 using dllPackager;
@@ -12,6 +14,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +31,7 @@ namespace BOM.BUS
             InitializeComponent();
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             salesList = new List<Cus_OrderVO>();
+            
         }
 
         /// <summary>
@@ -70,8 +74,26 @@ namespace BOM.BUS
             //BtnBOM.FlatAppearance.BorderSize = 1;
             //btnSales.FlatAppearance.BorderSize = 1;
             //btnManage.FlatAppearance.BorderSize = 3;
-            Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
-            fmanagemain.ShowDialog();
+            //Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
+            //fmanagemain.ShowDialog();
+            button3.Location = new Point(0, 79);
+            BtnBOM.Location = new Point(0, 151);
+            btnSales.Location = new Point(0, 226);
+            btnManage.Location = new Point(0, 300);
+            btnBomMain.Visible = false;
+            btnBomAdd.Visible = false;
+            btnBomMatEstimating.Visible = false;
+            btnBomSearch.Visible = false;
+            btnProMatEstimating.Visible = false;
+            btnSales1.Visible = false;
+            btnSi.Visible = false;
+            btnchp.Visible = false;
+            btnma.Visible = false;
+            button6.Visible = true;
+            button5.Visible = true;
+            button4.Visible = true;
+            button1.Visible = true;
+            button7.Visible = false;
         }
 
         private void btnSales_Click(object sender, EventArgs e)
@@ -84,33 +106,51 @@ namespace BOM.BUS
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 443);
 
-            //button3.FlatAppearance.BorderSize = 1;
-            //BtnBOM.FlatAppearance.BorderSize = 1;
-            //btnSales.FlatAppearance.BorderSize = 3;
-            //btnManage.FlatAppearance.BorderSize = 1;
+            
             btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = true;
             btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible= false;
+            button1.Visible = button4.Visible = button5.Visible = button6.Visible = false;
             //한줄더
             //Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
             //fsalesmain.ShowDialog();
         }
 
+       
         private void FrmMain_Load(object sender, EventArgs e)
         {
+
+            //ThreadStart ts = new ThreadStart(timer2_Tick(null, null));
+            //Thread t = new Thread(CurrentTime);
+            //t.Start();
+            //CheckForIllegalCrossThreadCalls = false;
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
 
+            
+
+
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
+            button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+           
+            
+
+
+
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
+            button1.ForeColor = button4.ForeColor = button5.ForeColor = button6.ForeColor = Color.White;
+            button3.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+
+
             do
             {
-                Font font = GetFonts(14);
-                Font font2 = GetFonts(12);
+                
 
-                btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font = btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font2;
-                button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = lblFunctionName.Font = font;
+               
 
                 btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
                 button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+
 
                 foreach (var item in Controls)
                 {
@@ -119,8 +159,27 @@ namespace BOM.BUS
                         ((Button)item).BackColor = Color.Silver;
                     }
                 }
+
             } while (false);
             
+
+            
+
+            btnBomMain.Visible = false;
+            btnBomAdd.Visible = false;
+            btnBomMatEstimating.Visible = false;
+            btnBomSearch.Visible = false;
+            btnProMatEstimating.Visible = false;
+            btnSales1.Visible = false;
+            btnSi.Visible = false;
+            btnchp.Visible = false;
+            btnma.Visible = false;
+            button6.Visible = false;
+            button5.Visible = false;
+            button4.Visible = false;
+            button1.Visible = false;
+            button7.Visible = false;
+
         }
 
         private void Test()
@@ -164,13 +223,6 @@ namespace BOM.BUS
                 SalesStatusDatails ssd = new SalesStatusDatails(e.RowIndex);
                 ssd.Show();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ////AddreesForm ad = new AddreesForm(2);
-            //ad.Owner = this;
-            //ad.Show();
         }
         
 
@@ -287,9 +339,22 @@ namespace BOM.BUS
 
         }
 
+
+        private void CurrentTime()
+        {
+            
+            //timer2_Tick(null, null);
+            //txtTimer.Text = DateTime.Now.ToLongTimeString();
+            
+        }
         private void timer2_Tick(object sender, EventArgs e)
         {
+
+            //txtTimer.Text = DateTime.Now.ToLongTimeString();
+
+
             txtTimer.Text = DateTime.Now.ToLongTimeString();
+
         }
 
         /// <summary>
@@ -305,13 +370,34 @@ namespace BOM.BUS
             panel1.Controls.Add(fbic);
 
         }
-
-        internal Font GetFonts(int fontSize)
+        private void button5_Click(object sender, EventArgs e)
         {
-            PrivateFontCollection privateFonts = new PrivateFontCollection();
-            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
-            Font font = new Font(privateFonts.Families[0], fontSize);
-            return font;
+            CtrlOrderMain com = new CtrlOrderMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(com);
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CtrlMatMain cmm = new CtrlMatMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cmm);
+            cmm.btnMatAdd_Click(null, null);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CtrlProducts cpd = new CtrlProducts();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cpd);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CtrlMatMain cmm = new CtrlMatMain();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cmm);
         }
     }
 }

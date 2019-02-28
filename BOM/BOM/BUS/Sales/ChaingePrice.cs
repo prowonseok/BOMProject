@@ -25,9 +25,12 @@ namespace BOM.BUS.Sales
         private void ChaingePrice_Load(object sender, EventArgs e) //
         {
             PriceView();
+            
         }
-
-        private void PriceView() //Price폼에 상품 목록 불러오는 메서드
+        /// <summary>
+        /// Price폼에 상품 목록 불러오는 메서드
+        /// </summary>
+        private void PriceView() 
         {
             
             productsList.Clear();
@@ -39,7 +42,12 @@ namespace BOM.BUS.Sales
             }
         }
         int comboProSelectedIndex = 0;
-        private void comboProduct_DropDownClosed(object sender, EventArgs e) // 콤보박스에서 상품 선택시 가격, 정보 표시하는 메서드
+        /// <summary>
+        /// 콤보박스에서 상품 선택시 가격, 정보 표시하는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboProduct_DropDownClosed(object sender, EventArgs e)
         {
             comboProSelectedIndex = comboProduct.SelectedIndex;
             int price = Int32.Parse(productsList[comboProSelectedIndex].ProductPrice);
@@ -48,12 +56,17 @@ namespace BOM.BUS.Sales
 
         }
 
-        private void btnExit_Click(object sender, EventArgs e) // 단가변경 폼 종료
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        /// <summary>
+        /// // 단가 변경하는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
-        private void btnChainge_Click(object sender, EventArgs e) // 단가 변경하는 메서드
+        private void btnChainge_Click(object sender, EventArgs e) 
         {            
             int IndexNo = new SalesDao().ProNo(comboProduct.Items[comboProSelectedIndex].ToString()); //제품번호            
             try
@@ -76,11 +89,14 @@ namespace BOM.BUS.Sales
                 throw;
             }
         }
-
-        private bool CheckPrice(string text) //공백이나 숫자 이외의 값 입력 검출하는 메서드
+        /// <summary>
+        /// //공백이나 숫자 이외의 값 입력 검출하는 메서드
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        private bool CheckPrice(string text) 
         {
             bool checkResult = false;
-
             int.TryParse(text, out int result);
             if ( !string.IsNullOrEmpty(text) )
             {                
@@ -90,12 +106,15 @@ namespace BOM.BUS.Sales
             {
                 MessageBox.Show("빈칸이나,숫자이외의 값을 저장할수 없습니다.");
             }           
-            return checkResult;
-
-          
+            return checkResult;          
         }
 
         SalesExcelDao se;
+        /// <summary>
+        /// 변경할 단가입력시 숫자이외의값 체크, 단가를 한글로 나타내는 메서드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtChaingePrice_TextChanged(object sender, EventArgs e)
         {
             if (txtChaingePrice.Text.Length > 9)

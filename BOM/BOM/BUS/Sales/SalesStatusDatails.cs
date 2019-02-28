@@ -25,7 +25,7 @@ namespace BOM.BUS.Sales
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             thisContantsIndex = contantsIndex;
         }
-
+        
         private void SalesStatusDatails_Load(object sender, EventArgs e)
         {
             if (thisContantsIndex == -1)
@@ -43,8 +43,10 @@ namespace BOM.BUS.Sales
             }
                        
         }
-
-        private void SalesInfo()// 주문내역을 상세하게 보여주는 메서드
+        /// <summary>
+        /// 주문내역을 상세하게 보여주는 메서드
+        /// </summary>
+        private void SalesInfo()
         {
             //SqlParameter[] sqlParameters = new SqlParameter[1];
             //sqlParameters[0] = new SqlParameter("@Order_No", thisContantsIndex);
@@ -70,10 +72,14 @@ namespace BOM.BUS.Sales
             lblAddr.Text = dataTable.Rows[thisContantsIndex]["Cus_Addr"].ToString();
             lblOrderPrice.Text = String.Format("{0:##,##0}", price) + " 원";
         }
-
+        /// <summary>
+        /// 출하지시에 필요한 주문번호를 넘겨주면서 출하지시폼을 띄워주는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn2_Click(object sender, EventArgs e)
         {
-            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text)); //출하지시시 주문번호를 넘겨줌
+            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text)); 
             s.Show();
         }
     }
