@@ -12,9 +12,11 @@ using BOM.VO;
 
 namespace BOM.BUS.BOM
 {
+    /// <summary>
+    /// BOM등록을 위해 Materials Table에서 모든 데이터를 출력해서 등록하는 Form
+    /// </summary>
     public partial class FrmBomAllMatInfo : Form
-    {
-        
+    { 
         DAO.BomDAO bDao;
         DataTable dt;
         DataTable dtClone; //DataTable의 형변환을 위한 CloneTable

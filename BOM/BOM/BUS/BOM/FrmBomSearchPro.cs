@@ -12,6 +12,9 @@ using BOM.VO;
 
 namespace BOM
 {
+    /// <summary>
+    /// 소요량예측 Form에서 소요량을 예측할 상품을 선택하기 위한 Form
+    /// </summary>
     public partial class FrmBomSearchPro : Form
     {
         DAO.BomDAO bDao;

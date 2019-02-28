@@ -12,6 +12,9 @@ using BOM.VO;
 
 namespace BOM
 {
+    /// <summary>
+    /// BOM조회에서 품목찾기시 뜨는 Form
+    /// </summary>
     public partial class FrmBomSearchMat : Form
     {
         bool isFirst =true;
@@ -29,7 +32,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// Form이 Load될 때 발생하는 이벤트로 Materials Table 모든 데이터를 그리드뷰에 출력
+        /// Form이 Load될 때 발생하는 이벤트,
+        /// Materials Table 모든 데이터를 그리드뷰에 출력
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -65,7 +69,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// 등록 버튼 클릭 이벤트
+        /// 등록 버튼 클릭 이벤트,
+        /// BOM조회 Form으로 등록할 품목에 대한 정보와 등록인지 취소인지 여부를 나타내는 bool타입 변수 CanOrAdd를 전송
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

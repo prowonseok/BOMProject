@@ -11,21 +11,20 @@ using BOM.VO;
 
 namespace BOM
 {
+    /// <summary>
+    /// BOM조회시 자식자재의 필요 갯수를 수정하기 위한 Form
+    /// </summary>
     public partial class FrmBomUpdate : Form
     {
         MaterialsVO materials;
         DAO.BomDAO bDao;
 
-        int ea;
-        int pNo;
+        int ea;  //변경할 자재 개수를 닮을 변수
+        int pNo; //변경할 자재임을 확인하기 위한 자재번호
 
         /// <summary>
         /// 수정할 자재에 대한 정보를 매개변수로 받아옴
         /// </summary>
-        /// <param name="pNo"></param>
-        /// <param name="materials"></param>
-        /// <param name="ea"></param>
-        
         /// <param name="pNo">부모 자재 번호</param>
         /// <param name="materials">수정할 자재에 대한 정보</param>
         /// <param name="ea">기존 필요 자재 개수</param>

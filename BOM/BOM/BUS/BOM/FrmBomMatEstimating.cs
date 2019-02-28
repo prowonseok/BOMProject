@@ -16,21 +16,23 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BOM
 {
+    /// <summary>
+    /// 소요량예측을 위한 Form
+    /// </summary>
     public partial class FrmBomMatEstimating : Form
     {
-        private int haveNum = 0; //가지고 있는 재고의 개수
-        private int makeNum = 0; //만들고자 하는 재고의 개수
-        private int proNum = 0;
-        string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
 
         DataTable matTable;
         List<int> numLst;         //재고들을 저장할 Collection
         List<MaterialsVO> matLst; //Excel 파일 저장을 위한 Collection
         DAO.BomDAO bDao;
+        private XmlTextWriter xr;
 
         private string matName = null;
-
-        private XmlTextWriter xr;
+        private int haveNum = 0; //가지고 있는 재고의 개수
+        private int makeNum = 0; //만들고자 하는 재고의 개수
+        private int proNum = 0;  //주문상세보기 Form에서 매개변수를 받기 위한 변수
+        string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
 
         #region Property
         private Products products;
@@ -38,13 +40,20 @@ namespace BOM
         internal Products Products { get => products; set => products = value; }
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
         #endregion
-
+        
+        /// <summary>
+        /// 주문 상세보기 Form에서 소요량 예측을 했을 시 생성자
+        /// </summary>
+        /// <param name="proNum">제품 번호</param>
+        /// <param name="productName">제품명</param>
+        /// <param name="proEa">제품 개수</param>
         public FrmBomMatEstimating(int proNum, string productName, string proEa) : this()
         {
             this.proNum = proNum;
             this.txtPName.Text = productName;
             this.txtEA.Text = proEa;
         }
+
         /// <summary>
         /// 생성자
         /// </summary>
@@ -53,17 +62,7 @@ namespace BOM
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 출하지시서에서 상품명과 필요개수를 받아오는 경우의 생성자
-        /// </summary>
-        /// <param name="productName"></param>
-        /// <param name="proEa"></param>
-        public FrmBomMatEstimating(string productName, string proEa) : this()
-        {
-            this.txtPName.Text = productName;
-            this.txtEA.Text = proEa;
-        }
-
+        
         /// <summary>
         /// 제품 찾기 버튼 클릭 이벤트
         /// </summary>
@@ -82,7 +81,8 @@ namespace BOM
         }
         
         /// <summary>
-        /// 검색 버튼 클릭 이벤트
+        /// 검색 버튼 클릭 이벤트,
+        /// 제품에 대한 전체 트리뷰와 우측에는 자재 테이블의 데이터를 그리드뷰에 출력
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -185,27 +185,10 @@ namespace BOM
 
             dgvMat.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-
-        /// <summary>
-        /// 자식 노드에 형제노드가 있을 경우 없을때까지 matLst에 추가
-        /// </summary>
-        /// <param name="matLst">선택한 노드의 자식노드들을 저장하는 리스트</param>
-        /// <param name="nextNode">자식노드의 다음 형제노드</param>
-        private void AddNextNode(List<string> matLst, TreeNode nextNode)
-        {
-            matLst.Add(nextNode.Text);
-            try
-            {
-                AddNextNode(matLst, nextNode.NextNode);
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
-
+        
         /// <summary>
         /// 자재별 소요량 예측을 위한 더블 클릭 이벤트
+        /// 특정 자재 클릭시 자식 자재들의 현재 보유수와 필요 자재 수를 비교하여 만들 수 있는 개수를 알아냄
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">소요량 예측을 위해 더블클릭한 노드</param>
@@ -288,6 +271,24 @@ namespace BOM
                 {
                     MessageBox.Show(e.Node.Text + "은 \r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
                 }
+            }
+        }
+
+        /// <summary>
+        /// 자식 노드에 형제노드가 있을 경우 없을때까지 matLst에 추가
+        /// </summary>
+        /// <param name="matLst">선택한 노드의 자식노드들을 저장하는 리스트</param>
+        /// <param name="nextNode">자식노드의 다음 형제노드</param>
+        private void AddNextNode(List<string> matLst, TreeNode nextNode)
+        {
+            matLst.Add(nextNode.Text);
+            try
+            {
+                AddNextNode(matLst, nextNode.NextNode);
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -445,11 +446,21 @@ namespace BOM
             }
         }
 
+        /// <summary>
+        /// 트리뷰에서 항목 선택 시 글씨를 굵게 변경
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tvProMat_AfterSelect(object sender, TreeViewEventArgs e)
         {
             tvProMat.SelectedNode.NodeFont = new Font(tvProMat.Font, FontStyle.Bold);
         }
 
+        /// <summary>
+        /// 트리뷰에서 항목 선택 취소 시 글씨를 원래상태로 변경
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tvProMat_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             if (tvProMat.SelectedNode!=null)
@@ -472,10 +483,6 @@ namespace BOM
             }
         }
         
-        private void FrmBomMatEstimating_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

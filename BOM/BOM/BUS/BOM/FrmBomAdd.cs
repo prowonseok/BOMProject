@@ -12,6 +12,9 @@ using BOM.VO;
 
 namespace BOM.BUS.BOM
 {
+    /// <summary>
+    /// BOM등록 하는 Form
+    /// </summary>
     public partial class FrmBomAdd : Form
     {
         DAO.BomDAO bDao;

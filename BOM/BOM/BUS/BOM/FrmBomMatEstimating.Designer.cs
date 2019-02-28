@@ -178,7 +178,6 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmBomMatEstimating";
             this.Text = "FrmMatEstimating";
-            this.Load += new System.EventHandler(this.FrmBomMatEstimating_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

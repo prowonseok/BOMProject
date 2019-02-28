@@ -19,59 +19,15 @@ namespace BOM.DAO
         public BomDAO() {
             con = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
-
+        
         /// <summary>
-        /// Select한 결과(DataTable)를 List<Materials>에 저장하는 경우 유효성 검사를 하는 메서드
+        /// Products Table의 모든 데이터를 출력하는 프로시져
         /// </summary>
-        /// <param name="matLst"></param>
-        /// <param name="dt"></param>
-        internal static void DataTableValidation(List<MaterialsVO> matLst, DataTable dt)
-        {
-            foreach (DataRow item in dt.Rows)
-            {
-                string mat_Manufactur = null;
-                int cost = 0;
-                int ea = 0;
-                int off_No = 0;
-                if (!string.IsNullOrEmpty(item["Mat_Manufactur"].ToString()))
-                {
-                    mat_Manufactur = item["Mat_Manufactur"].ToString();
-                }
-                if (!string.IsNullOrEmpty(item["Mat_Cost"].ToString()))
-                {
-                    cost = Int32.Parse(item["Mat_Cost"].ToString());
-                }
-                if (!string.IsNullOrEmpty(item["Mat_EA"].ToString()))
-                {
-                    ea = Int32.Parse(item["Mat_EA"].ToString());
-                }
-                if (!string.IsNullOrEmpty(item["Off_No"].ToString()))
-                {
-                    off_No = Int32.Parse(item["Off_No"].ToString());
-                }
-                matLst.Add(new MaterialsVO
-                {
-                    Mat_No = Int32.Parse(item["Mat_No"].ToString()),
-                    Mat_Type_No = Int32.Parse(item["Mat_Type_No"].ToString()),
-                    Mat_Manufactur = mat_Manufactur,
-                    Mat_Name = item["Mat_Name"].ToString(),
-                    Mat_Cost = cost,
-                    Mat_Level = Int32.Parse(item["Mat_Level"].ToString()),
-                    Mat_Ea = ea,
-                    Off_No = off_No
-                }
-                );
-            }
-        }
-
-        /// <summary>
-        /// 모든 상품 출력 프로시져
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>ProductsTable의 내용을 List<Products>에 저장 후 반환</returns>
         internal List<Products> SelectPro()
         {
             List<Products> proLst = new List<Products>();
-            string sp = "Bom_Pro_View_Procedure";
+            string sp = "Bom_Pro_Select_Procedure";
             SqlParameter[] sqlParameters = null;
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
 
@@ -87,29 +43,12 @@ namespace BOM.DAO
             return proLst;
 
         }
-        
-        //public bool Selectchildnode(string child_Name)
-        //{
-        //    string sp = "BOM_Bom_ChiledNode_Procedure";
-        //    SqlParameter[] sqlParameters = new SqlParameter[1];
-        //    sqlParameters[0] = new SqlParameter("@Child_Name", child_Name);
-
-        //    if (con.ExecuteParametersDT(sp, sqlParameters).Rows.Count>0) 
-        //    {
-        //        return true; //자식의 자식이 있다
-        //    }
-        //    else
-        //    {
-        //        return false; //없다
-        //    }
-
-        //}
 
         /// <summary>
         /// 상품 번호를 입력받아서 해당 상품번호가 BOM Table의 부모 자재일때의 부모 자재명, 자식 자재명, 자식 자재 필요 개수 
         /// </summary>
         /// <param name="pro_No">상품 번호</param>
-        /// <returns></returns>
+        /// <returns>Parameter로 보낸 상품번호가 BOM Table의 부모 자재일때의 부모 자재명, 자식 자재명, 자식 자재 필요 개수 를 DataTable로 반환</returns>
         internal DataTable SelectTreeview(int pro_No)
         {
             string sp = "BOM_Bom_Treeview_Procedure";
@@ -124,7 +63,7 @@ namespace BOM.DAO
         ///부모 자재명을 입력받아서 BOM테이블과 JOIN 후 해당 자재를 부모로 가지고 있는 자식들의 자재명과 필요 개수 출력          
         /// </summary>
         /// <param name="child_Name">부모 자재명</param>
-        /// <returns></returns>
+        /// <returns>Parameter로 보낸 자재를 부모로 가지고 있는 자식들의 자재명과 필요 개수 출력한 DataTable</returns>
         internal DataTable SelectChildTreeview(string child_Name) {
             string sp = "BOM_Bom_ChildTreeview_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -135,7 +74,7 @@ namespace BOM.DAO
         }
 
         /// <summary>
-        /// BOM등록 하는 메서드
+        /// BOM등록 하는 프로시져
         /// </summary>
         /// <param name="parentMatNo">부모 자재의 자재 번호</param>
         /// <param name="childMatNo">자식 자재의 자재 번호</param>
@@ -167,7 +106,7 @@ namespace BOM.DAO
         /// <param name="pNo">부모 자재 번호</param>
         /// <param name="cNo">자식 자재 번호</param>
         /// <param name="ea">필요 자재 개수</param>
-        /// <returns></returns>
+        /// <returns>Update성공 여부</returns>
         internal bool UpdateBom(int pNo, int cNo, int ea) {
             string sp = "BOM_Bom_Update_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[3];
@@ -190,7 +129,7 @@ namespace BOM.DAO
         /// 달을 매개변수로 입력하여 제품별 해당하는 달의 전체 판매량, 참고한 년도의 수, 현재 재고를 출력 
         /// </summary>
         /// <param name="month">구하고자 하는 달</param>
-        /// <returns></returns>
+        /// <returns>제품별 해당하는 달의 전체 판매량, 참고한 년도의 수, 현재 재고를 출력한 DataTable</returns>
         internal DataTable SelectProYear(int month)
         {
             string sp = "BOM_Bom_GroupYear_Select";
@@ -206,7 +145,7 @@ namespace BOM.DAO
         /// </summary>
         /// <param name="pNo">부모 자재 번호</param>
         /// <param name="cNo">자식 자재 번호</param>
-        /// <returns></returns>
+        /// <returns>Delete 성공 여부</returns>
         internal bool DeleteBom(int pNo, int cNo) {
             string sp = "BOM_Bom_Delete_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -226,13 +165,13 @@ namespace BOM.DAO
         }
 
         #region SelectBom Overloading
+
         /// <summary>
         /// Parameter와 특별한 조건 없이 Materials Table의 모든 데이터를 Select하는 메서드
         /// </summary>
-        /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
+        /// <returns> Materials Table의 내용을 DataTable에 저장 후 반환 </returns>
         internal DataTable SelectBom()
         {
-
             string sp = "Bom_Mat_View_Procedure";
             SqlParameter[] sqlParameters = null;
 
@@ -241,18 +180,15 @@ namespace BOM.DAO
         }
 
         /// <summary>
-        /// Parameter없고 Mat_Level의 값이 0이 아닌 Materials Table의 데이터를 Select하는 메서드
+        /// Materials Table에서 원자재가 아닌 값들을 Select하는 프로시져
         /// </summary>
-        /// <returns> List<Materials>형식을 반환(Select한 값들을 저장한 List) </returns>
+        /// <returns>Parameter없고 Mat_Level의 값이 0이 아닌 Materials Table의 데이터를 Select한 DataTable </returns>
         internal DataTable SelectBom(bool level_True)
         {
-            //List<Materials> matLst = new List<Materials>(); //Select한 값들을 저장할 Collection
-
             string sp = "Bom_Mat_View_Procedure_No_Level_0";
             SqlParameter[] sqlParameters = null;
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            //DataTableValidation(matLst, dt);
             return dt;
         }
 
@@ -264,15 +200,12 @@ namespace BOM.DAO
         /// <returns></returns>
         internal DataTable SelectBom(int mat_Level, int mat_No)
         {
-            //List<Materials> matLst = new List<Materials>();
-
             string sp = "Bom_Mat_View_Procedure_PLevel";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@Mat_Level", mat_Level);
             sqlParameters[1] = new SqlParameter("@Mat_No", mat_No);
 
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
-            //DataTableValidation(matLst, dt);
             return dt;
         }
 
@@ -294,6 +227,7 @@ namespace BOM.DAO
 
             return dt;
         }
+
         #endregion
 
         /// <summary>
@@ -320,5 +254,7 @@ namespace BOM.DAO
             DataTable dt = con.ExecuteParametersDT(sp, sqlParameters);
             return dt;
         }
+
+
     }
 }

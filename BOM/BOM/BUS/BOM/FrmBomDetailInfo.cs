@@ -12,6 +12,9 @@ using BOM.VO;
 
 namespace BOM
 {
+    /// <summary>
+    /// BOM조회를 위한 Form
+    /// </summary>
     public partial class FrmBomDetailInfo : Form
     {
         DAO.BomDAO bDao;
@@ -50,7 +53,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// Form이 Load될 때 발생하는 이벤트
+        /// Form이 Load될 때 발생하는 이벤트,
+        /// 매개변수가 있을 경우 메인폼에 띄어주고 매개변수가 없을 경우 텍스트박스를 비워둠
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -77,7 +81,8 @@ namespace BOM
         }
 
         /// <summary>
-        ///품목 찾기 버튼 클릭 이벤트
+        /// 품목 찾기 버튼 클릭 이벤트
+        /// BOM조회를 하기 위해 품목을 등록하는 Form으로 이동
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -98,7 +103,9 @@ namespace BOM
         }
 
         /// <summary>
-        /// RadioButton이 정전개시 발생하는 이벤트
+        /// RadioButton이 정전개시 발생하는 이벤트,
+        /// 선택한 품목의 자식품목들을 보여주는 RadioButton
+        /// 정전개시 수정과 삭제 버튼을 활성화함
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -123,7 +130,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// RadioButton이 역전개시 발생하는 이벤트
+        /// RadioButton이 역전개시 발생하는 이벤트,
+        /// 선택한 품목의 부모 품목들을 보여주는 RadioButton
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -202,13 +210,13 @@ namespace BOM
         }
 
         /// <summary>
-        /// 수정 버튼 클릭 이벤트
+        /// 수정 버튼 클릭 이벤트,
+        /// 부모품목에 해당 품목의 필요 갯수를 수정하기 위한 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //해당 자재의 자식 자재 갯수를 수정하기 위한 이벤트
             try
             {
                 dgvBom.SelectedRows[0].Cells[1].Value.ToString();
@@ -230,7 +238,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// 삭제 버튼 클릭 이벤트
+        /// 삭제 버튼 클릭 이벤트,
+        /// 해당 자식 품목을 삭제하기 위한 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
