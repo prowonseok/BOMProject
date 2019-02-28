@@ -46,10 +46,6 @@ namespace BOM.BUS
             btnProMatEstimating.Location = new Point(0, 340);
             btnSales.Location = new Point(0, 370);
             btnManage.Location = new Point(0, 443);
-            //button3.FlatAppearance.BorderSize = 1;
-            //BtnBOM.FlatAppearance.BorderSize = 3;
-            //btnSales.FlatAppearance.BorderSize = 1;
-            //btnManage.FlatAppearance.BorderSize = 1;
 
             FrmBomInfoControl fbic = new FrmBomInfoControl();
             panel1.Controls.Clear();
@@ -109,6 +105,7 @@ namespace BOM.BUS
             FrmMainControl fmc = new FrmMainControl();
             panel1.Controls.Clear();
             panel1.Controls.Add(fmc);
+
             
 
             btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
@@ -116,13 +113,28 @@ namespace BOM.BUS
            
             
 
-            foreach (var item in Controls)
+
+            do
             {
-                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                Font font = GetFonts(14);
+                Font font2 = GetFonts(12);
+
+                btnBomMain.Font = btnSi.Font = btnchp.Font = btnma.Font = button7.Font = btnSales1.Font = btnBomAdd.Font = btnBomSearch.Font = btnBomMatEstimating.Font = btnProMatEstimating.Font = font2;
+                button3.Font = BtnBOM.Font = btnSales.Font = btnManage.Font = lblFunctionName.Font = font;
+
+                btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
+                button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+
+
+                foreach (var item in Controls)
                 {
-                    ((Button)item).BackColor = Color.Silver;
+                    if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                    {
+                        ((Button)item).BackColor = Color.Silver;
+                    }
                 }
-            }
+            } while (false);
+            
         }
 
         private void Test()
@@ -299,7 +311,11 @@ namespace BOM.BUS
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
+
             //txtTimer.Text = DateTime.Now.ToLongTimeString();
+
+
+            txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
 
@@ -316,7 +332,15 @@ namespace BOM.BUS
             panel1.Controls.Add(fbic);
 
         }
-        
-       
+
+
+        internal Font GetFonts(int fontSize)
+        {
+            PrivateFontCollection privateFonts = new PrivateFontCollection();
+            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
+            Font font = new Font(privateFonts.Families[0], fontSize);
+            return font;
+        }
+
     }
 }

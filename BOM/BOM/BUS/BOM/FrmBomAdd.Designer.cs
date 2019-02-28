@@ -59,7 +59,7 @@
             this.lblChildMatNo.AutoSize = true;
             this.lblChildMatNo.Location = new System.Drawing.Point(14, 29);
             this.lblChildMatNo.Name = "lblChildMatNo";
-            this.lblChildMatNo.Size = new System.Drawing.Size(69, 12);
+            this.lblChildMatNo.Size = new System.Drawing.Size(70, 15);
             this.lblChildMatNo.TabIndex = 0;
             this.lblChildMatNo.Text = "품목 번호 : ";
             // 
@@ -68,7 +68,7 @@
             this.txtChildMatNo.Location = new System.Drawing.Point(89, 26);
             this.txtChildMatNo.Name = "txtChildMatNo";
             this.txtChildMatNo.ReadOnly = true;
-            this.txtChildMatNo.Size = new System.Drawing.Size(100, 21);
+            this.txtChildMatNo.Size = new System.Drawing.Size(100, 23);
             this.txtChildMatNo.TabIndex = 1;
             // 
             // txtChildMatName
@@ -76,7 +76,7 @@
             this.txtChildMatName.Location = new System.Drawing.Point(89, 71);
             this.txtChildMatName.Name = "txtChildMatName";
             this.txtChildMatName.ReadOnly = true;
-            this.txtChildMatName.Size = new System.Drawing.Size(279, 21);
+            this.txtChildMatName.Size = new System.Drawing.Size(279, 23);
             this.txtChildMatName.TabIndex = 3;
             // 
             // lblChildMatName
@@ -84,12 +84,13 @@
             this.lblChildMatName.AutoSize = true;
             this.lblChildMatName.Location = new System.Drawing.Point(26, 74);
             this.lblChildMatName.Name = "lblChildMatName";
-            this.lblChildMatName.Size = new System.Drawing.Size(57, 12);
+            this.lblChildMatName.Size = new System.Drawing.Size(58, 15);
             this.lblChildMatName.TabIndex = 2;
             this.lblChildMatName.Text = "품목 명 : ";
             // 
             // btnCMatSearch
             // 
+            this.btnCMatSearch.FlatAppearance.BorderSize = 0;
             this.btnCMatSearch.Location = new System.Drawing.Point(388, 24);
             this.btnCMatSearch.Name = "btnCMatSearch";
             this.btnCMatSearch.Size = new System.Drawing.Size(75, 23);
@@ -102,7 +103,7 @@
             // 
             this.txtChildMatEA.Location = new System.Drawing.Point(89, 116);
             this.txtChildMatEA.Name = "txtChildMatEA";
-            this.txtChildMatEA.Size = new System.Drawing.Size(100, 21);
+            this.txtChildMatEA.Size = new System.Drawing.Size(100, 23);
             this.txtChildMatEA.TabIndex = 6;
             this.txtChildMatEA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChildMatEA_KeyPress);
             // 
@@ -111,12 +112,14 @@
             this.lblChildMatEA.AutoSize = true;
             this.lblChildMatEA.Location = new System.Drawing.Point(42, 119);
             this.lblChildMatEA.Name = "lblChildMatEA";
-            this.lblChildMatEA.Size = new System.Drawing.Size(41, 12);
+            this.lblChildMatEA.Size = new System.Drawing.Size(42, 15);
             this.lblChildMatEA.TabIndex = 5;
             this.lblChildMatEA.Text = "수량 : ";
             // 
             // btnAdd
             // 
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnAdd.Location = new System.Drawing.Point(411, 360);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
@@ -127,6 +130,7 @@
             // 
             // btnPMatSearch
             // 
+            this.btnPMatSearch.FlatAppearance.BorderSize = 0;
             this.btnPMatSearch.Location = new System.Drawing.Point(388, 30);
             this.btnPMatSearch.Name = "btnPMatSearch";
             this.btnPMatSearch.Size = new System.Drawing.Size(75, 23);
@@ -140,7 +144,7 @@
             this.txtParentMatNo.Location = new System.Drawing.Point(89, 32);
             this.txtParentMatNo.Name = "txtParentMatNo";
             this.txtParentMatNo.ReadOnly = true;
-            this.txtParentMatNo.Size = new System.Drawing.Size(100, 21);
+            this.txtParentMatNo.Size = new System.Drawing.Size(100, 23);
             this.txtParentMatNo.TabIndex = 9;
             // 
             // lblParentMatNo
@@ -148,7 +152,7 @@
             this.lblParentMatNo.AutoSize = true;
             this.lblParentMatNo.Location = new System.Drawing.Point(14, 35);
             this.lblParentMatNo.Name = "lblParentMatNo";
-            this.lblParentMatNo.Size = new System.Drawing.Size(69, 12);
+            this.lblParentMatNo.Size = new System.Drawing.Size(70, 15);
             this.lblParentMatNo.TabIndex = 8;
             this.lblParentMatNo.Text = "품목 번호 : ";
             // 
@@ -157,7 +161,7 @@
             this.txtParentMatName.Location = new System.Drawing.Point(89, 82);
             this.txtParentMatName.Name = "txtParentMatName";
             this.txtParentMatName.ReadOnly = true;
-            this.txtParentMatName.Size = new System.Drawing.Size(279, 21);
+            this.txtParentMatName.Size = new System.Drawing.Size(279, 23);
             this.txtParentMatName.TabIndex = 12;
             // 
             // lblParentMatName
@@ -165,7 +169,7 @@
             this.lblParentMatName.AutoSize = true;
             this.lblParentMatName.Location = new System.Drawing.Point(26, 85);
             this.lblParentMatName.Name = "lblParentMatName";
-            this.lblParentMatName.Size = new System.Drawing.Size(57, 12);
+            this.lblParentMatName.Size = new System.Drawing.Size(58, 15);
             this.lblParentMatName.TabIndex = 11;
             this.lblParentMatName.Text = "품목 명 : ";
             // 
@@ -174,7 +178,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(197, 119);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.Size = new System.Drawing.Size(19, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "개";
             // 
@@ -183,7 +187,7 @@
             this.txtParentMatLevel.Location = new System.Drawing.Point(268, 32);
             this.txtParentMatLevel.Name = "txtParentMatLevel";
             this.txtParentMatLevel.ReadOnly = true;
-            this.txtParentMatLevel.Size = new System.Drawing.Size(100, 21);
+            this.txtParentMatLevel.Size = new System.Drawing.Size(100, 23);
             this.txtParentMatLevel.TabIndex = 15;
             // 
             // lblPLevel
@@ -191,7 +195,7 @@
             this.lblPLevel.AutoSize = true;
             this.lblPLevel.Location = new System.Drawing.Point(193, 35);
             this.lblPLevel.Name = "lblPLevel";
-            this.lblPLevel.Size = new System.Drawing.Size(69, 12);
+            this.lblPLevel.Size = new System.Drawing.Size(70, 15);
             this.lblPLevel.TabIndex = 14;
             this.lblPLevel.Text = "품목 레벨 : ";
             // 
@@ -200,7 +204,7 @@
             this.txtChildMatLevel.Location = new System.Drawing.Point(268, 26);
             this.txtChildMatLevel.Name = "txtChildMatLevel";
             this.txtChildMatLevel.ReadOnly = true;
-            this.txtChildMatLevel.Size = new System.Drawing.Size(100, 21);
+            this.txtChildMatLevel.Size = new System.Drawing.Size(100, 23);
             this.txtChildMatLevel.TabIndex = 17;
             // 
             // lblChildMatLevel
@@ -208,12 +212,14 @@
             this.lblChildMatLevel.AutoSize = true;
             this.lblChildMatLevel.Location = new System.Drawing.Point(193, 29);
             this.lblChildMatLevel.Name = "lblChildMatLevel";
-            this.lblChildMatLevel.Size = new System.Drawing.Size(69, 12);
+            this.lblChildMatLevel.Size = new System.Drawing.Size(70, 15);
             this.lblChildMatLevel.TabIndex = 16;
             this.lblChildMatLevel.Text = "품목 레벨 : ";
             // 
             // btnCancel
             // 
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnCancel.Location = new System.Drawing.Point(291, 360);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -224,6 +230,7 @@
             // 
             // trvMat
             // 
+            this.trvMat.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.trvMat.Location = new System.Drawing.Point(507, 26);
             this.trvMat.Name = "trvMat";
             this.trvMat.Size = new System.Drawing.Size(316, 363);
@@ -238,6 +245,7 @@
             this.gbPMat.Controls.Add(this.txtParentMatName);
             this.gbPMat.Controls.Add(this.txtParentMatLevel);
             this.gbPMat.Controls.Add(this.lblPLevel);
+            this.gbPMat.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gbPMat.Location = new System.Drawing.Point(23, 26);
             this.gbPMat.Name = "gbPMat";
             this.gbPMat.Size = new System.Drawing.Size(478, 139);
@@ -257,6 +265,7 @@
             this.gbCMat.Controls.Add(this.lblChildMatEA);
             this.gbCMat.Controls.Add(this.label1);
             this.gbCMat.Controls.Add(this.txtChildMatEA);
+            this.gbCMat.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gbCMat.Location = new System.Drawing.Point(23, 186);
             this.gbCMat.Name = "gbCMat";
             this.gbCMat.Size = new System.Drawing.Size(478, 155);
@@ -268,6 +277,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(851, 401);
             this.Controls.Add(this.gbCMat);
             this.Controls.Add(this.gbPMat);

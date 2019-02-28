@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -140,12 +141,6 @@
     <Compile Include="BUS\BOM\FrmBomAllMatInfo.Designer.cs">
       <DependentUpon>FrmBomAllMatInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\BOM\FrmBomInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\BOM\FrmBomInfo.Designer.cs">
-      <DependentUpon>FrmBomInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="BUS\Sales\ChaingePrice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,16 +168,16 @@
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="DAO\OfferOrderDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
-    <Compile Include="FrmBomInfoControl.cs">
+    <Compile Include="BUS\BOM\Controls\FrmBomInfoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FrmBomInfoControl.Designer.cs">
+    <Compile Include="BUS\BOM\Controls\FrmBomInfoControl.Designer.cs">
       <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBomProEstimatingControl.cs">
+    <Compile Include="BUS\BOM\Controls\FrmBomProEstimatingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FrmBomProEstimatingControl.Designer.cs">
+    <Compile Include="BUS\BOM\Controls\FrmBomProEstimatingControl.Designer.cs">
       <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMainControl.cs">
@@ -190,12 +185,6 @@
     </Compile>
     <Compile Include="FrmMainControl.Designer.cs">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmMatEstimatingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FrmMatEstimatingControl.Designer.cs">
-      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRevenueStatusControl.cs">
       <SubType>UserControl</SubType>
@@ -232,12 +221,6 @@
     </Compile>
     <Compile Include="BUS\BOM\FrmBomMatEstimating.Designer.cs">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BUS\BOM\FrmBomProEstimating.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BUS\BOM\FrmBomProEstimating.Designer.cs">
-      <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\BOM\FrmBomSearchPro.cs">
       <SubType>Form</SubType>
@@ -277,9 +260,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomDetailInfo.resx">
       <DependentUpon>FrmBomDetailInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BUS\BOM\FrmBomInfo.resx">
-      <DependentUpon>FrmBomInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomSearchMat.resx">
       <DependentUpon>FrmBomSearchMat.cs</DependentUpon>
@@ -326,9 +306,6 @@
     <EmbeddedResource Include="BUS\BOM\FrmBomMatEstimating.resx">
       <DependentUpon>FrmBomMatEstimating.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BUS\BOM\FrmBomProEstimating.resx">
-      <DependentUpon>FrmBomProEstimating.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\FrmBomSearchPro.resx">
       <DependentUpon>FrmBomSearchPro.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,17 +328,14 @@
     <None Include="MaterialsData.dbml.layout">
       <DependentUpon>MaterialsData.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="FrmBomInfoControl.resx">
+    <EmbeddedResource Include="BUS\BOM\Controls\FrmBomInfoControl.resx">
       <DependentUpon>FrmBomInfoControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBomProEstimatingControl.resx">
+    <EmbeddedResource Include="BUS\BOM\Controls\FrmBomProEstimatingControl.resx">
       <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmMatEstimatingControl.resx">
-      <DependentUpon>FrmMatEstimatingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRevenueStatusControl.resx">
       <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>

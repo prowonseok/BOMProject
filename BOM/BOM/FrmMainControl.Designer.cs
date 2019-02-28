@@ -85,12 +85,12 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 6000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // timer2
             // 
-            this.timer2.Enabled = true;
+            this.timer2.Interval = 60000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmMainControl

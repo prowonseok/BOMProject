@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOM.VO;
 using BOM.BUS.BOM;
+using System.Drawing.Text;
+using BOM.BUS;
 
 namespace BOM
 {
@@ -31,6 +33,7 @@ namespace BOM
         private void FrmBomInfoControl_Load(object sender, EventArgs e)
         {
             Display();
+            dgvBom.Font = new Font("맑은고딕",10);
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace BOM
 
             //컬럼별 크기 설정
             dgvBom.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvBom.Columns[0].Width = 80;
+            dgvBom.Columns[0].Width = 90;
 
             //컬럼명 설정
             dgvBom.Columns[0].HeaderText = "자재 번호";
@@ -129,19 +132,26 @@ namespace BOM
         {
             int levelNum = 0;
             //매개변수 값을 위한 Level값 변경
-            switch (dgvBom.Rows[e.RowIndex].Cells[4].Value.ToString())
+            try
             {
-                case "원재료":
-                    levelNum = 0;
-                    break;
-                case "반제품":
-                    levelNum = 1;
-                    break;
-                case "완제품":
-                    levelNum = 2;
-                    break;
-                default:
-                    break;
+                switch (dgvBom.Rows[e.RowIndex].Cells[4].Value.ToString())
+                {
+                    case "원재료":
+                        levelNum = 0;
+                        break;
+                    case "반제품":
+                        levelNum = 1;
+                        break;
+                    case "완제품":
+                        levelNum = 2;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                //컬럼을 클릭했을 경우
             }
             //BOM등록 클릭 시 
             if (e.ColumnIndex.ToString() == "0")
@@ -282,17 +292,6 @@ namespace BOM
         {
             dgvBom.FirstDisplayedScrollingRowIndex = item.Index;
             item.Selected = true;
-        }
-
-        /// <summary>
-        /// 생산 예측 페이지로 이동
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnProEstimating_Click(object sender, EventArgs e)
-        {
-            FrmBomProEstimating fbpe = new FrmBomProEstimating();
-            fbpe.ShowDialog();
         }
         
     }

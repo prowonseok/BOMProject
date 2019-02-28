@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,6 +139,7 @@ namespace BOM.BUS.BOM
         /// <param name="e"></param>
         private void FrmBomAdd_Load(object sender, EventArgs e)
         {
+            this.BackColor=Color.White;
             try
             {
                 //BOM 조회에서 등록으로 이동하는 경우

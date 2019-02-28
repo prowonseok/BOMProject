@@ -45,9 +45,10 @@
             // 
             this.rdoExplosion.AutoSize = true;
             this.rdoExplosion.Checked = true;
+            this.rdoExplosion.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.rdoExplosion.Location = new System.Drawing.Point(14, 87);
             this.rdoExplosion.Name = "rdoExplosion";
-            this.rdoExplosion.Size = new System.Drawing.Size(59, 16);
+            this.rdoExplosion.Size = new System.Drawing.Size(61, 19);
             this.rdoExplosion.TabIndex = 2;
             this.rdoExplosion.TabStop = true;
             this.rdoExplosion.Text = "정전개";
@@ -57,9 +58,10 @@
             // rdoImplosion
             // 
             this.rdoImplosion.AutoSize = true;
+            this.rdoImplosion.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.rdoImplosion.Location = new System.Drawing.Point(136, 87);
             this.rdoImplosion.Name = "rdoImplosion";
-            this.rdoImplosion.Size = new System.Drawing.Size(59, 16);
+            this.rdoImplosion.Size = new System.Drawing.Size(61, 19);
             this.rdoImplosion.TabIndex = 3;
             this.rdoImplosion.Text = "역전개";
             this.rdoImplosion.UseVisualStyleBackColor = true;
@@ -81,39 +83,44 @@
             // lblMatNo
             // 
             this.lblMatNo.AutoSize = true;
+            this.lblMatNo.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMatNo.Location = new System.Drawing.Point(12, 51);
             this.lblMatNo.Name = "lblMatNo";
-            this.lblMatNo.Size = new System.Drawing.Size(69, 12);
+            this.lblMatNo.Size = new System.Drawing.Size(70, 15);
             this.lblMatNo.TabIndex = 5;
             this.lblMatNo.Text = "품목 번호 : ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(274, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(54, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "품목명 : ";
             // 
             // txtMatNo
             // 
+            this.txtMatNo.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtMatNo.Location = new System.Drawing.Point(87, 48);
             this.txtMatNo.Name = "txtMatNo";
             this.txtMatNo.ReadOnly = true;
-            this.txtMatNo.Size = new System.Drawing.Size(100, 21);
+            this.txtMatNo.Size = new System.Drawing.Size(100, 23);
             this.txtMatNo.TabIndex = 7;
             // 
             // txtMatName
             // 
+            this.txtMatName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtMatName.Location = new System.Drawing.Point(333, 48);
             this.txtMatName.Name = "txtMatName";
             this.txtMatName.ReadOnly = true;
-            this.txtMatName.Size = new System.Drawing.Size(325, 21);
+            this.txtMatName.Size = new System.Drawing.Size(325, 23);
             this.txtMatName.TabIndex = 8;
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearch.Location = new System.Drawing.Point(582, 84);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -124,6 +131,7 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnUpdate.Location = new System.Drawing.Point(370, 84);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
@@ -134,6 +142,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDelete.Location = new System.Drawing.Point(476, 84);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);

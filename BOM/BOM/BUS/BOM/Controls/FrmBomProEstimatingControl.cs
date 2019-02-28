@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing.Text;
 
 namespace BOM
 {
-    public partial class FrmBomProEstimating : Form
+    public partial class FrmBomProEstimatingControl : UserControl
     {
+        /// <summary>
+        /// Control 생성자
+        /// </summary>
+        public FrmBomProEstimatingControl()
+        {
+            InitializeComponent();
+        }
+
         DAO.BomDAO bDao;
         DataTable dt;
         List<string> proLst; //판매중인 제품들을 저장할 Collection
@@ -23,20 +32,13 @@ namespace BOM
         Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
         ToolTip myToolTip = new ToolTip();
 
-        /// <summary>
-        /// 생성자
-        /// </summary>
-        public FrmBomProEstimating()
-        {
-            InitializeComponent();
-        }
 
         /// <summary>
         /// 폼이 Load될때 발생하는 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FrmBomProEstimating_Load(object sender, EventArgs e)
+        private void FrmBomProEstimatingControl_Load(object sender, EventArgs e)
         {
             #region 원형 그래프
             bDao = new DAO.BomDAO();
@@ -64,10 +66,22 @@ namespace BOM
             }
             cbbProducts.Text = "전체";
             cbbYear.Text = "2019";
+
+            //chartDate.Titles[0].Font = font;
+            //chartDate.Legends[0].Font = font2;
+
             #endregion
 
             //최초에 제품별 판매량을 화면에 출력
             btnPro_Click(null, null);
+            
+            for (int i = 1; i < 13; i++)
+            {
+                cbbMonth.Items.Add(i+"월");
+            }
+
+            dgvEst.Font= new Font("맑은고딕", 9);
+            dgvEst2.Font= new Font("맑은고딕", 9);
         }
 
         /// <summary>
@@ -75,7 +89,7 @@ namespace BOM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치 좌표</param>
-        private void chartPro_MouseMove(object sender, MouseEventArgs e)
+        private void ChartPro_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location; //현재 마우스 포인터의 좌표 저장
             if (previousPos.HasValue && position == previousPos)
@@ -102,7 +116,7 @@ namespace BOM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치</param>
-        private void chartDate_MouseMove(object sender, MouseEventArgs e)
+        private void ChartDate_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location;
             if (previousPos.HasValue && position == previousPos)
@@ -158,6 +172,7 @@ namespace BOM
                     }
                 }
             }
+
         }
 
         /// <summary>
@@ -171,6 +186,7 @@ namespace BOM
             chartPro.Visible = true;
             chartDate.Visible = false;
             cbbProducts.Visible = false;
+            cbbMonth.Visible = false;
             cbbYear.Visible = false;
             dgvEst.Visible = false;
             dgvEst2.Visible = false;
@@ -189,6 +205,7 @@ namespace BOM
             #region Visible처리
             chartPro.Visible = false;
             chartDate.Visible = true;
+            cbbMonth.Visible = false;
             cbbProducts.Visible = true;
             cbbYear.Visible = true;
             dgvEst.Visible = false;
@@ -206,6 +223,7 @@ namespace BOM
         private void btnEstimating_Click(object sender, EventArgs e)
         {
             #region Visible처리
+            cbbMonth.Visible = true;
             dgvEst.Visible = true;
             dgvEst2.Visible = true;
             chartPro.Visible = false;
@@ -228,6 +246,17 @@ namespace BOM
                 secondMonth = firstMonth + 1;
             }
 
+            cbbMonth.Text = firstMonth + "월";
+            ViewGridview(firstMonth, secondMonth);
+        }
+
+        /// <summary>
+        /// 그리드뷰에 설정한 달에 대한 정보를 출력
+        /// </summary>
+        /// <param name="firstMonth"></param>
+        /// <param name="secondMonth"></param>
+        private void ViewGridview(int firstMonth, int secondMonth)
+        {
             dt2 = bDao.SelectProYear(firstMonth);
             dt3 = bDao.SelectProYear(secondMonth);
 
@@ -239,8 +268,8 @@ namespace BOM
 
             DisplayGridview(dgvEst);
             DisplayGridview(dgvEst2);
-            lblFirstMonth.Text = DateTime.Now.Month + "월 판매 정보";
-            lblSecondMonth.Text = DateTime.Now.Month + 1 + "월 판매 정보";
+            lblFirstMonth.Text = firstMonth + "월 판매 정보";
+            lblSecondMonth.Text = secondMonth + "월 판매 정보";
         }
 
         /// <summary>
@@ -267,6 +296,7 @@ namespace BOM
 
         }
 
+       
         /// <summary>
         /// 출력한 그리드뷰에 대해 설정하는 메서드
         /// </summary>
@@ -285,7 +315,26 @@ namespace BOM
             gridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
 
+        /// <summary>
+        /// MonthCombobox의 값이 변경될때마다 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int firstMonth = Int32.Parse(cbbMonth.Text.Remove(cbbMonth.Text.Length-1));
+            int secondMonth = 0;
+            if (firstMonth == 12)
+            {
+                secondMonth = 1;
+            }
+            else
+            {
+                secondMonth = firstMonth + 1;
+            }
+            ViewGridview(firstMonth, secondMonth);
         }
     }
 }

@@ -86,14 +86,16 @@ namespace BOM
         private void button2_Click(object sender, EventArgs e)
         {
             RealTiemSales();
-        }
+        }    
 
-        private void timer2_Tick(object sender, EventArgs e)
+        
+
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
             txtTimer.Text = DateTime.Now.ToLongTimeString();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer2_Tick(object sender, EventArgs e)
         {
             RealTiemSales();
         }

@@ -46,22 +46,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(29, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "제품명 : ";
             // 
             // txtPName
             // 
+            this.txtPName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPName.Location = new System.Drawing.Point(88, 35);
             this.txtPName.Name = "txtPName";
             this.txtPName.ReadOnly = true;
-            this.txtPName.Size = new System.Drawing.Size(148, 21);
+            this.txtPName.Size = new System.Drawing.Size(148, 23);
             this.txtPName.TabIndex = 1;
             // 
             // btnSearchPro
             // 
+            this.btnSearchPro.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearchPro.Location = new System.Drawing.Point(271, 33);
             this.btnSearchPro.Name = "btnSearchPro";
             this.btnSearchPro.Size = new System.Drawing.Size(75, 23);
@@ -72,41 +75,47 @@
             // 
             // tvProMat
             // 
+            this.tvProMat.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tvProMat.Location = new System.Drawing.Point(31, 141);
             this.tvProMat.Name = "tvProMat";
             this.tvProMat.Size = new System.Drawing.Size(315, 313);
             this.tvProMat.TabIndex = 3;
+            this.tvProMat.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvProMat_BeforeSelect);
+            this.tvProMat.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvProMat_AfterSelect);
             this.tvProMat.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvProMat_NodeMouseDoubleClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(99, 93);
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(109, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 35);
+            this.label2.Size = new System.Drawing.Size(173, 47);
             this.label2.TabIndex = 4;
             this.label2.Text = "소  요  량";
             // 
             // txtEA
             // 
+            this.txtEA.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtEA.Location = new System.Drawing.Point(88, 69);
             this.txtEA.Name = "txtEA";
-            this.txtEA.Size = new System.Drawing.Size(148, 21);
+            this.txtEA.Size = new System.Drawing.Size(148, 23);
             this.txtEA.TabIndex = 6;
             this.txtEA.Text = "1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(41, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(42, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "개수 : ";
             // 
             // btnSearchTree
             // 
+            this.btnSearchTree.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearchTree.Location = new System.Drawing.Point(271, 67);
             this.btnSearchTree.Name = "btnSearchTree";
             this.btnSearchTree.Size = new System.Drawing.Size(75, 23);
@@ -130,9 +139,10 @@
             // 
             // btnXml
             // 
-            this.btnXml.Location = new System.Drawing.Point(365, 471);
+            this.btnXml.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnXml.Location = new System.Drawing.Point(522, 471);
             this.btnXml.Name = "btnXml";
-            this.btnXml.Size = new System.Drawing.Size(75, 23);
+            this.btnXml.Size = new System.Drawing.Size(97, 36);
             this.btnXml.TabIndex = 11;
             this.btnXml.Text = "xml로 저장";
             this.btnXml.UseVisualStyleBackColor = true;
@@ -140,9 +150,10 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(476, 471);
+            this.btnExcel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnExcel.Location = new System.Drawing.Point(365, 471);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(97, 23);
+            this.btnExcel.Size = new System.Drawing.Size(97, 36);
             this.btnExcel.TabIndex = 12;
             this.btnExcel.Text = "Excel로 저장";
             this.btnExcel.UseVisualStyleBackColor = true;

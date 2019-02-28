@@ -18,7 +18,7 @@ namespace BOM
         DAO.BomDAO bDao;
         DataTable dt;
         DataTable dtClone;
-        FrmBomInfo fbi;
+        FrmBomInfoControl fbi;
 
         /// <summary>
         /// 생성자
@@ -36,10 +36,11 @@ namespace BOM
         private void FrmBomSearchMat_Load(object sender, EventArgs e)
         {
             bDao = new DAO.BomDAO();
-            fbi = new FrmBomInfo();
+            fbi = new FrmBomInfoControl();
             dt = bDao.SelectBom();
             dgvInfo.DataSource = fbi.CloneDataTable(dt, dtClone);
             DisplayGridview();
+            dgvInfo.Font= new Font("맑은고딕", 9);
         }
 
         /// <summary>

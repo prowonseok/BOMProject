@@ -36,6 +36,7 @@ namespace BOM
             bDao = new DAO.BomDAO();
             dgvProInfo.DataSource = bDao.SelectPro();
             DisplayGridview();
+            dgvProInfo.Font= new Font("맑은고딕", 9);
         }
 
         /// <summary>
