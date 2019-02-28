@@ -1,11 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CustomerApp.BUS;
 
 namespace CusAppTest
 {
     [TestClass]
-    public class FrmAddr
+    public class FrmJoinTest
     {
         [TestMethod]
         public void TestMethod1()

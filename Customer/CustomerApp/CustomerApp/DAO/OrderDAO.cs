@@ -21,9 +21,8 @@ namespace CustomerApp.DAO
             {
                 orderList.Clear();
                 string sp = "SelectOrderByCusID";
-                SqlParameter[] orderorderInfo = new SqlParameter[2];
+                SqlParameter[] orderorderInfo = new SqlParameter[1];
                 orderorderInfo[0] = new SqlParameter("Cus_No", cusNo);
-                orderorderInfo[1] = new SqlParameter("Emp_No", 1);
                 var dataTable = db.ExecuteParametersDT(sp, orderorderInfo);
                 foreach (DataRow row in dataTable.Rows)
                 {
@@ -48,16 +47,17 @@ namespace CustomerApp.DAO
             }
         }
 
-        public void InsertSingleOrder(OrderVO order, int cusNo)
+        public void InsertSingleOrder(OrderVO order)
         {
             string sp = "InsertSingleOrder";
-            SqlParameter[] orderInfo = new SqlParameter[6];
+            SqlParameter[] orderInfo = new SqlParameter[7];
             orderInfo[0] = new SqlParameter("Cus_No", order.CusNo);
             orderInfo[1] = new SqlParameter("Pro_No", order.ProNo);
-            orderInfo[2] = new SqlParameter("Cus_Order_OrderNo", GetOrder_OrderNo(cusNo));
+            orderInfo[2] = new SqlParameter("Cus_Order_OrderNo", GetOrder_OrderNo(order.CusNo));
             orderInfo[3] = new SqlParameter("Cus_Order_Date", order.OrderDate);
             orderInfo[4] = new SqlParameter("Cus_Order_Price", order.Price);
             orderInfo[5] = new SqlParameter("Cus_Order_EA", order.EA);
+            orderInfo[6] = new SqlParameter("Emp_No", order.EmpNo);
             try
             {
                 db.ExecuteParameters(sp, orderInfo);

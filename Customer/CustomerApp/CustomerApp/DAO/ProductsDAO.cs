@@ -27,7 +27,6 @@ namespace CustomerApp.DAO
                 foreach (DataRow row in proDataTable.Rows)
                 {
                     int proNo = int.Parse(row["Pro_No"].ToString());
-                    List<string> matList = new List<string>();
                     ProductVO product = new ProductVO()
                     {
                         No = proNo,
@@ -35,7 +34,7 @@ namespace CustomerApp.DAO
                         MatNo = int.Parse(row["Mat_No"].ToString()),
                         Price = int.Parse(row["Pro_Price"].ToString()),
                         Image = (Image)im.ConvertFrom(row["Pro_Img_Image"]),
-                        MatList = GetMatList(proNo, matList)
+                        MatList = GetMatList(proNo)
                     };
                     proList.Add(product);
                 }
@@ -47,18 +46,35 @@ namespace CustomerApp.DAO
             }
         }
 
-        private List<string> GetMatList(int proNo, List<string> matList)
+        //private List<string> GetMatList(int proNo, List<string> matList)
+        //{
+        //    string sp = "SelectProDetail";
+        //    SqlParameter[] proInfo = new SqlParameter[1];
+        //    proInfo[0] = new SqlParameter("Pro_No", proNo);
+        //    var matDataTable = db.ExecuteParametersDT(sp, proInfo);
+
+        //    foreach (DataRow row in matDataTable.Rows)
+        //    {
+        //        matList.Add(row["Mat_Type_Category"].ToString());
+        //        matList.Add(row["Mat_Name"].ToString());
+        //    }
+        //    return matList;
+        //}
+
+        private string GetMatList(int proNo)
         {
+            string matList = string.Empty;
             string sp = "SelectProDetail";
             SqlParameter[] proInfo = new SqlParameter[1];
             proInfo[0] = new SqlParameter("Pro_No", proNo);
             var matDataTable = db.ExecuteParametersDT(sp, proInfo);
 
-            foreach (DataRow row in matDataTable.Rows)
-            {
-                matList.Add(row["Mat_Type_Category"].ToString());
-                matList.Add(row["Mat_Name"].ToString());
-            }
+            matList = matDataTable.Rows[0]["Pro_Spec"].ToString();
+            //foreach (DataRow row in matDataTable.Rows)
+            //{
+                
+            //    //matList.Add(row["Mat_Name"].ToString());
+            //}
             return matList;
         }
 

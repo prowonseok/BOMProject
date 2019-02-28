@@ -109,12 +109,7 @@ AS
 CREATE PROCEDURE [dbo].[SelectProDetail]
 	@Pro_No int
 AS
-	SELECT matT.Mat_Type_Category, mat.Mat_Name from 
-	Materials mat inner join BOM bo
-	on bo.BOM_ChildNo = mat.Mat_No 
-	inner join Products pro on pro.Mat_No = bo.BOM_ParentNo
-	inner join Materials_Type matT on mat.Mat_Type_No = matT.Mat_Type_No
-	where Pro_No = @Pro_No;
+	SELECT Pro_Spec FROM Products WHERE Pro_No = @Pro_No;
 
 -- 주문 insert
 CREATE PROCEDURE [dbo].[InsertSingleOrder]
@@ -129,17 +124,15 @@ AS
 
 -- 주문 해당 회원 select 
 CREATE PROCEDURE [dbo].[SelectOrderByCusID]
-	@Cus_No int,
-	@Emp_No int
+	@Cus_No int
 AS
-	SELECT [Cus_or].Cus_Order_No, [Cus_or].Cus_Order_OrderNo, [Cus].Cus_Name, [Pro].Pro_Name, 
-	[Cus_or].Cus_Order_Date, [Cus_or].Cus_Order_EA, [Cus_or].Cus_Order_Price, [Emp].Emp_Name, 
-	[Order_Type].Com_Type from Customers_Order [Cus_or] 
+	SELECT [Cus_or].Cus_Order_No, [Cus_or].Cus_Order_OrderNo, [Cus].Cus_Name, [Pro].Pro_Name, [Cus_or].Cus_Order_Date, [Cus_or].Cus_Order_EA, [Cus_or].Cus_Order_Price, [Emp].Emp_Name, [Order_Type].Com_Type from Customers_Order [Cus_or] 
 	inner join Customers [Cus] on [Cus].Cus_No = @Cus_No
 	inner join Products [Pro] on [Pro].Pro_No = [Cus_or].Pro_No
-	inner join Employees [Emp] on [Emp].Emp_No = @Emp_No
+	inner join Employees [Emp] on [Emp].Emp_No = [Cus_or].Emp_No
 	inner join Order_CompleteType [Order_Type] on [Cus_or].Cus_OrderComplete = [Order_Type].Com_No
-	where [Cus_or].Cus_No = @Cus_No;
+	where [Cus_or].Cus_No = @Cus_No
+	order by [Cus_or].Cus_Order_OrderNo, [Order_Type].Com_No, [Cus_or].Cus_Order_Date
 
 -- 장바구니 목록 선택 주문 insert
 CREATE PROCEDURE [dbo].[InsertCartOrder]
@@ -221,8 +214,13 @@ CREATE PROCEDURE [dbo].[SelectBuyOrderNo]
 	@Pro_No int,
 	@Cus_No int
 AS
-	SELECT Cus_Order_No FROM Customers_Order
-	where Cus_No = @Cus_No and Pro_No = @Pro_No
+BEGIN
+	SELECT Cus_Order_OrderNo FROM Customers_Order [or]
+	where [or].Cus_No = @Cus_No and [or].Pro_No = @Pro_No and [or].Cus_OrderComplete = 2
+	and Cus_Order_OrderNo not in (select [as].Cus_Order_No from [A/S] [as] where [or].Cus_No = [as].Cus_ID)
+	union
+	SELECT Cus_Order_No FROM [A/S] where Cus_ID = @Cus_No and AS_EndDate is not null;
+END
 
 -- A/S 신청 (Insert)
 CREATE PROCEDURE [dbo].[InsertAS]

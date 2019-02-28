@@ -74,7 +74,7 @@ namespace CustomerApp.DAO
                 var dataTable = db.ExecuteParametersDT(sp, asInfo);
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    orderNoList.Add(int.Parse(row["Cus_Order_No"].ToString()));
+                    orderNoList.Add(int.Parse(row["Cus_Order_OrderNo"].ToString()));
                 }
                 return orderNoList;
             }
@@ -99,10 +99,10 @@ namespace CustomerApp.DAO
                     string endDate = row["AS_EndDate"].ToString();
 
                     if (string.IsNullOrEmpty(asPrice)) asPrice = "측정 중..";
-                    else asPrice = string.Format("{0:c}", asPrice);
+                    else asPrice = string.Format("{0:c}", Convert.ToInt32(asPrice));
 
                     if (string.IsNullOrEmpty(endDate)) endDate = "A/S 진행 중..";
-                    else endDate = string.Format("{0:d}", endDate);
+                    else endDate = string.Format("{0:d}", Convert.ToDateTime(endDate));
 
                     AsVO asVO = new AsVO()
                     {

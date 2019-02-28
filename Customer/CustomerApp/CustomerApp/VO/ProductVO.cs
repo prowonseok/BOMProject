@@ -45,9 +45,9 @@ namespace CustomerApp.VO
             set { image = value; }
         }
 
-        private List<string> matList;
+        private string matList;
 
-        public List<string> MatList
+        public string MatList
         {
             get { return matList; }
             set { matList = value; }

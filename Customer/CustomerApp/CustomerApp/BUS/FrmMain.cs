@@ -14,7 +14,7 @@ namespace CustomerApp.BUS
         public static bool loginState = false;
 
         private static string path = string.Empty;
-        
+        private Random rand = new Random();
         private ProductsDAO productsDAO = new ProductsDAO();
         private OrderDAO orderDAO = new OrderDAO();
         private CartDAO cartDAO = new CartDAO();
@@ -79,7 +79,7 @@ namespace CustomerApp.BUS
         /// 해당 컨트롤 Visible을 True로 설정하는 Method
         /// </summary>
         /// <param name="controls">설정하고 싶은 컨트롤</param>
-        public void CtrlVisiTrue(params Control[] controls)
+        private void CtrlVisiTrue(params Control[] controls)
         {
             for (int i = 0; i < controls.Length; i++)
             {
@@ -90,7 +90,7 @@ namespace CustomerApp.BUS
         /// <summary>
         /// PanBottom 패널의 Visible을 False로 설정하는 Method
         /// </summary>
-        public void PanBottomCtrlVisiFalse()
+        private void PanBottomCtrlVisiFalse()
         {
             for (int i = 0; i < panBottom.Controls.Count; i++)
             {
@@ -116,12 +116,13 @@ namespace CustomerApp.BUS
         {
             for (int i = 0; i < lstView.Items.Count; i++)
             {
-                ListViewItem.ListViewSubItem[] items = new ListViewItem.ListViewSubItem[proList[i].MatList.Count];
-                for (int k = 0; k < proList[i].MatList.Count; k++)
-                {
-                    items[k] = new ListViewItem.ListViewSubItem(lstView.Items[i], proList[i].MatList[k]);
-                }
-                if (items != null) lstView.Items[i].SubItems.AddRange(items);
+                ListViewItem.ListViewSubItem items = new ListViewItem.ListViewSubItem();
+                items = new ListViewItem.ListViewSubItem(lstView.Items[i], proList[i].MatList);
+                //for (int k = 0; k < proList[i].MatList.Count; k++)
+                //{
+
+                //}
+                if (items != null) lstView.Items[i].SubItems.Add(items);
             }
         }
 
@@ -227,8 +228,8 @@ namespace CustomerApp.BUS
             lblSpec.Text = string.Empty;
             for (int i = 1; i < selectItem.SubItems.Count; i++)
             {
-                if (i % 2 != 0) lblSpec.Text += "* " + selectItem.SubItems[i].Text + " : ";
-                else lblSpec.Text += selectItem.SubItems[i].Text + "\r\n\r\n";
+                /*if (i % 2 != 0)*/ lblSpec.Text += selectItem.SubItems[i].Text + "\r\n\r\n";
+                //else lblSpec.Text += selectItem.SubItems[i].Text + "\r\n\r\n";
             }
             txtTotalPrice.Text = string.Format("{0:c}", proList[selectItem.Index].Price * nuProAmount.Value);
             nuProAmount.Value = 1;
@@ -257,7 +258,8 @@ namespace CustomerApp.BUS
                 EA = int.Parse(nuProAmount.Value.ToString()),
                 ProNo = proList[cbxBuyCusPro.SelectedIndex].No,
                 Price = proList[cbxBuyCusPro.SelectedIndex].Price * int.Parse(nuProAmount.Value.ToString()),
-                ProName = proList[cbxBuyCusPro.SelectedIndex].Name
+                ProName = proList[cbxBuyCusPro.SelectedIndex].Name,
+                EmpNo = rand.Next(1, 5)
             };
 
             return order;
@@ -288,6 +290,8 @@ namespace CustomerApp.BUS
             cartList.Clear();
             SetGviewCart();
             cartList = cartDAO.Select(customer.No);
+            gviewCart.DataSource = null;
+            gviewCart.DataSource = cartList;
             rdoSaveNo.Checked = false;
             rdoSaveNo.Checked = true;
         }
@@ -314,6 +318,13 @@ namespace CustomerApp.BUS
                 gviewCart.Columns["SaveEA"].HeaderText = "상품수량";
                 gviewCart.Columns["TotalPrice"].HeaderText = "총 가격";
                 gviewCart.Columns["CartDate"].HeaderText = "저장날짜";
+
+                gviewCart.Columns["CusName"].ReadOnly = true;
+                gviewCart.Columns["ProName"].ReadOnly = true;
+                gviewCart.Columns["SaveNo"].ReadOnly = true;
+                gviewCart.Columns["SaveEA"].ReadOnly = true;
+                gviewCart.Columns["TotalPrice"].ReadOnly = true;
+                gviewCart.Columns["CartDate"].ReadOnly = true;
 
                 gviewCart.Columns["TotalPrice"].DefaultCellStyle.Format = "c";
                 gviewCart.Columns["SaveEA"].DefaultCellStyle.Format = "### 개";
@@ -389,6 +400,14 @@ namespace CustomerApp.BUS
                 gViewBuy.Columns["OrderCom"].HeaderText = "거래현황";
                 gViewBuy.Columns["EmpName"].HeaderText = "담당자";
 
+                gViewBuy.Columns["Order_OrderNo"].ReadOnly = true;
+                gViewBuy.Columns["ProName"].ReadOnly = true;
+                gViewBuy.Columns["EA"].ReadOnly = true;
+                gViewBuy.Columns["Price"].ReadOnly = true;
+                gViewBuy.Columns["OrderDate"].ReadOnly = true;
+                gViewBuy.Columns["OrderCom"].ReadOnly = true;
+                gViewBuy.Columns["EmpName"].ReadOnly = true;
+
                 gViewBuy.Columns["Price"].DefaultCellStyle.Format = "c";
                 gViewBuy.Columns["EA"].DefaultCellStyle.Format = "### 개";
                 gViewBuy.Columns["OrderDate"].DefaultCellStyle.Format = "d";
@@ -425,7 +444,6 @@ namespace CustomerApp.BUS
         /// </summary>
         private void SetGviewAS()
         {
-            gViewAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gViewAS.ScrollBars = ScrollBars.Vertical;
 
             asList.Clear();
@@ -433,6 +451,7 @@ namespace CustomerApp.BUS
             gViewAS.DataSource = null;
             gViewAS.DataSource = asList;
             GviewAScolSet();
+            rdoAsDate.Checked = false;
             rdoAsDate.Checked = true;
         }
 
@@ -446,6 +465,9 @@ namespace CustomerApp.BUS
             gViewAS.Columns["EmpNo"].Visible = false;
             gViewAS.Columns["ProNo"].Visible = false;
 
+            gViewAS.Columns["CusName"].DisplayIndex = 0;
+            gViewAS.Columns["ProName"].DisplayIndex = 2;
+
             gViewAS.Columns["OrderNo"].HeaderText = "주문번호";
             gViewAS.Columns["ASContent"].HeaderText = "고장내용";
             gViewAS.Columns["AsPrice"].HeaderText = "A/S 가격";
@@ -455,12 +477,10 @@ namespace CustomerApp.BUS
             gViewAS.Columns["CusName"].HeaderText = "고객이름";
             gViewAS.Columns["EmpName"].HeaderText = "담당자";
 
+
             gViewAS.Columns["AsStartDate"].DefaultCellStyle.Format = "d";
             gViewAS.Columns["AsEndDate"].DefaultCellStyle.Format = "d";
             gViewAS.Columns["AsPrice"].DefaultCellStyle.Format = "c";
-
-            gViewAS.Columns["CusName"].DisplayIndex = 0;
-            gViewAS.Columns["ProName"].DisplayIndex = 2;
 
             gViewAS.Columns["AsStartDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             gViewAS.Columns["AsEndDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -684,16 +704,10 @@ namespace CustomerApp.BUS
             try
             {
                 orderVO = GetOrderVo();
-                if (orderVO.EA <= productsDAO.GetProCount(orderVO.ProNo))
-                {
-                    orderDAO.InsertSingleOrder(orderVO, customer.No);
-                    MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnBuy_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show(orderVO.ProName + "의 재고가 부족합니다.", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                orderDAO.InsertSingleOrder(orderVO);
+                MessageBox.Show("구매신청 완료!", "구매하기", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnBuy_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -734,24 +748,24 @@ namespace CustomerApp.BUS
                 {
                     if (Convert.ToBoolean(row.Cells["cbx"].Value))
                     {
-                        if (cartList[row.Index].SaveEA <= productsDAO.GetProCount(cartList[row.Index].ProNo))
-                        {
+                        //if (cartList[row.Index].SaveEA <= productsDAO.GetProCount(cartList[row.Index].ProNo))
+                        //{
                             chkExist = true;
-                            OrderVO order = new OrderVO()
-                            {
-                                CusNo = cartList[row.Index].CusNo,
-                                ProNo = cartList[row.Index].ProNo,
-                                OrderDate = DateTime.Now,
-                                Price = cartList[row.Index].TotalPrice,
-                                EA = cartList[row.Index].SaveEA,
-                                EmpNo = 1 // 랜덤함수로 직원수만큼 돌려서 배정 예정 -> 당장 샘플 1밖에 없음
-                            };
-                            cartOrders.Add(order);
-                        }
-                        else if (cartList[row.Index].SaveEA > productsDAO.GetProCount(cartList[row.Index].ProNo))
+                        OrderVO order = new OrderVO()
                         {
-                            enPro += cartList[row.Index].ProName + ", ";
-                        }
+                            CusNo = cartList[row.Index].CusNo,
+                            ProNo = cartList[row.Index].ProNo,
+                            OrderDate = DateTime.Now,
+                            Price = cartList[row.Index].TotalPrice,
+                            EA = cartList[row.Index].SaveEA,
+                            EmpNo = rand.Next(1, 5)
+                        };
+                            cartOrders.Add(order);
+                        //}
+                        //else if (cartList[row.Index].SaveEA > productsDAO.GetProCount(cartList[row.Index].ProNo))
+                        //{
+                        //    enPro += cartList[row.Index].ProName + ", ";
+                        //}
                     }
                 }
                 if (!string.IsNullOrEmpty(enPro))
@@ -861,8 +875,6 @@ namespace CustomerApp.BUS
                     workBook = excelApp.Workbooks.Open(path + "Excelbill.xlsx", missing, false, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing, missing);
                     workSheet = workBook.Worksheets.Item[1];
 
-                    //Microsoft.Office.Interop.Excel.Range insertRange = workSheet.get_Range("")
-
                     int k = 0;
                     int totalPrice = 0;
 
@@ -953,11 +965,11 @@ namespace CustomerApp.BUS
                 ProNo = asOrderList[cbxASCusPro.SelectedIndex].ProNo,
                 AsContent = txtASContent.Text,
                 AsStartDate = DateTime.Now,
-                EmpNo = 1,
+                EmpNo = rand.Next(1, 5),
             };
             asDAO.Insert(asVO);
             MessageBox.Show("A/S 신청이 완료되었습니다.", "A/S", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnAS_Click(null, null);
+            btnAS_Click(sender, null);
         }
 
         private void cbxOrderNo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1056,6 +1068,11 @@ namespace CustomerApp.BUS
                 gviewCart.DataSource = cartList;
                 GviewCartColSet();
             }
+        }
+
+        private void lstView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
