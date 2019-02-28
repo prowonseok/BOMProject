@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace BOM.BUS.BOM
         DAO.BomDAO bDao;
         DataTable dt;
         DataTable dtClone;
-        FrmBomInfo fbi;
+        FrmBomInfoControl fbi;
 
         int mat_Level=9999;//Form이 매개변수 없이 실행되었을 때(부모 자재 지정시) 초기값을 지정
         int mat_No;
@@ -39,6 +40,11 @@ namespace BOM.BUS.BOM
         public FrmBomAllMatInfo()
         {
             InitializeComponent();
+
+            PrivateFontCollection privateFonts = new PrivateFontCollection();
+
+            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
+            Font font01 = new Font(privateFonts.Families[0], 13f);
         }
 
         /// <summary>
@@ -48,7 +54,8 @@ namespace BOM.BUS.BOM
         /// <param name="e"></param>
         private void FrmBomAllMatInfo_Load(object sender, EventArgs e)
         {
-            fbi = new FrmBomInfo();
+            dgvAllMat.Font = new Font("맑은고딕", 9);
+            fbi = new FrmBomInfoControl();
             //부모 자재를 등록할 때
             if (mat_Level==9999)
             {
@@ -82,10 +89,9 @@ namespace BOM.BUS.BOM
             dgvAllMat.Columns[0].HeaderText = "자재 번호";
             dgvAllMat.Columns[1].HeaderText = "제조사";
             dgvAllMat.Columns[2].HeaderText = "자재명";
-            dgvAllMat.Columns[3].HeaderText = "자재 레벨";
+            dgvAllMat.Columns[3].HeaderText = "자재 단계";
 
             dgvAllMat.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvAllMat.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvAllMat.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

@@ -313,7 +313,7 @@ namespace BOM
                 if (item.Nodes.Count > 0)
                 {
                     xr.WriteStartElement(item.Text.Replace(' ','_'));
-                    xr.WriteRaw("\r\n\n");
+                    xr.WriteRaw("\r\n\n\n\n\n\n\n");
                     WriteChildNodeXml(item.Nodes);
                     xr.WriteEndElement();
                 }//자식이 없을 경우
@@ -415,6 +415,19 @@ namespace BOM
             else
             {
                 MessageBox.Show("검색을 해주세요");
+            }
+        }
+
+        private void tvProMat_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            tvProMat.SelectedNode.NodeFont = new Font(tvProMat.Font, FontStyle.Bold);
+        }
+
+        private void tvProMat_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            if (tvProMat.SelectedNode!=null)
+            {
+                tvProMat.SelectedNode.NodeFont = new Font(tvProMat.Font, FontStyle.Regular);
             }
         }
     }

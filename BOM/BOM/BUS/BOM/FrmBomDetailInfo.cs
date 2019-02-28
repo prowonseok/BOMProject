@@ -17,7 +17,7 @@ namespace BOM
         DAO.BomDAO bDao;
         DataTable dt;
         DataTable dtClone;
-        FrmBomInfo fbi;
+        FrmBomInfoControl fbi;
 
         #region Property
         private int updateNum;
@@ -72,6 +72,7 @@ namespace BOM
             }
             dgvBom.AutoResizeColumns();
             rdoExplosion_CheckedChanged(null, null);
+            dgvBom.Font = new Font("맑은고딕", 9);
 
         }
 
@@ -114,7 +115,7 @@ namespace BOM
                     bDao = new DAO.BomDAO();
                     //정전개시 자재 번호와 정전개 프로시저를 매개변수로 전송
                     dt = bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Explosion_Procedure");
-                    fbi = new FrmBomInfo();
+                    fbi = new FrmBomInfoControl();
                     dgvBom.DataSource = fbi.CloneDataTable(dt, dtClone);
                     DisplayGridview(true); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }
@@ -139,7 +140,7 @@ namespace BOM
                     bDao = new DAO.BomDAO();
                     //역전개시 자재 번호와 역전개 프로시저를 매개변수로 전송
                     dt= bDao.SelectBom(Int32.Parse(txtMatNo.Text), "Bom_Bom_Implosion_Procedure");
-                    fbi = new FrmBomInfo();
+                    fbi = new FrmBomInfoControl();
                     dgvBom.DataSource = fbi.CloneDataTable(dt, dtClone);
                     DisplayGridview(false); //그리드뷰 셋팅을 정전개와 역전개를 다르게 하기 위해 bool타입 변수를 매개변수로 전송
                 }

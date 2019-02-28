@@ -41,20 +41,23 @@
             // 
             this.dgvAllMat.AllowUserToAddRows = false;
             this.dgvAllMat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllMat.Location = new System.Drawing.Point(12, 46);
+            this.dgvAllMat.Location = new System.Drawing.Point(12, 58);
+            this.dgvAllMat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvAllMat.MultiSelect = false;
             this.dgvAllMat.Name = "dgvAllMat";
             this.dgvAllMat.ReadOnly = true;
             this.dgvAllMat.RowTemplate.Height = 23;
             this.dgvAllMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllMat.Size = new System.Drawing.Size(498, 336);
+            this.dgvAllMat.Size = new System.Drawing.Size(498, 420);
             this.dgvAllMat.TabIndex = 0;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(96, 412);
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnCancel.Location = new System.Drawing.Point(108, 496);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 29);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -62,9 +65,11 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(297, 412);
+            this.btnAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnAdd.Location = new System.Drawing.Point(309, 496);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(75, 29);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "등록";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -73,22 +78,26 @@
             // cbbType
             // 
             this.cbbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbType.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbbType.FormattingEnabled = true;
             this.cbbType.Items.AddRange(new object[] {
-            "자재명",
             "자재 번호",
-            "자재 타입",
-            "제조사"});
-            this.cbbType.Location = new System.Drawing.Point(118, 17);
+            "제조사",
+            "자재명",
+            "자재 단계"});
+            this.cbbType.Location = new System.Drawing.Point(118, 21);
+            this.cbbType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbbType.Name = "cbbType";
-            this.cbbType.Size = new System.Drawing.Size(121, 20);
+            this.cbbType.Size = new System.Drawing.Size(121, 23);
             this.cbbType.TabIndex = 11;
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearch.Location = new System.Drawing.Point(435, 17);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(75, 29);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "검색";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -96,22 +105,26 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(258, 19);
+            this.txtSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtSearch.Location = new System.Drawing.Point(258, 21);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(171, 21);
+            this.txtSearch.Size = new System.Drawing.Size(171, 23);
             this.txtSearch.TabIndex = 9;
             // 
             // FrmBomAllMatInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 476);
+            this.ClientSize = new System.Drawing.Size(531, 535);
             this.Controls.Add(this.cbbType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvAllMat);
+            this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBomAllMatInfo";
             this.Text = "FrmBomAllMatInfo";
             this.Load += new System.EventHandler(this.FrmBomAllMatInfo_Load);

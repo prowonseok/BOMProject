@@ -38,21 +38,23 @@
             // cbbType
             // 
             this.cbbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbType.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbbType.FormattingEnabled = true;
             this.cbbType.Items.AddRange(new object[] {
-            "자재명",
             "자재 번호",
+            "자재명",
             "자재 단계"});
-            this.cbbType.Location = new System.Drawing.Point(268, 20);
+            this.cbbType.Location = new System.Drawing.Point(364, 83);
             this.cbbType.Name = "cbbType";
-            this.cbbType.Size = new System.Drawing.Size(121, 20);
+            this.cbbType.Size = new System.Drawing.Size(121, 25);
             this.cbbType.TabIndex = 16;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(585, 20);
+            this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSearch.Location = new System.Drawing.Point(683, 81);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(75, 27);
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "검색";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -60,22 +62,23 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(408, 22);
+            this.txtSearch.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtSearch.Location = new System.Drawing.Point(507, 83);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(171, 21);
+            this.txtSearch.Size = new System.Drawing.Size(171, 25);
             this.txtSearch.TabIndex = 14;
             // 
             // dgvBom
             // 
             this.dgvBom.AllowUserToAddRows = false;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBom.Location = new System.Drawing.Point(33, 49);
+            this.dgvBom.Location = new System.Drawing.Point(55, 116);
             this.dgvBom.MultiSelect = false;
             this.dgvBom.Name = "dgvBom";
             this.dgvBom.ReadOnly = true;
             this.dgvBom.RowTemplate.Height = 23;
             this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBom.Size = new System.Drawing.Size(627, 260);
+            this.dgvBom.Size = new System.Drawing.Size(703, 283);
             this.dgvBom.TabIndex = 9;
             this.dgvBom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBom_CellContentClick);
             // 
@@ -88,7 +91,7 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvBom);
             this.Name = "FrmBomInfoControl";
-            this.Size = new System.Drawing.Size(683, 468);
+            this.Size = new System.Drawing.Size(838, 472);
             this.Load += new System.EventHandler(this.FrmBomInfoControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
             this.ResumeLayout(false);

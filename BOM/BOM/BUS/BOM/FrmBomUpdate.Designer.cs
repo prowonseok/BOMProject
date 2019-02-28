@@ -42,31 +42,35 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(66, 119);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(42, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "수량 : ";
             // 
             // txtEa
             // 
+            this.txtEa.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtEa.Location = new System.Drawing.Point(113, 116);
             this.txtEa.Name = "txtEa";
-            this.txtEa.Size = new System.Drawing.Size(92, 21);
+            this.txtEa.Size = new System.Drawing.Size(92, 23);
             this.txtEa.TabIndex = 3;
             this.txtEa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEa_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(216, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.Size = new System.Drawing.Size(19, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "개";
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnCancel.Location = new System.Drawing.Point(53, 174);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -77,6 +81,7 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnUpdate.Location = new System.Drawing.Point(218, 174);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
@@ -88,35 +93,39 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(38, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 12);
+            this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "자재 번호 : ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.Location = new System.Drawing.Point(54, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(54, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "자재명 : ";
             // 
             // txtMatNo
             // 
+            this.txtMatNo.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtMatNo.Location = new System.Drawing.Point(113, 12);
             this.txtMatNo.Name = "txtMatNo";
             this.txtMatNo.ReadOnly = true;
-            this.txtMatNo.Size = new System.Drawing.Size(120, 21);
+            this.txtMatNo.Size = new System.Drawing.Size(120, 23);
             this.txtMatNo.TabIndex = 9;
             // 
             // txtMatName
             // 
+            this.txtMatName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtMatName.Location = new System.Drawing.Point(113, 64);
             this.txtMatName.Name = "txtMatName";
             this.txtMatName.ReadOnly = true;
-            this.txtMatName.Size = new System.Drawing.Size(185, 21);
+            this.txtMatName.Size = new System.Drawing.Size(185, 23);
             this.txtMatName.TabIndex = 10;
             // 
             // FrmBomUpdate

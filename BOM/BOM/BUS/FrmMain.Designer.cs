@@ -33,7 +33,6 @@
             this.BtnBOM = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnma = new System.Windows.Forms.Button();
             this.btnchp = new System.Windows.Forms.Button();
             this.btnSi = new System.Windows.Forms.Button();
@@ -45,7 +44,6 @@
             this.btnBomSearch = new System.Windows.Forms.Button();
             this.btnBomAdd = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblFunctionName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTimer = new System.Windows.Forms.Label();
@@ -56,6 +54,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.SuspendLayout();
@@ -98,11 +97,6 @@
             this.btnSales.Text = "판매 관리";
             this.btnSales.UseVisualStyleBackColor = false;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 6000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btnma
             // 
@@ -258,11 +252,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // timer2
-            // 
-            this.timer2.Enabled = true;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // lblFunctionName
             // 
             this.lblFunctionName.AutoSize = true;
@@ -376,6 +365,11 @@
             this.button5.Text = "발주 관리";
             this.button5.UseVisualStyleBackColor = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 6000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -414,7 +408,6 @@
         private System.Windows.Forms.Button BtnBOM;
         private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Button btnSales;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnma;
         private System.Windows.Forms.Button btnchp;
         private System.Windows.Forms.Button btnSi;
@@ -426,7 +419,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnBomMain;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lblFunctionName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label txtTimer;
@@ -437,5 +429,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Timer timer1;
     }
 }
