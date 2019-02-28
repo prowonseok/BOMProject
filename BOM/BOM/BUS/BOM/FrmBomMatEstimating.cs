@@ -48,6 +48,17 @@ namespace BOM
         }
 
         /// <summary>
+        /// 출하지시서에서 상품명과 필요개수를 받아오는 경우의 생성자
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <param name="proEa"></param>
+        public FrmBomMatEstimating(string productName, string proEa) : this()
+        {
+            this.txtPName.Text = productName;
+            this.txtEA.Text = proEa;
+        }
+
+        /// <summary>
         /// 제품 찾기 버튼 클릭 이벤트
         /// </summary>
         /// <param name="sender"></param>
@@ -211,8 +222,8 @@ namespace BOM
                     {
                         item.Selected = true;  //해당 항목을 Selected True 처리
                         haveNum = Int32.Parse(item.Cells[2].Value.ToString());  //GridView를 참조하고 가지고 있는 개수를 haveNum변수에 저장
-                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1)); //만들고자 하는 개수를 makeNum변수에 저장--
-                        if (haveNum / makeNum > 0)
+                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.LastIndexOf('E')-e.Node.Text.LastIndexOf('.')-1)); //만들고자 하는 개수를 makeNum변수에 저장--
+                        if (haveNum > makeNum )
                         {
                             MessageBox.Show(e.Node.ToString()+ "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
                         }
@@ -236,8 +247,10 @@ namespace BOM
                     if (item.Substring(0, item.IndexOf('.')).Trim() == item2.Cells[1].Value.ToString().Trim())
                     {
                         haveNum = Int32.Parse(item2.Cells[2].Value.ToString().Trim()); //현재 재고
-                        makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1));
-                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.')+1 , item.Length - item.LastIndexOf('E') -1)))
+                        //제품명...nEA일때 LastIndexOf('.')와 LastIndexOf('E')사이의 숫자를 makeNum 변수에 저장
+                        makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.LastIndexOf('E') - item.LastIndexOf('.') - 1)); 
+
+                        if (haveNum>makeNum)
                         {
                             numLst.Add(haveNum / makeNum); //만들수 있는 개수를 numLst에 저장
                         }
@@ -255,7 +268,7 @@ namespace BOM
                 numLst.Sort(); //numLst를 오름차순으로 정렬(numLst의 최후 값이 999999인지 빠른 비교와 첫번째 값이 만들 수 있는 개수)
                 if (numLst[numLst.Count - 1] == 999999) //재고 부족이 있는 경우
                 {
-                    
+                    MessageBox.Show("재고가 부족합니다");
                 }
                 else                                    //재고 부족이 없는 경우
                 {
@@ -430,6 +443,21 @@ namespace BOM
                 tvProMat.SelectedNode.NodeFont = new Font(tvProMat.Font, FontStyle.Regular);
             }
         }
+
+        /// <summary>
+        /// 수량 텍스트가 변경될때마다 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtEA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //입력된 값이 숫자, BackSpace키가 아닐 경우 입력 방지
+            if (!(char.IsNumber(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
+        
     }
 }
 

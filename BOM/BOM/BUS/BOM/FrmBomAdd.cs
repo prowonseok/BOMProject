@@ -16,6 +16,9 @@ namespace BOM.BUS.BOM
     {
         DAO.BomDAO bDao;
 
+        /// <summary>
+        /// FrmBomAllMatInfo에서 값을 주고 받을 때 사용할 Property
+        /// </summary>
         #region Property
         private int matNo;
         private int matLevel;
@@ -37,7 +40,7 @@ namespace BOM.BUS.BOM
         }
         
         /// <summary>
-        /// 그리드뷰에서 BOM화면 버튼 클릭 시 생성자
+        /// Gridview에서 BOM화면 버튼 클릭 시 생성자
         /// </summary>
         /// <param name="materials">부모 자재가 될 자재</param>
         public FrmBomAdd(MaterialsVO materials) : this()
@@ -46,7 +49,7 @@ namespace BOM.BUS.BOM
         }
 
         /// <summary>
-        /// 부모자재 찾기 클릭 이벤트
+        /// 모품목 찾기 클릭 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -90,13 +93,13 @@ namespace BOM.BUS.BOM
         }
 
         /// <summary>
-        /// 자식자재 찾기 클릭 이벤트
+        /// 자품목 찾기 클릭 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnMatSearch_Click(object sender, EventArgs e)
         {
-            //모자재가 없을 때
+            //모품목의 값이 없을 때
             if (string.IsNullOrEmpty(txtParentMatNo.Text))
             {
                 MessageBox.Show("상위 품목을 먼저 설정해주세요.");
@@ -133,7 +136,8 @@ namespace BOM.BUS.BOM
         }
 
         /// <summary>
-        /// Form이 Load될 때 발생하는 이벤트
+        /// Form이 Load될 때 발생하는 이벤트,
+        /// 생성자를 통해서 모품목의 값을 전달받았다면 화면에 모품목 정보 출력
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -155,7 +159,7 @@ namespace BOM.BUS.BOM
         }
 
         /// <summary>
-        /// 부모 자재에 대한 자식 자재들을 트리뷰로 출력
+        /// 부모 자재에 대한 ChildNode와 그 형제노드들을 트리뷰로 출력
         /// </summary>
         private void ViewTreeview()
         {
@@ -168,13 +172,15 @@ namespace BOM.BUS.BOM
             //자식 자재들을 트리뷰의 tNode에 ChildNode로 추가
             foreach (DataRow item in dt.Rows)
             {
-                TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString()));
+                TreeNode cNode = new TreeNode(item["Child_Name"].ToString() + " : " + Int32.Parse(item["BOM_ChildEA"].ToString())+"개");
                 tNode.Nodes.Add(cNode);
             }
         }
 
         /// <summary>
         /// 등록 버튼 클릭 이벤트
+        /// 각 텍스트가 비어있을 경우는 등록되지 않도록 설정
+        /// 개수는 숫자만 입력받도록 설정
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -17,7 +17,7 @@ namespace BOM.BUS.BOM
         
         DAO.BomDAO bDao;
         DataTable dt;
-        DataTable dtClone;
+        DataTable dtClone; //DataTable의 형변환을 위한 CloneTable
         FrmBomInfoControl fbi;
 
         int mat_Level=9999;//Form이 매개변수 없이 실행되었을 때(부모 자재 지정시) 초기값을 지정

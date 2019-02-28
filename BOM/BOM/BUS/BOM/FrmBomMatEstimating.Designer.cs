@@ -101,7 +101,7 @@
             this.txtEA.Name = "txtEA";
             this.txtEA.Size = new System.Drawing.Size(148, 23);
             this.txtEA.TabIndex = 6;
-            this.txtEA.Text = "1";
+            this.txtEA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEA_KeyPress);
             // 
             // label3
             // 
@@ -163,6 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(793, 519);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnXml);
