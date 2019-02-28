@@ -20,7 +20,7 @@ namespace BOM
     {
         private int haveNum = 0; //가지고 있는 재고의 개수
         private int makeNum = 0; //만들고자 하는 재고의 개수
-        
+        private int proNum = 0;
         string excelFilePath = Application.StartupPath + @"\Excel\BillOfMaterials.xlsx";
 
         DataTable matTable;
@@ -39,6 +39,12 @@ namespace BOM
         public bool CanOrAdd { get => canOrAdd; set => canOrAdd = value; }
         #endregion
 
+        public FrmBomMatEstimating(int proNum, string productName, string proEa) : this()
+        {
+            this.proNum = proNum;
+            this.txtPName.Text = productName;
+            this.txtEA.Text = proEa;
+        }
         /// <summary>
         /// 생성자
         /// </summary>
@@ -80,8 +86,16 @@ namespace BOM
                 if (!string.IsNullOrEmpty(this.txtPName.Text))
                 {
                     bDao = new DAO.BomDAO();
+                    DataTable dt;
+                    try
+                    {
+                        dt = bDao.SelectTreeview(Products.Pro_No);
+                    }
+                    catch (Exception)
+                    {
+                        dt = bDao.SelectTreeview(proNum);
 
-                    DataTable dt = bDao.SelectTreeview(Products.Pro_No);
+                    }
 
                     TreeNode pNode = new TreeNode();
 
@@ -429,6 +443,11 @@ namespace BOM
             {
                 tvProMat.SelectedNode.NodeFont = new Font(tvProMat.Font, FontStyle.Regular);
             }
+        }
+
+        private void FrmBomMatEstimating_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -90,8 +90,7 @@ namespace BOM.DAO
             {
                 ProNo =Int32.Parse(item["Pro_No"].ToString());
             }
-            return ProNo;
-            
+            return ProNo;            
         }
 
         internal List<ProductsListVO> ProList()
