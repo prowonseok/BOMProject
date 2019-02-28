@@ -37,9 +37,10 @@
             // lblOrderList
             // 
             this.lblOrderList.AutoSize = true;
+            this.lblOrderList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblOrderList.Location = new System.Drawing.Point(23, 35);
             this.lblOrderList.Name = "lblOrderList";
-            this.lblOrderList.Size = new System.Drawing.Size(57, 12);
+            this.lblOrderList.Size = new System.Drawing.Size(59, 15);
             this.lblOrderList.TabIndex = 7;
             this.lblOrderList.Text = "발주 목록";
             // 
@@ -49,27 +50,31 @@
             this.dgvMain.Location = new System.Drawing.Point(23, 59);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.RowTemplate.Height = 23;
-            this.dgvMain.Size = new System.Drawing.Size(674, 338);
+            this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMain.Size = new System.Drawing.Size(760, 338);
             this.dgvMain.TabIndex = 6;
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(622, 403);
+            this.btnOrder.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOrder.Location = new System.Drawing.Point(708, 403);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(75, 23);
             this.btnOrder.TabIndex = 5;
             this.btnOrder.Text = "발주신청";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // CtrlOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblOrderList);
             this.Controls.Add(this.dgvMain);
             this.Controls.Add(this.btnOrder);
             this.Name = "CtrlOrderMain";
-            this.Size = new System.Drawing.Size(721, 443);
+            this.Size = new System.Drawing.Size(809, 443);
             this.Load += new System.EventHandler(this.CtrlOrderMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.ResumeLayout(false);

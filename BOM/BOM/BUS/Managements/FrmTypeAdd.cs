@@ -15,6 +15,7 @@ namespace BOM.BUS.Managements
     public partial class FrmTypeAdd : Form
     {
         MatDAO mDAO = new MatDAO();
+        DataTable dt = new DataTable();
         public FrmTypeAdd()
         {
             InitializeComponent();
@@ -23,6 +24,20 @@ namespace BOM.BUS.Managements
         private void FrmTypeAdd_Load(object sender, EventArgs e)
         {
             tbTypeNo.ImeMode = ImeMode.Alpha;
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                    ((Button)item).ForeColor = Color.White;
+                }
+            }
+            dt = mDAO.SelectMatType();
+            dgvMatTypeList.DataSource = dt;
+            dgvMatTypeList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
+            dgvMatTypeList.AllowUserToAddRows = false;
+            dgvMatTypeList.Columns[0].HeaderText = "분류 번호";
+            dgvMatTypeList.Columns[1].HeaderText = "분류명";
         }
 
         private void btnRegist_Click(object sender, EventArgs e)

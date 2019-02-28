@@ -345,7 +345,6 @@ namespace BOM.BUS
             CtrlOrderMain com = new CtrlOrderMain();
             panel1.Controls.Clear();
             panel1.Controls.Add(com);
-            com.btnOrder_Click(null, null);
         }
 
 

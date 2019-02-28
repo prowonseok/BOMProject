@@ -40,8 +40,21 @@ namespace BOM.BUS.Managements.Controls
             }
 
             dgvMatList.Columns[0].Width = 45;
-            dgvMatList.Columns[1].Width = 80;
-            dgvMatList.Columns[6].Width = 80;
+            dgvMatList.Columns[1].Width = 85;
+            dgvMatList.Columns[3].Width = 85;
+            dgvMatList.Columns[4].Width = 71;
+            dgvMatList.Columns[5].Width = 85;
+            dgvMatList.Columns[6].Width = 75;
+
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                    ((Button)item).ForeColor = Color.White;
+                }
+            }
+            dgvMatList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
         }
 
         private void dgvMatList_MouseClick(object sender, MouseEventArgs e)

@@ -85,6 +85,7 @@
             this.btnAdd.TabIndex = 37;
             this.btnAdd.Text = "등록";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cbMatType
             // 
@@ -199,6 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.cbMatLvl);
             this.Controls.Add(this.tbManufac);
             this.Controls.Add(this.cbOfferer);

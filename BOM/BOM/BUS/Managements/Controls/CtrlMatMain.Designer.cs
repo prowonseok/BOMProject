@@ -38,7 +38,8 @@
             // 
             // btnTypeAdd
             // 
-            this.btnTypeAdd.Location = new System.Drawing.Point(712, 457);
+            this.btnTypeAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnTypeAdd.Location = new System.Drawing.Point(653, 435);
             this.btnTypeAdd.Name = "btnTypeAdd";
             this.btnTypeAdd.Size = new System.Drawing.Size(75, 23);
             this.btnTypeAdd.TabIndex = 8;
@@ -56,7 +57,7 @@
             this.dgvMatList.Name = "dgvMatList";
             this.dgvMatList.RowTemplate.Height = 23;
             this.dgvMatList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMatList.Size = new System.Drawing.Size(848, 391);
+            this.dgvMatList.Size = new System.Drawing.Size(789, 372);
             this.dgvMatList.TabIndex = 7;
             // 
             // checkCol
@@ -66,7 +67,8 @@
             // 
             // btnMatAdd
             // 
-            this.btnMatAdd.Location = new System.Drawing.Point(793, 457);
+            this.btnMatAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnMatAdd.Location = new System.Drawing.Point(734, 435);
             this.btnMatAdd.Name = "btnMatAdd";
             this.btnMatAdd.Size = new System.Drawing.Size(75, 23);
             this.btnMatAdd.TabIndex = 6;
@@ -77,9 +79,10 @@
             // lblMatList
             // 
             this.lblMatList.AutoSize = true;
+            this.lblMatList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMatList.Location = new System.Drawing.Point(18, 32);
             this.lblMatList.Name = "lblMatList";
-            this.lblMatList.Size = new System.Drawing.Size(57, 12);
+            this.lblMatList.Size = new System.Drawing.Size(59, 15);
             this.lblMatList.TabIndex = 9;
             this.lblMatList.Text = "자재 현항";
             // 
@@ -87,12 +90,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblMatList);
             this.Controls.Add(this.btnTypeAdd);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
             this.Name = "CtrlMatMain";
-            this.Size = new System.Drawing.Size(888, 537);
+            this.Size = new System.Drawing.Size(829, 486);
             this.Load += new System.EventHandler(this.CtrlMatMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).EndInit();
             this.ResumeLayout(false);

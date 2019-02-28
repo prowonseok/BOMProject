@@ -66,29 +66,33 @@
             // cbMatType
             // 
             this.cbMatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMatType.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbMatType.FormattingEnabled = true;
             this.cbMatType.Location = new System.Drawing.Point(26, 38);
             this.cbMatType.Name = "cbMatType";
-            this.cbMatType.Size = new System.Drawing.Size(121, 20);
+            this.cbMatType.Size = new System.Drawing.Size(121, 23);
             this.cbMatType.TabIndex = 47;
             // 
             // lblImg
             // 
             this.lblImg.AutoSize = true;
+            this.lblImg.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblImg.Location = new System.Drawing.Point(24, 206);
             this.lblImg.Name = "lblImg";
-            this.lblImg.Size = new System.Drawing.Size(41, 12);
+            this.lblImg.Size = new System.Drawing.Size(43, 15);
             this.lblImg.TabIndex = 45;
             this.lblImg.Text = "이미지";
             // 
             // btnImgSearch
             // 
+            this.btnImgSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnImgSearch.Location = new System.Drawing.Point(26, 436);
             this.btnImgSearch.Name = "btnImgSearch";
             this.btnImgSearch.Size = new System.Drawing.Size(75, 23);
             this.btnImgSearch.TabIndex = 44;
             this.btnImgSearch.Text = "찾아보기";
             this.btnImgSearch.UseVisualStyleBackColor = true;
+            this.btnImgSearch.Click += new System.EventHandler(this.btnImgSearch_Click);
             // 
             // pbProImg
             // 
@@ -101,6 +105,7 @@
             // 
             // tbSpec
             // 
+            this.tbSpec.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbSpec.Location = new System.Drawing.Point(275, 38);
             this.tbSpec.Multiline = true;
             this.tbSpec.Name = "tbSpec";
@@ -109,53 +114,60 @@
             // 
             // tbName
             // 
+            this.tbName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbName.Location = new System.Drawing.Point(26, 171);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(100, 21);
+            this.tbName.Size = new System.Drawing.Size(100, 23);
             this.tbName.TabIndex = 41;
             // 
             // tbPrice
             // 
+            this.tbPrice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbPrice.Location = new System.Drawing.Point(26, 104);
             this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(100, 21);
+            this.tbPrice.Size = new System.Drawing.Size(100, 23);
             this.tbPrice.TabIndex = 40;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblName.Location = new System.Drawing.Point(24, 156);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 12);
+            this.lblName.Size = new System.Drawing.Size(43, 15);
             this.lblName.TabIndex = 39;
             this.lblName.Text = "제품명";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
+            this.lblPrice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblPrice.Location = new System.Drawing.Point(24, 89);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(29, 12);
+            this.lblPrice.Size = new System.Drawing.Size(31, 15);
             this.lblPrice.TabIndex = 38;
             this.lblPrice.Text = "가격";
             // 
             // lblMatType
             // 
             this.lblMatType.AutoSize = true;
+            this.lblMatType.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMatType.Location = new System.Drawing.Point(24, 23);
             this.lblMatType.Name = "lblMatType";
-            this.lblMatType.Size = new System.Drawing.Size(57, 12);
+            this.lblMatType.Size = new System.Drawing.Size(59, 15);
             this.lblMatType.TabIndex = 37;
             this.lblMatType.Text = "제품 분류";
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSubmit.Location = new System.Drawing.Point(749, 436);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 35;
             this.btnSubmit.Text = "등록";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // gbSpec
             // 
@@ -177,6 +189,7 @@
             this.gbSpec.Controls.Add(this.cbVGA);
             this.gbSpec.Controls.Add(this.cbMB);
             this.gbSpec.Controls.Add(this.cbCPU);
+            this.gbSpec.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gbSpec.Location = new System.Drawing.Point(256, 18);
             this.gbSpec.Name = "gbSpec";
             this.gbSpec.Size = new System.Drawing.Size(475, 441);
@@ -189,7 +202,7 @@
             this.lblCOOLER.AutoSize = true;
             this.lblCOOLER.Location = new System.Drawing.Point(344, 379);
             this.lblCOOLER.Name = "lblCOOLER";
-            this.lblCOOLER.Size = new System.Drawing.Size(55, 12);
+            this.lblCOOLER.Size = new System.Drawing.Size(53, 15);
             this.lblCOOLER.TabIndex = 33;
             this.lblCOOLER.Text = "COOLER";
             // 
@@ -198,7 +211,7 @@
             this.lblCASE.AutoSize = true;
             this.lblCASE.Location = new System.Drawing.Point(344, 335);
             this.lblCASE.Name = "lblCASE";
-            this.lblCASE.Size = new System.Drawing.Size(38, 12);
+            this.lblCASE.Size = new System.Drawing.Size(36, 15);
             this.lblCASE.TabIndex = 32;
             this.lblCASE.Text = "CASE";
             // 
@@ -207,7 +220,7 @@
             this.lblPSU.AutoSize = true;
             this.lblPSU.Location = new System.Drawing.Point(344, 291);
             this.lblPSU.Name = "lblPSU";
-            this.lblPSU.Size = new System.Drawing.Size(29, 12);
+            this.lblPSU.Size = new System.Drawing.Size(30, 15);
             this.lblPSU.TabIndex = 31;
             this.lblPSU.Text = "PSU";
             // 
@@ -216,7 +229,7 @@
             this.lblSSD.AutoSize = true;
             this.lblSSD.Location = new System.Drawing.Point(344, 247);
             this.lblSSD.Name = "lblSSD";
-            this.lblSSD.Size = new System.Drawing.Size(29, 12);
+            this.lblSSD.Size = new System.Drawing.Size(30, 15);
             this.lblSSD.TabIndex = 30;
             this.lblSSD.Text = "SSD";
             // 
@@ -225,7 +238,7 @@
             this.lblHDD.AutoSize = true;
             this.lblHDD.Location = new System.Drawing.Point(344, 203);
             this.lblHDD.Name = "lblHDD";
-            this.lblHDD.Size = new System.Drawing.Size(29, 12);
+            this.lblHDD.Size = new System.Drawing.Size(34, 15);
             this.lblHDD.TabIndex = 29;
             this.lblHDD.Text = "HDD";
             // 
@@ -234,7 +247,7 @@
             this.lblRAM.AutoSize = true;
             this.lblRAM.Location = new System.Drawing.Point(341, 159);
             this.lblRAM.Name = "lblRAM";
-            this.lblRAM.Size = new System.Drawing.Size(32, 12);
+            this.lblRAM.Size = new System.Drawing.Size(35, 15);
             this.lblRAM.TabIndex = 28;
             this.lblRAM.Text = "RAM";
             // 
@@ -243,25 +256,25 @@
             this.lblVGA.AutoSize = true;
             this.lblVGA.Location = new System.Drawing.Point(343, 115);
             this.lblVGA.Name = "lblVGA";
-            this.lblVGA.Size = new System.Drawing.Size(30, 12);
+            this.lblVGA.Size = new System.Drawing.Size(32, 15);
             this.lblVGA.TabIndex = 27;
             this.lblVGA.Text = "VGA";
             // 
             // lblMB
             // 
             this.lblMB.AutoSize = true;
-            this.lblMB.Location = new System.Drawing.Point(343, 73);
+            this.lblMB.Location = new System.Drawing.Point(343, 68);
             this.lblMB.Name = "lblMB";
-            this.lblMB.Size = new System.Drawing.Size(30, 12);
+            this.lblMB.Size = new System.Drawing.Size(32, 15);
             this.lblMB.TabIndex = 26;
             this.lblMB.Text = "M/B";
             // 
             // lblCPU
             // 
             this.lblCPU.AutoSize = true;
-            this.lblCPU.Location = new System.Drawing.Point(341, 28);
+            this.lblCPU.Location = new System.Drawing.Point(341, 24);
             this.lblCPU.Name = "lblCPU";
-            this.lblCPU.Size = new System.Drawing.Size(30, 12);
+            this.lblCPU.Size = new System.Drawing.Size(31, 15);
             this.lblCPU.TabIndex = 25;
             this.lblCPU.Text = "CPU";
             // 
@@ -271,7 +284,7 @@
             this.cbCOOLER.FormattingEnabled = true;
             this.cbCOOLER.Location = new System.Drawing.Point(345, 394);
             this.cbCOOLER.Name = "cbCOOLER";
-            this.cbCOOLER.Size = new System.Drawing.Size(121, 20);
+            this.cbCOOLER.Size = new System.Drawing.Size(121, 23);
             this.cbCOOLER.TabIndex = 24;
             // 
             // cbCASE
@@ -280,7 +293,7 @@
             this.cbCASE.FormattingEnabled = true;
             this.cbCASE.Location = new System.Drawing.Point(345, 350);
             this.cbCASE.Name = "cbCASE";
-            this.cbCASE.Size = new System.Drawing.Size(121, 20);
+            this.cbCASE.Size = new System.Drawing.Size(121, 23);
             this.cbCASE.TabIndex = 23;
             // 
             // cbPSU
@@ -289,7 +302,7 @@
             this.cbPSU.FormattingEnabled = true;
             this.cbPSU.Location = new System.Drawing.Point(345, 306);
             this.cbPSU.Name = "cbPSU";
-            this.cbPSU.Size = new System.Drawing.Size(121, 20);
+            this.cbPSU.Size = new System.Drawing.Size(121, 23);
             this.cbPSU.TabIndex = 22;
             // 
             // cbSSD
@@ -298,7 +311,7 @@
             this.cbSSD.FormattingEnabled = true;
             this.cbSSD.Location = new System.Drawing.Point(345, 262);
             this.cbSSD.Name = "cbSSD";
-            this.cbSSD.Size = new System.Drawing.Size(121, 20);
+            this.cbSSD.Size = new System.Drawing.Size(121, 23);
             this.cbSSD.TabIndex = 21;
             // 
             // cbHDD
@@ -307,7 +320,7 @@
             this.cbHDD.FormattingEnabled = true;
             this.cbHDD.Location = new System.Drawing.Point(345, 218);
             this.cbHDD.Name = "cbHDD";
-            this.cbHDD.Size = new System.Drawing.Size(121, 20);
+            this.cbHDD.Size = new System.Drawing.Size(121, 23);
             this.cbHDD.TabIndex = 20;
             // 
             // cbRAM
@@ -316,7 +329,7 @@
             this.cbRAM.FormattingEnabled = true;
             this.cbRAM.Location = new System.Drawing.Point(345, 174);
             this.cbRAM.Name = "cbRAM";
-            this.cbRAM.Size = new System.Drawing.Size(121, 20);
+            this.cbRAM.Size = new System.Drawing.Size(121, 23);
             this.cbRAM.TabIndex = 19;
             // 
             // cbVGA
@@ -325,7 +338,7 @@
             this.cbVGA.FormattingEnabled = true;
             this.cbVGA.Location = new System.Drawing.Point(345, 130);
             this.cbVGA.Name = "cbVGA";
-            this.cbVGA.Size = new System.Drawing.Size(121, 20);
+            this.cbVGA.Size = new System.Drawing.Size(121, 23);
             this.cbVGA.TabIndex = 18;
             // 
             // cbMB
@@ -334,7 +347,7 @@
             this.cbMB.FormattingEnabled = true;
             this.cbMB.Location = new System.Drawing.Point(345, 86);
             this.cbMB.Name = "cbMB";
-            this.cbMB.Size = new System.Drawing.Size(121, 20);
+            this.cbMB.Size = new System.Drawing.Size(121, 23);
             this.cbMB.TabIndex = 17;
             // 
             // cbCPU
@@ -343,7 +356,7 @@
             this.cbCPU.FormattingEnabled = true;
             this.cbCPU.Location = new System.Drawing.Point(345, 42);
             this.cbCPU.Name = "cbCPU";
-            this.cbCPU.Size = new System.Drawing.Size(121, 20);
+            this.cbCPU.Size = new System.Drawing.Size(121, 23);
             this.cbCPU.TabIndex = 16;
             // 
             // ofdProImg
@@ -354,6 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.cbMatType);
             this.Controls.Add(this.lblImg);
             this.Controls.Add(this.btnImgSearch);

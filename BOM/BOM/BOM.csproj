@@ -73,12 +73,6 @@
     <Compile Include="BUS\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\Managements\Controls\CtrlManageMain.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BUS\Managements\Controls\CtrlManageMain.Designer.cs">
-      <DependentUpon>CtrlManageMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="BUS\Managements\Controls\CtrlMatAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -322,9 +316,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BUS\Managements\Controls\CtrlManageMain.resx">
-      <DependentUpon>CtrlManageMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatAdd.resx">
       <DependentUpon>CtrlMatAdd.cs</DependentUpon>

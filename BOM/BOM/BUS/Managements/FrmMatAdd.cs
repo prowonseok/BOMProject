@@ -37,6 +37,14 @@ namespace BOM.BUS.Managements
             {
                 cbOfferer.Items.Add(item.OffName);
             }
+            foreach (var item in Controls)
+            {
+                if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                {
+                    ((Button)item).BackColor = Color.Silver;
+                    ((Button)item).ForeColor = Color.White;
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

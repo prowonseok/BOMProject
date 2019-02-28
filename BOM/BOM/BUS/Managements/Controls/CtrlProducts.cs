@@ -81,6 +81,14 @@ namespace BOM.BUS.Managements.Controls
                             break;
                     }
                 }
+                foreach (var item in Controls)
+                {
+                    if (item.GetType().ToString() == "System.Windows.Forms.Button")
+                    {
+                        ((Button)item).BackColor = Color.Silver;
+                        ((Button)item).ForeColor = Color.White;
+                    }
+                }
             }
             cbCPU.Text = string.Empty;
             cbMB.Text = string.Empty;
