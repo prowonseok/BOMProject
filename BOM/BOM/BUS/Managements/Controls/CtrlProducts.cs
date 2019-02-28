@@ -26,16 +26,16 @@ namespace BOM.BUS.Managements.Controls
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
+            if (!string.IsNullOrEmpty(tbMatNo.Text) && !string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
             {
                 try
                 {
-                    pdao.InsertProducts(int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
+                    pdao.InsertProducts(int.Parse(tbMatNo.Text.ToString()), int.Parse(dt.Rows[cbMatType.SelectedIndex]["Mat_Type_No"].ToString()), tbName.Text, int.Parse(tbPrice.Text.Replace(",", "")), int.Parse(tbPrice.Text.Replace(",", "")), tbName.Text, tbSpec.Text, imageArr);
                     MessageBox.Show("등록 성공");
                 }
-                catch (Exception)
+                catch (Exception a)
                 {
-                    MessageBox.Show("등록 실패");
+                    MessageBox.Show(a.Message);
                 }
             }
             else
@@ -141,13 +141,13 @@ namespace BOM.BUS.Managements.Controls
         private void ComboBoxHandler(object sender, EventArgs e)
         {
             tbSpec.Text = string.Empty;
-            string[] tbStrings = { cbCPU.Text, cbMB.Text, cbVGA.Text, cbRAM.Text, cbHDD.Text, cbSSD.Text, cbPSU.Text, cbCASE.Text, cbCOOLER.Text };
+            string[] tbStrings = { "* CPU : " + cbCPU.Text, "* M/B : " + cbMB.Text, "* VGA : " + cbVGA.Text, "* RAM : " + cbRAM.Text, "* HDD : " + cbHDD.Text, "* SSD : " + cbSSD.Text, "* PSU : " + cbPSU.Text, "* CASE : " + cbCASE.Text, "* COOLER : " + cbCOOLER.Text };
 
             foreach (string item in tbStrings)
             {
                 if (!string.IsNullOrEmpty(item))
                 {
-                    tbSpec.Text += item + "\r\n";
+                    tbSpec.Text += item + "\r\n\r\n";
                 }
                 else if (string.IsNullOrEmpty(item))
                 {
