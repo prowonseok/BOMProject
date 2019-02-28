@@ -12,6 +12,9 @@ using System.Drawing.Text;
 
 namespace BOM
 {
+    /// <summary>
+    /// 판매예측 버튼 클릭시 출력되는 사용자 정의 컨트롤
+    /// </summary>
     public partial class FrmBomProEstimatingControl : UserControl
     {
         /// <summary>
@@ -26,15 +29,16 @@ namespace BOM
         DataTable dt;
         List<string> proLst; //판매중인 제품들을 저장할 Collection
 
-        DataTable dt2; //현재 달(월)에 대한 판매정보 저장하는 DataTable
-        DataTable dt3; //현재 달(월)+1 달(월)에 대한 판매정보 저장하는 DataTable
+        DataTable dt2; //현재 달(월)에 대한 판매정보를 저장하는 DataTable
+        DataTable dt3; //현재 달(월)+1 달(월)에 대한 판매정보를 저장하는 DataTable
 
         Point? previousPos = null; //null을 가질 수 있는 Point타입의 변수
         ToolTip myToolTip = new ToolTip();
 
 
         /// <summary>
-        /// 폼이 Load될때 발생하는 이벤트
+        /// 폼이 Load될때 발생하는 이벤트,
+        /// 제품별 판매량 Chart와 2019년도 전체 상품 판매량의 년도별 판매량 Chart에 대해 설정
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -89,6 +93,7 @@ namespace BOM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">현재 마우스의 위치 좌표</param>
+        /// <param name="proLst">판매중인 제품들을 저장할 Collection</param>
         private void ChartPro_MouseMove(object sender, MouseEventArgs e)
         {
             Point position = e.Location; //현재 마우스 포인터의 좌표 저장
@@ -216,7 +221,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// 판매 예측 버튼 클릭 이벤트
+        /// 판매 예측 버튼 클릭 이벤트,
+        /// Now.Month의 값이 12월일 경우 다음 달은 1월로 설정
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -251,10 +257,10 @@ namespace BOM
         }
 
         /// <summary>
-        /// 그리드뷰에 설정한 달에 대한 정보를 출력
+        /// 그리드뷰에 설정한 달에 대한 정보를 출력하는 메서드
         /// </summary>
-        /// <param name="firstMonth"></param>
-        /// <param name="secondMonth"></param>
+        /// <param name="firstMonth">첫번째 달</param>
+        /// <param name="secondMonth">두번째 달</param>
         private void ViewGridview(int firstMonth, int secondMonth)
         {
             dt2 = bDao.SelectProYear(firstMonth);

@@ -14,6 +14,9 @@ using BOM.BUS;
 
 namespace BOM
 {
+    /// <summary>
+    /// 메인 화면에서 BOM관리 및 BOM메인을 클릭하면 출력 되는 사용자 정의 컨트롤
+    /// </summary>
     public partial class FrmBomInfoControl : UserControl
     {
         DAO.BomDAO bDao;
@@ -37,7 +40,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// GridView의 데이터소스를 불러옴
+        /// GridView의 데이터소스를 불러옴(매개변수 및 조건이 없는 Materials Table의 모든 데이터),
+        /// 필요하지 않은 Columns명을 삭제하고 버튼 Columns을 추가하는 등 Gridview에 대한 설정을 실행하는 메서드
         /// </summary>
         private void Display()
         {
@@ -88,7 +92,8 @@ namespace BOM
         }
 
         /// <summary>
-        /// DataTable Clone 및 Mat_Level 형변환을 위한 메서드
+        /// DataTable Clone 및 Mat_Level 형변환을 위한 메서드,
+        /// 이미 값이 입력된 DataTable은 Int형에서 String형으로 형변환이 불가능하기 때문에 DataTable을 한개 더 만들어서 형변환 후 값 입력
         /// </summary>
         /// <param name="dt">기존 DataTable</param>
         /// <param name="dtClone">형변환 시킬 DataTable</param>
@@ -223,6 +228,7 @@ namespace BOM
 
         /// <summary>
         /// 검색 버튼 클릭 이벤트
+        /// 검색 타입과 검색어는 반드시 입력되어야함
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
