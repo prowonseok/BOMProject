@@ -21,7 +21,6 @@ namespace BOM.BUS.Sales
         public SalesStatusDatails(int contantsIndex)
         {
             InitializeComponent();
-
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             thisContantsIndex = contantsIndex;
         }
@@ -79,7 +78,7 @@ namespace BOM.BUS.Sales
         /// <param name="e"></param>
         private void btn2_Click(object sender, EventArgs e)
         {
-            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text)); 
+            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text), lblCusID.Text); 
             s.Show();
         }
     }

@@ -36,6 +36,14 @@ namespace BOM.BUS.Sales
             this.orderNo = orderNo;
             ProList = new List<ShipmentVO>();            
         }
+        string cusID = "";
+        public Shipment(int orderNo,string cusID)
+        {
+            InitializeComponent();
+            this.orderNo = orderNo;
+            this.cusID = cusID;
+            ProList = new List<ShipmentVO>();
+        }
         /// <summary>
         /// 주소변경시 주소변경 폼을 띄워주는 메서드
         /// </summary>
@@ -83,6 +91,7 @@ namespace BOM.BUS.Sales
                     });
                 }
                 lblShipDate.Text = DateTime.Now.AddDays(2).ToShortDateString();
+                dgvProList.DataSource = null;
                 dgvProList.DataSource = ProList;
                 dgvProList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvProList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
@@ -105,7 +114,7 @@ namespace BOM.BUS.Sales
                 for (int i = 0; i < dgvProList.RowCount; i++)
                 {
                     dgvProList.Rows[i].Cells["발주"].Value =
-                        "발주신청";
+                        "소요량 확인";
                 }
                                
                 dgvProList.CellClick += DgvProList_CellClick;
@@ -147,8 +156,9 @@ namespace BOM.BUS.Sales
                         Rows[e.RowIndex].Cells["발주"];
 
                     if (buttonCell.Enabled)
-                    {
-                        MessageBox.Show("물품 구매신청 폼으로 데이터주고 구매폼 띄움");
+                    {                       
+                        FrmBomMatEstimating fb = new FrmBomMatEstimating(new SalesDao().ProNo(dgvProList.Rows[e.RowIndex].Cells[0].Value.ToString()), dgvProList.Rows[e.RowIndex].Cells[0].Value.ToString(), (Int32.Parse(dgvProList.Rows[e.RowIndex].Cells[1].Value.ToString()) - Int32.Parse(dgvProList.Rows[e.RowIndex].Cells[3].Value.ToString())).ToString());
+                        fb.Show();
                     }
                 }
             }

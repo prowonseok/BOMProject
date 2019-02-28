@@ -204,6 +204,13 @@
     <Compile Include="BUS\BOM\Controls\FrmBomProEstimatingControl.Designer.cs">
       <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataInsertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataInsertForm.Designer.cs">
+      <DependentUpon>DataInsertForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateInsert.cs" />
     <Compile Include="FrmMainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -369,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\BOM\Controls\FrmBomProEstimatingControl.resx">
       <DependentUpon>FrmBomProEstimatingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataInsertForm.resx">
+      <DependentUpon>DataInsertForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>

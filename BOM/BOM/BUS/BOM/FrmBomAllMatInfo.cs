@@ -40,15 +40,12 @@ namespace BOM.BUS.BOM
         public FrmBomAllMatInfo()
         {
             InitializeComponent();
-
-            PrivateFontCollection privateFonts = new PrivateFontCollection();
-
-            privateFonts.AddFontFile(Application.StartupPath + @"\Font\NanumSquareRoundB.ttf");
-            Font font01 = new Font(privateFonts.Families[0], 13f);
         }
 
         /// <summary>
         /// Form이 Load될 때 발생하는 이벤트
+        /// 부모 자재 등록 시는 원자재가 아닌 값만 뜨도록 설정
+        /// 자식 자재 등록 시는 부모 자재와 동일하지 않은 자재만 뜨고, 부모자재보다 레벨이 높은 값은 뜨지 않도록 설정
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
