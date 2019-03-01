@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CustomerApp.VO;
 using CustomerApp.DAO;
 using System.Runtime.InteropServices;
+using Microsoft.Office.Interop;
 
 namespace CustomerApp.BUS
 {
@@ -291,7 +292,7 @@ namespace CustomerApp.BUS
             SetGviewCart();
             cartList = cartDAO.Select(customer.No);
             gviewCart.DataSource = null;
-            gviewCart.DataSource = cartList;
+            gviewCart.DataSource = cartList.ToArray();
             rdoSaveNo.Checked = false;
             rdoSaveNo.Checked = true;
         }
@@ -301,7 +302,7 @@ namespace CustomerApp.BUS
             if (cartList.Count != 0)
             {
                 gviewCart.DataSource = null;
-                gviewCart.DataSource = cartList;
+                gviewCart.DataSource = cartList.ToArray();
 
                 if (gviewCart.Columns.Count == 9) GetCbxCol(gviewCart, "cbx", "목록 선택");
 
@@ -381,7 +382,7 @@ namespace CustomerApp.BUS
             if (orderRecords.Count != 0)
             {
                 gViewBuy.DataSource = null;
-                gViewBuy.DataSource = orderRecords;
+                gViewBuy.DataSource = orderRecords.ToArray();
 
                 gViewBuy.Columns.Remove("OrderNo");
                 gViewBuy.Columns.Remove("EmpNo");
@@ -448,8 +449,7 @@ namespace CustomerApp.BUS
 
             asList.Clear();
             asList = asDAO.SelectAllAS(customer.No);
-            gViewAS.DataSource = null;
-            gViewAS.DataSource = asList;
+            gViewAS.DataSource = asList.ToArray();
             GviewAScolSet();
             rdoAsDate.Checked = false;
             rdoAsDate.Checked = true;
@@ -676,10 +676,10 @@ namespace CustomerApp.BUS
             if (loginState)
             {
                 cartList = cartDAO.Select(customer.No);
-                SetBtnColor(btnCart, btnProducts, btnBuy, btnAS, btnBuyRecord);
-                PanBottomCtrlVisiFalse();
-                CtrlVisiTrue(gbxCart);
-                gviewCart.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                SetBtnColor(btnCart, btnProducts, btnBuy, btnAS, btnBuyRecord); // 버튼 디자인 초기화
+                PanBottomCtrlVisiFalse(); // 패널 컨트롤들 모두 visible false로 만드는 메서드
+                CtrlVisiTrue(gbxCart); // 필요한 컨트롤 visible true로 만드는 메서드
+                gviewCart.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // gviewCart = 장바구니 그리드뷰
                 GviewCartDataSource();
             }
             else MessageBox.Show("로그인 후 이용하실수 있습니다.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -969,7 +969,7 @@ namespace CustomerApp.BUS
             };
             asDAO.Insert(asVO);
             MessageBox.Show("A/S 신청이 완료되었습니다.", "A/S", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnAS_Click(sender, null);
+            btnAS_Click(null, null);
         }
 
         private void cbxOrderNo_SelectedIndexChanged(object sender, EventArgs e)
@@ -987,8 +987,6 @@ namespace CustomerApp.BUS
             if (rdoOrderNo.Checked)
             {
                 orderRecords.Sort((a, b) => a.Order_OrderNo > b.Order_OrderNo ? 1 : -1);
-                gViewBuy.DataSource = null;
-                gViewBuy.DataSource = orderRecords;
                 GviewBuyColSet();
             }   
         }
@@ -998,8 +996,6 @@ namespace CustomerApp.BUS
             if (rdoDate.Checked)
             {
                 orderRecords.Sort((a, b) => a.OrderDate < b.OrderDate ? 1 : -1);
-                gViewBuy.DataSource = null;
-                gViewBuy.DataSource = orderRecords;
                 GviewBuyColSet();
             }
         }
@@ -1009,8 +1005,6 @@ namespace CustomerApp.BUS
             if (rdoCom.Checked)
             {
                 orderRecords.Sort((a, b) => a.OrderCom.CompareTo(b.OrderCom));
-                gViewBuy.DataSource = null;
-                gViewBuy.DataSource = orderRecords;
                 GviewBuyColSet();
             }
         }
@@ -1020,7 +1014,6 @@ namespace CustomerApp.BUS
             if (rdoAsOrderNo.Checked)
             {
                 asList.Sort((a, b) => a.OrderNo > b.OrderNo ? 1 : -1);
-                gViewAS.DataSource = null;
                 gViewAS.DataSource = asList;
                 GviewAScolSet();
             }
@@ -1032,7 +1025,7 @@ namespace CustomerApp.BUS
             {
                 asList.Sort((a, b) => a.AsStartDate > b.AsStartDate ? 1 : -1);
                 gViewAS.DataSource = null;
-                gViewAS.DataSource = asList;
+                gViewAS.DataSource = asList.ToArray();
                 GviewAScolSet();
             }
         }
@@ -1042,8 +1035,8 @@ namespace CustomerApp.BUS
             if (rdoSaveNo.Checked)
             {
                 cartList.Sort((a, b) => a.SaveNo > b.SaveNo ? 1 : -1);
-                gviewCart.DataSource = null;
-                gviewCart.DataSource = cartList;
+                gViewAS.DataSource = null;
+                gViewAS.DataSource = asList.ToArray();
                 GviewCartColSet();
             }
         }
@@ -1053,8 +1046,6 @@ namespace CustomerApp.BUS
             if (rdoCartPriceDown.Checked)
             {
                 cartList.Sort((a, b) => a.TotalPrice > b.TotalPrice ? 1 : -1);
-                gviewCart.DataSource = null;
-                gviewCart.DataSource = cartList;
                 GviewCartColSet();
             }
         }
@@ -1064,15 +1055,8 @@ namespace CustomerApp.BUS
             if (rdoCartPriceUp.Checked)
             {
                 cartList.Sort((a, b) => a.TotalPrice < b.TotalPrice ? 1 : -1);
-                gviewCart.DataSource = null;
-                gviewCart.DataSource = cartList;
                 GviewCartColSet();
             }
-        }
-
-        private void lstView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

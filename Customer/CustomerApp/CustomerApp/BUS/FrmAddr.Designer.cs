@@ -36,13 +36,14 @@
             this.gViewResult = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblGuide = new System.Windows.Forms.Label();
             this.gbxSearchType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gViewResult)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(15, 69);
+            this.txtSearch.Location = new System.Drawing.Point(15, 97);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(420, 21);
             this.txtSearch.TabIndex = 0;
@@ -65,7 +66,7 @@
             this.gbxSearchType.Controls.Add(this.rdoPost);
             this.gbxSearchType.Controls.Add(this.rdoRoad);
             this.gbxSearchType.Controls.Add(this.rdoDong);
-            this.gbxSearchType.Location = new System.Drawing.Point(15, 12);
+            this.gbxSearchType.Location = new System.Drawing.Point(15, 40);
             this.gbxSearchType.Name = "gbxSearchType";
             this.gbxSearchType.Size = new System.Drawing.Size(501, 51);
             this.gbxSearchType.TabIndex = 2;
@@ -98,7 +99,7 @@
             // gViewResult
             // 
             this.gViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gViewResult.Location = new System.Drawing.Point(12, 96);
+            this.gViewResult.Location = new System.Drawing.Point(12, 124);
             this.gViewResult.MultiSelect = false;
             this.gViewResult.Name = "gViewResult";
             this.gViewResult.RowTemplate.Height = 23;
@@ -108,7 +109,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(441, 67);
+            this.btnSearch.Location = new System.Drawing.Point(441, 95);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 5;
@@ -118,7 +119,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(450, 252);
+            this.btnSubmit.Location = new System.Drawing.Point(450, 280);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 6;
@@ -126,11 +127,20 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // lblGuide
+            // 
+            this.lblGuide.AutoSize = true;
+            this.lblGuide.Location = new System.Drawing.Point(16, 12);
+            this.lblGuide.Name = "lblGuide";
+            this.lblGuide.Size = new System.Drawing.Size(0, 12);
+            this.lblGuide.TabIndex = 7;
+            // 
             // FrmAddr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 289);
+            this.ClientSize = new System.Drawing.Size(540, 314);
+            this.Controls.Add(this.lblGuide);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.gViewResult);
@@ -157,5 +167,6 @@
         private System.Windows.Forms.DataGridView gViewResult;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label lblGuide;
     }
 }

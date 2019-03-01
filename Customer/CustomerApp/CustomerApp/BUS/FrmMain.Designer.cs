@@ -54,7 +54,21 @@
             this.btnCartBuy = new System.Windows.Forms.Button();
             this.gviewCart = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.gbxBuy = new System.Windows.Forms.GroupBox();
+            this.lblBuyProSpec = new System.Windows.Forms.Label();
+            this.txtBuySpec = new System.Windows.Forms.TextBox();
+            this.btnAddCart = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nuProAmount = new System.Windows.Forms.NumericUpDown();
+            this.txtTotalPrice = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbxBuyCusPro = new System.Windows.Forms.ComboBox();
+            this.btnBuyNow = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.lstView = new System.Windows.Forms.ListView();
+            this.lblSpecTitle = new System.Windows.Forms.Label();
+            this.lblSpec = new System.Windows.Forms.Label();
+            this.txtProSpec = new System.Windows.Forms.RichTextBox();
             this.gbxAS = new System.Windows.Forms.GroupBox();
             this.gbxAsSort = new System.Windows.Forms.GroupBox();
             this.rdoAsOrderNo = new System.Windows.Forms.RadioButton();
@@ -73,20 +87,6 @@
             this.txtCusID = new System.Windows.Forms.TextBox();
             this.lblASContent = new System.Windows.Forms.Label();
             this.lblCusID = new System.Windows.Forms.Label();
-            this.gbxBuy = new System.Windows.Forms.GroupBox();
-            this.lblBuyProSpec = new System.Windows.Forms.Label();
-            this.txtBuySpec = new System.Windows.Forms.TextBox();
-            this.btnAddCart = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nuProAmount = new System.Windows.Forms.NumericUpDown();
-            this.txtTotalPrice = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbxBuyCusPro = new System.Windows.Forms.ComboBox();
-            this.btnBuyNow = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblSpecTitle = new System.Windows.Forms.Label();
-            this.lblSpec = new System.Windows.Forms.Label();
-            this.txtProSpec = new System.Windows.Forms.RichTextBox();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnBuyRecord = new System.Windows.Forms.Button();
             this.saveFileDig = new System.Windows.Forms.SaveFileDialog();
@@ -102,11 +102,11 @@
             this.gbxCart.SuspendLayout();
             this.gbxCartSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gviewCart)).BeginInit();
+            this.gbxBuy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).BeginInit();
             this.gbxAS.SuspendLayout();
             this.gbxAsSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).BeginInit();
-            this.gbxBuy.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -209,6 +209,7 @@
             // 
             // spCont.Panel1
             // 
+            this.spCont.Panel1.Controls.Add(this.gbxAS);
             this.spCont.Panel1.Controls.Add(this.gbxBuyRecord);
             this.spCont.Panel1.Controls.Add(this.gbxCart);
             this.spCont.Panel1.Controls.Add(this.gbxBuy);
@@ -408,6 +409,117 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // gbxBuy
+            // 
+            this.gbxBuy.Controls.Add(this.lblBuyProSpec);
+            this.gbxBuy.Controls.Add(this.txtBuySpec);
+            this.gbxBuy.Controls.Add(this.btnAddCart);
+            this.gbxBuy.Controls.Add(this.label4);
+            this.gbxBuy.Controls.Add(this.nuProAmount);
+            this.gbxBuy.Controls.Add(this.txtTotalPrice);
+            this.gbxBuy.Controls.Add(this.label2);
+            this.gbxBuy.Controls.Add(this.cbxBuyCusPro);
+            this.gbxBuy.Controls.Add(this.btnBuyNow);
+            this.gbxBuy.Controls.Add(this.label3);
+            this.gbxBuy.Location = new System.Drawing.Point(540, 5);
+            this.gbxBuy.Name = "gbxBuy";
+            this.gbxBuy.Size = new System.Drawing.Size(354, 556);
+            this.gbxBuy.TabIndex = 13;
+            this.gbxBuy.TabStop = false;
+            // 
+            // lblBuyProSpec
+            // 
+            this.lblBuyProSpec.AutoSize = true;
+            this.lblBuyProSpec.Location = new System.Drawing.Point(7, 62);
+            this.lblBuyProSpec.Name = "lblBuyProSpec";
+            this.lblBuyProSpec.Size = new System.Drawing.Size(53, 12);
+            this.lblBuyProSpec.TabIndex = 21;
+            this.lblBuyProSpec.Text = "제품구성";
+            // 
+            // txtBuySpec
+            // 
+            this.txtBuySpec.Location = new System.Drawing.Point(6, 82);
+            this.txtBuySpec.Multiline = true;
+            this.txtBuySpec.Name = "txtBuySpec";
+            this.txtBuySpec.Size = new System.Drawing.Size(342, 290);
+            this.txtBuySpec.TabIndex = 20;
+            // 
+            // btnAddCart
+            // 
+            this.btnAddCart.Location = new System.Drawing.Point(156, 467);
+            this.btnAddCart.Name = "btnAddCart";
+            this.btnAddCart.Size = new System.Drawing.Size(93, 73);
+            this.btnAddCart.TabIndex = 18;
+            this.btnAddCart.Text = "장바구니 추가";
+            this.btnAddCart.UseVisualStyleBackColor = true;
+            this.btnAddCart.Click += new System.EventHandler(this.btnAddCart_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 385);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "주문수량";
+            // 
+            // nuProAmount
+            // 
+            this.nuProAmount.Location = new System.Drawing.Point(67, 381);
+            this.nuProAmount.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.nuProAmount.Name = "nuProAmount";
+            this.nuProAmount.Size = new System.Drawing.Size(54, 21);
+            this.nuProAmount.TabIndex = 14;
+            this.nuProAmount.ValueChanged += new System.EventHandler(this.nuProAmount_ValueChanged);
+            // 
+            // txtTotalPrice
+            // 
+            this.txtTotalPrice.Location = new System.Drawing.Point(67, 414);
+            this.txtTotalPrice.Name = "txtTotalPrice";
+            this.txtTotalPrice.Size = new System.Drawing.Size(190, 21);
+            this.txtTotalPrice.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 418);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "총 가격";
+            // 
+            // cbxBuyCusPro
+            // 
+            this.cbxBuyCusPro.FormattingEnabled = true;
+            this.cbxBuyCusPro.Location = new System.Drawing.Point(67, 19);
+            this.cbxBuyCusPro.Name = "cbxBuyCusPro";
+            this.cbxBuyCusPro.Size = new System.Drawing.Size(190, 20);
+            this.cbxBuyCusPro.TabIndex = 0;
+            this.cbxBuyCusPro.SelectedIndexChanged += new System.EventHandler(this.cbxBuyCusPro_SelectedIndexChanged);
+            // 
+            // btnBuyNow
+            // 
+            this.btnBuyNow.Location = new System.Drawing.Point(255, 468);
+            this.btnBuyNow.Name = "btnBuyNow";
+            this.btnBuyNow.Size = new System.Drawing.Size(93, 73);
+            this.btnBuyNow.TabIndex = 6;
+            this.btnBuyNow.Text = "바로 구매하기";
+            this.btnBuyNow.UseVisualStyleBackColor = true;
+            this.btnBuyNow.Click += new System.EventHandler(this.btnBuyNow_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "제품선택";
+            // 
             // lstView
             // 
             this.lstView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -417,8 +529,34 @@
             this.lstView.Size = new System.Drawing.Size(875, 569);
             this.lstView.TabIndex = 0;
             this.lstView.UseCompatibleStateImageBehavior = false;
-            this.lstView.SelectedIndexChanged += new System.EventHandler(this.lstView_SelectedIndexChanged);
             this.lstView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstView_MouseClick);
+            // 
+            // lblSpecTitle
+            // 
+            this.lblSpecTitle.AutoSize = true;
+            this.lblSpecTitle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSpecTitle.Location = new System.Drawing.Point(13, 20);
+            this.lblSpecTitle.Name = "lblSpecTitle";
+            this.lblSpecTitle.Size = new System.Drawing.Size(89, 21);
+            this.lblSpecTitle.TabIndex = 3;
+            this.lblSpecTitle.Text = "PC 구성";
+            // 
+            // lblSpec
+            // 
+            this.lblSpec.AutoSize = true;
+            this.lblSpec.Location = new System.Drawing.Point(15, 111);
+            this.lblSpec.Name = "lblSpec";
+            this.lblSpec.Size = new System.Drawing.Size(0, 12);
+            this.lblSpec.TabIndex = 2;
+            // 
+            // txtProSpec
+            // 
+            this.txtProSpec.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtProSpec.Location = new System.Drawing.Point(0, 0);
+            this.txtProSpec.Name = "txtProSpec";
+            this.txtProSpec.Size = new System.Drawing.Size(365, 569);
+            this.txtProSpec.TabIndex = 0;
+            this.txtProSpec.Text = "";
             // 
             // gbxAS
             // 
@@ -437,7 +575,7 @@
             this.gbxAS.Controls.Add(this.txtCusID);
             this.gbxAS.Controls.Add(this.lblASContent);
             this.gbxAS.Controls.Add(this.lblCusID);
-            this.gbxAS.Location = new System.Drawing.Point(44, 86);
+            this.gbxAS.Location = new System.Drawing.Point(335, 312);
             this.gbxAS.Name = "gbxAS";
             this.gbxAS.Size = new System.Drawing.Size(1219, 526);
             this.gbxAS.TabIndex = 9;
@@ -607,144 +745,6 @@
             this.lblCusID.TabIndex = 4;
             this.lblCusID.Text = "회원 ID";
             // 
-            // gbxBuy
-            // 
-            this.gbxBuy.Controls.Add(this.lblBuyProSpec);
-            this.gbxBuy.Controls.Add(this.txtBuySpec);
-            this.gbxBuy.Controls.Add(this.btnAddCart);
-            this.gbxBuy.Controls.Add(this.label4);
-            this.gbxBuy.Controls.Add(this.nuProAmount);
-            this.gbxBuy.Controls.Add(this.txtTotalPrice);
-            this.gbxBuy.Controls.Add(this.label2);
-            this.gbxBuy.Controls.Add(this.cbxBuyCusPro);
-            this.gbxBuy.Controls.Add(this.btnBuyNow);
-            this.gbxBuy.Controls.Add(this.label3);
-            this.gbxBuy.Location = new System.Drawing.Point(540, 5);
-            this.gbxBuy.Name = "gbxBuy";
-            this.gbxBuy.Size = new System.Drawing.Size(354, 556);
-            this.gbxBuy.TabIndex = 13;
-            this.gbxBuy.TabStop = false;
-            // 
-            // lblBuyProSpec
-            // 
-            this.lblBuyProSpec.AutoSize = true;
-            this.lblBuyProSpec.Location = new System.Drawing.Point(7, 62);
-            this.lblBuyProSpec.Name = "lblBuyProSpec";
-            this.lblBuyProSpec.Size = new System.Drawing.Size(53, 12);
-            this.lblBuyProSpec.TabIndex = 21;
-            this.lblBuyProSpec.Text = "제품구성";
-            // 
-            // txtBuySpec
-            // 
-            this.txtBuySpec.Location = new System.Drawing.Point(6, 82);
-            this.txtBuySpec.Multiline = true;
-            this.txtBuySpec.Name = "txtBuySpec";
-            this.txtBuySpec.Size = new System.Drawing.Size(342, 290);
-            this.txtBuySpec.TabIndex = 20;
-            // 
-            // btnAddCart
-            // 
-            this.btnAddCart.Location = new System.Drawing.Point(156, 467);
-            this.btnAddCart.Name = "btnAddCart";
-            this.btnAddCart.Size = new System.Drawing.Size(93, 73);
-            this.btnAddCart.TabIndex = 18;
-            this.btnAddCart.Text = "장바구니 추가";
-            this.btnAddCart.UseVisualStyleBackColor = true;
-            this.btnAddCart.Click += new System.EventHandler(this.btnAddCart_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 385);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "주문수량";
-            // 
-            // nuProAmount
-            // 
-            this.nuProAmount.Location = new System.Drawing.Point(67, 381);
-            this.nuProAmount.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.nuProAmount.Name = "nuProAmount";
-            this.nuProAmount.Size = new System.Drawing.Size(54, 21);
-            this.nuProAmount.TabIndex = 14;
-            this.nuProAmount.ValueChanged += new System.EventHandler(this.nuProAmount_ValueChanged);
-            // 
-            // txtTotalPrice
-            // 
-            this.txtTotalPrice.Location = new System.Drawing.Point(67, 414);
-            this.txtTotalPrice.Name = "txtTotalPrice";
-            this.txtTotalPrice.Size = new System.Drawing.Size(190, 21);
-            this.txtTotalPrice.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 418);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 12);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "총 가격";
-            // 
-            // cbxBuyCusPro
-            // 
-            this.cbxBuyCusPro.FormattingEnabled = true;
-            this.cbxBuyCusPro.Location = new System.Drawing.Point(67, 19);
-            this.cbxBuyCusPro.Name = "cbxBuyCusPro";
-            this.cbxBuyCusPro.Size = new System.Drawing.Size(190, 20);
-            this.cbxBuyCusPro.TabIndex = 0;
-            this.cbxBuyCusPro.SelectedIndexChanged += new System.EventHandler(this.cbxBuyCusPro_SelectedIndexChanged);
-            // 
-            // btnBuyNow
-            // 
-            this.btnBuyNow.Location = new System.Drawing.Point(255, 468);
-            this.btnBuyNow.Name = "btnBuyNow";
-            this.btnBuyNow.Size = new System.Drawing.Size(93, 73);
-            this.btnBuyNow.TabIndex = 6;
-            this.btnBuyNow.Text = "바로 구매하기";
-            this.btnBuyNow.UseVisualStyleBackColor = true;
-            this.btnBuyNow.Click += new System.EventHandler(this.btnBuyNow_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "제품선택";
-            // 
-            // lblSpecTitle
-            // 
-            this.lblSpecTitle.AutoSize = true;
-            this.lblSpecTitle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSpecTitle.Location = new System.Drawing.Point(13, 20);
-            this.lblSpecTitle.Name = "lblSpecTitle";
-            this.lblSpecTitle.Size = new System.Drawing.Size(89, 21);
-            this.lblSpecTitle.TabIndex = 3;
-            this.lblSpecTitle.Text = "PC 구성";
-            // 
-            // lblSpec
-            // 
-            this.lblSpec.AutoSize = true;
-            this.lblSpec.Location = new System.Drawing.Point(15, 111);
-            this.lblSpec.Name = "lblSpec";
-            this.lblSpec.Size = new System.Drawing.Size(0, 12);
-            this.lblSpec.TabIndex = 2;
-            // 
-            // txtProSpec
-            // 
-            this.txtProSpec.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtProSpec.Location = new System.Drawing.Point(0, 0);
-            this.txtProSpec.Name = "txtProSpec";
-            this.txtProSpec.Size = new System.Drawing.Size(365, 569);
-            this.txtProSpec.TabIndex = 0;
-            this.txtProSpec.Text = "";
-            // 
             // btnCart
             // 
             this.btnCart.Location = new System.Drawing.Point(291, 50);
@@ -770,7 +770,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 698);
-            this.Controls.Add(this.gbxAS);
             this.Controls.Add(this.btnBuyRecord);
             this.Controls.Add(this.btnCart);
             this.Controls.Add(this.panBottom);
@@ -797,14 +796,14 @@
             this.gbxCartSort.ResumeLayout(false);
             this.gbxCartSort.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gviewCart)).EndInit();
+            this.gbxBuy.ResumeLayout(false);
+            this.gbxBuy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).EndInit();
             this.gbxAS.ResumeLayout(false);
             this.gbxAS.PerformLayout();
             this.gbxAsSort.ResumeLayout(false);
             this.gbxAsSort.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).EndInit();
-            this.gbxBuy.ResumeLayout(false);
-            this.gbxBuy.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).EndInit();
             this.ResumeLayout(false);
 
         }

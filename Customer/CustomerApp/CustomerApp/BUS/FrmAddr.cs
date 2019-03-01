@@ -72,16 +72,19 @@ namespace CustomerApp.BUS
         private void rdoDong_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = string.Empty;
+            lblGuide.Text = "지번까지 입력해주세요.\r\nex) OO동 11-11";
         }
 
         private void rdoRoad_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = string.Empty;
+            lblGuide.Text = "길 상세번호까지 입력해주세요.\r\nex) OO로 O길 32";
         }
 
         private void rdoPost_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = string.Empty;
+            lblGuide.Text = "우편번호 5자리를 입력해주세요.\r\nex) 03380";
         }
     }
 }
