@@ -33,24 +33,19 @@ namespace BOM.BUS.Sales
             }
             else
             {
-                SalesInfo();
-                
+                SalesInfo();                
                 if (Int32.Parse(lblProEA.Text.Replace(" 개", "")) > Int32.Parse(lblProductCount.Text.Replace(" 개", "")))
                 {
                     btn1.Enabled = true;
                 }
-            }
-                       
+            }                       
         }
         /// <summary>
         /// 주문내역을 상세하게 보여주는 메서드
         /// </summary>
         private void SalesInfo()
-        {
-            //SqlParameter[] sqlParameters = new SqlParameter[1];
-            //sqlParameters[0] = new SqlParameter("@Order_No", thisContantsIndex);
+        {            
             DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_ProSelect2_Procedure", null);
-
             lblOrderNo.Text = dataTable.Rows[thisContantsIndex]["Cus_Order_OrderNo"].ToString();
             productsName = lblCusID.Text = dataTable.Rows[thisContantsIndex]["Cus_ID"].ToString();
             lblProName.Text = dataTable.Rows[thisContantsIndex]["Pro_Name"].ToString();

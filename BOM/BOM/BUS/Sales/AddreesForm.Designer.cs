@@ -162,8 +162,9 @@
             this.Controls.Add(this.dgvAddr);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchAddr);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddreesForm";
-            this.Text = "Addrees";
+            this.Text = "주소검색";
             this.Load += new System.EventHandler(this.AddreesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddr)).EndInit();
             this.ResumeLayout(false);

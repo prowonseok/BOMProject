@@ -16,7 +16,16 @@ namespace BOM.DAO
     {
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         //거래처 등록 메서드
-        
+        /// <summary>
+        /// 거래처 등록하는 메서드
+        /// </summary>
+        /// <param name="OffName">거래처 이름</param>
+        /// <param name="OwnerName">대표자이름</param>
+        /// <param name="OffAddr">대표 주소</param>
+        /// <param name="mgr">담당 매니저</param>
+        /// <param name="mgrMobile">매니저 번호</param>
+        /// <param name="OffMobile">회사 번호</param>
+        /// <returns>결과 메시지 반환</returns>
         internal string OffInsert(string OffName, string OwnerName, string OffAddr, string mgr, string mgrMobile, string OffMobile)
         {
             string sp = "Bom_JW_OffInsert";
@@ -49,7 +58,10 @@ namespace BOM.DAO
             }
             return result;            
         }
-
+        /// <summary>
+        /// 제품타입리스트를 반환하는 메서드
+        /// </summary>
+        /// <returns>제품리스트 반환 </returns>
         internal DataTable proTypeList()
         {
             DataTable proTypeList = new DataTable();
@@ -66,8 +78,11 @@ namespace BOM.DAO
             return proTypeList;
                 
         }
-
        
+        /// <summary>
+        /// 거래처 목록 반환하는 메서드
+        /// </summary>
+        /// <returns>거래처 목록이 담긴 데이터테이블 반환</returns>
         internal DataTable OffList()
         {
             DataTable offList = new DataTable();
@@ -86,6 +101,17 @@ namespace BOM.DAO
 
         }
 
+        /// <summary>
+        /// 자재를 추가하고 결과를 반환하는 메서드
+        /// </summary>
+        /// <param name="typeNo">자재타입 고유번호</param>
+        /// <param name="MatManufactur">제조사</param>
+        /// <param name="MatName">자재 이름</param>
+        /// <param name="MatCost">자재 가격</param>
+        /// <param name="MatLevel">자재 레벨</param>
+        /// <param name="MatEA">재제 개수</param>
+        /// <param name="offNo">거래처 고유번호</param>
+        /// <returns>저장결과를 반환</returns>
         internal string MatInsert(int typeNo, string MatManufactur, string MatName, int MatCost, string MatLevel, int @MatEA, int offNo)
         {
             string sp = "BomJW_PMatInsert";
@@ -108,13 +134,22 @@ namespace BOM.DAO
         }
                
         List<MatInfoVO> matList = new List<MatInfoVO>(); 
-        
-        internal ISingleResult<Bom_JW_MatInfoViewResult> LinqMatView(string MatName) //자재 변경테이블에 자재정보 표시
+        /// <summary>
+        /// 링큐를 이용하여 자재정보를 반환하는 메서드
+        /// </summary>
+        /// <param name="MatName">자재이름</param>
+        /// <returns>재재정보 반환</returns>
+        internal ISingleResult<Bom_JW_MatInfoViewResult> LinqMatView(string MatName) 
         {
             MaterialsDataDataContext mddc = new MaterialsDataDataContext();
             
             return mddc.Bom_JW_MatInfoView(MatName);   //프로시저를 활용
         }
+        /// <summary>
+        /// 링큐를 이용하여 거래처 고유번호반환하는 메서드
+        /// </summary>
+        /// <param name="offName">거래처 이름</param>
+        /// <returns>거래처 고유번호 반환</returns>
         public string GetOffNo(string offName)
         {
             MaterialsDataDataContext mddc = new MaterialsDataDataContext();
@@ -129,10 +164,12 @@ namespace BOM.DAO
                 a = Int32.Parse(item.ToString());
             }
             return a.ToString() ;
-
-
         }
-
+        /// <summary>
+        /// 링큐를 이용하여 자재타입 고유번호 반환하는 메서드
+        /// </summary>
+        /// <param name="matTypeName">자재타입 이름</param>
+        /// <returns>자재 고유번호 반환</returns>
         internal string GetMatTypeNo(string matTypeName)
         {            
             MaterialsDataDataContext mddc = new MaterialsDataDataContext();
@@ -146,13 +183,21 @@ namespace BOM.DAO
             
             return a.ToString();
         }
-
-        internal void MatModify(string Mat, string modifyOffNo, string modifyMatTypeNo, string matManufactur, string matName, string matCost, string selectedItem)
+        /// <summary>
+        /// 자재 수정하는 메서드
+        /// </summary>
+        /// <param name="MatName">자재이름</param>
+        /// <param name="modifyOffNo">수정할 거래처번호</param>
+        /// <param name="modifyMatTypeNo">수정할 자재타입 번호</param>
+        /// <param name="matManufactur">수정할 제조사</param>
+        /// <param name="matName">수정할 자재이름</param>
+        /// <param name="matCost">수정할 단가</param>        
+        internal void MatModify(string MatName, string modifyOffNo, string modifyMatTypeNo, string matManufactur, string matName, string matCost, string selectedItem)
         {
             MaterialsDataDataContext mddc = new MaterialsDataDataContext();
-            if (Mat =="")
+            if (MatName == "")
             {
-                Mat = null;
+                MatName = null;
             }
             if (modifyOffNo =="")
             {
@@ -178,7 +223,7 @@ namespace BOM.DAO
             {
                 selectedItem = "575213";
             }
-            mddc.Bom_JW_MatUpdate(Mat, Int32.Parse(modifyOffNo), Int32.Parse(modifyMatTypeNo), matManufactur, matName, Int32.Parse(matCost), Int32.Parse(selectedItem));
+            mddc.Bom_JW_MatUpdate(MatName, Int32.Parse(modifyOffNo), Int32.Parse(modifyMatTypeNo), matManufactur, matName, Int32.Parse(matCost), Int32.Parse(selectedItem));
         }
 
         internal int MatDelete(string matName)

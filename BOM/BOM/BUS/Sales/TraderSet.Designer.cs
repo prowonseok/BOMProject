@@ -172,7 +172,7 @@
             this.label22.ForeColor = System.Drawing.Color.Red;
             this.label22.Location = new System.Drawing.Point(267, 267);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(51, 14);
+            this.label22.Size = new System.Drawing.Size(55, 14);
             this.label22.TabIndex = 18;
             this.label22.Text = "필수항목";
             this.label22.Visible = false;
@@ -184,7 +184,7 @@
             this.label21.ForeColor = System.Drawing.Color.Red;
             this.label21.Location = new System.Drawing.Point(267, 232);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(51, 14);
+            this.label21.Size = new System.Drawing.Size(55, 14);
             this.label21.TabIndex = 17;
             this.label21.Text = "필수항목";
             this.label21.Visible = false;
@@ -196,7 +196,7 @@
             this.label20.ForeColor = System.Drawing.Color.Red;
             this.label20.Location = new System.Drawing.Point(208, 191);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 14);
+            this.label20.Size = new System.Drawing.Size(55, 14);
             this.label20.TabIndex = 16;
             this.label20.Text = "필수항목";
             this.label20.Visible = false;
@@ -208,7 +208,7 @@
             this.label19.ForeColor = System.Drawing.Color.Red;
             this.label19.Location = new System.Drawing.Point(267, 86);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 14);
+            this.label19.Size = new System.Drawing.Size(55, 14);
             this.label19.TabIndex = 15;
             this.label19.Text = "필수항목";
             this.label19.Visible = false;
@@ -220,7 +220,7 @@
             this.label18.ForeColor = System.Drawing.Color.Red;
             this.label18.Location = new System.Drawing.Point(267, 47);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 14);
+            this.label18.Size = new System.Drawing.Size(55, 14);
             this.label18.TabIndex = 14;
             this.label18.Text = "필수항목";
             this.label18.Visible = false;
@@ -243,6 +243,7 @@
             this.txtManagerMobile.Name = "txtManagerMobile";
             this.txtManagerMobile.Size = new System.Drawing.Size(136, 21);
             this.txtManagerMobile.TabIndex = 11;
+            this.txtManagerMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtManagerMobile_KeyPress);
             // 
             // txtManager
             // 
@@ -267,6 +268,7 @@
             this.txtOffMobile.Name = "txtOffMobile";
             this.txtOffMobile.Size = new System.Drawing.Size(138, 21);
             this.txtOffMobile.TabIndex = 8;
+            this.txtOffMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOffMobile_KeyPress);
             // 
             // txtOwnerName
             // 
@@ -290,7 +292,7 @@
             this.label8.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(50, 269);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 14);
+            this.label8.Size = new System.Drawing.Size(71, 14);
             this.label8.TabIndex = 5;
             this.label8.Text = "담당자 번호";
             // 
@@ -300,7 +302,7 @@
             this.label7.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(50, 234);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 14);
+            this.label7.Size = new System.Drawing.Size(43, 14);
             this.label7.TabIndex = 4;
             this.label7.Text = "담당자";
             // 
@@ -310,7 +312,7 @@
             this.label6.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(50, 162);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 14);
+            this.label6.Size = new System.Drawing.Size(31, 14);
             this.label6.TabIndex = 3;
             this.label6.Text = "주소";
             // 
@@ -320,7 +322,7 @@
             this.label5.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.Location = new System.Drawing.Point(50, 125);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 14);
+            this.label5.Size = new System.Drawing.Size(55, 14);
             this.label5.TabIndex = 2;
             this.label5.Text = "대표번호";
             // 
@@ -330,7 +332,7 @@
             this.label4.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.Location = new System.Drawing.Point(50, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 14);
+            this.label4.Size = new System.Drawing.Size(43, 14);
             this.label4.TabIndex = 1;
             this.label4.Text = "대표명";
             // 
@@ -340,7 +342,7 @@
             this.label3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(50, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 14);
+            this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "거래처명";
             // 
@@ -893,8 +895,9 @@
             this.ClientSize = new System.Drawing.Size(497, 423);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TraderSet";
-            this.Text = "TraderSet";
+            this.Text = "거래처관리";
             this.Load += new System.EventHandler(this.TraderSet_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

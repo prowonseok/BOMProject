@@ -13,14 +13,19 @@ namespace BOM.DAO
 {
     class SalesDao
     {
-        DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);       
-        
-        internal bool PriceUpdate(int indexNo, int Price)        
+        DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
+        /// <summary>
+        /// 제품가격 변경하는 메서드
+        /// </summary>
+        /// <param name="ProNo">제품 번호</param>
+        /// <param name="Price">변경할 가격</param>
+        /// <returns>결과를 bool타입으로 반환</returns>
+        internal bool PriceUpdate(int ProNo, int ChangPrice)        
         {
             string sp = "Bom_JW_ProPriceChinge_Procedure";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@no", indexNo);
-            sqlParameters[1] = new SqlParameter("@Price", Price);
+            sqlParameters[0] = new SqlParameter("@no", ProNo);
+            sqlParameters[1] = new SqlParameter("@Price", ChangPrice);
 
            
             bool TrueFalse = false;  
@@ -35,10 +40,17 @@ namespace BOM.DAO
             {
                 return false;               
             }
-            return TrueFalse;
-            
+            return TrueFalse;            
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sp">프로시저 이름</param>
+        /// <param name="search">조회할 변수</param>
+        /// <param name="search2">조회할 변수</param>
+        /// <param name="parameter1">파라메터 변수1</param>
+        /// <param name="parameter2">파라메터 변수2</param>
+        /// <returns>조회한 데이터리스트 반환</returns>
         public List<SalesVO> SalesSelect(string sp, string search, string search2, string parameter1, string parameter2)
         {
             List<SalesVO> salesList = new List<SalesVO>();
@@ -79,7 +91,11 @@ namespace BOM.DAO
             }            
             return salesList;
         }
-
+        /// <summary>
+        /// 제품이름으로 제품의 고유번호 반환하는 메서드
+        /// </summary>
+        /// <param name="ProName">제품 이름</param>
+        /// <returns>제품번호 반환</returns>
         internal int ProNo(string ProName)
         {
             string sp = "Bom_JW_GetProNo";
@@ -92,7 +108,10 @@ namespace BOM.DAO
             }
             return ProNo;            
         }
-
+        /// <summary>
+        /// 제품 목록을 반환하는 메서드
+        /// </summary>
+        /// <returns>제품목록 리스트 반환</returns>
         internal List<ProductsListVO> ProList()
         {
             string sp = "Bom_JW_ProNameSelect2";
@@ -129,6 +148,10 @@ namespace BOM.DAO
             
             return productcList;
         }
+        /// <summary>
+        /// 자재 목록 반환하는 메서드
+        /// </summary>
+        /// <returns>자재목록이 담긴 데이터테이블 반환</returns>
         public DataTable MatList2()
         {
             string sp = "Bom_JW_MatView";
@@ -138,7 +161,5 @@ namespace BOM.DAO
             DataTable dataTable = dbp.ExecuteParametersDT(sp, null);
             return dataTable;
         }
-
-
     }
 }

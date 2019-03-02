@@ -80,9 +80,8 @@
             this.lblProductCount.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblProductCount.Location = new System.Drawing.Point(111, 368);
             this.lblProductCount.Name = "lblProductCount";
-            this.lblProductCount.Size = new System.Drawing.Size(41, 15);
+            this.lblProductCount.Size = new System.Drawing.Size(0, 15);
             this.lblProductCount.TabIndex = 2;
-            this.lblProductCount.Text = "Count";
             // 
             // label3
             // 
@@ -280,10 +279,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(40, 18);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 21);
+            this.label8.Size = new System.Drawing.Size(146, 30);
             this.label8.TabIndex = 28;
             this.label8.Text = "주문 상세정보";
             // 
@@ -317,8 +316,10 @@
             this.Controls.Add(this.lblProductCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SalesStatusDatails";
-            this.Text = "SalesStatusDatails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.Text = "주문 상세정보";
             this.Load += new System.EventHandler(this.SalesStatusDatails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

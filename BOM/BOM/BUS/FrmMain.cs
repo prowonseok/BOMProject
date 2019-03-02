@@ -41,6 +41,7 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void BtnBOM_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             btnBomMain.Location = new Point(0, 224);
             btnBomAdd.Location = new Point(0, 253);
             btnBomSearch.Location = new Point(0, 282);
@@ -70,6 +71,7 @@ namespace BOM.BUS
 
         private void btnManage_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             //button3.FlatAppearance.BorderSize = 1;
             //BtnBOM.FlatAppearance.BorderSize = 1;
             //btnSales.FlatAppearance.BorderSize = 1;
@@ -98,6 +100,7 @@ namespace BOM.BUS
 
         private void btnSales_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             btnSales1.Location = new Point(0, 297);
             btnSi.Location = new Point(0, 326);
             btnchp.Location = new Point(0, 355);
@@ -211,7 +214,7 @@ namespace BOM.BUS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            lblFunctionName.Text = "";
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 297);
             button3.FlatAppearance.BorderSize = 3;
@@ -339,6 +342,7 @@ namespace BOM.BUS
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "발주 관리";
             CtrlOrderMain com = new CtrlOrderMain();
             btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(com);
@@ -355,6 +359,7 @@ namespace BOM.BUS
 
         private void button4_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "상품 관리";
             CtrlProducts cpd = new CtrlProducts();
             btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(cpd);
@@ -362,6 +367,7 @@ namespace BOM.BUS
 
         private void button6_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "자재 조회";
             CtrlMatMain cmm = new CtrlMatMain();
             btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(cmm);

@@ -211,6 +211,11 @@
       <DependentUpon>DataInsertForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DateInsert.cs" />
+    <Compile Include="FinalProjectDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinalProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -364,6 +369,17 @@
     <None Include="Excel\BillOfMaterials.xlsx" />
     <None Include="Excel\Shipment.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="FinalProjectDataSet.xsc">
+      <DependentUpon>FinalProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FinalProjectDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinalProjectDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FinalProjectDataSet.xss">
+      <DependentUpon>FinalProjectDataSet.xsd</DependentUpon>
     </None>
     <None Include="Font\NanumSquareRoundB.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -340,7 +340,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Shipment";
+            this.Text = "출하지시서";
             this.Load += new System.EventHandler(this.Shipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProList)).EndInit();
             this.ResumeLayout(false);

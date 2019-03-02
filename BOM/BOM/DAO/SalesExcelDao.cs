@@ -13,8 +13,15 @@ using Excel = Microsoft.Office.Interop.Excel;
 namespace BOM.DAO
 {
     class SalesExcelDao
-    {
-        
+    {        
+        /// <summary>
+        /// 주문내역을 엑셀로 출력하고 결과를 반환하는 메서드         
+        /// </summary>
+        /// <param name="orderInfoList">주문 정보 리스트</param>
+        /// <param name="productList">주문한 상품 리스트</param>
+        /// <param name="filePath">지정파일 경로</param>
+        /// <param name="filePath2">기존파일 경로</param>
+        /// <returns>저장결과 반환</returns>
         public string WriteExcelData(List<string> orderInfoList ,List<ShipmentVO> productList, string filePath, string filePath2)
         {
             string Ex;
@@ -30,7 +37,7 @@ namespace BOM.DAO
                 int addPrice = 0; // 총 금액
                 String oldStr = ","; // 문자열로 이뤄진 가격을 인트값으로 변경하기위한 변수
                 String newStr = ""; //문자열로 이뤄진 가격을 인트값으로 변경하기위한 변수                
-                wb = excelApp.Workbooks.Open(testPath); // 엑셀 파일열기 없으면 만드는건 추가예정 
+                wb = excelApp.Workbooks.Open(testPath); 
                 ws = wb.Worksheets.get_Item(1) as Excel.Worksheet; //워크시트 선택            
                 ws.Cells[3, 8] = orderInfoList[0]; //주문 번호
                 ws.Cells[8, 8] = orderInfoList[1]; //출하 날짜
@@ -75,8 +82,12 @@ namespace BOM.DAO
                 ReleaseExcelObject(excelApp);
             }
             return Ex = "명세서 저장 완료";
-        } //엑셀에 데이터 저장하는 메서드
-        private static void ReleaseExcelObject(object obj) //엑셀 사용이 끝나면 엑셀 메모리를 다 지위주는 메서드
+        } 
+        /// <summary>
+        /// 엑셀 사용후 엑셀 메모리를 지워주는 메서드
+        /// </summary>
+        /// <param name="obj">엑셀에 사용된 변수</param>
+        private static void ReleaseExcelObject(object obj) 
         {
             try
             {
@@ -96,7 +107,12 @@ namespace BOM.DAO
                 GC.Collect();
             }
         }
-        public string NumToString(Int64 HanglePrice) // 숫자로된 금액을 한글로 바꿔주는 메서드
+        /// <summary>
+        /// 숫자 입력시 한글로 표현해주는 메서드    
+        /// </summary>
+        /// <param name="HanglePrice">한글로 변경할 숫자 변수</param>
+        /// <returns>한글로 변환된 변수 반환</returns>
+        public string NumToString(Int64 HanglePrice) 
         {
             string HAmt = ""; // 한글로 변환된 변수
             string EAmt = ""; //바꿀 가격 변수
