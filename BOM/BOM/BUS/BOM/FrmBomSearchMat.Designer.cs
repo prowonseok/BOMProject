@@ -116,6 +116,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomSearchMat";
             this.Text = "FrmBomSearchMat";
             this.Load += new System.EventHandler(this.FrmBomSearchMat_Load);

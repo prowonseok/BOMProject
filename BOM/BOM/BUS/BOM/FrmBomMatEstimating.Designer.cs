@@ -175,6 +175,7 @@
             this.Controls.Add(this.btnSearchPro);
             this.Controls.Add(this.txtPName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomMatEstimating";
             this.Text = "FrmMatEstimating";
             this.Load += new System.EventHandler(this.FrmBomMatEstimating_Load);

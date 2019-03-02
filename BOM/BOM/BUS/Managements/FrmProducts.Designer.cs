@@ -382,6 +382,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.gbSpec);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmProducts";
             this.Text = "FrmProducts";
             this.Load += new System.EventHandler(this.FrmProducts_Load);

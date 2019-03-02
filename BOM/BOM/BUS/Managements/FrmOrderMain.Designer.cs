@@ -70,6 +70,7 @@
             this.Controls.Add(this.lblOrderList);
             this.Controls.Add(this.dgvMain);
             this.Controls.Add(this.btnOrder);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmOrderMain";
             this.Text = "FrmOrderMain";
             this.Load += new System.EventHandler(this.FrmOrderMain_Load);

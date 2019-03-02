@@ -166,6 +166,7 @@
             this.Controls.Add(this.dgvBom);
             this.Controls.Add(this.rdoImplosion);
             this.Controls.Add(this.rdoExplosion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomDetailInfo";
             this.Text = "FrmBomDetialInfo";
             this.Load += new System.EventHandler(this.FrmBomDetailInfo_Load);

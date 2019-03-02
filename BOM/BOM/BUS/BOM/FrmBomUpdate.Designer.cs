@@ -142,6 +142,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtEa);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomUpdate";
             this.Text = "FrmBomUpdate";
             this.Load += new System.EventHandler(this.FrmBomUpdate_Load);
