@@ -52,6 +52,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.btnDateInsert.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnBOM
@@ -273,6 +274,7 @@
             // btnDateInsert
             // 
             this.btnDateInsert.BackColor = System.Drawing.Color.White;
+            this.btnDateInsert.Controls.Add(this.button2);
             this.btnDateInsert.Location = new System.Drawing.Point(124, 79);
             this.btnDateInsert.Name = "btnDateInsert";
             this.btnDateInsert.Size = new System.Drawing.Size(838, 472);
@@ -340,7 +342,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(566, 26);
+            this.button2.Location = new System.Drawing.Point(438, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 23);
             this.button2.TabIndex = 14;
@@ -354,7 +356,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(963, 552);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnDateInsert);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);
@@ -375,9 +376,11 @@
             this.Controls.Add(this.btnchp);
             this.Controls.Add(this.btnBomMatEstimating);
             this.Controls.Add(this.btnma);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.Text = "BOM";
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.btnDateInsert.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

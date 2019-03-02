@@ -207,6 +207,7 @@
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SalesInquiry";
             this.Text = "SalesInquiry";
             this.Load += new System.EventHandler(this.SalesInquiry_Load);

@@ -71,12 +71,6 @@
             this.comboOffList = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbl6 = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl3 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.lbl5 = new System.Windows.Forms.Label();
-            this.lbl4 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -102,6 +96,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -604,60 +604,6 @@
             this.splitContainer1.SplitterDistance = 229;
             this.splitContainer1.TabIndex = 46;
             // 
-            // lbl6
-            // 
-            this.lbl6.AutoSize = true;
-            this.lbl6.Location = new System.Drawing.Point(86, 227);
-            this.lbl6.Name = "lbl6";
-            this.lbl6.Size = new System.Drawing.Size(41, 15);
-            this.lbl6.TabIndex = 58;
-            this.lbl6.Text = "\\asdf";
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(86, 49);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(41, 15);
-            this.lbl1.TabIndex = 53;
-            this.lbl1.Text = "\\asdf";
-            // 
-            // lbl3
-            // 
-            this.lbl3.AutoSize = true;
-            this.lbl3.Location = new System.Drawing.Point(86, 120);
-            this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(41, 15);
-            this.lbl3.TabIndex = 55;
-            this.lbl3.Text = "\\asdf";
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(86, 85);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(41, 15);
-            this.lbl2.TabIndex = 54;
-            this.lbl2.Text = "\\asdf";
-            // 
-            // lbl5
-            // 
-            this.lbl5.AutoSize = true;
-            this.lbl5.Location = new System.Drawing.Point(86, 191);
-            this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(41, 15);
-            this.lbl5.TabIndex = 57;
-            this.lbl5.Text = "\\asdf";
-            // 
-            // lbl4
-            // 
-            this.lbl4.AutoSize = true;
-            this.lbl4.Location = new System.Drawing.Point(86, 155);
-            this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(41, 15);
-            this.lbl4.TabIndex = 56;
-            this.lbl4.Text = "\\asdf";
-            // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -887,6 +833,54 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "거래처 관리";
             // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.Location = new System.Drawing.Point(86, 155);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(0, 15);
+            this.lbl4.TabIndex = 56;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.Location = new System.Drawing.Point(86, 191);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(0, 15);
+            this.lbl5.TabIndex = 57;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.Location = new System.Drawing.Point(86, 85);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(0, 15);
+            this.lbl2.TabIndex = 54;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.Location = new System.Drawing.Point(86, 120);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(0, 15);
+            this.lbl3.TabIndex = 55;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(86, 49);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(0, 15);
+            this.lbl1.TabIndex = 53;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.Location = new System.Drawing.Point(86, 227);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(0, 15);
+            this.lbl6.TabIndex = 58;
+            // 
             // TraderSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -980,12 +974,6 @@
         private System.Windows.Forms.ComboBox comboOff;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lbl6;
-        private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.Label lbl3;
-        private System.Windows.Forms.Label lbl2;
-        private System.Windows.Forms.Label lbl5;
-        private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
@@ -993,5 +981,11 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl4;
     }
 }

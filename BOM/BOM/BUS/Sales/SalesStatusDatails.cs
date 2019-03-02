@@ -27,6 +27,7 @@ namespace BOM.BUS.Sales
         
         private void SalesStatusDatails_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(391, 442);
             if (thisContantsIndex == -1)
             {
 
@@ -75,6 +76,11 @@ namespace BOM.BUS.Sales
         {
             Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text), lblCusID.Text); 
             s.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

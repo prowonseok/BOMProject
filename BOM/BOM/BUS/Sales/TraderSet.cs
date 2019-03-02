@@ -77,6 +77,7 @@ namespace BOM.BUS.Sales
             else
             {
                 label18.Visible = label19.Visible = label20.Visible = label21.Visible = label22.Visible = true;
+                MessageBox.Show("필수 입력값을 입력하세요!");
             }
         }
         int offNo;

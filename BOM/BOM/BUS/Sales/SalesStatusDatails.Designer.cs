@@ -122,8 +122,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
+            this.button3.Text = "나가기";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label4
             // 
@@ -291,7 +292,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(400, 405);
+            this.ClientSize = new System.Drawing.Size(375, 404);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblAddr);
             this.Controls.Add(this.lblPhone);
