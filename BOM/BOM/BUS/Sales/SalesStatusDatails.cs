@@ -21,37 +21,32 @@ namespace BOM.BUS.Sales
         public SalesStatusDatails(int contantsIndex)
         {
             InitializeComponent();
-
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
             thisContantsIndex = contantsIndex;
         }
         
         private void SalesStatusDatails_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(391, 442);
             if (thisContantsIndex == -1)
             {
 
             }
             else
             {
-                SalesInfo();
-                
+                SalesInfo();                
                 if (Int32.Parse(lblProEA.Text.Replace(" 개", "")) > Int32.Parse(lblProductCount.Text.Replace(" 개", "")))
                 {
                     btn1.Enabled = true;
                 }
-            }
-                       
+            }                       
         }
         /// <summary>
         /// 주문내역을 상세하게 보여주는 메서드
         /// </summary>
         private void SalesInfo()
-        {
-            //SqlParameter[] sqlParameters = new SqlParameter[1];
-            //sqlParameters[0] = new SqlParameter("@Order_No", thisContantsIndex);
+        {            
             DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_ProSelect2_Procedure", null);
-
             lblOrderNo.Text = dataTable.Rows[thisContantsIndex]["Cus_Order_OrderNo"].ToString();
             productsName = lblCusID.Text = dataTable.Rows[thisContantsIndex]["Cus_ID"].ToString();
             lblProName.Text = dataTable.Rows[thisContantsIndex]["Pro_Name"].ToString();
@@ -79,8 +74,13 @@ namespace BOM.BUS.Sales
         /// <param name="e"></param>
         private void btn2_Click(object sender, EventArgs e)
         {
-            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text)); 
+            Shipment s = new Shipment(Int32.Parse(lblOrderNo.Text), lblCusID.Text); 
             s.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

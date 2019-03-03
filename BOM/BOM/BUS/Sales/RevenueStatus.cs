@@ -27,7 +27,11 @@ namespace BOM.BUS.Sales
             //revenueList = new List<RevenueVO>();
             //comparisonRevenueList = new List<RevenueVO>();
         }
-
+        /// <summary>
+        /// 매출을 그리드뷰와 차트에 표시하는 핸들러
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string startDate = "";
@@ -45,7 +49,11 @@ namespace BOM.BUS.Sales
                 
             }
         }
-
+        /// <summary>
+        /// 매출데이터를 그리드뷰에 표시하는 메서드
+        /// </summary>
+        /// <param name="startDate">조회할 시작 데이터</param>
+        /// <param name="endDate">조회할 마지막 데이터</param>
         private void RevenueSearch(string startDate, string endDate) //매출 조회하는 기능
         {
             revenueList.Clear();
@@ -64,8 +72,13 @@ namespace BOM.BUS.Sales
             }            
         }
         
-
-        private void ChartView(List<RevenueVO> List,string ChartSeriesName, int ChartSeriesNo) //차트에 데이터 표시하는 메서드
+        /// <summary>
+        /// 리스트에 있는 매출데이터를 차트에 표시
+        /// </summary>
+        /// <param name="List">차트에 표시할 매출 리스트</param>
+        /// <param name="ChartSeriesName">시리즈 이름</param>
+        /// <param name="ChartSeriesNo">시리즈 번호</param>
+        private void ChartView(List<RevenueVO> List,string ChartSeriesName, int ChartSeriesNo) 
         {
             if (List.Count !=0)
             {
@@ -117,7 +130,11 @@ namespace BOM.BUS.Sales
             lbl2.Visible = label3.Visible = dtpStart.Visible = dtpEnd.Visible = dtpComparison1.Enabled = dtpComparison2.Enabled = btnComparison.Enabled = false;            
             label6.Visible = comboProduct.Visible = true;
         }
-
+        /// <summary>
+        /// 비교할 매출데이터를 표시하는 핸들러
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnComparison_Click(object sender, EventArgs e)
         {
             string comStartDate = dtpComparison1.Value.ToShortDateString();

@@ -81,7 +81,7 @@
             this.lbl1.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl1.Location = new System.Drawing.Point(48, 115);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(29, 14);
+            this.lbl1.Size = new System.Drawing.Size(31, 14);
             this.lbl1.TabIndex = 3;
             this.lbl1.Text = "상품";
             // 
@@ -91,7 +91,7 @@
             this.lbl2.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl2.Location = new System.Drawing.Point(20, 207);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(54, 14);
+            this.lbl2.Size = new System.Drawing.Size(59, 14);
             this.lbl2.TabIndex = 4;
             this.lbl2.Text = "변경 단가";
             // 
@@ -101,27 +101,27 @@
             this.lbl3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl3.Location = new System.Drawing.Point(20, 259);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(54, 14);
+            this.lbl3.Size = new System.Drawing.Size(59, 14);
             this.lbl3.TabIndex = 5;
             this.lbl3.Text = "변경 날짜";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(19, 144);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 14);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "현재 단가";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblPrice.Location = new System.Drawing.Point(87, 144);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(0, 14);
+            this.lblPrice.Size = new System.Drawing.Size(0, 15);
             this.lblPrice.TabIndex = 7;
             // 
             // btnChainge
@@ -149,20 +149,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(7, 171);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 14);
+            this.label2.Size = new System.Drawing.Size(76, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "변경된 날짜";
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblDate.Location = new System.Drawing.Point(87, 171);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(0, 14);
+            this.lblDate.Size = new System.Drawing.Size(0, 15);
             this.lblDate.TabIndex = 11;
             // 
             // label3
@@ -171,17 +171,17 @@
             this.label3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(187, 208);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 14);
+            this.label3.Size = new System.Drawing.Size(19, 14);
             this.label3.TabIndex = 12;
             this.label3.Text = "원";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.Location = new System.Drawing.Point(18, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 24);
+            this.label11.Size = new System.Drawing.Size(151, 25);
             this.label11.TabIndex = 28;
             this.label11.Text = "제품 가격변경";
             // 
@@ -200,7 +200,7 @@
             this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(207, 208);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 14);
+            this.label5.Size = new System.Drawing.Size(107, 14);
             this.label5.TabIndex = 30;
             this.label5.Text = "*억 단위까지 지원";
             // 
@@ -210,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(330, 350);
+            this.ClientSize = new System.Drawing.Size(324, 347);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label11);
@@ -227,8 +227,9 @@
             this.Controls.Add(this.dtp1);
             this.Controls.Add(this.txtChaingePrice);
             this.Controls.Add(this.comboProduct);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ChaingePrice";
-            this.Text = "ChaingePrice";
+            this.Text = "제품 단가변경";
             this.Load += new System.EventHandler(this.ChaingePrice_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

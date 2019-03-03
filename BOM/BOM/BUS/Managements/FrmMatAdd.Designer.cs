@@ -254,6 +254,7 @@
             this.Controls.Add(this.lblManufac);
             this.Controls.Add(this.lblMatType);
             this.Controls.Add(this.lblMatNo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmMatAdd";
             this.Text = "자재 등록";
             this.Load += new System.EventHandler(this.FrmMatAdd_Load);

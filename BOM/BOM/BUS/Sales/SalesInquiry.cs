@@ -161,14 +161,22 @@ namespace BOM.BUS.Sales
             int checkRowIndex = 0;// 체크된 로우의 인덱스 값
             int numOfRepit = 0; // 로우 반복횟수.
             foreach (DataGridViewRow item in dataGridView1.Rows)
-            {
-                numOfRepit++;                
+            {                            
                 if (Convert.ToBoolean(item.Cells[0].Value))
                 {
-                    NoCheckCount++;                    
-                }               
+                    NoCheckCount++;
+                    //MessageBox.Show(NoCheckCount.ToString()); //체크 되면 들어와
+                    checkRowIndex = numOfRepit;
+                }
+                else
+                {
+                    
+                }
+                numOfRepit++;
             }
+            
             checkRowIndex = Int32.Parse(dataGridView1.Rows[checkRowIndex].Cells[1].Value.ToString());
+
             if (NoCheckCount == 0)
             {
                 MessageBox.Show("체크한 목록이 없습니다.");
@@ -187,6 +195,7 @@ namespace BOM.BUS.Sales
         {
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
             dataGridView1.Columns.Add(chk);
+            
             btnSearch_Click(null, null);
             dataGridView1.Font = new Font("맑은고딕", 9);
 

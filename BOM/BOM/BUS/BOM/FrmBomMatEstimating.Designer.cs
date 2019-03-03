@@ -101,7 +101,6 @@
             this.txtEA.Name = "txtEA";
             this.txtEA.Size = new System.Drawing.Size(148, 23);
             this.txtEA.TabIndex = 6;
-            this.txtEA.Text = "1";
             // 
             // label3
             // 
@@ -175,8 +174,10 @@
             this.Controls.Add(this.btnSearchPro);
             this.Controls.Add(this.txtPName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomMatEstimating";
-            this.Text = "FrmMatEstimating";
+            this.Text = "소요량 예측";
+            this.Load += new System.EventHandler(this.FrmBomMatEstimating_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

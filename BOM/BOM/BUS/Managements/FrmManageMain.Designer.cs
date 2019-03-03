@@ -75,6 +75,7 @@
             this.ClientSize = new System.Drawing.Size(872, 457);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmManageMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmManageMain_Load);

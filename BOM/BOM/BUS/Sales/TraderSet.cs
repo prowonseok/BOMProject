@@ -77,6 +77,7 @@ namespace BOM.BUS.Sales
             else
             {
                 label18.Visible = label19.Visible = label20.Visible = label21.Visible = label22.Visible = true;
+                MessageBox.Show("필수 입력값을 입력하세요!");
             }
         }
         int offNo;
@@ -261,6 +262,22 @@ namespace BOM.BUS.Sales
         private void button7_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtOffMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtManagerMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

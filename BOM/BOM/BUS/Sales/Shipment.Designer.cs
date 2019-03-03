@@ -275,9 +275,9 @@
             // 
             this.btnPath.Enabled = false;
             this.btnPath.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnPath.Location = new System.Drawing.Point(429, 460);
+            this.btnPath.Location = new System.Drawing.Point(414, 460);
             this.btnPath.Name = "btnPath";
-            this.btnPath.Size = new System.Drawing.Size(66, 23);
+            this.btnPath.Size = new System.Drawing.Size(81, 23);
             this.btnPath.TabIndex = 25;
             this.btnPath.Text = "경로 지정";
             this.btnPath.UseVisualStyleBackColor = true;
@@ -340,7 +340,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Shipment";
+            this.Text = "출하지시서";
             this.Load += new System.EventHandler(this.Shipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProList)).EndInit();
             this.ResumeLayout(false);

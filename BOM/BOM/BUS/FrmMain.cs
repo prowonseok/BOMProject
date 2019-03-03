@@ -41,6 +41,7 @@ namespace BOM.BUS
         /// <param name="e"></param>
         private void BtnBOM_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             btnBomMain.Location = new Point(0, 224);
             btnBomAdd.Location = new Point(0, 253);
             btnBomSearch.Location = new Point(0, 282);
@@ -50,8 +51,8 @@ namespace BOM.BUS
             btnManage.Location = new Point(0, 443);
 
             FrmBomInfoControl fbic = new FrmBomInfoControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fbic);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fbic);
             btnBomMain.Visible = true;
             btnBomAdd.Visible = true;
             btnBomMatEstimating.Visible = true;
@@ -70,6 +71,7 @@ namespace BOM.BUS
 
         private void btnManage_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             //button3.FlatAppearance.BorderSize = 1;
             //BtnBOM.FlatAppearance.BorderSize = 1;
             //btnSales.FlatAppearance.BorderSize = 1;
@@ -98,6 +100,7 @@ namespace BOM.BUS
 
         private void btnSales_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "";
             btnSales1.Location = new Point(0, 297);
             btnSi.Location = new Point(0, 326);
             btnchp.Location = new Point(0, 355);
@@ -117,37 +120,20 @@ namespace BOM.BUS
 
        
         private void FrmMain_Load(object sender, EventArgs e)
-        {
-
-            //ThreadStart ts = new ThreadStart(timer2_Tick(null, null));
-            //Thread t = new Thread(CurrentTime);
-            //t.Start();
-            //CheckForIllegalCrossThreadCalls = false;
+        {            
             FrmMainControl fmc = new FrmMainControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fmc);
-
-            
-
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fmc);
 
             btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
             button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
-           
-            
-
-
 
             btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
             button1.ForeColor = button4.ForeColor = button5.ForeColor = button6.ForeColor = Color.White;
             button3.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
 
-
             do
             {
-                
-
-               
-
                 btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
                 button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
 
@@ -161,10 +147,7 @@ namespace BOM.BUS
                 }
 
             } while (false);
-            
-
-            
-
+                    
             btnBomMain.Visible = false;
             btnBomAdd.Visible = false;
             btnBomMatEstimating.Visible = false;
@@ -182,35 +165,35 @@ namespace BOM.BUS
 
         }
 
-        private void Test()
-        {
-            salesList.Clear();
-            dgvMainSales.DataSource = null;
-            DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_MainSelect_Procedure", null);
-            foreach (DataRow item in dataTable.Rows)
-            {
-                salesList.Add(new Cus_OrderVO
-                {
-                    OrderNo = Int32.Parse(item["Cus_Order_OrderNo"].ToString()),
-                    CusID = item["Cus_ID"].ToString(),
-                    OrderContants = item["Pro_Name"].ToString() + ", " + item["Cus_Order_EA"].ToString() + " 개",
-                    OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
-                });                
-            }
+        //private void Test()
+        //{
+        //    salesList.Clear();
+        //    dgvMainSales.DataSource = null;
+        //    DataTable dataTable = dbp.ExecuteParametersDT("Bom_JW_MainSelect_Procedure", null);
+        //    foreach (DataRow item in dataTable.Rows)
+        //    {
+        //        salesList.Add(new Cus_OrderVO
+        //        {
+        //            OrderNo = Int32.Parse(item["Cus_Order_OrderNo"].ToString()),
+        //            CusID = item["Cus_ID"].ToString(),
+        //            OrderContants = item["Pro_Name"].ToString() + ", " + item["Cus_Order_EA"].ToString() + " 개",
+        //            OrderDate = DateTime.Parse(item["Cus_Order_Date"].ToString())
+        //        });                
+        //    }
 
-            dgvMainSales.DataSource = salesList;
-            //dgvMainSales.AutoResizeColumns();
-            dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvMainSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dgvMainSales.Columns[0].Width = 70;
-            dgvMainSales.Columns[1].Width = 80;
-            dgvMainSales.Columns[3].Width = 150;
-            dgvMainSales.Columns[0].HeaderText = "주문번호";
-            dgvMainSales.Columns[1].HeaderText = "고객명";
-            dgvMainSales.Columns[2].HeaderText = "주문내용";
-            dgvMainSales.Columns[3].HeaderText = "주문날짜";
+        //    dgvMainSales.DataSource = salesList;
+        //    //dgvMainSales.AutoResizeColumns();
+        //    dgvMainSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        //    dgvMainSales.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+        //    dgvMainSales.Columns[0].Width = 70;
+        //    dgvMainSales.Columns[1].Width = 80;
+        //    dgvMainSales.Columns[3].Width = 150;
+        //    dgvMainSales.Columns[0].HeaderText = "주문번호";
+        //    dgvMainSales.Columns[1].HeaderText = "고객명";
+        //    dgvMainSales.Columns[2].HeaderText = "주문내용";
+        //    dgvMainSales.Columns[3].HeaderText = "주문날짜";
 
-        }
+        //}
 
         private void dgvMainSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -226,25 +209,12 @@ namespace BOM.BUS
         }
         
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Test();
-        }
+        
 
-        private void button2_Click(object sender, EventArgs e)
-
-        {
-            Test();
-        }
-
-        private void 상품관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            lblFunctionName.Text = "";
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 297);
             button3.FlatAppearance.BorderSize = 3;
@@ -253,8 +223,8 @@ namespace BOM.BUS
             btnManage.FlatAppearance.BorderSize = 1;
             btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible = false;
             FrmMainControl fmc = new FrmMainControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fmc);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fmc);
         }
 
         private void btnBomAdd_Click(object sender, EventArgs e)
@@ -295,8 +265,8 @@ namespace BOM.BUS
             lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t') + 2);
 
             FrmBomProEstimatingControl fbpe = new FrmBomProEstimatingControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fbpe);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fbpe);
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -307,8 +277,8 @@ namespace BOM.BUS
         {
             lblFunctionName.Text = "판매 조회";
             FrmSalesInquiryControl fs = new FrmSalesInquiryControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fs);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fs);
         }
 
         private void btnSi_Click(object sender, EventArgs e)
@@ -327,8 +297,8 @@ namespace BOM.BUS
         {
             lblFunctionName.Text = "매출 조회";
             FrmRevenueStatusControl fr = new FrmRevenueStatusControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fr);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fr);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -353,7 +323,7 @@ namespace BOM.BUS
             //txtTimer.Text = DateTime.Now.ToLongTimeString();
 
 
-            txtTimer.Text = DateTime.Now.ToLongTimeString();
+            //txtTimer.Text = DateTime.Now.ToLongTimeString();
 
         }
 
@@ -366,45 +336,54 @@ namespace BOM.BUS
         {
             lblFunctionName.Text = sender.ToString().Substring(sender.ToString().LastIndexOf('t')+2);
             FrmBomInfoControl fbic = new FrmBomInfoControl();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(fbic);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(fbic);
 
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "발주 관리";
             CtrlOrderMain com = new CtrlOrderMain();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(com);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(com);
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             CtrlMatMain cmm = new CtrlMatMain();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(cmm);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(cmm);
             cmm.btnMatAdd_Click(null, null);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "상품 관리";
             CtrlProducts cpd = new CtrlProducts();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(cpd);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(cpd);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "자재 조회";
             CtrlMatMain cmm = new CtrlMatMain();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(cmm);
+            btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(cmm);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataInsertForm d = new DataInsertForm();
+            d.Show();
         }
 
         private void btnAS_Click(object sender, EventArgs e)
         {
             CtrlAS cas = new CtrlAS();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(cas);
+             btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(cas);
         }
     }
 }

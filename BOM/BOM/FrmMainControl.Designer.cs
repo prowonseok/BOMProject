@@ -56,7 +56,7 @@
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(476, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 14);
+            this.label1.Size = new System.Drawing.Size(131, 14);
             this.label1.TabIndex = 8;
             this.label1.Text = "1분마다 자동으로 갱신";
             // 
@@ -78,7 +78,7 @@
             this.txtTimer.ForeColor = System.Drawing.Color.Black;
             this.txtTimer.Location = new System.Drawing.Point(575, 359);
             this.txtTimer.Name = "txtTimer";
-            this.txtTimer.Size = new System.Drawing.Size(35, 14);
+            this.txtTimer.Size = new System.Drawing.Size(39, 14);
             this.txtTimer.TabIndex = 10;
             this.txtTimer.Text = "Time";
             // 
@@ -90,7 +90,7 @@
             // 
             // timer2
             // 
-            this.timer2.Interval = 60000;
+            this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // FrmMainControl

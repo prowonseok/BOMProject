@@ -17,7 +17,12 @@ namespace BOM.DAO
         DBProcessor dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         DataTable dt = new DataTable();
         List<RevenueVO> RevenueList1 = new List<RevenueVO>();
-
+        /// <summary>
+        /// 매출 정보를 반환하는 메서드
+        /// </summary>
+        /// <param name="startDate">조회할 시작날짜</param>
+        /// <param name="endDate">조회할 마지막날짜</param>
+        /// <returns>매출정보 반환</returns>
         internal List<RevenueVO> Revenue(string startDate, string endDate)
         {
             RevenueList1.Clear();

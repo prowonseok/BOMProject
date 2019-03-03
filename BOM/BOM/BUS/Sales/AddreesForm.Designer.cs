@@ -75,7 +75,7 @@
             // btnPre
             // 
             this.btnPre.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnPre.Location = new System.Drawing.Point(335, 415);
+            this.btnPre.Location = new System.Drawing.Point(327, 415);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(33, 23);
             this.btnPre.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             this.lblTest.AutoSize = true;
             this.lblTest.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTest.Location = new System.Drawing.Point(374, 421);
+            this.lblTest.Location = new System.Drawing.Point(366, 421);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(0, 15);
             this.lblTest.TabIndex = 5;
@@ -162,8 +162,9 @@
             this.Controls.Add(this.dgvAddr);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchAddr);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddreesForm";
-            this.Text = "Addrees";
+            this.Text = "주소검색";
             this.Load += new System.EventHandler(this.AddreesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddr)).EndInit();
             this.ResumeLayout(false);

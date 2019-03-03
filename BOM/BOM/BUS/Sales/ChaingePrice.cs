@@ -15,7 +15,6 @@ namespace BOM.BUS.Sales
     public partial class ChaingePrice : Form
     {
         List<ProductsListVO> productsList = new List<ProductsListVO>();
-
           
         public ChaingePrice()
         {
@@ -24,8 +23,7 @@ namespace BOM.BUS.Sales
 
         private void ChaingePrice_Load(object sender, EventArgs e) //
         {
-            PriceView();
-            
+            PriceView();            
         }
         /// <summary>
         /// Price폼에 상품 목록 불러오는 메서드

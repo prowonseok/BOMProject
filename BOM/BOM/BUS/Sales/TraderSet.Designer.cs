@@ -71,12 +71,6 @@
             this.comboOffList = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbl6 = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl3 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.lbl5 = new System.Windows.Forms.Label();
-            this.lbl4 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -102,6 +96,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -172,7 +172,7 @@
             this.label22.ForeColor = System.Drawing.Color.Red;
             this.label22.Location = new System.Drawing.Point(267, 267);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(51, 14);
+            this.label22.Size = new System.Drawing.Size(55, 14);
             this.label22.TabIndex = 18;
             this.label22.Text = "필수항목";
             this.label22.Visible = false;
@@ -184,7 +184,7 @@
             this.label21.ForeColor = System.Drawing.Color.Red;
             this.label21.Location = new System.Drawing.Point(267, 232);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(51, 14);
+            this.label21.Size = new System.Drawing.Size(55, 14);
             this.label21.TabIndex = 17;
             this.label21.Text = "필수항목";
             this.label21.Visible = false;
@@ -196,7 +196,7 @@
             this.label20.ForeColor = System.Drawing.Color.Red;
             this.label20.Location = new System.Drawing.Point(208, 191);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 14);
+            this.label20.Size = new System.Drawing.Size(55, 14);
             this.label20.TabIndex = 16;
             this.label20.Text = "필수항목";
             this.label20.Visible = false;
@@ -208,7 +208,7 @@
             this.label19.ForeColor = System.Drawing.Color.Red;
             this.label19.Location = new System.Drawing.Point(267, 86);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 14);
+            this.label19.Size = new System.Drawing.Size(55, 14);
             this.label19.TabIndex = 15;
             this.label19.Text = "필수항목";
             this.label19.Visible = false;
@@ -220,7 +220,7 @@
             this.label18.ForeColor = System.Drawing.Color.Red;
             this.label18.Location = new System.Drawing.Point(267, 47);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 14);
+            this.label18.Size = new System.Drawing.Size(55, 14);
             this.label18.TabIndex = 14;
             this.label18.Text = "필수항목";
             this.label18.Visible = false;
@@ -243,6 +243,7 @@
             this.txtManagerMobile.Name = "txtManagerMobile";
             this.txtManagerMobile.Size = new System.Drawing.Size(136, 21);
             this.txtManagerMobile.TabIndex = 11;
+            this.txtManagerMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtManagerMobile_KeyPress);
             // 
             // txtManager
             // 
@@ -267,6 +268,7 @@
             this.txtOffMobile.Name = "txtOffMobile";
             this.txtOffMobile.Size = new System.Drawing.Size(138, 21);
             this.txtOffMobile.TabIndex = 8;
+            this.txtOffMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOffMobile_KeyPress);
             // 
             // txtOwnerName
             // 
@@ -290,7 +292,7 @@
             this.label8.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(50, 269);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 14);
+            this.label8.Size = new System.Drawing.Size(71, 14);
             this.label8.TabIndex = 5;
             this.label8.Text = "담당자 번호";
             // 
@@ -300,7 +302,7 @@
             this.label7.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(50, 234);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 14);
+            this.label7.Size = new System.Drawing.Size(43, 14);
             this.label7.TabIndex = 4;
             this.label7.Text = "담당자";
             // 
@@ -310,7 +312,7 @@
             this.label6.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(50, 162);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 14);
+            this.label6.Size = new System.Drawing.Size(31, 14);
             this.label6.TabIndex = 3;
             this.label6.Text = "주소";
             // 
@@ -320,7 +322,7 @@
             this.label5.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.Location = new System.Drawing.Point(50, 125);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 14);
+            this.label5.Size = new System.Drawing.Size(55, 14);
             this.label5.TabIndex = 2;
             this.label5.Text = "대표번호";
             // 
@@ -330,7 +332,7 @@
             this.label4.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.Location = new System.Drawing.Point(50, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 14);
+            this.label4.Size = new System.Drawing.Size(43, 14);
             this.label4.TabIndex = 1;
             this.label4.Text = "대표명";
             // 
@@ -340,7 +342,7 @@
             this.label3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(50, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 14);
+            this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "거래처명";
             // 
@@ -602,60 +604,6 @@
             this.splitContainer1.SplitterDistance = 229;
             this.splitContainer1.TabIndex = 46;
             // 
-            // lbl6
-            // 
-            this.lbl6.AutoSize = true;
-            this.lbl6.Location = new System.Drawing.Point(86, 227);
-            this.lbl6.Name = "lbl6";
-            this.lbl6.Size = new System.Drawing.Size(41, 15);
-            this.lbl6.TabIndex = 58;
-            this.lbl6.Text = "\\asdf";
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(86, 49);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(41, 15);
-            this.lbl1.TabIndex = 53;
-            this.lbl1.Text = "\\asdf";
-            // 
-            // lbl3
-            // 
-            this.lbl3.AutoSize = true;
-            this.lbl3.Location = new System.Drawing.Point(86, 120);
-            this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(41, 15);
-            this.lbl3.TabIndex = 55;
-            this.lbl3.Text = "\\asdf";
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(86, 85);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(41, 15);
-            this.lbl2.TabIndex = 54;
-            this.lbl2.Text = "\\asdf";
-            // 
-            // lbl5
-            // 
-            this.lbl5.AutoSize = true;
-            this.lbl5.Location = new System.Drawing.Point(86, 191);
-            this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(41, 15);
-            this.lbl5.TabIndex = 57;
-            this.lbl5.Text = "\\asdf";
-            // 
-            // lbl4
-            // 
-            this.lbl4.AutoSize = true;
-            this.lbl4.Location = new System.Drawing.Point(86, 155);
-            this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(41, 15);
-            this.lbl4.TabIndex = 56;
-            this.lbl4.Text = "\\asdf";
-            // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -885,6 +833,54 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "거래처 관리";
             // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.Location = new System.Drawing.Point(86, 155);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(0, 15);
+            this.lbl4.TabIndex = 56;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.Location = new System.Drawing.Point(86, 191);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(0, 15);
+            this.lbl5.TabIndex = 57;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.Location = new System.Drawing.Point(86, 85);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(0, 15);
+            this.lbl2.TabIndex = 54;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.Location = new System.Drawing.Point(86, 120);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(0, 15);
+            this.lbl3.TabIndex = 55;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(86, 49);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(0, 15);
+            this.lbl1.TabIndex = 53;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.Location = new System.Drawing.Point(86, 227);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(0, 15);
+            this.lbl6.TabIndex = 58;
+            // 
             // TraderSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -893,8 +889,9 @@
             this.ClientSize = new System.Drawing.Size(497, 423);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TraderSet";
-            this.Text = "TraderSet";
+            this.Text = "거래처관리";
             this.Load += new System.EventHandler(this.TraderSet_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -977,12 +974,6 @@
         private System.Windows.Forms.ComboBox comboOff;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lbl6;
-        private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.Label lbl3;
-        private System.Windows.Forms.Label lbl2;
-        private System.Windows.Forms.Label lbl5;
-        private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
@@ -990,5 +981,11 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl4;
     }
 }

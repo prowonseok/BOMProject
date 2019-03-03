@@ -98,16 +98,13 @@ namespace BOM.BUS.Sales
                     MessageBox.Show("검색된 주소결과가 없습니다");
                     lblTest.Text = "";
                     return;
-
                 }
-
-            }
-            
+            }            
         }
         /// <summary>
         /// 공공데이터 포털에 주소API를 이용하여 주소검색을하고 검색결과를 가져오는 메서드
         /// </summary>
-        /// <returns>API에서 받은 데이터를 XML형식으로 만든 변수</returns>
+        /// <returns>API에서 받은 데이터를 XML로 반환</returns>
         private XmlDocument xmldocument() 
         {
             string serverUrl = "http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdSearchAllService/retrieveNewAdressAreaCdSearchAllService/getNewAddressListAreaCdSearchAll?ServiceKey=jwwy5dPFIMUMXJHkr2SEzG4v%2BH9OQHKzRCHg0B9cy%2B1ycgHLgWGpQU7HFCCCvp78YqiGeLpyLv5p6N8KCWkHVg%3D%3D&countPerPage=10&currentPage=" + page + "&srchwrd=" + txtSearchAddr.Text;

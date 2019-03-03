@@ -21,16 +21,14 @@ namespace BOM
         DBProcessor dbp;
         List<Cus_OrderVO> salesList;
         public FrmMainControl()
-        {
-            InitializeComponent();
+        {            InitializeComponent();
             dbp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
-            salesList = new List<Cus_OrderVO>();
-
-            
+            salesList = new List<Cus_OrderVO>();            
         }
 
         private void FrmMainControl_Load(object sender, EventArgs e)
         {
+            
             dgvMainSales.Font = new Font("맑은고딕", 9);
             RealTiemSales();
         }
@@ -74,7 +72,6 @@ namespace BOM
         {
             if (e.RowIndex == -1)
             {
-
             }
             else
             {

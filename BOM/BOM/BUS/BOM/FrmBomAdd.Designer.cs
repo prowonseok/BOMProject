@@ -284,6 +284,7 @@
             this.Controls.Add(this.trvMat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomAdd";
             this.Text = "BOM등록";
             this.Load += new System.EventHandler(this.FrmBomAdd_Load);
