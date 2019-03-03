@@ -152,7 +152,7 @@ namespace BOM.BUS.Managements
                 {
                     foreach (OrderInfo item in asList)
                     {
-                        mdao.UpdateEAMate(asNo, item.Mat_No, item.Mat_EA, item.TotalCost);
+                        mdao.ProcessAS(asNo, item.Mat_No, item.Mat_EA, item.TotalCost);
                     }
                     MessageBox.Show("교체 성공");
                     Close();

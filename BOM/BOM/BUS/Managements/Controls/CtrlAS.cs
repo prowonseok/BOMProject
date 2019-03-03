@@ -31,12 +31,14 @@ namespace BOM.BUS.Managements
         {
             FrmASDetails fad = new FrmASDetails(dgvASList.SelectedRows[0]);
             fad.ShowDialog();
+            asdao.SetASDate(int.Parse(dgvASList.SelectedRows[0].Cells[0].Value.ToString()));
 
         }
 
         private void btnASList_Click(object sender, EventArgs e)
         {
-
+            FrmASConfirmList facl = new FrmASConfirmList();
+            facl.ShowDialog();
         }
     }
 }

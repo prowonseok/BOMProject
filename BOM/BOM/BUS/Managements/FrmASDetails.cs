@@ -30,13 +30,18 @@ namespace BOM.BUS.Managements
             tbCost.Text = dataGridViewRow.Cells[5].Value.ToString();
             tbStartDate.Text = dataGridViewRow.Cells[6].Value.ToString();
             tbEndDate.Text = dataGridViewRow.Cells[7].Value.ToString();
-            tbEndDate.Text = dataGridViewRow.Cells[8].Value.ToString();
+            tbEmployee.Text = dataGridViewRow.Cells[8].Value.ToString();
         }
 
         private void btnASFix_Click(object sender, EventArgs e)
         {
             FrmASProcess fas = new FrmASProcess(int.Parse(tbASNo.Text));
             fas.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

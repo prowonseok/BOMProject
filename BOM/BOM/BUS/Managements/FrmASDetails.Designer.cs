@@ -47,6 +47,7 @@
             this.tbProdName = new System.Windows.Forms.TextBox();
             this.tbCost = new System.Windows.Forms.TextBox();
             this.tbEndDate = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnASFix
@@ -213,11 +214,22 @@
             this.tbEndDate.Size = new System.Drawing.Size(100, 21);
             this.tbEndDate.TabIndex = 18;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(250, 493);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // FrmASDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 546);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbEndDate);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.tbProdName);
@@ -266,5 +278,6 @@
         private System.Windows.Forms.TextBox tbProdName;
         private System.Windows.Forms.TextBox tbCost;
         private System.Windows.Forms.TextBox tbEndDate;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

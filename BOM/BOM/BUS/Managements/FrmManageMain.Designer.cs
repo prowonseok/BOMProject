@@ -32,7 +32,6 @@
             this.dgvMatList = new System.Windows.Forms.DataGridView();
             this.checkCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnTypeAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,22 +68,11 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnTypeAdd
-            // 
-            this.btnTypeAdd.Location = new System.Drawing.Point(704, 412);
-            this.btnTypeAdd.Name = "btnTypeAdd";
-            this.btnTypeAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnTypeAdd.TabIndex = 5;
-            this.btnTypeAdd.Text = "분류 등록";
-            this.btnTypeAdd.UseVisualStyleBackColor = true;
-            this.btnTypeAdd.Click += new System.EventHandler(this.btnTypeAdd_Click);
-            // 
             // FrmManageMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 498);
-            this.Controls.Add(this.btnTypeAdd);
+            this.ClientSize = new System.Drawing.Size(872, 457);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
             this.Name = "FrmManageMain";
@@ -101,6 +89,5 @@
         private System.Windows.Forms.DataGridView dgvMatList;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkCol;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btnTypeAdd;
     }
 }

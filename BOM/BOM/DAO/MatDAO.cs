@@ -59,13 +59,13 @@ namespace BOM.DAO
             }
         }
 
-        public void UpdateEAMate(int as_No, int mat_No, int mat_EA, int mat_Price)
+        public void ProcessAS(int as_No, int mat_No, int mat_EA, int mat_Price)
         {
             try
             {
-                string sp = "Materials_EA_Update_Procedure";
+                string sp = "AS_Process_Procedure";
                 SqlParameter[] sqlParameters = new SqlParameter[4];
-                sqlParameters[0] = new SqlParameter("as_No", as_No);
+                sqlParameters[0] = new SqlParameter("@as_No", as_No);
                 sqlParameters[1] = new SqlParameter("@mat_No", mat_No);
                 sqlParameters[2] = new SqlParameter("@mat_EA", mat_EA);
                 sqlParameters[3] = new SqlParameter("@mat_Price", mat_Price);

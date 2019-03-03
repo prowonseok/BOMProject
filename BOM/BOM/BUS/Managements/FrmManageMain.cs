@@ -174,12 +174,6 @@ namespace BOM.BUS.Managements
             fom.ShowDialog();
         }
 
-        private void btnTypeAdd_Click(object sender, EventArgs e)
-        {
-            FrmTypeAdd fta = new FrmTypeAdd();
-            fta.ShowDialog();
-        }
-
         private void btnProAdd_Click(object sender, EventArgs e)
         {
             FrmProducts fp = new FrmProducts();
