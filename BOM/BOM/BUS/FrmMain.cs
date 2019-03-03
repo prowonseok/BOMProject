@@ -378,5 +378,12 @@ namespace BOM.BUS
             DataInsertForm d = new DataInsertForm();
             d.Show();
         }
+
+        private void btnAS_Click(object sender, EventArgs e)
+        {
+            CtrlAS cas = new CtrlAS();
+             btnDateInsert.Controls.Clear();
+            btnDateInsert.Controls.Add(cas);
+        }
     }
 }

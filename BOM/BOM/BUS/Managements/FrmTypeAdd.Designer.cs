@@ -144,7 +144,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmTypeAdd";
-            this.Text = "FrmTypeAdd";
+            this.Text = "제품군 등록";
             this.Load += new System.EventHandler(this.FrmTypeAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatTypeList)).EndInit();
             this.ResumeLayout(false);

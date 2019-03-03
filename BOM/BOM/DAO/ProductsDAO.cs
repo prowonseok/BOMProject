@@ -19,19 +19,20 @@ namespace BOM.DAO
             dp = new DBProcessor(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
         }
 
-        public int InsertProducts(int mat_TypeNo, string mat_Name, int mat_Cost, int pro_Price, string pro_Name, string pro_Spec, byte[] pro_Img)
+        public int InsertProducts(int mat_No, int mat_TypeNo, string mat_Name, int mat_Cost, int pro_Price, string pro_Name, string pro_Spec, byte[] pro_Img)
         {
             try
             {
                 string sp = "Products_Insert_Procedure";
-                SqlParameter[] sqlParameters = new SqlParameter[7];
-                sqlParameters[0] = new SqlParameter("@mat_TypeNo", mat_TypeNo);
-                sqlParameters[1] = new SqlParameter("@mat_Name", mat_Name);
-                sqlParameters[2] = new SqlParameter("@mat_Cost", mat_Cost);
-                sqlParameters[3] = new SqlParameter("@pro_Price", pro_Price);
-                sqlParameters[4] = new SqlParameter("@pro_Name", pro_Name);
-                sqlParameters[5] = new SqlParameter("@pro_Spec", pro_Spec);
-                sqlParameters[6] = new SqlParameter("@pro_Img", pro_Img);
+                SqlParameter[] sqlParameters = new SqlParameter[8];
+                sqlParameters[0] = new SqlParameter("@mat_No", mat_No);
+                sqlParameters[1] = new SqlParameter("@mat_TypeNo", mat_TypeNo);
+                sqlParameters[2] = new SqlParameter("@mat_Name", mat_Name);
+                sqlParameters[3] = new SqlParameter("@mat_Cost", mat_Cost);
+                sqlParameters[4] = new SqlParameter("@pro_Price", pro_Price);
+                sqlParameters[5] = new SqlParameter("@pro_Name", pro_Name);
+                sqlParameters[6] = new SqlParameter("@pro_Spec", pro_Spec);
+                sqlParameters[7] = new SqlParameter("@pro_Img", pro_Img);
                 return dp.ExecuteParameters(sp, sqlParameters);
             }
             catch (SqlException)
