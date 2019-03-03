@@ -24,6 +24,11 @@ namespace BOM.BUS.Managements.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 등록 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(tbMatNo.Text) && !string.IsNullOrEmpty(cbMatType.Text) && !string.IsNullOrEmpty(tbName.Text) && !string.IsNullOrEmpty(tbPrice.Text) && imageArr != null)
@@ -44,6 +49,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 폼 로드 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CtrlProducts_Load(object sender, EventArgs e)
         {
             using (DataTable dt = mdao.SelectMat())
@@ -53,31 +63,58 @@ namespace BOM.BUS.Managements.Controls
                     switch (int.Parse(item["Mat_Type_No"].ToString()))
                     {
                         case 1000:
-                            cbCPU.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbCPU.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 2000:
-                            cbMB.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbMB.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 3000:
-                            cbVGA.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbVGA.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 4000:
-                            cbRAM.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbRAM.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 5000:
-                            cbHDD.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbHDD.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 6000:
-                            cbSSD.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbSSD.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 7000:
-                            cbPSU.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbPSU.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 8000:
-                            cbCASE.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1 && !item["Mat_Name"].ToString().Contains('_'))
+                            {
+                                cbCASE.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 9000:
-                            cbCOOLER.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbCOOLER.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                     }
                 }
@@ -117,6 +154,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 이미지 불러오기 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnImgSearch_Click(object sender, EventArgs e)
         {
             string openstrFilename;
@@ -138,6 +180,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 콤보 박스들을 일괄 제어해주는 이벤트 핸들러
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBoxHandler(object sender, EventArgs e)
         {
             tbSpec.Text = string.Empty;
@@ -156,6 +203,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 가격 텍스트박스의 KeyPress 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -173,6 +225,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 가격 텍스트박스의 TestChanged 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbPrice_TextChanged(object sender, EventArgs e)
         {
             string[] sp = tbPrice.Text.Split(',');

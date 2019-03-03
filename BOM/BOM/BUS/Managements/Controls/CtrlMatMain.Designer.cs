@@ -39,11 +39,11 @@
             // btnTypeAdd
             // 
             this.btnTypeAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnTypeAdd.Location = new System.Drawing.Point(653, 435);
+            this.btnTypeAdd.Location = new System.Drawing.Point(649, 435);
             this.btnTypeAdd.Name = "btnTypeAdd";
-            this.btnTypeAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnTypeAdd.Size = new System.Drawing.Size(79, 23);
             this.btnTypeAdd.TabIndex = 8;
-            this.btnTypeAdd.Text = "분류 등록";
+            this.btnTypeAdd.Text = "제품군 등록";
             this.btnTypeAdd.UseVisualStyleBackColor = true;
             this.btnTypeAdd.Click += new System.EventHandler(this.btnTypeAdd_Click);
             // 

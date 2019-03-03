@@ -74,12 +74,6 @@
     <Compile Include="BUS\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="BUS\Managements\Controls\CtrlMatAdd.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BUS\Managements\Controls\CtrlMatAdd.Designer.cs">
-      <DependentUpon>CtrlMatAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="BUS\Managements\Controls\CtrlMatMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +91,24 @@
     </Compile>
     <Compile Include="BUS\Managements\Controls\CtrlProducts.Designer.cs">
       <DependentUpon>CtrlProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASConfirmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASConfirmList.Designer.cs">
+      <DependentUpon>FrmASConfirmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASDetails.Designer.cs">
+      <DependentUpon>FrmASDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmASProcess.Designer.cs">
+      <DependentUpon>FrmASProcess.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\Managements\FrmManageMain.cs">
       <SubType>Form</SubType>
@@ -136,6 +148,12 @@
     </Compile>
     <Compile Include="BUS\Sales\AddreesForm.Designer.cs">
       <DependentUpon>AddreesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlAS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\Controls\CtrlAS.Designer.cs">
+      <DependentUpon>CtrlAS.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\Sales\Shipment.cs">
       <SubType>Form</SubType>
@@ -189,6 +207,7 @@
     <Compile Include="BUS\Sales\SalesStatusDatails.Designer.cs">
       <DependentUpon>SalesStatusDatails.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\ASDAO.cs" />
     <Compile Include="DAO\BomDAO.cs" />
     <Compile Include="DAO\OfferOrderDAO.cs" />
     <Compile Include="DAO\ProductsDAO.cs" />
@@ -222,6 +241,7 @@
     <Compile Include="FrmSalesInquiryControl.Designer.cs">
       <DependentUpon>FrmSalesInquiryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="VO\ASVO.cs" />
     <Compile Include="VO\OffererOrderViewVO.cs" />
     <Compile Include="VO\OffererOrderVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
@@ -291,9 +311,6 @@
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatAdd.resx">
-      <DependentUpon>CtrlMatAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatMain.resx">
       <DependentUpon>CtrlMatMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +319,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\Controls\CtrlProducts.resx">
       <DependentUpon>CtrlProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmASConfirmList.resx">
+      <DependentUpon>FrmASConfirmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmASDetails.resx">
+      <DependentUpon>FrmASDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmASProcess.resx">
+      <DependentUpon>FrmASProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmManageMain.resx">
       <DependentUpon>FrmManageMain.cs</DependentUpon>
@@ -329,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\ChaingePrice.resx">
       <DependentUpon>ChaingePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\Controls\CtrlAS.resx">
+      <DependentUpon>CtrlAS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Sales\RevenueStatus.resx">
       <DependentUpon>RevenueStatus.cs</DependentUpon>

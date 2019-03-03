@@ -54,7 +54,10 @@ namespace BOM.BUS.Managements
                     switch (int.Parse(item["Mat_Type_No"].ToString()))
                     {
                         case 1000:
-                            cbCPU.Items.Add(item["Mat_Name"].ToString());
+                            if (int.Parse(item["Mat_Level"].ToString()) == 1)
+                            {
+                                cbCPU.Items.Add(item["Mat_Name"].ToString()); 
+                            }
                             break;
                         case 2000:
                             cbMB.Items.Add(item["Mat_Name"].ToString());

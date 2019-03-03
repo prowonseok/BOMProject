@@ -21,6 +21,11 @@ namespace BOM.BUS.Managements
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 폼 로드 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmTypeAdd_Load(object sender, EventArgs e)
         {
             tbTypeNo.ImeMode = ImeMode.Alpha;
@@ -40,6 +45,11 @@ namespace BOM.BUS.Managements
             dgvMatTypeList.Columns[1].HeaderText = "분류명";
         }
 
+        /// <summary>
+        /// 등록 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegist_Click(object sender, EventArgs e)
         {
             if (!(string.IsNullOrEmpty(tbTypeNo.Text) || string.IsNullOrEmpty(tbTypeCate.Text)))
@@ -65,11 +75,21 @@ namespace BOM.BUS.Managements
             }
         }
 
+        /// <summary>
+        /// 취소 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// 번호 텍스트박스 KeyPress 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbTypeNo_KeyPress(object sender, KeyPressEventArgs e)
         {
             //string stringValidator = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

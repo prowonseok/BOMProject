@@ -20,11 +20,19 @@ namespace BOM.BUS.Managements.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 폼 로드 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CtrlMatMain_Load(object sender, EventArgs e)
         {
             FormBuilder();
         }
 
+        /// <summary>
+        /// 데이터 그리드 뷰를 정의하는 메서드
+        /// </summary>
         private void FormBuilder()
         {
             dgvMatList.DataSource = md.SelectMat("Materials_View_List_Select_Procedure");
@@ -57,6 +65,11 @@ namespace BOM.BUS.Managements.Controls
             dgvMatList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
         }
 
+        /// <summary>
+        /// 데이터 그리드뷰 MouseClick 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvMatList_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -81,6 +94,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 팝업 창에서 추가된 아이템을 클릭했을 시에 발생하는 이벤트 핸들러
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             DialogResult dr;
@@ -131,6 +149,11 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
+        /// <summary>
+        /// 자재 추가 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void btnMatAdd_Click(object sender, EventArgs e)
         {
             object[] listArray = new object[2];
@@ -176,22 +199,15 @@ namespace BOM.BUS.Managements.Controls
             //}
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
-            FrmOrderMain fom = new FrmOrderMain();
-            fom.ShowDialog();
-        }
-
+        /// <summary>
+        /// 제품군 추가 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTypeAdd_Click(object sender, EventArgs e)
         {
             FrmTypeAdd fta = new FrmTypeAdd();
             fta.ShowDialog();
-        }
-
-        private void btnProAdd_Click(object sender, EventArgs e)
-        {
-            FrmProducts fp = new FrmProducts();
-            fp.ShowDialog();
         }
     }
 }

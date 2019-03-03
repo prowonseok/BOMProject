@@ -143,7 +143,7 @@
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmTypeAdd";
-            this.Text = "FrmTypeAdd";
+            this.Text = "제품군 등록";
             this.Load += new System.EventHandler(this.FrmTypeAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatTypeList)).EndInit();
             this.ResumeLayout(false);

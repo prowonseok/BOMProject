@@ -255,7 +255,7 @@
             this.Controls.Add(this.lblMatType);
             this.Controls.Add(this.lblMatNo);
             this.Name = "FrmMatAdd";
-            this.Text = "FrmMatAdd";
+            this.Text = "자재 등록";
             this.Load += new System.EventHandler(this.FrmMatAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -55,6 +55,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnAS = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainSales)).BeginInit();
             this.SuspendLayout();
@@ -369,12 +370,27 @@
             this.timer1.Interval = 6000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnAS
+            // 
+            this.btnAS.BackColor = System.Drawing.Color.White;
+            this.btnAS.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAS.ForeColor = System.Drawing.Color.White;
+            this.btnAS.Location = new System.Drawing.Point(0, 497);
+            this.btnAS.Name = "btnAS";
+            this.btnAS.Size = new System.Drawing.Size(124, 30);
+            this.btnAS.TabIndex = 14;
+            this.btnAS.Text = "A/S 관리";
+            this.btnAS.UseVisualStyleBackColor = false;
+            this.btnAS.Click += new System.EventHandler(this.btnAS_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(963, 552);
+            this.Controls.Add(this.btnAS);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);
@@ -433,5 +449,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnAS;
     }
 }

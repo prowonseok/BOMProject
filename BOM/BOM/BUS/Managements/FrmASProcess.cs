@@ -13,22 +13,23 @@ using System.Windows.Forms;
 
 namespace BOM.BUS.Managements
 {
-    public partial class FrmOrder : Form
+    public partial class FrmASProcess : Form
     {
-        int orderNo;
+        int asNo;
         int matNo;
         int offNo;
+        MatDAO mdao = new MatDAO();
         OfferOrderDAO ood = new OfferOrderDAO();
         List<OffererOrderViewVO> oovList = new List<OffererOrderViewVO>();
-        List<OrderInfo> orderList = new List<OrderInfo>();
+        List<OrderInfo> asList = new List<OrderInfo>();
 
-        public FrmOrder(int orderNo)
+        public FrmASProcess(int asNo)
         {
             InitializeComponent();
-            this.orderNo = orderNo;
+            this.asNo = asNo;
         }
 
-        private void FrmOrder_Load(object sender, EventArgs e)
+        private void FrmASProcess_Load(object sender, EventArgs e)
         {
             DGVBuilder();
             DataTable dt = ood.SelectOrder();
@@ -36,14 +37,14 @@ namespace BOM.BUS.Managements
             {
                 if (int.Parse(item["Mat_Level"].ToString()) == 1)
                 {
-                    oovList.Add(new OffererOrderViewVO(int.Parse(item["Mat_No"].ToString()), int.Parse(item["Off_No"].ToString()), item["Mat_Name"].ToString(), int.Parse(item["Mat_Level"].ToString()), item["Off_Name"].ToString(), int.Parse(item["Mat_Cost"].ToString()))); 
+                    oovList.Add(new OffererOrderViewVO(int.Parse(item["Mat_No"].ToString()), int.Parse(item["Off_No"].ToString()), item["Mat_Name"].ToString(), int.Parse(item["Mat_Level"].ToString()), item["Off_Name"].ToString(), int.Parse(item["Mat_Cost"].ToString())));
                 }
             }
             foreach (OffererOrderViewVO item in oovList)
             {
                 if (item.Mat_Level == 1)
                 {
-                    cbName.Items.Add(item.Mat_Name); 
+                    cbName.Items.Add(item.Mat_Name);
                 }
             }
             foreach (var item in Controls)
@@ -59,7 +60,7 @@ namespace BOM.BUS.Managements
         private void DGVBuilder()
         {
             dgvOrder.DataSource = null;
-            dgvOrder.DataSource = orderList;
+            dgvOrder.DataSource = asList;
             dgvOrder.Columns[0].HeaderText = "자재번호";
             dgvOrder.Columns[1].HeaderText = "자재명";
             dgvOrder.Columns[2].HeaderText = "제조사 번호";
@@ -96,9 +97,9 @@ namespace BOM.BUS.Managements
         {
             if (!(cbName.SelectedIndex == -1))
             {
-                tbTotalCost.Text = (int.Parse(tbCost.Text) * nudEA.Value).ToString(); 
+                tbTotalCost.Text = (int.Parse(tbCost.Text) * nudEA.Value).ToString();
             }
-            else if(cbName.SelectedIndex == -1)
+            else if (cbName.SelectedIndex == -1)
             {
                 nudEA.Value = 0;
                 MessageBox.Show("자재를 선택하여 주십시오");
@@ -109,11 +110,11 @@ namespace BOM.BUS.Managements
         {
             if (nudEA.Value != 0)
             {
-                orderList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
+                asList.Add(new OrderInfo(matNo, cbName.Text, oovList[cbName.SelectedIndex].Off_No, tbOfferer.Text, int.Parse(tbCost.Text), int.Parse(nudEA.Value.ToString()), int.Parse(tbTotalCost.Text)));
             }
             DGVBuilder();
             int sum = 0;
-            foreach (var item in orderList)
+            foreach (var item in asList)
             {
                 sum += item.TotalCost;
             }
@@ -122,16 +123,16 @@ namespace BOM.BUS.Managements
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < orderList.Count; i++)
+            for (int i = 0; i < asList.Count; i++)
             {
-                if (orderList[i].Mat_No == int.Parse(dgvOrder.SelectedRows[0].Cells[0].Value.ToString()))
+                if (asList[i].Mat_No == int.Parse(dgvOrder.SelectedRows[0].Cells[0].Value.ToString()))
                 {
-                    orderList.RemoveAt(i);
+                    asList.RemoveAt(i);
                 }
             }
             DGVBuilder();
             int sum = 0;
-            foreach (var item in orderList)
+            foreach (var item in asList)
             {
                 sum += item.TotalCost;
             }
@@ -147,14 +148,14 @@ namespace BOM.BUS.Managements
         {
             try
             {
-                if (!(orderList.Count == 0))
+                if (!(asList.Count == 0))
                 {
-                    foreach (OrderInfo item in orderList)
+                    foreach (OrderInfo item in asList)
                     {
-                        ood.InsertOrder(orderNo + 1, item.Mat_No, item.Mat_EA, item.Off_No);
+                        mdao.UpdateEAMate(asNo, item.Mat_No, item.Mat_EA, item.TotalCost);
                     }
-                    MessageBox.Show("발주 성공");
-                    Close(); 
+                    MessageBox.Show("교체 성공");
+                    Close();
                 }
                 else
                 {
@@ -164,7 +165,7 @@ namespace BOM.BUS.Managements
             catch (Exception ex)
             {
 
-                MessageBox.Show("발주 실패 \n" + ex.Message);
+                MessageBox.Show("교체 실패 \n" + ex.Message);
             }
         }
     }

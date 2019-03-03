@@ -399,5 +399,12 @@ namespace BOM.BUS
             panel1.Controls.Clear();
             panel1.Controls.Add(cmm);
         }
+
+        private void btnAS_Click(object sender, EventArgs e)
+        {
+            CtrlAS cas = new CtrlAS();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(cas);
+        }
     }
 }

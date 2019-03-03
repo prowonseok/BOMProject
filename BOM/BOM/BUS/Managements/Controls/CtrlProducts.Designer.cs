@@ -61,6 +61,7 @@
             this.ofdProImg = new System.Windows.Forms.OpenFileDialog();
             this.tbMatNo = new System.Windows.Forms.TextBox();
             this.lblMatNo = new System.Windows.Forms.Label();
+            this.btnProdList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbProImg)).BeginInit();
             this.gbSpec.SuspendLayout();
             this.SuspendLayout();
@@ -383,11 +384,22 @@
             this.lblMatNo.TabIndex = 48;
             this.lblMatNo.Text = "제품 번호";
             // 
+            // btnProdList
+            // 
+            this.btnProdList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnProdList.Location = new System.Drawing.Point(737, 23);
+            this.btnProdList.Name = "btnProdList";
+            this.btnProdList.Size = new System.Drawing.Size(99, 23);
+            this.btnProdList.TabIndex = 50;
+            this.btnProdList.Text = "상품 목록 조회";
+            this.btnProdList.UseVisualStyleBackColor = true;
+            // 
             // CtrlProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnProdList);
             this.Controls.Add(this.tbMatNo);
             this.Controls.Add(this.lblMatNo);
             this.Controls.Add(this.cbMatType);
@@ -448,5 +460,6 @@
         private System.Windows.Forms.OpenFileDialog ofdProImg;
         private System.Windows.Forms.TextBox tbMatNo;
         private System.Windows.Forms.Label lblMatNo;
+        private System.Windows.Forms.Button btnProdList;
     }
 }

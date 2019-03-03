@@ -268,7 +268,7 @@
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmOrder";
-            this.Text = "FrmOrder";
+            this.Text = "발주 등록";
             this.Load += new System.EventHandler(this.FrmOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEA)).EndInit();
