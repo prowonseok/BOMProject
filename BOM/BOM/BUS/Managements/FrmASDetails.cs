@@ -36,7 +36,13 @@ namespace BOM.BUS.Managements
         private void btnASFix_Click(object sender, EventArgs e)
         {
             FrmASProcess fas = new FrmASProcess(int.Parse(tbASNo.Text));
+            fas.FormClosed += new FormClosedEventHandler(formclosedmethod);
             fas.ShowDialog();
+        }
+
+        private void formclosedmethod(object sender, FormClosedEventArgs e)
+        {
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

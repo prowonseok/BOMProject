@@ -23,16 +23,29 @@ namespace BOM.BUS.Managements
 
         private void CtrlAS_Load(object sender, EventArgs e)
         {
+            DgvBuilder();
+        }
+
+        private void DgvBuilder()
+        {
             dt = asdao.SelectAS();
             dgvASList.DataSource = dt;
+            dgvASList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
+            dgvASList.AllowUserToAddRows = false;
         }
 
         private void dgvASList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             FrmASDetails fad = new FrmASDetails(dgvASList.SelectedRows[0]);
+            fad.FormClosed += new FormClosedEventHandler(formclosedmethod);
             fad.ShowDialog();
             asdao.SetASDate(int.Parse(dgvASList.SelectedRows[0].Cells[0].Value.ToString()));
 
+        }
+
+        private void formclosedmethod(object sender, FormClosedEventArgs e)
+        {
+            DgvBuilder();
         }
 
         private void btnASList_Click(object sender, EventArgs e)

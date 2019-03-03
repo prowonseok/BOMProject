@@ -24,6 +24,11 @@ namespace BOM.BUS.Managements
         {
             dt = asdao.ASDetailsSelect();
             dgvASDetailsList.DataSource = dt;
+            dgvASDetailsList.Columns[2].Width = 256;
+
+            dgvASDetailsList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
+
+            dgvASDetailsList.AllowUserToAddRows = false;
         }
     }
 }

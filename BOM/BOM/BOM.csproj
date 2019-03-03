@@ -74,6 +74,12 @@
     <Compile Include="BUS\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\FrmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FrmPassword.Designer.cs">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\Controls\CtrlMatMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +128,12 @@
     <Compile Include="BUS\Managements\FrmMatAdd.Designer.cs">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmMatEAChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmMatEAChange.Designer.cs">
+      <DependentUpon>FrmMatEAChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,11 +146,23 @@
     <Compile Include="BUS\Managements\FrmOrderMain.Designer.cs">
       <DependentUpon>FrmOrderMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Managements\FrmProDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmProDetails.Designer.cs">
+      <DependentUpon>FrmProDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\Managements\FrmProducts.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BUS\Managements\FrmProducts.Designer.cs">
       <DependentUpon>FrmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmProductsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\Managements\FrmProductsList.Designer.cs">
+      <DependentUpon>FrmProductsList.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\Managements\FrmTypeAdd.cs">
       <SubType>Form</SubType>
@@ -241,6 +265,12 @@
     <Compile Include="FrmMainControl.Designer.cs">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPasswordSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPasswordSetting.Designer.cs">
+      <DependentUpon>FrmPasswordSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRevenueStatusControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -323,6 +353,9 @@
     <EmbeddedResource Include="BUS\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FrmPassword.resx">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\Controls\CtrlMatMain.resx">
       <DependentUpon>CtrlMatMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,14 +383,23 @@
     <EmbeddedResource Include="BUS\Managements\FrmMatAdd.resx">
       <DependentUpon>FrmMatAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmMatEAChange.resx">
+      <DependentUpon>FrmMatEAChange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmOrder.resx">
       <DependentUpon>FrmOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmOrderMain.resx">
       <DependentUpon>FrmOrderMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmProDetails.resx">
+      <DependentUpon>FrmProDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\Managements\FrmProductsList.resx">
+      <DependentUpon>FrmProductsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BUS\Managements\FrmTypeAdd.resx">
       <DependentUpon>FrmTypeAdd.cs</DependentUpon>
@@ -428,6 +470,9 @@
     <EmbeddedResource Include="FrmMainControl.resx">
       <DependentUpon>FrmMainControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPasswordSetting.resx">
+      <DependentUpon>FrmPasswordSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRevenueStatusControl.resx">
       <DependentUpon>FrmRevenueStatusControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +517,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="privateFonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

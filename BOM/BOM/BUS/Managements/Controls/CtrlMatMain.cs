@@ -1,14 +1,15 @@
-﻿using System;
+﻿using BOM.DAO;
+using BOM.VO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BOM.DAO;
-using BOM.VO;
 
 namespace BOM.BUS.Managements.Controls
 {
@@ -20,21 +21,14 @@ namespace BOM.BUS.Managements.Controls
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 폼 로드 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CtrlMatMain_Load(object sender, EventArgs e)
         {
             FormBuilder();
         }
 
-        /// <summary>
-        /// 데이터 그리드 뷰를 정의하는 메서드
-        /// </summary>
         private void FormBuilder()
         {
+            dgvMatList.DataSource = null;
             dgvMatList.DataSource = md.SelectMat("Materials_View_List_Select_Procedure");
             for (int i = 1; i < dgvMatList.Columns.Count; i++)
             {
@@ -48,28 +42,11 @@ namespace BOM.BUS.Managements.Controls
             }
 
             dgvMatList.Columns[0].Width = 45;
-            dgvMatList.Columns[1].Width = 85;
-            dgvMatList.Columns[3].Width = 85;
-            dgvMatList.Columns[4].Width = 71;
-            dgvMatList.Columns[5].Width = 85;
-            dgvMatList.Columns[6].Width = 75;
-
-            foreach (var item in Controls)
-            {
-                if (item.GetType().ToString() == "System.Windows.Forms.Button")
-                {
-                    ((Button)item).BackColor = Color.Silver;
-                    ((Button)item).ForeColor = Color.White;
-                }
-            }
+            dgvMatList.Columns[1].Width = 80;
+            dgvMatList.Columns[6].Width = 80;
             dgvMatList.Font = new Font("맑은고딕", 9, FontStyle.Bold);
         }
 
-        /// <summary>
-        /// 데이터 그리드뷰 MouseClick 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void dgvMatList_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -85,8 +62,8 @@ namespace BOM.BUS.Managements.Controls
 
                 dgvMatList.CurrentCell = dgvMatList[col, row];
                 ContextMenuStrip cms = new ContextMenuStrip();
+                cms.Items.Add("수량 변경");
                 cms.Items.Add("삭제");
-                cms.Items.Add("수량변경");
 
                 cms.ItemClicked += new ToolStripItemClickedEventHandler(cms_ItemClicked);
 
@@ -94,67 +71,71 @@ namespace BOM.BUS.Managements.Controls
             }
         }
 
-        /// <summary>
-        /// 팝업 창에서 추가된 아이템을 클릭했을 시에 발생하는 이벤트 핸들러
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void cms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             DialogResult dr;
             switch (e.ClickedItem.Text)
             {
+                case "수량 변경":
+                    FrmMatEAChange fmec = new FrmMatEAChange(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
+                    fmec.FormClosed += new FormClosedEventHandler(formclosedmethod);
+                    fmec.ShowDialog();
+                    break;
+
                 case "삭제":
-                    bool checkVal = false;
-                    foreach (DataGridViewRow rows in dgvMatList.Rows)
+                    try
                     {
-                        if ((bool)rows.Cells[0].Value == true)
-                        {
-                            checkVal = true;
-                        }
-                    }
-                    if (checkVal == true)
-                    {
-                        List<int> chkList = new List<int>();
+                        bool checkVal = false;
                         foreach (DataGridViewRow rows in dgvMatList.Rows)
                         {
                             if ((bool)rows.Cells[0].Value == true)
                             {
-                                chkList.Add(int.Parse(rows.Cells[1].Value.ToString()));
+                                checkVal = true;
                             }
                         }
-                        dr = MessageBox.Show(chkList.Count.ToString() + "개의 행을 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                        if (dr == DialogResult.OK)
+                        if (checkVal == true)
                         {
-                            foreach (int item in chkList)
+                            List<int> chkList = new List<int>();
+                            foreach (DataGridViewRow rows in dgvMatList.Rows)
                             {
-                                md.DeleteMat(item, item);
+                                if ((bool)rows.Cells[0].Value == true)
+                                {
+                                    chkList.Add(int.Parse(rows.Cells[1].Value.ToString()));
+                                }
+                            }
+                            dr = MessageBox.Show(chkList.Count.ToString() + "개의 행을 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                            if (dr == DialogResult.OK)
+                            {
+                                foreach (int item in chkList)
+                                {
+                                    md.DeleteMat(item, item);
+                                }
+                            }
+                        }
+                        else if (checkVal == false)
+                        {
+                            dr = MessageBox.Show("자재 번호 " + dgvMatList.SelectedRows[0].Cells[1].Value.ToString() + " 자재명 " + dgvMatList.SelectedRows[0].Cells[2].Value.ToString() + " 을(를) 영구 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                            if (dr == DialogResult.OK)
+                            {
+                                md.DeleteMat(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()), int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
                             }
                         }
                     }
-                    else if (checkVal == false)
+                    catch (Exception)
                     {
-                        dr = MessageBox.Show("자재 번호 " + dgvMatList.SelectedRows[0].Cells[1].Value.ToString() + " 자재명 " + dgvMatList.SelectedRows[0].Cells[2].Value.ToString() + " 을(를) 영구 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                        if (dr == DialogResult.OK)
-                        {
-                            md.DeleteMat(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()), int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
-                        }
+                        MessageBox.Show("다른 기능에서 데이터를 이용중입니다", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    Controls.Clear();
-                    InitializeComponent();
                     FormBuilder();
-                    break;
-                case "수량변경":
                     break;
             }
         }
 
-        /// <summary>
-        /// 자재 추가 버튼 클릭 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void btnMatAdd_Click(object sender, EventArgs e)
+        private void formclosedmethod(object sender, FormClosedEventArgs e)
+        {
+            FormBuilder();
+        }
+
+        private void btnMatAdd_Click(object sender, EventArgs e)
         {
             object[] listArray = new object[2];
             List<Materials_TypeVO> matTypeList = new List<Materials_TypeVO>();
@@ -199,15 +180,17 @@ namespace BOM.BUS.Managements.Controls
             //}
         }
 
-        /// <summary>
-        /// 제품군 추가 버튼 클릭 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnTypeAdd_Click(object sender, EventArgs e)
+        private void btnOrder_Click(object sender, EventArgs e)
         {
-            FrmTypeAdd fta = new FrmTypeAdd();
-            fta.ShowDialog();
+            FrmOrderMain fom = new FrmOrderMain();
+            fom.ShowDialog();
         }
+
+        private void btnProAdd_Click(object sender, EventArgs e)
+        {
+            FrmProducts fp = new FrmProducts();
+            fp.ShowDialog();
+        }
+
     }
 }

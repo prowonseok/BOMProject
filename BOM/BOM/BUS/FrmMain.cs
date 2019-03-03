@@ -62,11 +62,12 @@ namespace BOM.BUS
             btnSi.Visible = false;
             btnchp.Visible = false;
             btnma.Visible = false;
-            button6.Visible = false;
-            button5.Visible = false;
-            button4.Visible = false;
-            button1.Visible = false;
-            button7.Visible = false;
+            btnMatView.Visible = false;
+            btnOfferOrder.Visible = false;
+            btnProd.Visible = false;
+            btnShipment.Visible = false;
+            btnAS.Visible = false;
+            btnAS.Visible = false;
         }
 
         private void btnManage_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace BOM.BUS
             //btnManage.FlatAppearance.BorderSize = 3;
             //Managements.FrmManageMain fmanagemain = new Managements.FrmManageMain();
             //fmanagemain.ShowDialog();
-            button3.Location = new Point(0, 79);
+            btnHome.Location = new Point(0, 79);
             BtnBOM.Location = new Point(0, 151);
             btnSales.Location = new Point(0, 226);
             btnManage.Location = new Point(0, 300);
@@ -91,11 +92,11 @@ namespace BOM.BUS
             btnSi.Visible = false;
             btnchp.Visible = false;
             btnma.Visible = false;
-            button6.Visible = true;
-            button5.Visible = true;
-            button4.Visible = true;
-            button1.Visible = true;
-            button7.Visible = false;
+            btnMatView.Visible = true;
+            btnOfferOrder.Visible = true;
+            btnProd.Visible = true;
+            btnAS.Visible = true;
+            btnShipment.Visible = false;
         }
 
         private void btnSales_Click(object sender, EventArgs e)
@@ -105,14 +106,14 @@ namespace BOM.BUS
             btnSi.Location = new Point(0, 326);
             btnchp.Location = new Point(0, 355);
             btnma.Location = new Point(0, 384);
-            button7.Location = new Point(0, 413);
+            btnShipment.Location = new Point(0, 413);
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 443);
 
             
-            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = true;
+            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = btnShipment.Visible = true;
             btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible= false;
-            button1.Visible = button4.Visible = button5.Visible = button6.Visible = false;
+            btnProd.Visible = btnOfferOrder.Visible = btnMatView.Visible = btnAS.Visible = false;
             //한줄더
             //Sales.FrmSalesMain fsalesmain = new Sales.FrmSalesMain();
             //fsalesmain.ShowDialog();
@@ -125,17 +126,17 @@ namespace BOM.BUS
             btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(fmc);
 
-            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
-            button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = btnShipment.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor =btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
+            btnHome.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
 
-            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
-            button1.ForeColor = button4.ForeColor = button5.ForeColor = button6.ForeColor = Color.White;
-            button3.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+            btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = btnShipment.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor =  Color.White;
+            btnProd.ForeColor = btnOfferOrder.ForeColor = btnMatView.ForeColor = Color.White;
+            btnHome.ForeColor =BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
 
             do
             {
-                btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = button7.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
-                button3.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
+                btnBomMain.ForeColor = btnSi.ForeColor = btnchp.ForeColor = btnma.ForeColor = btnShipment.ForeColor = btnSales1.ForeColor = btnBomAdd.ForeColor = btnBomSearch.ForeColor = btnBomMatEstimating.ForeColor = btnProMatEstimating.ForeColor = Color.White;
+                btnHome.ForeColor = BtnBOM.ForeColor = btnSales.ForeColor = btnManage.ForeColor = Color.White;
 
 
                 foreach (var item in Controls)
@@ -157,11 +158,11 @@ namespace BOM.BUS
             btnSi.Visible = false;
             btnchp.Visible = false;
             btnma.Visible = false;
-            button6.Visible = false;
-            button5.Visible = false;
-            button4.Visible = false;
-            button1.Visible = false;
-            button7.Visible = false;
+            btnMatView.Visible = false;
+            btnOfferOrder.Visible = false;
+            btnProd.Visible = false;
+            btnShipment.Visible = false;
+            btnAS.Visible = false;
 
         }
 
@@ -212,16 +213,16 @@ namespace BOM.BUS
         
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
             lblFunctionName.Text = "";
             btnSales.Location = new Point(0, 224);
             btnManage.Location = new Point(0, 297);
-            button3.FlatAppearance.BorderSize = 3;
+            btnHome.FlatAppearance.BorderSize = 3;
             BtnBOM.FlatAppearance.BorderSize = 1;
             btnSales.FlatAppearance.BorderSize = 1; 
             btnManage.FlatAppearance.BorderSize = 1;
-            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = button7.Visible = btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible = false;
+            btnSales1.Visible = btnSi.Visible = btnchp.Visible = btnma.Visible = btnShipment.Visible = btnBomAdd.Visible = btnBomSearch.Visible = btnBomMatEstimating.Visible = btnProMatEstimating.Visible = btnBomMain.Visible = btnAS.Visible = false;
             FrmMainControl fmc = new FrmMainControl();
             btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(fmc);
@@ -301,7 +302,7 @@ namespace BOM.BUS
             btnDateInsert.Controls.Add(fr);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnShipment_Click(object sender, EventArgs e)
         {
             lblFunctionName.Text = "출하 지시서";
             Shipment sh = new Shipment();
@@ -317,7 +318,7 @@ namespace BOM.BUS
             //txtTimer.Text = DateTime.Now.ToLongTimeString();
             
         }
-        private void timer2_Tick(object sender, EventArgs e)
+        private void timerChk_Tick(object sender, EventArgs e)
         {
 
             //txtTimer.Text = DateTime.Now.ToLongTimeString();
@@ -340,7 +341,7 @@ namespace BOM.BUS
             btnDateInsert.Controls.Add(fbic);
 
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void btnOfferOrder_Click(object sender, EventArgs e)
         {
             lblFunctionName.Text = "발주 관리";
             CtrlOrderMain com = new CtrlOrderMain();
@@ -348,16 +349,7 @@ namespace BOM.BUS
             btnDateInsert.Controls.Add(com);
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CtrlMatMain cmm = new CtrlMatMain();
-            btnDateInsert.Controls.Clear();
-            btnDateInsert.Controls.Add(cmm);
-            cmm.btnMatAdd_Click(null, null);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void btnProd_Click(object sender, EventArgs e)
         {
             lblFunctionName.Text = "상품 관리";
             CtrlProducts cpd = new CtrlProducts();
@@ -365,7 +357,7 @@ namespace BOM.BUS
             btnDateInsert.Controls.Add(cpd);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnMatView_Click(object sender, EventArgs e)
         {
             lblFunctionName.Text = "자재 조회";
             CtrlMatMain cmm = new CtrlMatMain();
@@ -373,7 +365,7 @@ namespace BOM.BUS
             btnDateInsert.Controls.Add(cmm);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDataInsert_Click(object sender, EventArgs e)
         {
             DataInsertForm d = new DataInsertForm();
             d.Show();
@@ -381,9 +373,16 @@ namespace BOM.BUS
 
         private void btnAS_Click(object sender, EventArgs e)
         {
+            lblFunctionName.Text = "A/S 관리";
             CtrlAS cas = new CtrlAS();
              btnDateInsert.Controls.Clear();
             btnDateInsert.Controls.Add(cas);
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            FrmPasswordSetting fps = new FrmPasswordSetting();
+            fps.ShowDialog();
         }
     }
 }

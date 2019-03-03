@@ -53,6 +53,7 @@
             this.dgvMatList.Location = new System.Drawing.Point(12, 12);
             this.dgvMatList.MultiSelect = false;
             this.dgvMatList.Name = "dgvMatList";
+            this.dgvMatList.ReadOnly = true;
             this.dgvMatList.RowTemplate.Height = 23;
             this.dgvMatList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMatList.Size = new System.Drawing.Size(848, 391);
@@ -63,6 +64,7 @@
             // 
             this.checkCol.HeaderText = "선택";
             this.checkCol.Name = "checkCol";
+            this.checkCol.ReadOnly = true;
             // 
             // openFileDialog1
             // 

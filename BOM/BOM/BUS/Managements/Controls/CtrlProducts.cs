@@ -19,6 +19,7 @@ namespace BOM.BUS.Managements.Controls
         DataTable dt;
 
         byte[] imageArr;
+
         public CtrlProducts()
         {
             InitializeComponent();
@@ -254,6 +255,12 @@ namespace BOM.BUS.Managements.Controls
             {
                 MessageBox.Show("입력 범위를 초과하였습니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnProdList_Click(object sender, EventArgs e)
+        {
+            FrmProductsList fpl = new FrmProductsList();
+            fpl.ShowDialog();
         }
     }
 }

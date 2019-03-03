@@ -79,6 +79,24 @@ namespace BOM.DAO
             }
         }
 
+        public void MatEAUpdate(int mat_No, int mat_EA)
+        {
+            try
+            {
+                string sp = "Materials_EA_Update_Procedure";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@mat_No", mat_No);
+                sqlParameters[1] = new SqlParameter("@mat_EA", mat_EA);
+
+                dp.ExecuteParameters(sp, sqlParameters);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void DeleteMat(int mat_Type_No1, int mat_Type_No2)
         {
             try

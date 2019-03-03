@@ -16,7 +16,9 @@ namespace BOM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BUS.FrmMain());
+            Application.Run(new BUS.FrmPassword());
+            BUS.FrmMain fm = new BUS.FrmMain();
+            Application.Run(fm);
         }
     }
 }

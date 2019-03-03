@@ -55,5 +55,19 @@ namespace BOM.DAO
                 throw;
             }
         }
+
+        public DataTable SelectProduct()
+        {
+            try
+            {
+                string sp = "Products_Select_View_Procedure";
+                return dp.ExecuteParametersDT(sp, null);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

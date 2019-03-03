@@ -393,6 +393,7 @@
             this.btnProdList.TabIndex = 50;
             this.btnProdList.Text = "상품 목록 조회";
             this.btnProdList.UseVisualStyleBackColor = true;
+            this.btnProdList.Click += new System.EventHandler(this.btnProdList_Click);
             // 
             // CtrlProducts
             // 

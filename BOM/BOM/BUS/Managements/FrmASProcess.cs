@@ -60,7 +60,7 @@ namespace BOM.BUS.Managements
         private void DGVBuilder()
         {
             dgvOrder.DataSource = null;
-            dgvOrder.DataSource = asList;
+            dgvOrder.DataSource = asList.ToArray();
             dgvOrder.Columns[0].HeaderText = "자재번호";
             dgvOrder.Columns[1].HeaderText = "자재명";
             dgvOrder.Columns[2].HeaderText = "제조사 번호";

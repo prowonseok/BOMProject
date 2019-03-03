@@ -55,7 +55,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(647, 450);
             this.Controls.Add(this.lblASList);
             this.Controls.Add(this.dgvASDetailsList);
             this.Name = "FrmASConfirmList";

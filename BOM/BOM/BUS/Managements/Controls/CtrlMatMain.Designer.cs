@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnTypeAdd = new System.Windows.Forms.Button();
             this.dgvMatList = new System.Windows.Forms.DataGridView();
             this.checkCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnMatAdd = new System.Windows.Forms.Button();
             this.lblMatList = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnTypeAdd
-            // 
-            this.btnTypeAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnTypeAdd.Location = new System.Drawing.Point(649, 435);
-            this.btnTypeAdd.Name = "btnTypeAdd";
-            this.btnTypeAdd.Size = new System.Drawing.Size(79, 23);
-            this.btnTypeAdd.TabIndex = 8;
-            this.btnTypeAdd.Text = "제품군 등록";
-            this.btnTypeAdd.UseVisualStyleBackColor = true;
-            this.btnTypeAdd.Click += new System.EventHandler(this.btnTypeAdd_Click);
             // 
             // dgvMatList
             // 
@@ -59,6 +47,7 @@
             this.dgvMatList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMatList.Size = new System.Drawing.Size(789, 372);
             this.dgvMatList.TabIndex = 7;
+            this.dgvMatList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMatList_MouseClick);
             // 
             // checkCol
             // 
@@ -92,7 +81,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblMatList);
-            this.Controls.Add(this.btnTypeAdd);
             this.Controls.Add(this.dgvMatList);
             this.Controls.Add(this.btnMatAdd);
             this.Name = "CtrlMatMain";
@@ -105,8 +93,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnTypeAdd;
         private System.Windows.Forms.DataGridView dgvMatList;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkCol;
         private System.Windows.Forms.Button btnMatAdd;

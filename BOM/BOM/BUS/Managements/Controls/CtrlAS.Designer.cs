@@ -39,14 +39,15 @@
             this.dgvASList.Location = new System.Drawing.Point(20, 30);
             this.dgvASList.MultiSelect = false;
             this.dgvASList.Name = "dgvASList";
+            this.dgvASList.ReadOnly = true;
             this.dgvASList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvASList.Size = new System.Drawing.Size(735, 414);
+            this.dgvASList.Size = new System.Drawing.Size(735, 394);
             this.dgvASList.TabIndex = 0;
             this.dgvASList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvASList_CellContentClick);
             // 
             // btnASList
             // 
-            this.btnASList.Location = new System.Drawing.Point(680, 450);
+            this.btnASList.Location = new System.Drawing.Point(680, 430);
             this.btnASList.Name = "btnASList";
             this.btnASList.Size = new System.Drawing.Size(75, 23);
             this.btnASList.TabIndex = 1;
@@ -71,7 +72,7 @@
             this.Controls.Add(this.btnASList);
             this.Controls.Add(this.dgvASList);
             this.Name = "CtrlAS";
-            this.Size = new System.Drawing.Size(794, 625);
+            this.Size = new System.Drawing.Size(794, 495);
             this.Load += new System.EventHandler(this.CtrlAS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvASList)).EndInit();
             this.ResumeLayout(false);

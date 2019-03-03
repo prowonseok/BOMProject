@@ -28,6 +28,7 @@ namespace BOM.BUS.Managements
 
         private void FormBuilder()
         {
+            dgvMatList.DataSource = null;
             dgvMatList.DataSource = md.SelectMat("Materials_View_List_Select_Procedure");
             for (int i = 1; i < dgvMatList.Columns.Count; i++)
             {
@@ -60,9 +61,8 @@ namespace BOM.BUS.Managements
 
                 dgvMatList.CurrentCell = dgvMatList[col, row];
                 ContextMenuStrip cms = new ContextMenuStrip();
-                cms.Items.Add("수정");
+                cms.Items.Add("수량 변경");
                 cms.Items.Add("삭제");
-                cms.Items.Add("수량변경");
 
                 cms.ItemClicked += new ToolStripItemClickedEventHandler(cms_ItemClicked);
 
@@ -75,52 +75,63 @@ namespace BOM.BUS.Managements
             DialogResult dr;
             switch (e.ClickedItem.Text)
             {
-                case "수정":
+                case "수량 변경":
+                    FrmMatEAChange fmec = new FrmMatEAChange(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
+                    fmec.FormClosed += new FormClosedEventHandler(formclosedmethod);
+                    fmec.ShowDialog();
                     break;
 
                 case "삭제":
-                    bool checkVal = false;
-                    foreach (DataGridViewRow rows in dgvMatList.Rows)
+                    try
                     {
-                        if ((bool)rows.Cells[0].Value == true)
-                        {
-                            checkVal = true;
-                        }
-                    }
-                    if (checkVal == true)
-                    {
-                        List<int> chkList = new List<int>();
+                        bool checkVal = false;
                         foreach (DataGridViewRow rows in dgvMatList.Rows)
                         {
                             if ((bool)rows.Cells[0].Value == true)
                             {
-                                chkList.Add(int.Parse(rows.Cells[1].Value.ToString()));
+                                checkVal = true;
                             }
                         }
-                        dr = MessageBox.Show(chkList.Count.ToString() + "개의 행을 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                        if (dr == DialogResult.OK)
+                        if (checkVal == true)
                         {
-                            foreach (int item in chkList)
+                            List<int> chkList = new List<int>();
+                            foreach (DataGridViewRow rows in dgvMatList.Rows)
                             {
-                                md.DeleteMat(item, item);
+                                if ((bool)rows.Cells[0].Value == true)
+                                {
+                                    chkList.Add(int.Parse(rows.Cells[1].Value.ToString()));
+                                }
+                            }
+                            dr = MessageBox.Show(chkList.Count.ToString() + "개의 행을 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                            if (dr == DialogResult.OK)
+                            {
+                                foreach (int item in chkList)
+                                {
+                                    md.DeleteMat(item, item);
+                                }
+                            }
+                        }
+                        else if (checkVal == false)
+                        {
+                            dr = MessageBox.Show("자재 번호 " + dgvMatList.SelectedRows[0].Cells[1].Value.ToString() + " 자재명 " + dgvMatList.SelectedRows[0].Cells[2].Value.ToString() + " 을(를) 영구 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                            if (dr == DialogResult.OK)
+                            {
+                                md.DeleteMat(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()), int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
                             }
                         }
                     }
-                    else if (checkVal == false)
+                    catch (Exception)
                     {
-                        dr = MessageBox.Show("자재 번호 " + dgvMatList.SelectedRows[0].Cells[1].Value.ToString() + " 자재명 " + dgvMatList.SelectedRows[0].Cells[2].Value.ToString() + " 을(를) 영구 삭제하시겠습니까?", "경고", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                        if (dr == DialogResult.OK)
-                        {
-                            md.DeleteMat(int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()), int.Parse(dgvMatList.SelectedRows[0].Cells[1].Value.ToString()));
-                        }
+                        MessageBox.Show("다른 기능에서 데이터를 이용중입니다" , "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    Controls.Clear();
-                    InitializeComponent();
                     FormBuilder();
                     break;
-                case "수량변경":
-                    break;
             }
+        }
+
+        private void formclosedmethod(object sender, FormClosedEventArgs e)
+        {
+            FormBuilder();
         }
 
         private void btnMatAdd_Click(object sender, EventArgs e)
