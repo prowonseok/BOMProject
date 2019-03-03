@@ -144,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomUpdate";
-            this.Text = "FrmBomUpdate";
+            this.Text = "BOM 수정";
             this.Load += new System.EventHandler(this.FrmBomUpdate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

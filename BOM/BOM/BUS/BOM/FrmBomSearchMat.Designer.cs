@@ -118,7 +118,7 @@
             this.Controls.Add(this.dgvInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomSearchMat";
-            this.Text = "FrmBomSearchMat";
+            this.Text = "BOM조회 자재 검색";
             this.Load += new System.EventHandler(this.FrmBomSearchMat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);

@@ -200,6 +200,7 @@ namespace BOM
         /// <param name="e">소요량 예측을 위해 더블클릭한 노드</param>
         private void tvProMat_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+
             numLst = new List<int>();                 //재고들을 저장할 Collection
             List<string> matLst = new List<string>(); //선택 노드 자식노드들을 저장할 Collection
 
@@ -225,10 +226,10 @@ namespace BOM
                     {
                         item.Selected = true;  //해당 항목을 Selected True 처리
                         haveNum = Int32.Parse(item.Cells[2].Value.ToString());  //GridView를 참조하고 가지고 있는 개수를 haveNum변수에 저장
-                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.Length - e.Node.Text.LastIndexOf('E') - 1)); //만들고자 하는 개수를 makeNum변수에 저장--
-                        if (haveNum / makeNum > 0)
+                        makeNum = Int32.Parse(e.Node.Text.Substring(e.Node.Text.LastIndexOf('.') + 1, e.Node.Text.LastIndexOf('E') - e.Node.Text.LastIndexOf('.') - 1)); //만들고자 하는 개수를 makeNum변수에 저장--
+                        if (haveNum >= makeNum)
                         {
-                            MessageBox.Show(e.Node.ToString()+ "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
+                            MessageBox.Show(e.Node.ToString() + "은 \r\n현재 재고로" + haveNum / makeNum + "개 만들 수 있습니다.");
                         }
                         else
                         {
@@ -250,8 +251,10 @@ namespace BOM
                     if (item.Substring(0, item.IndexOf('.')).Trim() == item2.Cells[1].Value.ToString().Trim())
                     {
                         haveNum = Int32.Parse(item2.Cells[2].Value.ToString().Trim()); //현재 재고
-                        makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.Length - item.LastIndexOf('E') - 1));
-                        if (Int32.Parse(item2.Cells[2].Value.ToString().Trim()) >= Int32.Parse(item.Substring(item.LastIndexOf('.')+1 , item.Length - item.LastIndexOf('E') -1)))
+                        //제품명...nEA일때 LastIndexOf('.')와 LastIndexOf('E')사이의 숫자를 makeNum 변수에 저장
+                        makeNum = Int32.Parse(item.Substring(item.LastIndexOf('.') + 1, item.LastIndexOf('E') - item.LastIndexOf('.') - 1));
+
+                        if (haveNum >= makeNum)
                         {
                             numLst.Add(haveNum / makeNum); //만들수 있는 개수를 numLst에 저장
                         }
@@ -269,11 +272,18 @@ namespace BOM
                 numLst.Sort(); //numLst를 오름차순으로 정렬(numLst의 최후 값이 999999인지 빠른 비교와 첫번째 값이 만들 수 있는 개수)
                 if (numLst[numLst.Count - 1] == 999999) //재고 부족이 있는 경우
                 {
-                    
+                    MessageBox.Show("재고가 부족합니다");
                 }
                 else                                    //재고 부족이 없는 경우
                 {
-                    MessageBox.Show(e.Node.Text + "은 \r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
+                    if (!e.Node.Text.Contains("EA"))
+                    {
+                        MessageBox.Show(e.Node.Text + "제품 " + txtEA.Text + "개는" + "\r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
+                    }
+                    else
+                    {
+                        MessageBox.Show(e.Node.Text.Remove(e.Node.Text.LastIndexOf('.') - 3, 3).Replace(".", "").Replace("EA", "") + "개는" + "\r\n현재 재고로" + numLst[0].ToString() + "개 만들 수 있습니다.");
+                    }
                 }
             }
         }

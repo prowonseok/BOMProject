@@ -127,7 +127,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBomAllMatInfo";
-            this.Text = "FrmBomAllMatInfo";
+            this.Text = "BOM등록 자재 검색";
             this.Load += new System.EventHandler(this.FrmBomAllMatInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMat)).EndInit();
             this.ResumeLayout(false);

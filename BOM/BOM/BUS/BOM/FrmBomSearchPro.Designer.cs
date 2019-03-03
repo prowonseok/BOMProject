@@ -66,7 +66,7 @@
             this.Controls.Add(this.dgvProInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomSearchPro";
-            this.Text = "FrmBomSearchPro";
+            this.Text = "소요량 예측 상품 등록";
             this.Load += new System.EventHandler(this.FrmBomSearchPro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProInfo)).EndInit();
             this.ResumeLayout(false);

@@ -134,7 +134,7 @@
             this.btnSi.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnSi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSi.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSi.Location = new System.Drawing.Point(-24, 269);
+            this.btnSi.Location = new System.Drawing.Point(0, 355);
             this.btnSi.Name = "btnSi";
             this.btnSi.Size = new System.Drawing.Size(124, 30);
             this.btnSi.TabIndex = 5;
@@ -149,7 +149,7 @@
             this.btnSales1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnSales1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSales1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSales1.Location = new System.Drawing.Point(-54, 283);
+            this.btnSales1.Location = new System.Drawing.Point(0, 391);
             this.btnSales1.Name = "btnSales1";
             this.btnSales1.Size = new System.Drawing.Size(124, 30);
             this.btnSales1.TabIndex = 4;
@@ -276,8 +276,6 @@
             // 
             this.btnDateInsert.BackColor = System.Drawing.Color.White;
             this.btnDateInsert.Controls.Add(this.button2);
-            this.btnDateInsert.Controls.Add(this.btnSales1);
-            this.btnDateInsert.Controls.Add(this.btnSi);
             this.btnDateInsert.Location = new System.Drawing.Point(124, 79);
             this.btnDateInsert.Name = "btnDateInsert";
             this.btnDateInsert.Size = new System.Drawing.Size(838, 472);
@@ -371,6 +369,8 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(963, 552);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSi);
+            this.Controls.Add(this.btnSales1);
             this.Controls.Add(this.btnDateInsert);
             this.Controls.Add(this.btnProMatEstimating);
             this.Controls.Add(this.lblFunctionName);

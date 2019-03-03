@@ -168,7 +168,7 @@
             this.Controls.Add(this.rdoExplosion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmBomDetailInfo";
-            this.Text = "FrmBomDetialInfo";
+            this.Text = "BOM 조회";
             this.Load += new System.EventHandler(this.FrmBomDetailInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
             this.ResumeLayout(false);

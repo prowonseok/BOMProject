@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblSecondMonth = new System.Windows.Forms.Label();
             this.lblFirstMonth = new System.Windows.Forms.Label();
             this.dgvEst2 = new System.Windows.Forms.DataGridView();
@@ -79,6 +79,7 @@
             this.dgvEst2.Name = "dgvEst2";
             this.dgvEst2.ReadOnly = true;
             this.dgvEst2.RowTemplate.Height = 23;
+            this.dgvEst2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEst2.Size = new System.Drawing.Size(591, 203);
             this.dgvEst2.TabIndex = 19;
             // 
@@ -167,17 +168,17 @@
             // 
             // chartDate
             // 
-            chartArea11.Name = "ChartArea1";
-            this.chartDate.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.chartDate.Legends.Add(legend11);
+            chartArea1.Name = "ChartArea1";
+            this.chartDate.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDate.Legends.Add(legend1);
             this.chartDate.Location = new System.Drawing.Point(220, 48);
             this.chartDate.Name = "chartDate";
             this.chartDate.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            this.chartDate.Series.Add(series11);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartDate.Series.Add(series1);
             this.chartDate.Size = new System.Drawing.Size(591, 421);
             this.chartDate.TabIndex = 12;
             this.chartDate.Text = "chart1";
@@ -185,17 +186,17 @@
             // 
             // chartPro
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chartPro.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chartPro.Legends.Add(legend12);
+            chartArea2.Name = "ChartArea1";
+            this.chartPro.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartPro.Legends.Add(legend2);
             this.chartPro.Location = new System.Drawing.Point(220, 21);
             this.chartPro.Name = "chartPro";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series12.Legend = "Legend1";
-            series12.Name = "s1";
-            this.chartPro.Series.Add(series12);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "s1";
+            this.chartPro.Series.Add(series2);
             this.chartPro.Size = new System.Drawing.Size(591, 448);
             this.chartPro.TabIndex = 11;
             this.chartPro.Text = "chart1";
