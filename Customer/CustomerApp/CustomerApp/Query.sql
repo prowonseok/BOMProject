@@ -118,9 +118,10 @@ CREATE PROCEDURE [dbo].[InsertSingleOrder]
 	@Pro_No int,
 	@Cus_Order_Date datetime,
 	@Cus_Order_EA int,
-	@Cus_Order_Price int
+	@Cus_Order_Price int,
+	@Emp_No int
 AS
-	insert into Customers_Order values(@Cus_No, 1, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, 1, @Cus_Order_Price, @Cus_Order_EA);
+	insert into Customers_Order values(@Cus_No, @Emp_No, @Pro_No, @Cus_Order_OrderNo, @Cus_Order_Date, 1, @Cus_Order_Price, @Cus_Order_EA);
 
 -- 주문 해당 회원 select 
 CREATE PROCEDURE [dbo].[SelectOrderByCusID]
@@ -264,12 +265,14 @@ exec [SelectProCount] 5;
 exec [SelectBuyPro] 5;
 exec [SelectBuyOrderNo] 5, 5;
 exec [GetOrder_OrderNo_ByCus] 5;
+exec [SelectAllAS] 4;
 
 -- INSERT
 exec [InsertCus] 'testID', '테스트', '010-2525-6464', '서울특별시 금천구 가산동 448 대륭테크노타운3차', 'Qlalfqjsgh1!', 'test@naver.com';
 exec [InsertSingleOrder] 1, 5, 5, '2019-02-27', 4, 50000;
 exec [InsertCartOrder] 5, 5, 1, '2019-02-27', 50000, 3, 1;
 exec [InsertCart] 5, 1, 5, 3, '2019-02-27', 150000;
+exec [InsertAS] 5, 153, 5, 'AS신청 프로시저 테스트', '2019-02-27', 1;
 
 -- UPDATE
 exec [UpdateCus] 'testID', '주소 수정 테스트', 'Qlalfqjsgh2@', null, null
@@ -278,4 +281,3 @@ exec [SetSaveNo] 5, 2;
 
 -- DELETE
 exec [DeleteCart] 5, 2
-exec [InsertAS] 5, 153, 5, 'AS신청 프로시저 테스트', '2019-02-27', 1;

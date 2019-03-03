@@ -571,6 +571,9 @@ namespace CustomerApp.BUS
                 txtCusID.ReadOnly = true;
                 txtTotalPrice.ReadOnly = true;
 
+                btnAddCart.Enabled = false;
+                btnBuyNow.Enabled = false;
+
                 txtBuySpec.BackColor = Color.White;
 
                 SetBtnColor(btnBuy, btnProducts, btnAS, btnCart, btnBuyRecord);
@@ -650,6 +653,11 @@ namespace CustomerApp.BUS
         {
             selectItem = lstView.Items[cbxBuyCusPro.SelectedIndex];
             GetSpecLabel();
+            if (cbxBuyCusPro.SelectedIndex != -1)
+            {
+                btnAddCart.Enabled = true;
+                btnBuyNow.Enabled = true; 
+            }
         }
 
         private void nuProAmount_ValueChanged(object sender, EventArgs e)
@@ -719,7 +727,6 @@ namespace CustomerApp.BUS
         {
             try
             {
-                MessageBox.Show("장바구니에 저장되었습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CartVO cartVO = new CartVO()
                 {
                     CusNo = customer.No,
@@ -730,6 +737,8 @@ namespace CustomerApp.BUS
                     CartDate = DateTime.Now
                 };
                 cartDAO.Insert(cartVO);
+                MessageBox.Show("장바구니에 저장되었습니다!", "장바구니", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnBuy_Click(null, null);
             }
             catch (Exception ex)
             {

@@ -84,7 +84,7 @@
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(96, 23);
             this.btnSubmit.TabIndex = 4;
-            this.btnSubmit.Text = "인증번호 전송";
+            this.btnSubmit.Text = "인증메일 전송";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.EnabledChanged += new System.EventHandler(this.btnSubmit_EnabledChanged);
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);

@@ -68,7 +68,7 @@ namespace CustomerApp.BUS
             rand = new Random();
             certiNum = rand.Next(100000, 999999).ToString();
 
-            btnSubmit.Text = "메일발송";
+            btnSubmit.Text = "인증메일 전송";
         }
 
         private void SendEmail()

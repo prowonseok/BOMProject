@@ -38,6 +38,24 @@
             this.lblLog = new System.Windows.Forms.Label();
             this.panBottom = new System.Windows.Forms.Panel();
             this.spCont = new System.Windows.Forms.SplitContainer();
+            this.gbxAS = new System.Windows.Forms.GroupBox();
+            this.gbxAsSort = new System.Windows.Forms.GroupBox();
+            this.rdoAsOrderNo = new System.Windows.Forms.RadioButton();
+            this.rdoAsDate = new System.Windows.Forms.RadioButton();
+            this.lblCondition = new System.Windows.Forms.Label();
+            this.cbxOrderNo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblContentSize = new System.Windows.Forms.Label();
+            this.lblASApply = new System.Windows.Forms.Label();
+            this.lblASRecord = new System.Windows.Forms.Label();
+            this.gViewAS = new System.Windows.Forms.DataGridView();
+            this.txtASContent = new System.Windows.Forms.TextBox();
+            this.cbxASCusPro = new System.Windows.Forms.ComboBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblCusPro = new System.Windows.Forms.Label();
+            this.txtCusID = new System.Windows.Forms.TextBox();
+            this.lblASContent = new System.Windows.Forms.Label();
+            this.lblCusID = new System.Windows.Forms.Label();
             this.gbxBuyRecord = new System.Windows.Forms.GroupBox();
             this.gbxSort = new System.Windows.Forms.GroupBox();
             this.rdoCom = new System.Windows.Forms.RadioButton();
@@ -69,24 +87,6 @@
             this.lblSpecTitle = new System.Windows.Forms.Label();
             this.lblSpec = new System.Windows.Forms.Label();
             this.txtProSpec = new System.Windows.Forms.RichTextBox();
-            this.gbxAS = new System.Windows.Forms.GroupBox();
-            this.gbxAsSort = new System.Windows.Forms.GroupBox();
-            this.rdoAsOrderNo = new System.Windows.Forms.RadioButton();
-            this.rdoAsDate = new System.Windows.Forms.RadioButton();
-            this.lblCondition = new System.Windows.Forms.Label();
-            this.cbxOrderNo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblContentSize = new System.Windows.Forms.Label();
-            this.lblASApply = new System.Windows.Forms.Label();
-            this.lblASRecord = new System.Windows.Forms.Label();
-            this.gViewAS = new System.Windows.Forms.DataGridView();
-            this.txtASContent = new System.Windows.Forms.TextBox();
-            this.cbxASCusPro = new System.Windows.Forms.ComboBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.lblCusPro = new System.Windows.Forms.Label();
-            this.txtCusID = new System.Windows.Forms.TextBox();
-            this.lblASContent = new System.Windows.Forms.Label();
-            this.lblCusID = new System.Windows.Forms.Label();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnBuyRecord = new System.Windows.Forms.Button();
             this.saveFileDig = new System.Windows.Forms.SaveFileDialog();
@@ -96,6 +96,9 @@
             this.spCont.Panel1.SuspendLayout();
             this.spCont.Panel2.SuspendLayout();
             this.spCont.SuspendLayout();
+            this.gbxAS.SuspendLayout();
+            this.gbxAsSort.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).BeginInit();
             this.gbxBuyRecord.SuspendLayout();
             this.gbxSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gViewBuy)).BeginInit();
@@ -104,9 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gviewCart)).BeginInit();
             this.gbxBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).BeginInit();
-            this.gbxAS.SuspendLayout();
-            this.gbxAsSort.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -223,6 +223,193 @@
             this.spCont.Size = new System.Drawing.Size(1244, 569);
             this.spCont.SplitterDistance = 875;
             this.spCont.TabIndex = 0;
+            // 
+            // gbxAS
+            // 
+            this.gbxAS.Controls.Add(this.gbxAsSort);
+            this.gbxAS.Controls.Add(this.lblCondition);
+            this.gbxAS.Controls.Add(this.cbxOrderNo);
+            this.gbxAS.Controls.Add(this.label1);
+            this.gbxAS.Controls.Add(this.lblContentSize);
+            this.gbxAS.Controls.Add(this.lblASApply);
+            this.gbxAS.Controls.Add(this.lblASRecord);
+            this.gbxAS.Controls.Add(this.gViewAS);
+            this.gbxAS.Controls.Add(this.txtASContent);
+            this.gbxAS.Controls.Add(this.cbxASCusPro);
+            this.gbxAS.Controls.Add(this.btnSubmit);
+            this.gbxAS.Controls.Add(this.lblCusPro);
+            this.gbxAS.Controls.Add(this.txtCusID);
+            this.gbxAS.Controls.Add(this.lblASContent);
+            this.gbxAS.Controls.Add(this.lblCusID);
+            this.gbxAS.Location = new System.Drawing.Point(335, 312);
+            this.gbxAS.Name = "gbxAS";
+            this.gbxAS.Size = new System.Drawing.Size(1219, 526);
+            this.gbxAS.TabIndex = 9;
+            this.gbxAS.TabStop = false;
+            // 
+            // gbxAsSort
+            // 
+            this.gbxAsSort.Controls.Add(this.rdoAsOrderNo);
+            this.gbxAsSort.Controls.Add(this.rdoAsDate);
+            this.gbxAsSort.Location = new System.Drawing.Point(986, 366);
+            this.gbxAsSort.Name = "gbxAsSort";
+            this.gbxAsSort.Size = new System.Drawing.Size(219, 54);
+            this.gbxAsSort.TabIndex = 20;
+            this.gbxAsSort.TabStop = false;
+            this.gbxAsSort.Text = "정렬 기준";
+            // 
+            // rdoAsOrderNo
+            // 
+            this.rdoAsOrderNo.AutoSize = true;
+            this.rdoAsOrderNo.Location = new System.Drawing.Point(131, 23);
+            this.rdoAsOrderNo.Name = "rdoAsOrderNo";
+            this.rdoAsOrderNo.Size = new System.Drawing.Size(71, 16);
+            this.rdoAsOrderNo.TabIndex = 18;
+            this.rdoAsOrderNo.TabStop = true;
+            this.rdoAsOrderNo.Text = "주문번호";
+            this.rdoAsOrderNo.UseVisualStyleBackColor = true;
+            this.rdoAsOrderNo.CheckedChanged += new System.EventHandler(this.rdoAsOrderNo_CheckedChanged);
+            // 
+            // rdoAsDate
+            // 
+            this.rdoAsDate.AutoSize = true;
+            this.rdoAsDate.Location = new System.Drawing.Point(17, 23);
+            this.rdoAsDate.Name = "rdoAsDate";
+            this.rdoAsDate.Size = new System.Drawing.Size(71, 16);
+            this.rdoAsDate.TabIndex = 17;
+            this.rdoAsDate.TabStop = true;
+            this.rdoAsDate.Text = "신청날짜";
+            this.rdoAsDate.UseVisualStyleBackColor = true;
+            this.rdoAsDate.CheckedChanged += new System.EventHandler(this.rdoAsDate_CheckedChanged);
+            // 
+            // lblCondition
+            // 
+            this.lblCondition.AutoSize = true;
+            this.lblCondition.Location = new System.Drawing.Point(307, 397);
+            this.lblCondition.Name = "lblCondition";
+            this.lblCondition.Size = new System.Drawing.Size(255, 12);
+            this.lblCondition.TabIndex = 16;
+            this.lblCondition.Text = "* 고장 증상을 자세하게 10글자 이상 써주세요.";
+            // 
+            // cbxOrderNo
+            // 
+            this.cbxOrderNo.FormattingEnabled = true;
+            this.cbxOrderNo.Location = new System.Drawing.Point(80, 483);
+            this.cbxOrderNo.Name = "cbxOrderNo";
+            this.cbxOrderNo.Size = new System.Drawing.Size(149, 20);
+            this.cbxOrderNo.TabIndex = 14;
+            this.cbxOrderNo.SelectedIndexChanged += new System.EventHandler(this.cbxOrderNo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 486);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "주문번호";
+            // 
+            // lblContentSize
+            // 
+            this.lblContentSize.AutoSize = true;
+            this.lblContentSize.Location = new System.Drawing.Point(945, 437);
+            this.lblContentSize.Name = "lblContentSize";
+            this.lblContentSize.Size = new System.Drawing.Size(0, 12);
+            this.lblContentSize.TabIndex = 13;
+            // 
+            // lblASApply
+            // 
+            this.lblASApply.AutoSize = true;
+            this.lblASApply.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblASApply.Location = new System.Drawing.Point(6, 366);
+            this.lblASApply.Name = "lblASApply";
+            this.lblASApply.Size = new System.Drawing.Size(99, 21);
+            this.lblASApply.TabIndex = 12;
+            this.lblASApply.Text = "A/S 신청";
+            // 
+            // lblASRecord
+            // 
+            this.lblASRecord.AutoSize = true;
+            this.lblASRecord.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblASRecord.Location = new System.Drawing.Point(6, 14);
+            this.lblASRecord.Name = "lblASRecord";
+            this.lblASRecord.Size = new System.Drawing.Size(151, 21);
+            this.lblASRecord.TabIndex = 11;
+            this.lblASRecord.Text = "A/S 신청 이력";
+            // 
+            // gViewAS
+            // 
+            this.gViewAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gViewAS.Location = new System.Drawing.Point(0, 42);
+            this.gViewAS.Name = "gViewAS";
+            this.gViewAS.ReadOnly = true;
+            this.gViewAS.RowTemplate.Height = 23;
+            this.gViewAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gViewAS.Size = new System.Drawing.Size(981, 298);
+            this.gViewAS.TabIndex = 8;
+            // 
+            // txtASContent
+            // 
+            this.txtASContent.Location = new System.Drawing.Point(305, 415);
+            this.txtASContent.Multiline = true;
+            this.txtASContent.Name = "txtASContent";
+            this.txtASContent.Size = new System.Drawing.Size(631, 83);
+            this.txtASContent.TabIndex = 3;
+            this.txtASContent.TextChanged += new System.EventHandler(this.txtASContent_TextChanged);
+            // 
+            // cbxASCusPro
+            // 
+            this.cbxASCusPro.FormattingEnabled = true;
+            this.cbxASCusPro.Location = new System.Drawing.Point(80, 449);
+            this.cbxASCusPro.Name = "cbxASCusPro";
+            this.cbxASCusPro.Size = new System.Drawing.Size(149, 20);
+            this.cbxASCusPro.TabIndex = 0;
+            this.cbxASCusPro.SelectedIndexChanged += new System.EventHandler(this.cbxASCusPro_SelectedIndexChanged);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(941, 475);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 6;
+            this.btnSubmit.Text = "A/S 신청";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // lblCusPro
+            // 
+            this.lblCusPro.AutoSize = true;
+            this.lblCusPro.Location = new System.Drawing.Point(21, 452);
+            this.lblCusPro.Name = "lblCusPro";
+            this.lblCusPro.Size = new System.Drawing.Size(50, 12);
+            this.lblCusPro.TabIndex = 1;
+            this.lblCusPro.Text = "구매 PC";
+            // 
+            // txtCusID
+            // 
+            this.txtCusID.Location = new System.Drawing.Point(80, 414);
+            this.txtCusID.Name = "txtCusID";
+            this.txtCusID.Size = new System.Drawing.Size(149, 21);
+            this.txtCusID.TabIndex = 5;
+            this.txtCusID.TextChanged += new System.EventHandler(this.txtCusID_TextChanged);
+            // 
+            // lblASContent
+            // 
+            this.lblASContent.AutoSize = true;
+            this.lblASContent.Location = new System.Drawing.Point(242, 418);
+            this.lblASContent.Name = "lblASContent";
+            this.lblASContent.Size = new System.Drawing.Size(57, 12);
+            this.lblASContent.TabIndex = 2;
+            this.lblASContent.Text = "고장 증상";
+            // 
+            // lblCusID
+            // 
+            this.lblCusID.AutoSize = true;
+            this.lblCusID.Location = new System.Drawing.Point(27, 418);
+            this.lblCusID.Name = "lblCusID";
+            this.lblCusID.Size = new System.Drawing.Size(44, 12);
+            this.lblCusID.TabIndex = 4;
+            this.lblCusID.Text = "회원 ID";
             // 
             // gbxBuyRecord
             // 
@@ -558,193 +745,6 @@
             this.txtProSpec.TabIndex = 0;
             this.txtProSpec.Text = "";
             // 
-            // gbxAS
-            // 
-            this.gbxAS.Controls.Add(this.gbxAsSort);
-            this.gbxAS.Controls.Add(this.lblCondition);
-            this.gbxAS.Controls.Add(this.cbxOrderNo);
-            this.gbxAS.Controls.Add(this.label1);
-            this.gbxAS.Controls.Add(this.lblContentSize);
-            this.gbxAS.Controls.Add(this.lblASApply);
-            this.gbxAS.Controls.Add(this.lblASRecord);
-            this.gbxAS.Controls.Add(this.gViewAS);
-            this.gbxAS.Controls.Add(this.txtASContent);
-            this.gbxAS.Controls.Add(this.cbxASCusPro);
-            this.gbxAS.Controls.Add(this.btnSubmit);
-            this.gbxAS.Controls.Add(this.lblCusPro);
-            this.gbxAS.Controls.Add(this.txtCusID);
-            this.gbxAS.Controls.Add(this.lblASContent);
-            this.gbxAS.Controls.Add(this.lblCusID);
-            this.gbxAS.Location = new System.Drawing.Point(335, 312);
-            this.gbxAS.Name = "gbxAS";
-            this.gbxAS.Size = new System.Drawing.Size(1219, 526);
-            this.gbxAS.TabIndex = 9;
-            this.gbxAS.TabStop = false;
-            // 
-            // gbxAsSort
-            // 
-            this.gbxAsSort.Controls.Add(this.rdoAsOrderNo);
-            this.gbxAsSort.Controls.Add(this.rdoAsDate);
-            this.gbxAsSort.Location = new System.Drawing.Point(986, 366);
-            this.gbxAsSort.Name = "gbxAsSort";
-            this.gbxAsSort.Size = new System.Drawing.Size(219, 54);
-            this.gbxAsSort.TabIndex = 20;
-            this.gbxAsSort.TabStop = false;
-            this.gbxAsSort.Text = "정렬 기준";
-            // 
-            // rdoAsOrderNo
-            // 
-            this.rdoAsOrderNo.AutoSize = true;
-            this.rdoAsOrderNo.Location = new System.Drawing.Point(131, 23);
-            this.rdoAsOrderNo.Name = "rdoAsOrderNo";
-            this.rdoAsOrderNo.Size = new System.Drawing.Size(71, 16);
-            this.rdoAsOrderNo.TabIndex = 18;
-            this.rdoAsOrderNo.TabStop = true;
-            this.rdoAsOrderNo.Text = "주문번호";
-            this.rdoAsOrderNo.UseVisualStyleBackColor = true;
-            this.rdoAsOrderNo.CheckedChanged += new System.EventHandler(this.rdoAsOrderNo_CheckedChanged);
-            // 
-            // rdoAsDate
-            // 
-            this.rdoAsDate.AutoSize = true;
-            this.rdoAsDate.Location = new System.Drawing.Point(17, 23);
-            this.rdoAsDate.Name = "rdoAsDate";
-            this.rdoAsDate.Size = new System.Drawing.Size(71, 16);
-            this.rdoAsDate.TabIndex = 17;
-            this.rdoAsDate.TabStop = true;
-            this.rdoAsDate.Text = "신청날짜";
-            this.rdoAsDate.UseVisualStyleBackColor = true;
-            this.rdoAsDate.CheckedChanged += new System.EventHandler(this.rdoAsDate_CheckedChanged);
-            // 
-            // lblCondition
-            // 
-            this.lblCondition.AutoSize = true;
-            this.lblCondition.Location = new System.Drawing.Point(307, 397);
-            this.lblCondition.Name = "lblCondition";
-            this.lblCondition.Size = new System.Drawing.Size(255, 12);
-            this.lblCondition.TabIndex = 16;
-            this.lblCondition.Text = "* 고장 증상을 자세하게 10글자 이상 써주세요.";
-            // 
-            // cbxOrderNo
-            // 
-            this.cbxOrderNo.FormattingEnabled = true;
-            this.cbxOrderNo.Location = new System.Drawing.Point(80, 483);
-            this.cbxOrderNo.Name = "cbxOrderNo";
-            this.cbxOrderNo.Size = new System.Drawing.Size(149, 20);
-            this.cbxOrderNo.TabIndex = 14;
-            this.cbxOrderNo.SelectedIndexChanged += new System.EventHandler(this.cbxOrderNo_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 486);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "주문번호";
-            // 
-            // lblContentSize
-            // 
-            this.lblContentSize.AutoSize = true;
-            this.lblContentSize.Location = new System.Drawing.Point(945, 437);
-            this.lblContentSize.Name = "lblContentSize";
-            this.lblContentSize.Size = new System.Drawing.Size(0, 12);
-            this.lblContentSize.TabIndex = 13;
-            // 
-            // lblASApply
-            // 
-            this.lblASApply.AutoSize = true;
-            this.lblASApply.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblASApply.Location = new System.Drawing.Point(6, 366);
-            this.lblASApply.Name = "lblASApply";
-            this.lblASApply.Size = new System.Drawing.Size(99, 21);
-            this.lblASApply.TabIndex = 12;
-            this.lblASApply.Text = "A/S 신청";
-            // 
-            // lblASRecord
-            // 
-            this.lblASRecord.AutoSize = true;
-            this.lblASRecord.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblASRecord.Location = new System.Drawing.Point(6, 14);
-            this.lblASRecord.Name = "lblASRecord";
-            this.lblASRecord.Size = new System.Drawing.Size(151, 21);
-            this.lblASRecord.TabIndex = 11;
-            this.lblASRecord.Text = "A/S 신청 이력";
-            // 
-            // gViewAS
-            // 
-            this.gViewAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gViewAS.Location = new System.Drawing.Point(0, 42);
-            this.gViewAS.Name = "gViewAS";
-            this.gViewAS.ReadOnly = true;
-            this.gViewAS.RowTemplate.Height = 23;
-            this.gViewAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gViewAS.Size = new System.Drawing.Size(981, 298);
-            this.gViewAS.TabIndex = 8;
-            // 
-            // txtASContent
-            // 
-            this.txtASContent.Location = new System.Drawing.Point(305, 415);
-            this.txtASContent.Multiline = true;
-            this.txtASContent.Name = "txtASContent";
-            this.txtASContent.Size = new System.Drawing.Size(631, 83);
-            this.txtASContent.TabIndex = 3;
-            this.txtASContent.TextChanged += new System.EventHandler(this.txtASContent_TextChanged);
-            // 
-            // cbxASCusPro
-            // 
-            this.cbxASCusPro.FormattingEnabled = true;
-            this.cbxASCusPro.Location = new System.Drawing.Point(80, 449);
-            this.cbxASCusPro.Name = "cbxASCusPro";
-            this.cbxASCusPro.Size = new System.Drawing.Size(149, 20);
-            this.cbxASCusPro.TabIndex = 0;
-            this.cbxASCusPro.SelectedIndexChanged += new System.EventHandler(this.cbxASCusPro_SelectedIndexChanged);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(941, 475);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 6;
-            this.btnSubmit.Text = "A/S 신청";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // lblCusPro
-            // 
-            this.lblCusPro.AutoSize = true;
-            this.lblCusPro.Location = new System.Drawing.Point(21, 452);
-            this.lblCusPro.Name = "lblCusPro";
-            this.lblCusPro.Size = new System.Drawing.Size(50, 12);
-            this.lblCusPro.TabIndex = 1;
-            this.lblCusPro.Text = "구매 PC";
-            // 
-            // txtCusID
-            // 
-            this.txtCusID.Location = new System.Drawing.Point(80, 414);
-            this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(149, 21);
-            this.txtCusID.TabIndex = 5;
-            this.txtCusID.TextChanged += new System.EventHandler(this.txtCusID_TextChanged);
-            // 
-            // lblASContent
-            // 
-            this.lblASContent.AutoSize = true;
-            this.lblASContent.Location = new System.Drawing.Point(242, 418);
-            this.lblASContent.Name = "lblASContent";
-            this.lblASContent.Size = new System.Drawing.Size(57, 12);
-            this.lblASContent.TabIndex = 2;
-            this.lblASContent.Text = "고장 증상";
-            // 
-            // lblCusID
-            // 
-            this.lblCusID.AutoSize = true;
-            this.lblCusID.Location = new System.Drawing.Point(27, 418);
-            this.lblCusID.Name = "lblCusID";
-            this.lblCusID.Size = new System.Drawing.Size(44, 12);
-            this.lblCusID.TabIndex = 4;
-            this.lblCusID.Text = "회원 ID";
-            // 
             // btnCart
             // 
             this.btnCart.Location = new System.Drawing.Point(291, 50);
@@ -788,6 +788,11 @@
             this.spCont.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCont)).EndInit();
             this.spCont.ResumeLayout(false);
+            this.gbxAS.ResumeLayout(false);
+            this.gbxAS.PerformLayout();
+            this.gbxAsSort.ResumeLayout(false);
+            this.gbxAsSort.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).EndInit();
             this.gbxBuyRecord.ResumeLayout(false);
             this.gbxSort.ResumeLayout(false);
             this.gbxSort.PerformLayout();
@@ -799,11 +804,6 @@
             this.gbxBuy.ResumeLayout(false);
             this.gbxBuy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuProAmount)).EndInit();
-            this.gbxAS.ResumeLayout(false);
-            this.gbxAS.PerformLayout();
-            this.gbxAsSort.ResumeLayout(false);
-            this.gbxAsSort.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gViewAS)).EndInit();
             this.ResumeLayout(false);
 
         }
