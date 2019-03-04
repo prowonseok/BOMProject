@@ -109,7 +109,6 @@
     <Compile Include="VO\AsVO.cs" />
     <Compile Include="VO\CartVO.cs" />
     <Compile Include="VO\CustomerVO.cs" />
-    <Compile Include="VO\GviewSort.cs" />
     <Compile Include="VO\OrderVO.cs" />
     <Compile Include="VO\ProductVO.cs" />
     <Compile Include="VO\SearchAddrVO.cs" />

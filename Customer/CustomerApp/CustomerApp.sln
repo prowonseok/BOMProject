@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerApp", "CustomerApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CusAppTest", "CusAppTest\CusAppTest.csproj", "{50BE0ADA-2820-47E0-99C9-CB8FE78B54E6}"
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "Goodee PC", "Goodee PC\Goodee PC.aiproj", "{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -26,6 +28,12 @@ Global
 		{50BE0ADA-2820-47E0-99C9-CB8FE78B54E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BE0ADA-2820-47E0-99C9-CB8FE78B54E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BE0ADA-2820-47E0-99C9-CB8FE78B54E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.All|Any CPU.ActiveCfg = DefaultBuild
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.All|Any CPU.Build.0 = DefaultBuild
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.Debug|Any CPU.Build.0 = DefaultBuild
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{9B465700-2CBA-4C13-A2AE-0D22F3EFCC0E}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

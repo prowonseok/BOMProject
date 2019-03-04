@@ -46,21 +46,6 @@ namespace CustomerApp.DAO
             }
         }
 
-        //private List<string> GetMatList(int proNo, List<string> matList)
-        //{
-        //    string sp = "SelectProDetail";
-        //    SqlParameter[] proInfo = new SqlParameter[1];
-        //    proInfo[0] = new SqlParameter("Pro_No", proNo);
-        //    var matDataTable = db.ExecuteParametersDT(sp, proInfo);
-
-        //    foreach (DataRow row in matDataTable.Rows)
-        //    {
-        //        matList.Add(row["Mat_Type_Category"].ToString());
-        //        matList.Add(row["Mat_Name"].ToString());
-        //    }
-        //    return matList;
-        //}
-
         private string GetMatList(int proNo)
         {
             string matList = string.Empty;
@@ -70,11 +55,6 @@ namespace CustomerApp.DAO
             var matDataTable = db.ExecuteParametersDT(sp, proInfo);
 
             matList = matDataTable.Rows[0]["Pro_Spec"].ToString();
-            //foreach (DataRow row in matDataTable.Rows)
-            //{
-                
-            //    //matList.Add(row["Mat_Name"].ToString());
-            //}
             return matList;
         }
 

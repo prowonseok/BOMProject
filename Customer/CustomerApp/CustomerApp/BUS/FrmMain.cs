@@ -51,8 +51,7 @@ namespace CustomerApp.BUS
 
             spCont.BorderStyle = BorderStyle.FixedSingle;
             // 리소스 경로 설정
-            path = Application.StartupPath;
-            path = path.Substring(0, path.Length - int.Parse(ConfigurationManager.AppSettings["pathConst"])) + "Resources\\";
+            path = Application.StartupPath + "\\Resources\\"; //ConfigurationManager.AppSettings["path"];
             // 폼 디자인
             Text = "Goodee PC";
             BackColor = Color.White;
