@@ -38,6 +38,7 @@
             // 
             this.tbPassword.Location = new System.Drawing.Point(11, 24);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '●';
             this.tbPassword.Size = new System.Drawing.Size(202, 21);
             this.tbPassword.TabIndex = 0;
             // 
@@ -80,7 +81,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPassword";
             this.ResumeLayout(false);
             this.PerformLayout();

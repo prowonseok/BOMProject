@@ -82,7 +82,7 @@
             this.btnManage.Name = "btnManage";
             this.btnManage.Size = new System.Drawing.Size(124, 74);
             this.btnManage.TabIndex = 1;
-            this.btnManage.Text = "관리자";
+            this.btnManage.Text = "자재/상품 관리";
             this.btnManage.UseVisualStyleBackColor = false;
             this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 

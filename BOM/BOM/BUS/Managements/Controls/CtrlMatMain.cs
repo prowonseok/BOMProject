@@ -153,6 +153,7 @@ namespace BOM.BUS.Managements.Controls
             listArray[0] = matTypeList;
             listArray[1] = matOffererList;
             FrmMatAdd fma = new FrmMatAdd(md, listArray);
+            fma.FormClosed += new FormClosedEventHandler(formclosedmethod);
             fma.ShowDialog();
 
 

@@ -51,6 +51,7 @@
             // 
             this.tbPrevPassword.Location = new System.Drawing.Point(14, 24);
             this.tbPrevPassword.Name = "tbPrevPassword";
+            this.tbPrevPassword.PasswordChar = '●';
             this.tbPrevPassword.Size = new System.Drawing.Size(102, 21);
             this.tbPrevPassword.TabIndex = 1;
             // 
@@ -58,6 +59,7 @@
             // 
             this.tbNewPassword.Location = new System.Drawing.Point(14, 75);
             this.tbNewPassword.Name = "tbNewPassword";
+            this.tbNewPassword.PasswordChar = '●';
             this.tbNewPassword.Size = new System.Drawing.Size(100, 21);
             this.tbNewPassword.TabIndex = 3;
             // 
@@ -74,6 +76,7 @@
             // 
             this.tbNewPasswordChk.Location = new System.Drawing.Point(14, 126);
             this.tbNewPasswordChk.Name = "tbNewPasswordChk";
+            this.tbNewPasswordChk.PasswordChar = '●';
             this.tbNewPasswordChk.Size = new System.Drawing.Size(100, 21);
             this.tbNewPasswordChk.TabIndex = 5;
             // 

@@ -47,6 +47,7 @@
             // 
             // btnASList
             // 
+            this.btnASList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
             this.btnASList.Location = new System.Drawing.Point(680, 430);
             this.btnASList.Name = "btnASList";
             this.btnASList.Size = new System.Drawing.Size(75, 23);
