@@ -22,7 +22,7 @@ namespace BOM
         DAO.BomDAO bDao;
         DataTable dt;
         DataTable dtClone; //DataTable dt에 Materials Table을 입력 받아 복사하기 위한 DataTable
-
+        
         public FrmBomInfoControl()
         {
             InitializeComponent();
@@ -62,6 +62,7 @@ namespace BOM
             //GridView의 버튼컬럼 추가
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+
             btn.HeaderText = "BOM 등록";
             btn.Name = "Button";
             btn.Text = "BOM 등록";
@@ -170,7 +171,6 @@ namespace BOM
                 {
                     //BOM등록 페이지에 선택한 항목들의 값을 매개변수로 보냄
                     FrmBomAdd fba = new FrmBomAdd(new MaterialsVO
-
                     {
                         Mat_No = Int32.Parse(dgvBom.Rows[e.RowIndex].Cells[2].Value.ToString()),
                         Mat_Name = dgvBom.Rows[e.RowIndex].Cells[3].Value.ToString(),
@@ -284,8 +284,9 @@ namespace BOM
                             }
                         }
                     }
-                    
+
                 }
+                MessageBox.Show("검색결과가 없습니다.");
 
             }
         }

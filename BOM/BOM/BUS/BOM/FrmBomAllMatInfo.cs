@@ -218,6 +218,7 @@ namespace BOM.BUS.BOM
                     {
                     }
                 }
+                MessageBox.Show("검색결과가 없습니다.");
 
             }
         }
